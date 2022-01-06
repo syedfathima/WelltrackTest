@@ -87,7 +87,7 @@
     "ngx-modialog": "^5.0.1",
     "ngx-modialog-7": "^9.0.2",
     "ngx-stripe": "^8.0.0",
-    "npm": "^6.14.15",
+    "npm": "^7.21.0",
     "npm-registry-fetch": "^12.0.0",
     "pacote": "^11.1.13",
     "rxjs": "^6.6.3",
