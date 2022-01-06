@@ -1,0 +1,8 @@
+<h3 mat-dialog-title>{{title}}</h3>
+<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal" aria-label="Close challenge edit form">
+    <img alt="Close" src="./assets/img/icons-svg/close-icon.svg">
+</a>
+<mat-dialog-content [innerHtml]="message"></mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Ok</button>
+</mat-dialog-actions>

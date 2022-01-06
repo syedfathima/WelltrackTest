@@ -1,0 +1,61 @@
+<div id="page-fun-achievement">
+
+
+    <div class="col-sm-12 mt">
+        <div class="page-section no-margin">
+            <div class="page-section-header">
+                <div class="page-section-buttons">
+                    <a tabindex="0" *ngIf="(funachievements | filter: 'status' : 'complete').length > 100" (click)="loadMore()"
+                        (keypress)="loadMore()" translate>fa.view</a>
+                </div>
+                <h2 translate>fa.table.title</h2>
+            </div>
+            <div class="page-section-content">
+				<page-loader *ngIf="!isLoaded"></page-loader>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>fa.table.headers.0</th>
+                                <th class="center" translate>fa.table.headers.1</th>
+                                <th class="center" translate>fa.table.headers.2</th>
+                                <th class="center" translate>fa.table.headers.3</th>
+                                <th class="center" translate>fa.table.headers.4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let fa of funachievements | filter : 'status' : 'complete'">
+
+                                <td class="strong">
+                                    <a tabindex="0" [routerLink]="'/app/practice/funachievement/' + fa.id">{{fa.primaryAchievement.activity
+                                        || 'Untitled'}}</a>
+                                </td>
+                                <td class="strong center" [ngClass]="{'positive': fa.happinessDiff() > 0, 'negative': fa.happinessDiff() < 0}">
+                                    <span *ngIf="fa.happinessDiff() > 0">&uarr;</span>
+                                    <span *ngIf="fa.happinessDiff() < 0">&darr;</span> {{fa.happinessDiff()}}
+                                </td>
+                                <td class="strong center" [ngClass]="{'positive': fa.funDiff() > 0, 'negative': fa.funDiff() < 0}">
+                                    <span *ngIf="fa.funDiff() > 0">&uarr;</span>
+                                    <span *ngIf="fa.funDiff() < 0">&darr;</span> {{fa.funDiff()}}
+                                </td>
+                                <td class="strong center" [ngClass]="{'positive': fa.achievementDiff() > 0, 'negative': fa.achievementDiff() < 0}">
+                                    <span *ngIf="fa.achievementDiff() > 0">&uarr;</span>
+                                    <span *ngIf="fa.achievementDiff() < 0">&darr;</span> {{fa.achievementDiff()}}
+                                </td>
+                                <td class="minidate">{{fa.date | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                                <td class="text-align:right" *ngIf="currentUser.id === fa.userId">
+                                    <a class="delete" tabindex="0" (click)="delete(fa.id)" (keypress)="delete(fa.id)"><img
+                                            src="./assets/img/icons-svg/x-icon.svg"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,54 @@
+<div class="message">
+    <div class="image valign">
+        <a (click)="onClick()">
+            <img tabindex="0" src="./assets/img/pug.png" alt="WellTrack" *ngIf="!message.recipient.avatarUrl">
+            <img tabindex="0" src="{{ message.recipient.avatarUrl }}" alt="{{message.recipient.fullName}}" *ngIf="message.recipient.avatarUrl">
+            <div>Buddy</div>
+        </a>
+    </div>
+    <div class="content valign">
+        {{message.content}}
+        <div>
+            <a class="trigger-modal" *ngIf="message.type == 1" (click)="displayMoodcheck()" (keydown.enter)="displayMoodcheck()">
+                Do a MoodCheck
+            </a>
+
+            <a *ngIf="message.type == 2" [routerLink]="'/app/courses-listing/anxiety/32'" [queryParams]="{type: 'relaxation'}">
+                Learn Relaxation Techniques
+            </a>
+
+            <a *ngIf="message.type == 3" routerLink="/app/practice/zen-room">
+                Visit the Zen Room
+            </a>
+            <!--
+                <a *ngIf="message.type == 4" routerLink="/app/practice/funachievement">
+                    Create a fun and achievement
+                </a>
+            -->     
+            <a *ngIf="message.type == 4" routerLink="/app/activityscheduler">
+                Create an Activity Schedule
+            </a>
+            <a *ngIf="message.type == 5" routerLink="/app/practice/cd-quiz">
+                Learn about Cognitive Distortions
+            </a>
+        </div>
+    </div>
+    <!--
+    <div *ngIf="message.type == 2 || message.type == 4 || message.type == 5 || message.type == 1 " class="link valign type-{{message.type}}">
+            <a *ngIf="message.type == 2" routerLink="/app/practice/zenroom">
+                <img alt="Zen Room" src="./assets/img/icons-svg/zen_room.svg">
+            </a>
+            <a *ngIf="message.type == 4" routerLink="/app/practice/funachievement">
+                <img alt="Fun achievement" src="./assets/img/icons-svg/mountain.svg">
+            </a>
+          
+            <a *ngIf="message.type == 4" routerLink="/app/activityscheduler">
+                <img alt="Activity Scheduler" src="./assets/img/icons-svg/activity_scheduler.svg">
+            </a>
+            
+            <a *ngIf="message.type == 5" routerLink="/app/practice/quiz">
+                <img alt="Cognitive distortions quiz" src="./assets/img/icons-svg/quiz.svg">
+            </a>
+    </div>
+    -->
+</div>

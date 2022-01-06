@@ -1,0 +1,39 @@
+@import "../../../theme/_welltrack.variables.scss";
+.input {
+    height: 40px;
+    width: 100%;
+    border: 1px solid #b8b7af;
+    background-color: #F2F2F3;
+    border-radius: 3px;
+    .text-wrapper {
+        width: 80%;
+        float: left;
+        .input-text {
+            margin-left: 10px;
+            opacity: 0.8;
+            color: #444444;
+            font-size: 14px;
+            line-height: 40px;
+            letter-spacing: 1px;
+        }
+    }
+    ng2-datepicker {
+        margin-top: 10px;
+        margin-right: 10px;
+        float: right;
+    }
+    .hide {
+        visibility: hidden;
+    }
+    input{
+        background-color:transparent; 
+        width:100%;
+        border:none;
+        margin-left:0px !important;
+        padding-left:10px;
+        line-height:36px !important;
+    }
+    input:focus, input:active{
+        border:none;
+    }
+}

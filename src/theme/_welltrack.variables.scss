@@ -1,0 +1,261 @@
+//--------------------------
+// WellTrack Theme Variables
+//--------------------------
+
+// Colors
+//----------------------------------
+
+
+$color-text: #4d4c4c; 
+$color-text-light: #616161; 
+$color-subtle: #595959; 
+$color-line: #e7e5dc; 
+$color-background: #f9f8f5; 
+$color-link:  #cc4100;
+$color-warning: #E71F45;
+$color-negative: #C33C6C;
+$color-positive: #127800;
+
+$moodcheck-colors: #f9a287, #f8c17b, #f6db72, #dbe982, #b9eb9e, #96e5bf, #80c7dc, #6dadf5, #8f7cc2, #ba4d82;
+
+$color-blue: rgb(101,169,248);
+$color-orange: #CF4A00;
+$color-anxiety:  #90D1F1; 
+$color-stress: #80EAA8;
+$color-depression: #EF483D;
+
+$color-background-grey: #F2F2F3;
+
+
+
+//Gradients
+//----------------------------------
+
+@mixin gradient($from, $to) {
+    background-color: $from;
+    background-image: -webkit-linear-gradient(top left, $from, $to);
+    background-image: -moz-linear-gradient(top left, $from, $to);
+    background-image: -o-linear-gradient(top left, $from, $to);
+    background-image: linear-gradient(to bottom right, $from, $to);
+}
+
+@mixin gradient-horizontal($from, $to) {
+    background-color: $from;
+    background-image: -webkit-linear-gradient(right, $from, $to);
+    background-image: -moz-linear-gradient(right, $from, $to);
+    background-image: -o-linear-gradient(right, $from, $to);
+    background-image: linear-gradient(to right, $from, $to);
+}
+
+@mixin gradient-horizontal-three-colors($one, $two, $three) {
+    background-color: $one;
+    background-image: -webkit-linear-gradient(top left, $one, $two, $three);
+    background-image: -moz-linear-gradient(top left,$one, $two, $three);
+    background-image: -o-linear-gradient(top left, $one, $two, $three);
+    background-image: linear-gradient(to right, $one, $two, $three);
+}
+
+
+.moodcheck-gradient{
+    @include gradient(#087a49, #03321e);
+}
+
+.zenroom-gradient{
+    @include gradient(#087a49, #03321e);
+}
+
+.zenroom-gradient-horizontal{
+    @include gradient-horizontal(#087a49, #03321e);
+}
+
+.thoughtdiary-gradient{
+    @include gradient( #046B99, #1C304A);
+}
+
+.thoughtdiary-gradient-horizontal{
+    @include gradient-horizontal(#046B99, #1C304A);
+}
+
+.cognitivedistortions-gradient{
+    @include gradient(#EF483D, #d12e00);
+}
+
+.cognitivedistortions-gradient-horizontal{
+    @include gradient-horizontal(#EF483D, #d12e00);
+}
+
+.funachievement-gradient{
+    @include gradient(#CF4A00, #832f00);
+}
+
+.funachievement-gradient-horizontal{
+    @include gradient-horizontal(#CF4A00, #832f00);
+}
+
+.activityscheduler-gradient {
+    @include gradient(#9B189E, #610078);
+}
+
+.activityscheduler-gradient-horizontal {
+    @include gradient-horizontal(#9B189E, #610078);
+}
+
+.challenges-gradient{
+    @include gradient(#48c6ef, #6f86d6);
+}
+
+.challenges-gradient-horizontal{
+    @include gradient-horizontal(#48c6ef, #6f86d6);
+}
+
+.assessment-gradient{
+    @include gradient(#087a49, #1a8255);
+}
+
+.assessment-gradient-horizontal{
+    @include gradient-horizontal(#123622, #00AA55);
+}
+
+.assessment-wellness-gradient{
+    @include gradient(#123622, #00AA55);
+}
+
+.assessment-wellness-gradient-horizontal{
+    @include gradient-horizontal(#123622, #00AA55);
+}
+
+.assessment-resilience-gradient{
+    @include gradient(#58007E, #AE59B6);
+}
+
+.assessment-resilience-gradient-horizontal{
+    @include gradient-horizontal(#58007E, #AE59B6);
+}
+
+.addiction-gradient{
+    @include gradient(#087a49, #03321e);
+}
+
+.addiction-gradient-horizontal{
+    @include gradient-horizontal(#087a49, #03321e);
+}
+
+.podcasts-gradient{
+    @include gradient(#0a0a27, #1e1e76);
+}
+
+.podcasts-gradient-horizontal{
+    @include gradient-horizontal(#0a0a27, #1e1e76);
+}
+
+.gradient-cta {
+    @include gradient(#CF4A00, #CF4A00);
+}
+
+.gradient-cta-btn {
+    @include gradient-horizontal(#CF4A00, #CF4A00);
+}
+
+.gradient-cta2-btn {
+    @include gradient-horizontal( #6F86D6, #6F86D6);
+}
+
+.gradient-cta3-btn {
+    @include gradient-horizontal(#551A8B, #551A8B);
+}
+
+.gradient-tutorial {
+    @include gradient(#6f86d6, #326680);
+}
+
+.gradient-dashboard {
+    @include gradient(#a90a00, #9a0f06);
+}
+
+.gradient-menu {
+    @include gradient(#25295f, #101125);
+}
+
+.courseanxiety {
+    background-color: #456C98;
+}
+
+.coursedepression {
+    background-color: #BA4D82;
+}
+
+.coursephobia {
+    background-color: #4d2a70;
+}
+
+.courseaddiction{
+    background-color: #02594C;
+}
+
+.coursedisaster{
+    background-color: #318846;
+}
+
+.courseresilience{
+    background-color: #7E7E7E;
+}
+
+.coursesleep{
+    background-color: #3498DB;
+}
+
+.coursewellbeing{
+    background-color: #D35400;
+}
+
+.coursemindfulness{
+    background-color: #36123A;
+}
+
+.coursepurpose{
+    background-color: #E7A255;
+}
+
+.coursework{
+    background-color: #55C097;
+}
+
+.coursebeyondnormal{
+    background-color: #1e1e76;
+}
+
+.courseadditionalresources{
+    background-color: #3BA8A8;
+}
+
+.background-grey{
+    background-color: $color-background-grey; 
+}
+
+.red{
+    color:red;
+}
+
+// Fonts
+//----------------------------------
+
+$font-normal: "Nunito Sans", "Helvetica Neue", san-serif;
+$letter-spacing: 0.5px;
+$font-size-multiplier: 1;
+
+$font-size-xxxxl: 24px * $font-size-multiplier;
+$font-size-xxxl: 22px * $font-size-multiplier;
+$font-size-xxl: 18px * $font-size-multiplier;
+$font-size-xl: 16px * $font-size-multiplier;
+$font-size-lg: 14px * $font-size-multiplier;
+$font-size-md: 13px * $font-size-multiplier;
+$font-size-sm: 12px * $font-size-multiplier;
+$font-size-xs: 11px * $font-size-multiplier;
+$font-size-tiny: 9px * $font-size-multiplier;
+
+$font-size-title-xxl: 45px * $font-size-multiplier;
+$font-size-title-xl: 35px * $font-size-multiplier;
+$font-size-title-lg: 26px * $font-size-multiplier;
+$font-size-title-slg: 20px * $font-size-multiplier;
+$font-size-title-md: 18px * $font-size-multiplier;
+$font-size-title-sm: 16px * $font-size-multiplier;

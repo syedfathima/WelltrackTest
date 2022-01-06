@@ -1,0 +1,66 @@
+<div class="page-section">
+    <div class="page-section-header">
+        <div class="page-section-buttons">
+            <a autoFocus tabindex="0" class="pull-right" routerLink="/admin/user-listing" translate>userProfile.back</a>
+        </div>
+    </div>
+
+    <div class="page-section-content clearfix">
+
+        <div class="page-section">
+            <strong>Full Name</strong>
+            <div>{{user.fullName}}</div>
+            <strong>Email</strong>
+            <div>{{user.email}}</div>
+            <strong>Last Login</strong>
+            <div *ngIf="user.loginOn">{{user.loginOn}}</div>
+            <div *ngIf="!user.loginOn" translate>userDetails.neverLoggedIn</div>
+            <strong>Organization</strong>
+            <div>{{user.organizationStr}}</div>
+            <strong>Zoom User? </strong>
+            <div>{{user.zoomPersonalMeetingUrl ? 'Yes': 'No'}}</div>
+
+
+            <a tabindex="0" (click)="onEdit()" (keypress)="onEdit()" class="btn btn-inline btn-primary">Edit User</a>
+            <div>
+                <a tabindex="0" (click)="onResendWelcome()" (keypress)="onResendWelcome()" class="btn btn-inline btn-secondary">Resend welcome email</a>
+                <a tabindex="0" (click)="onResendConfirmation()" (keypress)="onResendConfirmation()" class="btn btn-inline btn-secondary">Resend confirmation email</a>
+                <a *ngIf="!user.zoomPersonalMeetingUrl" (click)="makeZoomAccount()" (keypress)="makeZoomAccount()"class="btn btn-inline btn-secondary">Create zoom account</a>
+                <a *ngIf="user.zoomPersonalMeetingUrl" (click)="deleteZoomAccount()" (keypress)="deleteZoomAccount()"class="btn btn-inline btn-secondary">Delete zoom account</a>
+            </div>
+            <div>
+                <a tabindex="0" (click)="onDelete()" (keypress)="onDelete()" class="btn btn-inline btn-secondary">Delete this user</a>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="page-section no-margin">
+                <div class="page-section-header">
+                    <div class="page-section-buttons" *ngIf="activity.length >= 20 && showMoreLink">
+                        <a tabindex="0" (click)="showMore()" (keypress)="showMore()" translate>userDetails.more</a>
+                    </div>
+                    <h2 translate>userDetails.latestAct</h2>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+                        <div *ngIf="activity.length === 0">
+                            <p class="strong" translate>userDetails.noneFound</p>
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let activityrow of activity; let i = index">
+                                    <td class="strong" style="width:80%;">
+                                        {{activityrow.message}}
+                                    </td>
+                                    <td class="strong" style="width:10%"> {{activityrow.created | amUtc | amDateFormat: 'H:mm a' }}</td>
+                                    <td class="strong" style="width:10%"> {{activityrow.created | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

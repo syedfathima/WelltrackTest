@@ -1,0 +1,252 @@
+<div id="auth-portal-wrapper">
+    <aside id="menu" [ngClass]="{navIn: navIn}" role="main" aria-labelledby="section-title">
+        <h1 id="section-title" class="wt-access">Choose your WellTrack activity</h1>
+        <a class="hidden-xs" tabindex="0" id="skip-nav" alt="Skip navigation" (click)="onSkipNav()"
+            (keypress)="onSkipNav()">Skip nav</a>
+        <a tabindex="0" class="close-nav visible-xs" (click)="onNavClose()" (keypress)="onNavClose()">Close</a>
+        <screen-header id="menu-header"></screen-header>
+        <language-dropdown [color]="'white'" [page]="'inside'" *ngIf="!disableLanguage"></language-dropdown>
+		<organization-dropdown></organization-dropdown>
+        <nav id="nav" role=navigation>
+            <a tabindex="0" [ngClass]="{'active': '/app' == pathActive || '' == pathActive}" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}" (click)="nav('/app')" (keypress)="nav('/app')">
+                <img alt="Dashboard" class="icon" src="/assets/img/icons/dashboard@2x.png" style="height: 20px;">
+                <span translate>menu.dashboard</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/professional/users' == pathActive}" routerLinkActive="active"
+                *ngIf="userDetailsShow" (click)="nav('/professional/users')" (keypress)="nav('/professional/users')">
+                <img alt="Client list" class="icon" src="./assets/img/icons/user-icon@2x.png" style="height: 20px;">
+                <span translate>menu.clientList</span>
+            </a>
+
+            <a tabindex="0" *ngIf="moodcheckShow" [ngClass]="{'disabled': locked}" (click)="onMoodCheck()"
+                (keypress)="onMoodCheck()">
+                <img alt="Moodcheck" class="icon" src="/assets/img/icons/moodcheck@2x.png" style="height: 19px;">
+                <span translate>menu.moodcheck</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/theory' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="practiceShow" (click)="nav('/app/theory')"
+                (keypress)="nav('/app/theory')" [ngClass]="{'disabled': this.user.userType == 'user' && locked}">
+                <img alt="Courses" class="icon" src="/assets/img/icons/practice@2x.png" style="height: 20px;">
+                <span translate>menu.courses</span>
+            </a>
+
+            <a tabindex="0" *ngIf="podcastsShow" [ngClass]="{'active': '/app/podcasts' == pathActive, 'disabled': locked}"
+                routerLinkActive="active"  (click)="nav('/app/podcasts')"
+                (keypress)="nav('/app/podcasts')" [ngClass]="{'disabled': this.user.userType == 'user' && locked}">
+                <img alt="Courses" class="icon" src="/assets/img/icons/podcast-mic@2x.png" style="height: 20px;">
+                <span translate>menu.podcasts</span>
+            </a>
+
+            <!--*ngIf="this.user.primaryOrganization.id === 2644"-->
+            <a tabindex="0" *ngIf="enableCoreContributors"
+                [ngClass]="{'active': '/app/corecontributors' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" (click)="nav('/app/corecontributors')"
+                (keypress)="nav('/app/corecontributors')"
+                [ngClass]="{'disabled': this.user.userType == 'user' && locked}">
+                <img alt="Domains" class="icon" src="/assets/img/icons/resources@2x.png" style="height: 20px;">
+                <span translate>menu.wellnessDomains</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/practice' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="theoryShow" (click)="nav('/app/practice')"
+                (keypress)="nav('/app/practice')" [ngClass]="{'disabled': this.user.userType == 'user' && locked}">
+                <img alt="Tools" class="icon" src="/assets/img/icons/theory@2x.png" style="height: 20px;">
+                <span translate>menu.tools</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/calendar' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="calendarShow" (click)="nav('/app/calendar')"
+                (keypress)="nav('/app/calendar')">
+                <img alt="Calendar" class="icon" src="/assets/img/icons/calendar@2x.png" style="height: 20px;">
+                <span translate>menu.calendar</span>
+                <div class="notifications" *ngIf="user.eventCount > 0">{{user.eventCount}}</div>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/assessments' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="assessmentShow && defaultAssessment ==='resilience'" (click)="nav('/app/assessments')"
+                (keypress)="nav('/app/assessments')">
+                <img alt="Assessment" class="icon" src="./assets/img/icons/assessment_icon@2x.png"
+                    style="height: 20px;">
+                <span translate>menu.assessments</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/assessment' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="assessmentShow && defaultAssessment ==='das'" (click)="nav('/app/assessments/das/listing')"
+                (keypress)="nav('/app/assessments/das/listing')">
+                <img alt="Assessment" class="icon" src="./assets/img/icons/assessment_icon@2x.png"
+                    style="height: 20px;">
+                <span translate>menu.assessment</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/challenges' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'user'  && user.totalChallengesCount > 0"
+                (click)="nav('/app/challenges')" (keypress)="nav('/app/challenges')"
+                [ngClass]="{'disabled': this.user.userType == 'user' && locked}">
+                <i aria-hidden="true" class="fa fa-flag" aria-hidden="true"></i>
+                <span translate>menu.challenges</span>
+                <div class="notifications" *ngIf="user.activeChallengesCount > 0">{{user.activeChallengesCount}}</div>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/executive/organization-edit' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'orgadmin'" (click)="nav('/executive/organization-edit')"
+                (keypress)="nav('/executive/organization-edit')">
+                <img alt="Organization details" class="icon" src="./assets/img/icons/settings@2x.png"
+                    style="height: 20px;">
+                <span translate>menu.orgDetails</span>
+            </a>
+            <!--
+                <a tabindex="20" [ngClass]="{'active': '/manage/resources' == pathActive, 'disabled': locked}" routerLinkActive="active"
+                    *ngIf="userType == 'orgadmin'" (click)="nav('/manage/resources')" (keypress)="nav('/manage/resources')">
+                    <img alt="Resources" class="icon" src="/assets/img/icons/resources@2x.png" style="height: 22px;">
+                    <span translate>menu.manageResources</span>
+                </a>
+            -->
+            <a tabindex="0" [ngClass]="{'active': '/admin/user-listing' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/user-listing')"
+                (keypress)="nav('/admin/user-listing')">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span translate>menu.users</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/admin/organization-listing' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/organization-listing')"
+                (keypress)="nav('/admin/organization-listing')">
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
+                <span translate>menu.orgs</span>
+			</a>
+
+			<a tabindex="0" [ngClass]="{'active': '/admin/resources-import' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/resources-import')"
+                (keypress)="nav('/admin/resources-import')">
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
+                <span translate>menu.resourcesAdmin</span>
+			</a>
+
+			<a tabindex="0" [ngClass]="{'active': '/admin/course-listing' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/course-listing')"
+                (keypress)="nav('/admin/course-listing')">
+                <img alt="Courses" class="icon" src="/assets/img/icons/practice@2x.png" style="height: 20px;">
+                <span translate>menu.adminCourseListing</span>
+            </a>
+
+			<a tabindex="0" [ngClass]="{'active': '/admin/assessments-listing' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/assessments-listing')"
+                (keypress)="nav('/admin/assessments-listing')">
+                <img alt="Assessment" class="icon" src="./assets/img/icons/assessment_icon@2x.png"
+                    style="height: 20px;">
+                <span translate>menu.assessmentListing</span>
+            </a>
+            <a tabindex="0" [ngClass]="{'active': '/admin/activity' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/activity')"
+                (keypress)="nav('/admin/activity')">
+                <img alt="Activity" class="icon" src="/assets/img/icons/dashboard@2x.png" style="height: 20px;">
+                <span translate>menu.activity</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/admin/challenges' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/challenges')"
+                (keypress)="nav('/admin/challenges')">
+                <i class="fa fa-flag" aria-hidden="true"></i>
+                <span translate>menu.challenges</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/admin/reports' == pathActive, 'disabled': locked}"
+                routerLinkActive="active" *ngIf="userType == 'admin'" (click)="nav('/admin/reports')"
+                (keypress)="nav('/admin/reports')">
+                <i class="fa fa-table" aria-hidden="true"></i>
+                <span translate>menu.reports</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/emergency-contact' == pathActive, 'disabled': locked}"
+                class="secondary" routerLinkActive="active" (click)="nav('/app/emergency-contact')"
+                (keypress)="nav('/app/emergency-contact')" *ngIf="user.primaryOrganization">
+                <img alt="Emergency contact" class="icon" src="/assets/img/icons/hand@2x.png" style="height: 22px;">
+                <span translate>menu.emergency</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/resources' == pathActive, 'disabled': locked}" class="secondary"
+                routerLinkActive="active" *ngIf="enableResources" (click)="nav('/app/resources')"
+                (keypress)="nav('/app/resources')">
+                <img alt="Resources" class="icon" src="/assets/img/icons/resources@2x.png" style="height: 22px;">
+                <span translate>menu.resources</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/counselor-sync' == pathActive, 'disabled': locked}"
+                class="secondary" routerLinkActive="active" *ngIf="userType == 'user' && user.primaryOrganization && user.primaryOrganization.settings && user.primaryOrganization.settings.hasCounselors"
+                (click)="nav('/app/counselor-sync')" (keypress)="nav('/app/counselor-sync')">
+                <img alt="Sync with counselor" class="icon" src="./assets/img/icons/cloud@2x.png" style="height: 18px;">
+                <span translate>menu.sync</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/settings' == pathActive, 'disabled': locked}" class="secondary"
+                routerLinkActive="active" (click)="nav('/app/settings')" (keypress)="nav('/app/settings')">
+                <img alt="Settings" class="icon" src="./assets/img/icons/settings@2x.png" style="height: 15px;">
+                <span translate>menu.setting</span>
+            </a>
+
+            <a tabindex="0" [ngClass]="{'active': '/app/support' == pathActive, 'disabled': locked}" class="secondary"
+                routerLinkActive="active" (click)="onSupportClick()" (keypress)="onSupportClick()">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span translate>menu.support</span>
+            </a>
+
+        </nav>
+
+        <div class="sign-out">
+            <a tabindex="0" alt="Logout" (click)="onLogout()" (keypress)="onLogout()" class="btn btn-white"
+                translate>menu.signout</a>
+        </div>
+
+        <div class="center">
+            <span class='download' translate>menu.download</span>
+            <a tabindex="0" *ngIf="playStore" target="_blank" class='google' href='{{playStore}}'>
+                <img *ngIf="english" alt='Get it on Google Play' src='/assets/img/icons/google-play-badge@2.png' />
+                <img *ngIf="!english" alt='Get it on Google Play' src='/assets/img/icons/google-play-badge-fr@2.png' />
+            </a>
+            <a tabindex="0" *ngIf="appStore" target="_blank" class='apple' href='{{appStore}}'>
+                <img *ngIf="english" alt='Download on the App Store'
+                    src='/assets/img/icons/Download_on_the_App_Store_Badge_US-UK_564x167@2.png'>
+                <img *ngIf="!english" alt='Download on the App Store'
+                    src='/assets/img/icons/Download_on_the_App_Store_Badge_FR_564x167@2.png'>
+            </a>
+        </div>
+    </aside>
+
+    <div id="page" [ngClass]="{navIn: navIn}" aria-labelledby="content-section-title">
+        <div class="top-bar"></div>
+        <h1 id="content-section-title" class="wt-access">WellTrack content</h1>
+        <div class="banner">
+            <a class="header-logo" tabindex="0" alt="Welltrack main page" routerLink="/app">
+                <img id="logo" src="/assets/img/logo_welltrack_large@2x.png" alt="WellTrack">
+            </a>
+
+            <a tabindex="0" type="button" class="navbar-toggle visible-xs" (click)="onNavToggle()"
+                (keypress)="onNavToggle()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </div>
+
+        <main id="content">
+            <div id="demo-notice" *ngIf="demoMode" [hidden]="demoClose">
+                <div class="inside">
+                    <a *ngIf="showDemoClose" tabindex="0" (click)="onDemoClose()" (keypress)="onSetClose()"
+                        class="close-modal" aria-label="Close notice">
+                        <img src="./assets/img/icons-svg/close-icon.svg">
+                    </a>
+                    <div class="content">
+                        <h2 translate>This site is in demo mode</h2>
+                        <p>All information saved will be reset at the end of each day. Some functionality will be
+                            limited.</p>
+                    </div>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

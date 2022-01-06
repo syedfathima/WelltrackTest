@@ -1,0 +1,9 @@
+@import "../../../../theme/_welltrack.variables.scss";
+
+error-popup {
+	h3 {
+		font-size: $font-size-title-md;
+		font-weight: bold;
+		margin-top: 0;
+	}
+}

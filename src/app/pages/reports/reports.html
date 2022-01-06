@@ -1,0 +1,842 @@
+<div id="reports" text-center no-bounce>
+
+    <div class="page-section">
+        <div>
+            <h1 translate>Reports</h1>
+        </div>
+
+        <page-loader *ngIf="!isLoaded"></page-loader>
+        <div *ngIf="isLoaded">
+            <div class="col-md-6 col-xs-12">
+                <div class="icon-input">
+                    <label for="start">Start Date</label>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="pickerstart" placeholder="Choose a start date"
+                            [(ngModel)]="from">
+                        <mat-datepicker-toggle matSuffix [for]="pickerstart"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerstart></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="icon-input">
+                    <label for="end">End Date</label>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="pickerend" placeholder="Choose an end date" [(ngModel)]="to">
+                        <mat-datepicker-toggle matSuffix [for]="pickerend"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerend></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <!-- <div class="icon-group select-group">
+                    <label for="organization">Select an organization</label>
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="organizationIds" multiple>
+                            <mat-option *ngFor="let organization of organizations" [value]="organization.id">
+                                {{organization.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div> -->
+                <div class="icon-input">
+                    <multiselect-autocomplete placeholder="Select an organization" [items]="multiSelOrgs" (onSelectItems)="onSelectOrgs($event)"></multiselect-autocomplete>
+                </div>
+
+                <div class="footer">
+                    <a tabindex="0" class="btn btn-inline" translate (click)="onGenerate()">Generate</a>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div id="results">
+                <mat-spinner *ngIf="loading"></mat-spinner>
+
+                <div id="results-rows">
+                    <mat-tab-group>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                General
+                            </ng-template>
+                            <div *ngIf="resultsLoadedGeneral">
+                                <mat-card>
+                                    <mat-card-actions>
+                                        <button mat-button (click)="onGeneralExport()">EXPORT</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                                <mat-card>
+                                    <mat-card-header>
+                                        <mat-card-title>General stats</mat-card-title>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <mat-list role="list">
+                                            <mat-list-item role="listitem"> Total Users (all time):
+                                                {{generalData.totalusers}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Signups: {{generalData.signups}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Logins: {{generalData.logins}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> MoodCheck Users:
+                                                {{generalData.moodcheckUsers}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> MoodCheck Alerts: {{generalData.moodalerts}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Users synched with counselors:
+                                                {{generalData.pairedCount}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Returning Users:
+                                                {{generalData.returningUsers}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Invites Accepted/Sent:
+                                                {{generalData.inviteAcceptedCount}}/{{generalData.inviteCount}}
+                                                ({{generalData.inviteAcceptedCount/generalData.inviteCount|
+                                                percent}}) </mat-list-item>
+                                        </mat-list>
+                                    </mat-card-content>
+
+                                </mat-card>
+
+                                <mat-card>
+                                    <mat-card-header>
+                                        <mat-card-title>Courses and tools completed</mat-card-title>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <mat-list role="list">
+                                            <mat-list-item role="listitem"> MoodCheck count:
+                                                {{generalData.moodcheckCount}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Assessment count: {{generalData.dasCount}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Depression courses viewed:
+                                                {{generalData.totalusers}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Anxiety courses viewed:
+                                                {{generalData.totalusers}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Fun achievement submitted:
+                                                {{generalData.funachievementCount}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Thought diary submitted:
+                                                {{generalData.thoughtCount}}
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Activity scheduler submitted:
+                                                {{generalData.activityscheduleCount}} </mat-list-item>
+                                        </mat-list>
+                                    </mat-card-content>
+                                </mat-card>
+
+                                <mat-card>
+                                    <mat-card-header>
+                                        <mat-card-title>DAS Improvement</mat-card-title>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <mat-list role="list">
+                                            <mat-list-item role="listitem"> Number users got better:
+                                                {{generalData.gotbetter.improvementon1}}
+                                                ({{generalData.gotbetter.improvementTotalPercent}}%)
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Number users got better on 2 levels:
+                                                {{generalData.gotbetter.improvementon2}} </mat-list-item>
+                                            <mat-list-item role="listitem"> Number users got better on 3 levels:
+                                                {{generalData.gotbetter.improvementon3}} </mat-list-item>
+                                            <mat-list-item role="listitem"> Number users got better on depression:
+                                                {{generalData.gotbetter.improvementDepression}}
+                                                ({{generalData.gotbetter.improvementDepressionPercent}}%)
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Number users got better on anxiety:
+                                                {{generalData.gotbetter.improvementAnxiety}}
+                                                ({{generalData.gotbetter.improvementAnxietyPercent}}%)</mat-list-item>
+                                            <mat-list-item role="listitem"> Number users got better on stress:
+                                                {{generalData.gotbetter.improvementStress}}
+                                                ({{generalData.gotbetter.improvementStressPercent}}%)
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Depression level changes: From
+                                                {{generalData.das.depression.firstlevel.level}}
+                                                ({{generalData.das.depression.firstavg}})
+                                                to
+                                                {{generalData.das.depression.lastlevel.level}}
+                                                ({{generalData.das.depression.lastavg}})
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Anxiety level changes: From
+                                                {{generalData.das.anxiety.firstlevel.level}}
+                                                ({{generalData.das.anxiety.firstavg}}) to
+                                                {{generalData.das.anxiety.lastlevel.level}}
+                                                ({{generalData.das.anxiety.lastavg}})
+                                            </mat-list-item>
+                                            <mat-list-item role="listitem"> Stress level changes: From
+                                                {{generalData.das.stress.firstlevel.level}}
+                                                ({{generalData.das.stress.firstavg}}) to
+                                                {{generalData.das.stress.lastlevel.level}}
+                                                ({{generalData.das.stress.lastavg}})
+                                            </mat-list-item>
+                                        </mat-list>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                Effectiveness
+                            </ng-template>
+
+                            <div *ngIf="resultsLoadedEffectiveness >= 6">
+                                <mat-card>
+                                    <mat-card-actions>
+                                        <button mat-button (click)="onEffectivenessExport()">EXPORT</button>
+                                    </mat-card-actions>
+                                </mat-card>
+
+                                <mat-card>
+                                    <mat-list role="list">
+                                        <mat-list-item>
+                                            Total signups: {{effectivenessData.totals.userCount}}
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                            Total logins: {{effectivenessData.totals.loginCount}}
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                            Total assessment users: {{effectivenessData.totals.dasUsers}}
+                                        </mat-list-item>
+                                        <mat-list-item>
+                                            Total improved users: {{effectivenessData.totals.improvementCount}}
+                                        </mat-list-item>
+                                    </mat-list>
+                                </mat-card>
+                                <mat-card>
+                                    <div class="table-responsive">
+                                        <h3>All</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessData.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessData.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessData.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">{{effectivenessData.totals.improvementCount}}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <h3>Year 1</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYear1.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYear1.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYear1.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYear1.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <h3>Higher than year 1</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYearHigher.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYearHigher.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearHigher.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearHigher.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <h3>Male</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYearMale.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYearMale.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearMale.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearMale.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <h3>Female</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYearFemale.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYearFemale.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearFemale.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearFemale.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <h3>Referred</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYearReferred.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYearReferred.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearReferred.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearReferred.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <h3>Synched</h3>
+                                        <table class="table">
+                                            <thead>
+                                                <th>&nbsp;</th>
+                                                <th *ngFor="let row of effectivenessDataYearSynched.data">
+                                                    {{row.date}}
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>New Account</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.userCount}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Logins</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.loginCount}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Depression</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.depressionImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Anxiety</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.anxietyImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>People Helped - Stress</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.stressImprovement}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> People Helped - Total</td>
+                                                    <td *ngFor="let row of effectivenessDataYearSynched.data">
+                                                        {{row.totalImprovement}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Assessment users</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearSynched.totals.dasUsers}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Total People Helped</td>
+                                                    <td colspan="10">
+                                                        {{effectivenessDataYearSynched.totals.improvementCount}}
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </mat-card>
+                                <!--
+                                <mat-card *ngFor="let row of effectivenessData.data">
+                                    <mat-list role="list">
+                                        <mat-list-item role="listitem">Signups: {{row.userCount}} </mat-list-item>
+                                        <mat-list-item role="listitem">Logins: {{row.loginCount}} </mat-list-item>
+                                        <mat-list-item role="listitem">Date: {{row.date}}
+                                        </mat-list-item>
+                                        <mat-list-item role="listitem">Improvement on depression:
+                                            {{row.depressionImprovement}} </mat-list-item>
+                                        <mat-list-item role="listitem">Improvement on anxiety:
+                                            {{row.anxietyImprovement}} </mat-list-item>
+                                        <mat-list-item role="listitem">Improvement on stress: {{row.stressImprovement}}
+                                        </mat-list-item>
+                                        <mat-list-item role="listitem">Improvement total: {{row.totalImprovement}}
+                                        </mat-list-item>
+                                    </mat-list>
+                                </mat-card>
+                                -->
+                            </div>
+                        </mat-tab>
+
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                Aggregate
+                            </ng-template>
+                            <div *ngIf="resultsLoadedAggregate">
+                                <mat-card>
+                                    <mat-card-actions>
+                                        <button mat-button (click)="onAggregateExport()">EXPORT</button>
+                                    </mat-card-actions>
+                                </mat-card>
+
+                                <mat-card>
+                                    <mat-list role="list">
+                                        <mat-list-item>User count: {{aggregateData.totals.userCount}}</mat-list-item>
+                                        <mat-list-item>Login count: {{aggregateData.totals.loginCount}}</mat-list-item>
+                                        <mat-list-item>Synched with counselor:
+                                            {{aggregateData.totals.syncWithCounselor}} </mat-list-item>
+                                    </mat-list>
+                                </mat-card>
+
+                                <mat-card>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <th>User ID</th>
+                                                <th>Organization Name</th>
+                                                <th>Signup Date</th>
+                                                <th>Ethnicity</th>
+                                                <th>Age</th>
+                                                <th>Referred</th>
+                                                <th>Year In Program</th>
+                                                <th>Gender</th>
+                                                <th>Sync with counselor</th>
+                                                <th>Das depression first</th>
+                                                <th>Das anxiety first</th>
+                                                <th>Das stress first</th>
+                                                <th>Das depression last</th>
+                                                <th>Das anxiety last</th>
+                                                <th>Das anxiety last</th>
+                                                <th>Login Count</th>
+                                                <th>Anxiety Week 1</th>
+                                                <th>Anxiety Week 2</th>
+                                                <th>Anxiety Week 3</th>
+                                                <th>Anxiety Week 4</th>
+                                                <th>Anxiety Week 5</th>
+                                                <th>Depression Week 1</th>
+                                                <th>Depression Week 2</th>
+                                                <th>Depression Week 3</th>
+                                                <th>Depression Week 4</th>
+                                                <th>Depression Week 5</th>
+                                                <th>Depression Week 6</th>
+                                                <th>Fun achievement count</th>
+                                                <th>Thought diary count</th>
+                                                <th>Activity scheduler count</th>
+                                                <th>Cognitive quiz count</th>
+                                                <th>Zen room count</th>
+                                                <th>AcademicAnswers</th>
+                                                <th>FinancialAnswers</th>
+                                                <th>SexualViolenceAnswers</th>
+                                                <th>SubstanceAbuseAnswers</th>
+                                                <th>HealthWellnessAnswers</th>
+                                                <th>SafetySecurityAnswers</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let row of aggregateData.data">
+                                                    <td>{{row.UserID}}</td>
+                                                    <td>{{row.OrgName}}</td>
+                                                    <td>{{row.SignupDate}}</td>
+                                                    <td>{{row.Ethnicity}}</td>
+                                                    <td>{{row.Age}}</td>
+                                                    <td>{{row.Referred}}</td>
+                                                    <td>{{row.YearInProgram}}</td>
+                                                    <td>{{row.Gender}}</td>
+                                                    <td>{{row.SyncWithCounselor}}</td>
+                                                    <td>{{row.DasDepressionFirst}}</td>
+                                                    <td>{{row.DasAnxietyFirst}}</td>
+                                                    <td>{{row.DasStressFirst}}</td>
+                                                    <td>{{row.DasDepressionLast}}</td>
+                                                    <td>{{row.DasAnxietyLast}}</td>
+                                                    <td>{{row.DasStressLast}}</td>
+                                                    <td>{{row.LoginCount}}</td>
+                                                    <td>{{row.AnxietyWeek1}}</td>
+                                                    <td>{{row.AnxietyWeek2}}</td>
+                                                    <td>{{row.AnxietyWeek3}}</td>
+                                                    <td>{{row.AnxietyWeek4}}</td>
+                                                    <td>{{row.AnxietyWeek5}}</td>
+                                                    <td>{{row.DepressionWeek1}}</td>
+                                                    <td>{{row.DepressionWeek2}}</td>
+                                                    <td>{{row.DepressionWeek3}}</td>
+                                                    <td>{{row.DepressionWeek4}}</td>
+                                                    <td>{{row.DepressionWeek5}}</td>
+                                                    <td>{{row.DepressionWeek6}}</td>
+                                                    <td>{{row.FunAchievementCount}}</td>
+                                                    <td>{{row.ActivityScheduleCount}}</td>
+                                                    <td>{{row.ThoughtDiaryCount}}</td>
+                                                    <td>{{row.CognitiveQuizCount}}</td>
+                                                    <td>{{row.ZenRoomCount}}</td>
+                                                    <td>{{row.AcademicAnswers}}</td>
+                                                    <td>{{row.FinancialAnswers}}</td>
+                                                    <td>{{row.SexualViolenceAnswers}}</td>
+                                                    <td>{{row.SubstanceAbuseAnswers}}</td>
+                                                    <td>{{row.HealthWellnessAnswers}}</td>
+                                                    <td>{{row.SafetySecurityAnswers}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </mat-card>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>

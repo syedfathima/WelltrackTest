@@ -1,0 +1,108 @@
+<div id="counselor-sync-page">
+	<page-loader *ngIf="!hasLoaded"></page-loader>
+    <div class="page-section" *ngIf="hasLoaded">
+        <div class="page-section-header" *ngIf="user.subscriptionExists">
+            <div class="page-section-buttons">
+                <a autoFocus tabindex="0" (click)="onInvite()" (keypress)="onInvite()"
+                    class="invite btn btn-primary btn-with-icon pull-right" translate>
+                    <img alt="Invite new counselor" src="./assets/img/icons-svg/user-icon.svg"
+                        translate>sync.syncwCounselor</a>
+            </div>
+            <h2 style="display:inline-block;" translate>sync.title</h2>
+            <p translate>
+                sync.bodySubscribe
+            </p>
+        </div>
+
+        <div class="page-section-header" *ngIf="!user.isFullAccess">
+            <div class="page-section-buttons">
+                <a autoFocus tabindex="0" (click)="onSubscribe()" (keypress)="onSubscribe()"
+                    class="invite btn btn-primary btn-with-icon pull-right" translate>
+                    <img alt="Invite new counselor" src="./assets/img/icons-svg/user-icon.svg"
+                        translate>sync.subscribeorAssociate</a>
+            </div>
+            <h2 style="display:inline-block;" translate>sync.title</h2>
+            <p translate>
+                sync.body
+            </p>
+        </div>
+
+        <div class="page-section-content">
+            <h2 translate>sync.synchedHeader</h2>
+            <div class="table-responsive">
+                <div class="view-table"
+                    *ngIf="(counselors | filter: 'isPaired': true | filter: 'confirmed': true)?.length > 0">
+                    <div class="header">
+                        <div translate>sync.headers.0</div>
+                        <div translate>sync.headers.2</div>
+                    </div>
+                    <div class="content">
+                        <div *ngFor="let counselor of counselors | filter: 'isPaired': true | filter: 'confirmed': true"
+                            class="counselor-paired highlighted">
+                            <div class="first">
+                                <div class="strong">
+                                    {{counselor.name}}
+                                </div>
+                                <div class="">{{counselor.email}}</div>
+                                <div>
+                                    <a tabindex="0" aria-label="Cancel sharing with " (click)="onCancel(counselor.id)"
+                                        (keypress)="onCancel(counselor.id)" class="btn btn-primary btn-short">Cancel</a>
+                                </div>
+                            </div>
+                            <!--
+                                <div class="second" *ngIf="counselor.zoomPersonalMeetingUrl">
+                                    This counselor has a video meeting room available.  If you have a scheduled meeting, you can join the room by clicking <a class="btn btn-primary btn-inline btn-short" target="_blank" [href]="counselor.zoomPersonalMeetingUrl">Join</a>
+                                </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p *ngIf="(counselors | filter: 'isPaired': true | filter: 'confirmed': true)?.length === 0">
+                <strong translate>sync.noneSynched</strong>
+            </p>
+
+            <div *ngIf="(counselors | filter: 'isPaired': true | filter: 'confirmed': false)?.length > 0">
+                <h3 translate>sync.pendingHeader</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>sync.headers.0</th>
+                                <th translate>sync.headers.2</th>
+                                <th style="width:10%;">&nbsp;</th>
+                                <th style="width:10%;">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let counselor of counselors | filter: 'isPaired': true | filter: 'confirmed': false"
+                                [ngClass]="{'highlighted': counselor.isPaired}">
+                                <td class="strong">
+                                    {{counselor.name}}
+                                </td>
+                                <td>{{counselor.email}}</td>
+                                <td>
+                                    <a aria-label="Accept invitation from " tabindex="0"
+                                        (click)="onAccept(counselor.id)" (keypress)="onAccept(counselor.id)"
+                                        class="btn btn-primary btn-short">Accept</a>
+                                </td>
+                                <td>
+                                    <a aria-label="Decline invitation from " tabindex="0"
+                                        (click)="onReject(counselor.id)" (keypress)="onReject(counselor.id)"
+                                        class="btn btn-primary btn-short">Decline</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p
+                *ngIf="((!counselors || counselors.length === 0) && (counselors | filter: 'isPaired': true | filter: 'confirmed': true)?.length !== 0)">
+                <strong translate>sync.noneFound</strong>
+            </p>
+        </div>
+
+    </div>
+</div>

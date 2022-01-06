@@ -1,0 +1,19 @@
+<div id="general">
+    <div class="general-slide">
+        <div class="body-wrapper">
+            <div class="content">
+                <h1 class="content-header">{{title}}</h1>
+                <div class="results">
+                    <p [innerHTML]="innerhtml">
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-primary" translate>Close</a>
+        </div>
+    </div>
+
+</div>

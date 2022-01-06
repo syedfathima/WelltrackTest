@@ -1,0 +1,67 @@
+@import "../../../theme/_welltrack.mixins.scss";
+#heatmap-section {
+    background-color: white;
+    padding: 16px;
+    #heatmap {
+        //height: 400px;
+        height: 400px;
+    }
+    .grid-buttons {
+        text-align: right;
+        display: block;
+        a {
+            max-width: 128px;
+            display: inline-block;
+        }
+        @include breakpoint(xs) {
+            text-align: center;
+        }
+    }
+}
+
+.inset {
+    padding: 16px;
+    display: flex;
+    .inset-tile {
+        background-color: white;
+        width: 33%;
+        padding: 16px;
+        &:first-child {
+            margin-right: 16px;
+            width: 67%;
+        }
+    }
+}
+
+@include breakpoint(xs) {
+    .inset {
+        display: block;
+        .inset-tile {
+            width: 100%;
+            &:first-child {
+                margin-right: 0;
+                width: 100%;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+#moodcheckCount {
+    max-height: 37.5em;
+    width: 100%;
+    height: 100%;
+}
+
+#chartjs-tooltip {
+    background-color: white;
+    color: white;
+}
+
+.graph-container {
+    height: auto;
+}
+
+.linechart {
+    height:auto;
+}

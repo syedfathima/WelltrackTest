@@ -1,0 +1,137 @@
+<div id="page-register" class="public-portal-right-col">
+
+    <div class="center form-screen">
+        <h1 id="section-title" class="wt-access">Create your account</h1>
+        <div class="img-wrapper">
+            <img [alt]="name" *ngIf="logoPath" [src]="logoPath" style="max-width:200px; height:auto; max-height:200px;">
+            <img alt="Welltrack badge" *ngIf="!logoPath" src="./assets/img/circle_logo@2x.png" style="width: 100px; height: auto;">
+        </div>
+
+        <div *ngIf="!showNext">
+            <div class="title-wrapper">
+                <h2 translate>signUp.title</h2>
+                <p translate>signUp.body</p>
+            </div>
+
+            <div class="form-wrapper">
+                <form (keydown.enter)="onpreSignUp()">
+                    <div class="icon-input">
+                        <img alt="Full name validates" *ngIf="fullName" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                            item-content>
+                        <label class="hidden" for="fullname">Full Name</label>
+                        <input tabindex="0" id="fullname" type="text" placeholder="{{inputs[0]}}" [(ngModel)]="fullName"
+                            name="fullName" />
+                    </div>
+                    <div class="icon-input">
+                        <img alt="Email validates" *ngIf="emailAddress && emailValidate && !suffix" src="./assets/img/icons/check@2x.png"
+                            class="check animated fadeInUp" item-content>
+                        <div [class.input-suffix]="suffix">
+                            <div class="checkbox-wrapper">
+                                <label class="hidden" for="email">Email</label>
+                                <input tabindex="0" id="email" type="email" [placeholder]="emailPlaceholder"
+                                    [(ngModel)]="emailAddress" name="emailAddress" [class.fieldl]="suffix"
+                                    (ngModelChange)="onChangeEmail()" />
+                                <img alt="Email validates" *ngIf="emailAddress && emailValidate && suffix" src="./assets/img/icons/check@2x.png"
+                                    class="check animated fadeInUp" item-content>
+                            </div>
+                            <div *ngIf="suffix" class="suffix">{{suffix}}</div>
+                            <div *ngIf="domains" class="suffix">
+                                <select name="suffix" [(ngModel)]="domain">
+                                    <option value="" translate>signUp.selectSubdomain</option>
+                                    <option *ngFor="let domain of domains" [value]="domain">{{domain}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="organizations">
+                        <label translate>signUp.selectOrganization</label>
+                        <select name="organization" [(ngModel)]="orgId">
+                            <option value="-1" translate>signUp.selectOrganization</option>
+                            <option *ngFor="let organization of organizations" [value]="organization.id">{{organization.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="icon-input">
+                        <img alt="Password validates" *ngIf="passwordValidate && password" src="./assets/img/icons/check@2x.png"
+                            class="check animated fadeInUp" item-content>
+                        <label class="hidden" for="password">Password</label>
+                        <input tabindex="0" id="password" type="password" placeholder="{{inputs[2]}}" [(ngModel)]="password"
+                            name="password" (ngModelChange)="onChangePassword()" />
+                        <p *ngIf="!passwordValidate && password" class="red" translate>signUp.passwordValidate</p>
+                    </div>
+
+                    <div>
+                        <input tabindex="0" type="checkbox" [(ngModel)]="agree" name="agree" id="agree" />
+                        <label for="agree">
+                            <span translate>signUp.tos.copy</span>
+                            <a tabindex="0" href="/terms-and-conditions" target="_blank" alt="Terms and conditions"
+                                translate>signUp.tos.tos</a>
+                            <span translate>signUp.tos.and</span>
+                            <a tabindex="0" href="/privacy-policy" target="_blank" alt="Privacy policy" translate>signUp.tos.privacy</a>.
+                        </label>
+                    </div>
+
+                    <p *ngIf="customConfirm">
+                        <label class="hidden" for="customConfirm">{{customConfirm}}</label>
+                        <input type="checkbox" [(ngModel)]="customConfirmCheck" name="agree" id="customConfirm">
+                        <label for="customConfirm" translate [innerHtml]="customConfirm"></label>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+
+        <div *ngIf="showNext">
+            <h2 class="center" translate>signUp.toGainFullAccess</h2>
+
+            <form>
+                <label translate>signUp.enterAccessCode</label>
+                <div class="icon-input">
+                    <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content>
+                    <input tabindex="0" type="text" placeholder="GHJK432" [(ngModel)]="accesscode" name="accesscode"
+                        class="uppercase" />
+                </div>
+            </form>
+
+            <p translate>
+                signUp.or
+            </p>
+
+            <form>
+                <label translate>signUp.enterOrgEmail</label>
+                <div class="icon-input">
+                    <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content>
+                    <label class="hidden" for="orgemail">Email</label>
+                    <input tabindex="0" id="orgemail" type="email" placeholder="john@unb.com" [(ngModel)]="orgEmail"
+                        name="emailAddress" />
+                </div>
+            </form>
+
+            <p translate>
+                signUp.or
+            </p>
+
+            <p>
+                <input tabindex="0" type="checkbox" [(ngModel)]="skip" name="skip" id="skip">
+                <label for="agree" translate>
+                    signUp.skip
+                </label>
+            </p>
+
+        </div>
+
+        <div class="footer">
+            <a tabindex="0" *ngIf="!showNext" (click)="onpreSignUp()" (keypress)="onpreSignUp()" class="btn btn-primary"
+                translate>signUp.button</a>
+            <a tabindex="0" *ngIf="showNext" (click)="onpreSignUp()" (keypress)="onpreSignUp()" class="btn btn-bold"
+                [ngClass]="{'btn-disabled': !skip && accesscode.length < 6 &&  !orgEmail}" translate>signUp.create</a>
+            <p>
+                <span [translate]="'signUp.exists'"></span>
+                <a tabindex="0" routerLink="/" translate>signUp.sign</a>
+            </p>
+            <a tabindex="0" *ngIf="showNext" (click)="onPrevious()" (keypress)="onPrevious()" class="btn btn-primary"
+                translate>signUp.previous</a>
+        </div>
+    </div>
+</div>

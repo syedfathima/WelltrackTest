@@ -1,0 +1,77 @@
+<div class="col-md-6 col-sm-12">
+
+    <mat-form-field>
+        <mat-select [(ngModel)]="organizationId" placeholder="Organization Name" multiple>
+            <mat-option [value]="-1">All</mat-option>
+            <mat-option *ngFor="let organization of organizations" [value]="organization.id">
+                {{organization.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select [(ngModel)]="activityTypeId" placeholder="Activity Type" multiple>
+            <mat-option [value]="-1">All</mat-option>
+            <mat-option *ngFor="let activityType of activityTypes" [value]="activityType.typeId">
+                {{activityType.message}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="pickerfrom" placeholder="From" [(ngModel)]="from">
+        <mat-datepicker-toggle matSuffix [for]="pickerfrom"></mat-datepicker-toggle>
+        <mat-datepicker #pickerfrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="pickerto" placeholder="To" [(ngModel)]="to">
+        <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+        <mat-datepicker #pickerto></mat-datepicker>
+    </mat-form-field>
+
+    <div class="footer">
+        <a tabindex="0" class="btn btn-inline" translate (click)="onGenerate()">Build</a>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div>
+    <div class="table-responsive">
+        <div class="text-center">
+            <page-loader *ngIf="loading"></page-loader>
+        </div>
+        <table class="table" role="grid" *ngIf="!loading">
+            <thead>
+                <tr>
+                    <th translate>activity.headers.0</th>
+                    <th *ngIf="userListingEnable" translate>activity.headers.1</th>
+                    <th *ngIf="orgListingEnable" translate>activity.headers.2</th>
+                    <th style="width:14%;" translate>activity.headers.3</th>
+                </tr>
+                <!----
+                <tr>
+
+                    <th><input type="text" [(ngModel)]="cols[0]" (input)="valueChange(0)"></th>
+
+                <th *ngIf="userListingEnable" ><input type="text" [(ngModel)]="cols[1]" (input)="valueChange(1)"></th>
+                <th *ngIf="orgListingEnable" ><input type="text" [(ngModel)]="cols[2]" (input)="valueChange(2)"></th>
+
+                    <th></th>
+
+                </tr>
+                  -->
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of activeactivity">
+                    <td class="strong">{{row.message}}</td>
+                    <td *ngIf="userListingEnable">{{row.userName}}</td>
+                    <td *ngIf="orgListingEnable">{{row.organizationName}}</td>
+                    <td class="strong">{{row.created | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a *ngIf="!loadMoreLoading" tabindex="0" (click)="loadMore()" (keypress)="loadMore()">Load more <i class="fa fa-plus"></i></a>
+    <div *ngIf="loadMoreLoading">Loading...</div>
+</div>

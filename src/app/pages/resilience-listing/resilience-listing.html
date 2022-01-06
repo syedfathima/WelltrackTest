@@ -1,0 +1,12 @@
+<div id="page-assessment-listing">
+    <page-header [headerText]="title" [cssClass]="'assessment-resilience'" [backLink]="backLink" [backText]="back" [headerImage]="'./assets/img/icons/fun_achievement_icon@2x.png'"></page-header>
+    <div class="page-section">
+        <p translate>resilience.body.0</p>
+        <p translate>resilience.body.1</p>
+        <p translate>resilience.body.2</p>
+        <a autoFocus tabindex="0" routerLink="/app/assessments/resilience/new" class="btn btn-primary btn-inline btn-wide" translate>resilience.button</a>
+    </div>
+    <div class="page-section">
+        <resilience-listing [assessments]="assessments" [user]="user"></resilience-listing>
+    </div>
+</div>

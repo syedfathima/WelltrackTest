@@ -1,0 +1,16 @@
+<div class="form-modal">
+  <div class="form-wrapper">
+    <h1>Create an Access Code</h1>
+    <p>
+      Create an access code by typing a string in the box below.  
+    </p>
+    <div class="icon-input">
+      <label for="accesscode" translate>Access Code</label>
+      <input type="text" placeholder="" [(ngModel)]="accesscode" />
+    </div>
+
+    <div class="fixed-footer">
+      <a tabindex="0" class="btn-primary btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+    </div>
+  </div>
+</div>  

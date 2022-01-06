@@ -1,0 +1,52 @@
+@import "../../../theme/_welltrack.variables.scss";
+
+
+#menu-header {
+    height: 123px;
+    background: url("/assets/img/cover_menu@2x.png") no-repeat;
+    //margin-bottom: 16px;
+    background-size: 100% 100px;
+    text-align: center;
+    position: relative;
+    
+    img {
+        width: 82px;
+        height: 82px;
+        border-radius: 82px;
+        margin: 0 auto;
+        //margin-top: 12px;
+        position: relative;
+        bottom: -52px;
+    }
+}
+
+.screen-header-meta {
+    text-align: center;
+    padding: 0 16px;
+
+    .name {    
+        margin: 0;
+        padding-top: 16px;
+        color: white;
+        font-size: $font-size-title-sm;	
+        //font-weight: bold;	
+        line-height: 20px;
+    }
+
+    .organization-name {
+        margin: 0;
+        color: white;
+        font-size: $font-size-sm;	
+        line-height: 18px;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        
+    }
+
+    .role{
+        color:white;
+        font-size:$font-size-sm;
+        text-transform:capitalize;
+    }
+}   

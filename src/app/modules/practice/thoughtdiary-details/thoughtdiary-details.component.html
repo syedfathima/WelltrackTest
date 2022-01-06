@@ -1,0 +1,263 @@
+<div id="page-thoughtdiary">
+    <page-header [cssClass]="'thoughtdiary'" [cssClass]="'thoughtDiary'" [headerText]="title" [backText]="back" [backLink]="backLink"
+        [headerImage]="'./assets/img/icons/thought_diary_icon@2x.png'"></page-header>
+    <div class="col-sm-12">
+        <div class="page-section page-header-body">
+            <p translate>
+                thoughtDiary.body
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="isLoaded" class="col-sm-12">
+
+        <div *ngIf="step >= 1" class="page-section" id="step-1">
+            <h3 translate>thoughtDiary.steps.0.title</h3>
+            <p class="page-section-description" translate>thoughtDiary.steps.0.body</p>
+
+            <div class="input-group feeling-input-container">
+                <span class="input-label" translate>thoughtDiary.steps.0.inputText</span>
+                <label class="hidden" for="event">Event</label>
+                <textarea autoFocus tabindex="0" id="event" class="wt-input-grey" name="event" [(ngModel)]="diary.thought.event"></textarea>
+            </div>
+        </div>
+
+        <div *ngIf="step >= 2" class="page-section" id="step-2">
+            <h3 translate>
+                thoughtDiary.steps.1.title
+                <a tabindex="0" class="info-icon" (click)="onToggleHelpSection('feelings')" (keydown)="onToggleHelpSection('feelings')">?</a>
+            </h3>
+
+            <div class="help-section" [ngClass]="{'in': helpSections.feelings}">
+                <h6 translate>thoughtDiary.steps.1.examples.title</h6>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line1.0
+                    <b translate>thoughtDiary.steps.1.examples.line1.1</b>thoughtDiary.steps.1.examples.line1.2
+                    <b translate>thoughtDiary.steps.1.examples.line1.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line2.0
+                    <b translate>thoughtDiary.steps.1.examples.line2.1</b>thoughtDiary.steps.1.examples.line2.2
+                    <b translate>thoughtDiary.steps.1.examples.line2.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line3.0
+                    <b translate>thoughtDiary.steps.1.examples.line3.1</b>thoughtDiary.steps.1.examples.line3.2
+                    <b translate>thoughtDiary.steps.1.examples.line3.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line4.0
+                    <b translate>thoughtDiary.steps.1.examples.line4.1</b>thoughtDiary.steps.1.examples.line4.2
+                    <b translate>thoughtDiary.steps.2.examples.line4.3</b>
+                </p>
+            </div>
+
+            <p class="page-section-description" translate>thoughtDiary.steps.1.body</p>
+
+            <div class="row" *ngFor="let entry of diary.entries; let i = index">
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="input-group feeling-input-container">
+                        <span class="input-label" translate>thoughtDiary.steps.1.inputTag</span>
+                        <label class="hidden" for="feeling">Feeling</label>
+                        <input tabindex="0" id="feeling" type="text" [(ngModel)]="entry.feeling">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="feeling-intensity">
+                        <div class="feeling-scale feeling-scale-low" translate>thoughtDiary.steps.1.lowScale</div>
+                        <label class="hidden" for="intensity">Intensity</label>
+                        <input tabindex="0" class="feeling-range" type="range" [(ngModel)]="entry.intensity">
+                        <div class="feeling-scale feeling-scale-high" translate>thoughtDiary.steps.1.highScale</div>
+                        <input aria-label="Select feeling intensity" tabindex="0" class="single" type="text" maxlength="3" [(ngModel)]="entry.intensity" (ngModelChange)="validateInput($event, i)"
+                        />
+                    </div>
+
+                </div>
+            </div>
+
+            <a tabindex="0" class="feeling-add-link" (click)="onAddFeeling()" (keypress)="onAddFeeling()" *ngIf="viewMode !== 'readonly'"
+                translate>thoughtDiary.steps.1.add</a>
+        </div>
+
+        <div *ngIf="step >= 3" class="page-section" id="step-3">
+            <h3 translate>
+                thoughtDiary.steps.2.title
+                <a tabindex="0" tabindex="0" class="info-icon" (click)="onToggleHelpSection('thoughts')" (keypress)="onToggleHelpSection('thought')">?</a>
+            </h3>
+
+            <div class="help-section" [ngClass]="{'in': helpSections.thoughts}">
+                <h6 translate>thoughtDiary.steps.2.title</h6>
+
+                <p translate>
+                    thoughtDiary.steps.2.examples.line1.0
+                    <b translate>thoughtDiary.steps.2.examples.line1.1</b>thoughtDiary.steps.2.examples.line1.2
+                    <b translate>thoughtDiary.steps.2.examples.line1.3</b>thoughtDiary.steps.2.examples.line1.4
+                </p>
+                <ul>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line2.0</i>
+                    </li>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line3.0</i>
+                    </li>
+                </ul>
+
+                <p translate>
+                    thoughtDiary.steps.2.examples.line4.0
+                    <b translate>thoughtDiary.steps.2.examples.line4.1</b>thoughtDiary.steps.2.examples.line4.2
+                    <b translate>thoughtDiary.steps.2.examples.line4.3</b>thoughtDiary.steps.2.examples.line4.4
+                </p>
+                <ul>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line5.0</i>
+                    </li>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line6.0</i>
+                    </li>
+                </ul>
+
+            </div>
+
+            <p class="page-section-description" translate>thoughtDiary.steps.2.body</p>
+
+            <div *ngFor="let entry of diary.entries; let i = index">
+                <h4 class="feeling-name">{{entry.feeling}}</h4>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="input-group">
+                            <span class="input-label" translate>thoughtDiary.steps.2.boxInputTag</span>
+                            <label class="hidden" for="event">Thought</label>
+                            <textarea tabindex="0" id="event" class="wt-input-grey" name="event" [(ngModel)]="entry.thought"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6">
+
+                        <div class="input-group">
+                            <span class="input-label" translate>thoughtDiary.steps.2.scaleInputTag</span>
+
+                            <div class="feeling-intensity mt0">
+                                <div class="feeling-scale feeling-scale-low" translate>thoughtDiary.steps.2.lowScale</div>
+                                <label class="hidden" for="belief">Belief</label>
+                                <input tabindex="0" class="feeling-range" type="range" [(ngModel)]="entry.belief">
+                                <div class="feeling-scale feeling-scale-high" translate>thoughtDiary.steps.2.upperScale</div>
+                                <input aria-label="Select feeling intensity" tabindex="0" class="single" type="text" maxlength="3" [(ngModel)]="entry.belief" (ngModelChange)="validateInput($event, i)"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="step >= 4" class="page-section" id="step-4">
+            <h3 translate>
+                thoughtDiary.steps.3.title
+                <a tabindex="0" class="info-icon" (click)="onToggleHelpSection('thinkingStyles')" (keypress)="onToggleHelpSection('thinkingStyles')">?</a>
+            </h3>
+
+            <div class="help-section" [ngClass]="{'in': helpSections.thinkingStyles}">
+
+                <p *ngFor="let key of thinkingStylesKeys;">
+                    <strong>{{thinkingStyles[key].info}}</strong>
+                    <span>{{thinkingStyles[key].text}}</span>
+                </p>
+            </div>
+
+            <p class="page-section-description" translate>thoughtDiary.steps.3.body</p>
+
+            <div class="mb thinking-styles" *ngFor="let entry of diary.entries">
+
+                <div class="input-group mb0">
+                    <span class="input-label" translate>thoughtDiary.steps.3.thought</span>
+                    <div>
+                        <strong>{{entry.thought}}</strong>
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <a tabindex="0" *ngFor="let thinkingStyle of entry.thinkingStyles" [ngClass]="{'active': thinkingStyle.isSelected}" (click)="onToggleThinkingStyle(thinkingStyle)"
+                    (keypress)="onToggleThinkingStyle(thinkingStyle)" class="btn btn-inline btn-grey btn-short btn-wide">{{thinkingStyles[thinkingStyle.value].info}}</a>
+            </div>
+        </div>
+
+        <div *ngIf="step >= 5" class="page-section" id="step-5">
+            <h3 translate>thoughtDiary.steps.4.title</h3>
+
+            <p class="page-section-description" translate>thoughtDiary.steps.4.body.0</p>
+            <p class="page-section-description" translate>thoughtDiary.steps.4.body.1</p>
+            <ul class="mb">
+                <li translate>thoughtDiary.steps.4.list.0</li>
+                <li translate>thoughtDiary.steps.4.list.1</li>
+                <li translate>thoughtDiary.steps.4.list.2</li>
+                <li translate>thoughtDiary.steps.4.list.3</li>
+            </ul>
+
+            <div *ngFor="let entry of diary.entries">
+
+                <div class="thought-summary">
+                    <div class="input-group">
+                        <span class="input-label" translate>thoughtDiary.steps.4.thought</span>
+                        <div>
+                            <em>{{entry.thought}}</em>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-label" translate>thoughtDiary.steps.4.said</span>
+                        <div>
+                            <strong *ngFor="let thinkingStyle of entry.thinkingStyles | filter : 'isSelected' : true" class="btn btn-inline btn-short">{{thinkingStyles[thinkingStyle.value].info}}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span class="input-label" translate>thoughtDiary.steps.4.challenge</span>
+                    <label class="hidden" for="challenge">Challenge</label>
+                    <textarea tabindex="0" id="challenge" class="wt-input-grey" name="challenge" [(ngModel)]="entry.challenge"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="step >= 6" class="page-section" id="step-6">
+            <h3 translate>thoughtDiary.steps.6.title</h3>
+
+            <p class="page-section-description" translate>
+                thoughtDiary.steps.6.body
+            </p>
+
+            <strong>{{diary.thought.event}}</strong>
+
+            <div *ngFor="let entry of diary.entries">
+                <p>
+                    {{entry.challenge}}
+                </p>
+            </div>
+            <label class="hidden" for="plan">Plan</label>
+            <textarea tabindex="0" class="wt-input-grey" name="plan" [(ngModel)]="diary.thought.plan"></textarea>
+        </div>
+
+        <footer id="bottom" class="page-section page-footer" *ngIf="viewMode !== 'readonly'">
+            <nav class="steps-navigation" style="display:flex;">
+                <ul class="steps-nav-list">
+                    <li *ngFor="let num of steps" class="step-nav-item" [ngClass]="{'done': step > num, 'active': step === num}">{{num}}</li>
+                </ul>
+            </nav>
+            <div class="footer-actions" style="display:block">
+                <!--<a class="btn btn-primary ghost btn-inline" href="#">Save for later</a>
+				<a class="btn btn-primary btn-inline" href="#">Next</a>-->
+                <a tabindex="0" (click)="onSaveForLater()" (keypress)="onSaveForLater()" class="btn btn-inline btn-wide" translate>thoughtDiary.save</a>
+                <a tabindex="0" *ngIf="step < totalSteps" (click)="onNext()" (keypress)="onNext()" class="btn btn-primary btn-inline btn-wide"
+                    translate>thoughtDiary.next</a>
+                <a tabindex="0" *ngIf="step === totalSteps" (click)="onComplete()" (keypress)="onComplete()" class="btn btn-primary btn-inline btn-wide"
+                    translate>thoughtDiary.finish</a>
+            </div>
+        </footer>
+        <div class="page-section" translate>
+            thoughtDiary.disclaimer
+        </div>
+    </div>
+</div>

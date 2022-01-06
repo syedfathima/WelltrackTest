@@ -1,0 +1,47 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+
+#page-user-details {
+    table tr td{
+        height:70px;
+    }
+
+  #user-charts{
+      margin-top:20px;
+  }
+
+  .alerts{
+      font-size: $font-size-title-slg;
+      font-weight:800;
+  }
+
+  .info{
+      padding-top:15px;
+      padding-left:10px;
+      div{
+          margin-bottom:5px;
+      }
+  }
+
+  .alerts{
+      font-size:20px;
+      font-weight:800;
+  }
+
+  .avgnumber span{
+      font-size:22px;
+  }
+
+  .email{
+      overflow:hidden;
+      text-overflow: ellipsis;
+      @include breakpoint(lg) {
+        width:160px;
+      }
+  }
+
+  
+
+
+}

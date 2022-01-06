@@ -1,0 +1,16 @@
+.mat-card-actions, .mat-card-content, .mat-card-subtitle, .mat-card-title {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.mat-card-title{
+    font-size: $font-size-lg;
+    font-weight:800;
+}
+
+mat-list-item{
+    display:block;
+    width:100%;
+    padding:10px;
+    font-size: $font-size-lg;
+}

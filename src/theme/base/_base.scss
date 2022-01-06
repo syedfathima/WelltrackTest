@@ -1,0 +1,14 @@
+@import "typography";
+@import "buttons";
+@import "forms";
+@import "table";
+
+body, html {
+    height: 100%;
+    font-size: $font-size-lg;
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+    color: $color-text;
+}
+
+

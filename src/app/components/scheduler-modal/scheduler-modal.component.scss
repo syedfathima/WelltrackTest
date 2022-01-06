@@ -1,0 +1,75 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+#scheduler-modal {
+    .type-select {
+        text-align: center;
+        margin-top: 10%;
+        h3 {
+            margin-bottom: 8%;
+        }
+        .btn:hover{
+            background:#636363;
+        }
+    }
+    background-color: $color-background;
+    border-radius: 15px;
+    .modal-header {
+        h3 {
+            font-size: $font-size-md;
+        }
+    }
+    .modal-footer {
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn {
+                margin:0px 5px;
+                width: 45%;
+                height: 45px;
+            }
+        }
+    }
+    .btn-box {
+        text-align: center;
+    }
+    .tab-wrapper {
+        background-color: white;
+        @extend .drop-shadow;
+    }
+    .wt-tabs {
+        margin-top: 0;
+        max-width: 550px;
+        margin: 0 auto;
+        @include breakpoint(xs) {
+            justify-content: space-between;
+        }
+        @include breakpoint(sm) {
+            justify-content: space-between;
+        }
+        .wt-tab {
+            padding: 16px;
+        }
+    }
+    .wt-tab-body {
+        padding-top: 1px;
+        height: 480px !important;
+        overflow-y: scroll;
+        @include breakpoint(xs) {
+            height: 300px;
+        }
+    }
+  
+}
+
+.owl-dateTime-inputWrapper {
+    width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.owl-dateTime-dialog {
+    left: 30% !important;
+}

@@ -1,0 +1,219 @@
+<div id="event-listing">
+    <h3>{{pickedDate | date:'dd MMM, yyyy'}}</h3>
+    <div id="events">
+        <div class="event" *ngFor="let event of activeEvents; let i = index">
+            <div class="title">
+                <div class="item" [ngClass]="event.cssClass + ' ' + event.type" translate>
+                    <i class="bullet"></i>
+                </div>
+                <span *ngIf="event.title">{{event.typeName}} - {{event.title}}</span>
+                <span *ngIf="!event.title">{{event.typeName}}</span>
+                <div class="scheduled-for" *ngIf="event.type  ==='scheduled' && event.creatorId !== user.id">Scheduled for: {{event.userName}}</div>  
+                <div class="scheduled-for" *ngIf="event.type !=='appointment' && event.type !=='scheduled' && (event.creatorId && event.creatorId !== user.id)">Activity by: {{event.userName}}</div>
+            </div>
+
+            <div *ngIf="event.type =='appointment'">
+                Appointment time: {{event.start | date:'hh:mm a'}}
+                <span *ngIf="event.end">to {{event.end | date:'hh:mm a'}}</span>
+
+                <div *ngIf="event.participants && event.creatorId == user.id">
+                    <div class="strong" translate>calendar.participants</div>
+                    <div *ngFor="let participant of event.participants;" class="participant">
+                        {{participant.fullName}}
+                        <span *ngIf="participant.fullName">- (</span>{{participant.email}}
+                        <span *ngIf="participant.fullName">)</span>
+                        <div>Status:
+                            <span class="status strong" [innerHtml]="participant.status"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="event.creatorId !== user.id">Status:
+                    <span class="status strong" [innerHtml]="event.status"></span>
+                </div>
+
+                <div *ngIf="event.creatorId !== user.id">
+                    <span translate>calendar.scheduledBy</span>:
+                    <span class="strong">{{event.creator.fullName}} ({{event.creator.email}})</span>
+                </div>
+                <div class="row-action-content">
+                    <a *ngIf="event.status === 'pending' && event.creatorId !== user.id "
+                        class="join btn-inline-small btn" translate (click)="onAppointmentAccept(event.id)">Accept</a>
+                    <a *ngIf="event.status === 'pending' && event.creatorId !== user.id "
+                        class="join btn-inline-small btn" translate (click)="onAppointmentDecline(event.id)">Decline</a>
+                    <a class="btn btn-inline join"
+                        [href]="event.creator.zoomPersonalMeetingUrl" target="_blank" translate>Join</a>
+                    <a *ngIf="event.creatorId === user.id " class="btn-inline-small btn edit"
+                        (click)="onAppointmentUpdate(i)" translate>
+                        <img src="./assets/img/icons-svg/edit-pencil-icon.svg">calendar.edit</a>
+                    <a *ngIf="event.creatorId === user.id " class="btn-inline-small btn delete"
+                        (click)="onAppointmentDestroy(i)" translate>
+                        <img src="./assets/img/icons-svg/x-icon.svg">calendar.delete</a>
+                </div>
+
+
+            </div> <!-- end of appointment -->
+
+            <div *ngIf="event.type =='assessment'">
+                <div class="table-responsive">
+                    <table class="table" role="grid">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader" translate>das.tableHeaders.0</th>
+                                <th role="columnheader" translate>das.tableHeaders.1</th>
+                                <th role="columnheader" translate>das.tableHeaders.2</th>
+                                <th role="columnheader" translate>das.tableHeaders.3</th>
+                            </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                            <tr scope="row">
+                                <td scope="col" class="strong"
+                                    [ngClass]="{'positive': event.data.depressionlevel === 0, 'negative': event.data.depressionlevel >= 3}">
+                                    {{event.data.depressionlevellabel}}
+                                    ({{event.data.depression}})</td>
+                                <td scope="col" class="strong"
+                                    [ngClass]="{'positive': event.data.anxietylevel === 0, 'negative': event.data.anxietylevel >= 3}">
+                                    {{event.data.anxietylevellabel}}
+                                    ({{event.data.anxiety}})</td>
+                                <td scope="col" class="strong"
+                                    [ngClass]="{'positive': event.data.stresslevel === 0, 'negative': event.data.stresslevel >= 3}">
+                                    {{event.data.stresslevellabel}}
+                                    ({{event.data.stress}})</td>
+                                <td scope="col"><img alt="Alert" height="20"
+                                        *ngIf="event.data.depressionlevel >= 3 || event.data.anxietylevel >= 3 || event.data.stresslevel >= 3"
+                                        src="/assets/img/professional/alert.png"></td>
+
+                                <td scope="col" class="text-right">
+                                    <!--
+                                        <a class="trigger-modal info" tabindex="0" aria-label="Show alerts"
+                                            (click)="showAlerts(i)" (keypress)="showAlerts(i)" translate>i</a>
+                                            -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div *ngIf="event.type =='funachievement'">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>fa.table.headers.0</th>
+                                <th class="center" translate>fa.table.headers.1</th>
+                                <th class="center" translate>fa.table.headers.2</th>
+                                <th class="center" translate>fa.table.headers.3</th>
+                                <th class="center" translate>fa.table.headers.4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td class="strong">
+                                    {{event.data.primaryAchievement.activity || 'Untitled'}}
+                                </td>
+                                <td class="strong center"
+                                    [ngClass]="{'positive': event.data.happinessDiff() > 0, 'negative': event.data.happinessDiff() < 0}">
+                                    <span *ngIf="event.data.happinessDiff() > 0">&uarr;</span>
+                                    <span *ngIf="event.data.happinessDiff() < 0">&darr;</span>
+                                    {{event.data.happinessDiff()}}
+                                </td>
+                                <td class="strong center"
+                                    [ngClass]="{'positive': event.data.funDiff() > 0, 'negative': event.data.funDiff() < 0}">
+                                    <span *ngIf="event.data.funDiff() > 0">&uarr;</span>
+                                    <span *ngIf="event.data.funDiff() < 0">&darr;</span> {{event.data.funDiff()}}
+                                </td>
+                                <td class="strong center"
+                                    [ngClass]="{'positive': event.data.achievementDiff() > 0, 'negative': event.data.achievementDiff() < 0}">
+                                    <span *ngIf="event.data.achievementDiff() > 0">&uarr;</span>
+                                    <span *ngIf="event.data.achievementDiff() < 0">&darr;</span>
+                                    {{event.data.achievementDiff()}}
+                                </td>
+                                <td class="minidate">{{event.data.date | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div *ngIf="event.type =='moodcheck'">
+                <div class="table-responsive">
+                    <table class="table" role="grid">
+                        <thead role="rowgroup">
+                            <tr role="row">
+                                <th role="columnheader" translate>dashboard.tableHeaders.2</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.3</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.4</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.5</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.6</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="col" class="strong">
+                                    <span class="mood-icon"><img alt="{{event.data.emotion}}" height="20"
+                                            [src]="'/assets/img/moodcheck/' + (10 - event.data.value) + '.png'">
+                                    </span> {{event.data.moods}}
+                                </td>
+                                <td scope="col" class="strong"> {{event.data.activity}}</td>
+                                <td scope="col" class="strong"> {{event.data.people}}</td>
+                                <td scope="col" class="strong"> {{event.data.place}}</td>
+                                <td scope="col" class="strong"> {{event.data.notes}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div *ngIf="event.type =='activityscheduler'">
+
+                <div class="table-responsive">
+                    <table class="table" role="grid">
+                        <tr>
+                            <td class="strong">
+                                {{event.data.title}}
+                            </td>
+
+                            <td class="date">
+                                <div text-right>{{event.data.start | date:'dd MMM'}}</div>
+                                <div>{{event.data.start | date:'hh:mm a'}} to {{event.data.end |
+                                    date:'hh:mm a'}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div *ngIf="event.type =='thoughtdiary'">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="strong">
+                                    {{event.data.thought.event || 'Untitled'}}
+                                </td>
+                                <td class="minidate">{{event.data.createdOn | date:'dd MMM yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div [innerHtml]="event.description"></div>
+            <div class="row-action-content">
+                <a *ngIf="event.type === 'scheduled' && event.creator.id === user.id" class="btn-inline-small btn"
+                    translate (click)="removeScheduledEvent(event.id)">Remove</a>
+            </div>
+            <div *ngIf="event.scheduled">
+                Scheduled: yes
+            </div>
+
+        </div>
+        <div *ngIf="!activeEvents" translate>
+            calendar.noEntries
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div>
+    <div [class]="moodClassName" id="moodcheck-wrapper">
+        <img *ngIf="init" id="arrow-left" src="./assets/img/moodcheck-arrow-left.png">
+        <img *ngIf="init" id="arrow-right" src="./assets/img/moodcheck-arrow-right.png">
+        <div id="mood-slider"></div>
+    </div>
+    <div id="mood-icon">
+        <img [src]="moodIconUrl">
+    </div>
+    <br />
+    <div id="selected-mood"></div>
+    <p id="moodcheck-instructions" class="center">
+        <span id="enter-number" translate>moodcheck.enternumber</span>
+    </p>
+    <div id="selected-mood">
+        <i tabindex="0" class="fa fa-arrow-up" (click)="onGoUp()" (keypress)="onGoUp()"></i>
+        <i tabindex="0" class="fa fa-arrow-down" (click)="onGoDown()" (keypress)="onGoDown()"></i>
+
+        <input class="single wt-auto-moodcheck-mood-value" aria-labelledby="enter-number" maxlength="2" tabindex="0"
+            [(ngModel)]="actualMood" type="text" (ngModelChange)="checkRange($event)">
+        <div class="informational">Mood selected:<span aria-live="polite">{{this.moodLabels}}</span>
+        </div>
+    </div>
+    <div class="grid-buttons col6">
+        <a class="single wt-auto-moodcheck-mood-option" tabindex="0" *ngFor="let option of options"
+            [ngClass]="{'active': option.isSelected}" (click)="toggleOption(option)"
+            (keypress)="toggleOption(option)"><span>{{option.Key  | truncate: 30}}</span></a>
+        <!--<a href="" class="active">Happy</a>-->
+        <a tabindex="0" (click)="onMore()" (keypress)="onMore()"
+            class="single wt-auto-moodcheck-mood-more more featured"><span translate>moodcheck.more</span></a>
+    </div>
+</div>

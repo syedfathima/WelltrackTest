@@ -1,0 +1,39 @@
+<div id="public-portal-wrapper" class="container-fluid">
+    <div class="row">
+
+        <div class="left-col" [ngClass]="{'col-xs-12 col-md-8': showRegister, 'full-width': !showRegister}">
+            <div class="inside">
+                <nav *ngIf="showLanguage || showLogo">
+                    <ul>
+                        <li class="logo" *ngIf="showLogo">
+                            <a tabindex="0" routerLink="/" alt="App page" title="App page">
+                                <img alt="Welltrack logo" src="./assets/img/welltrack_color.png" alt="WellTrack">
+                            </a>
+                        </li>
+                        <li class="visible-sm">
+                            <a tabindex="0" title="Visit welltrack.com" alt="Visit Welltrack.com"
+                                href="http://welltrack.com" translate>loginDesktop.full</a>
+                        </li>
+                        <li class="visible-sm">
+                            <a tabindex="0" title="Contact us" alt="Contact us" href="mailto:support@welltrack.com"
+                                translate>loginDesktop.contact</a>
+                        </li>
+                        <li id="languagepicker" *ngIf="showLanguage">
+                            <language-dropdown [color]="'grey'" [page]="'public'"></language-dropdown>
+                        </li>
+                    </ul>
+                </nav>
+
+                <router-outlet (click)="onNavClose()" (keypress)="onNavClose()"></router-outlet>
+            </div>
+        </div>
+        <!--left-col-->
+
+        <div *ngIf="showRegister" class="right-col"
+            [ngClass]="{'col-xs-12 col-md-4': showRegister, 'col-xs-12': !showRegister}">
+            <register-form [title]="title" [description]="description"></register-form>
+        </div>
+        <!--right-col-->
+
+    </div>
+</div>

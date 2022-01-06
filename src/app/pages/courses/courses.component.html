@@ -1,0 +1,55 @@
+<div id="courses-listing-page">
+    <page-header [headerText]="chapterTitle" [midheaderText]="moduleTitle" [backLink]="backLink" [cssClass]='cssModule'
+        [backText]="backText"></page-header>
+
+    <div class="page-section">
+        <div class="page-section-content">
+            <div class="page-header-body">
+                <p aria-live="polite" tabindex="0" [innerHtml]="chapterDesc"></p>
+            </div>
+			<page-loader *ngIf="!isLoaded"></page-loader>
+            <div class="course-section" *ngFor="let content of chapterContents">
+                <h3 *ngIf="content.step">{{content.step}}</h3>
+                <div class="card-container">
+
+                    <!-- <figure class="video-card" *ngFor="let video of content.videos">
+                        <div class="video-still">
+                            <wt-video [callbackArgs]="{'id': video.id}" [callbackUrl]="callbackUrl"
+                                (onCompleted)="video.isCompleted = true" (onEnded)="showCourseFeedback(video)"
+                                [mediaUrl]="video.videoFile" [thumbnailUrl]="video.videoImage"
+                                [captionUrl]="video.captionFile"></wt-video>
+                            <div *ngIf="video.isCompleted" class="status"><img alt="OK"
+                                    src="./assets/img/icons-svg/OK.svg"></div>
+                            <div class="play"></div>
+                        </div>
+                        <figcaption class="caption">
+                            <div class="title"> {{video.videoTitle}}</div>
+                            <div class="duration">{{video.videoDuration}}</div>
+                        </figcaption>
+                        <a class="rate" (click)="onRate(video)"><i class="fa fa-star" aria-hidden="true"></i> Rate
+                            video.</a>
+
+                        <div class="bottom-info">
+                            <div class="description" *ngIf="video.description" [innerHtml]="video.description"></div>
+                            <div class="attachments" *ngIf="video.attachments">
+                                <div class="attachment" *ngFor="let attachment of video.attachments">
+                                    <a class="caption-download" (click)="onClick(attachment)"
+                                        target="_blank"><i class="fa fa-download" aria-hidden="true"></i> {{attachment.Title ? attachment.Title : 'Download'}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="rate" (click)="onRate(video.id)"><i class="fa fa-star" aria-hidden="true"></i>
+                            Rate video.</a>
+                    </figure> -->
+					<course-video-card class="video-card" *ngFor="let video of content.videos"
+						[video]="video"
+						[callbackUrl]="callbackUrl"
+						(onVideoCompleted)="video.isCompleted = true"
+						(onVideoEnded)="showCourseFeedback(video)"
+						(onRate)="onRate(video)"
+						(onClickAttachment)="onClick($event)"></course-video-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

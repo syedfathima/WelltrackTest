@@ -1,0 +1,14 @@
+<div id="page-fun-achievement">
+    <page-header [headerText]="headerText" [backLink]="'/app/practice'" [cssClass]="'achievement'" [backText]="backText" [headerImage]="'./assets/img/icons/fun_achievement_icon@2x.png'"></page-header>
+    <div class="col-sm-12">
+        <div class="page-section no-margin page-header-body">
+            <p translate>
+                fa.body
+            </p>
+            <a tabindex="0" routerLink="new" class="btn btn-primary btn-inline btn-wide" translate>fa.new</a>
+        </div>
+    </div>
+
+    <fun-achievement-listing [user]="user"></fun-achievement-listing>
+
+</div>

@@ -1,0 +1,81 @@
+<div id="page-practice">
+    <div class="col-md-12">
+        <h2 id="section-title" translate>practice.title</h2>
+    </div>
+    <div class="col-md-12 col-lg-6">
+        <div class="panel zenroom">
+            <div class="right bgimage">
+                <img aria-hidden="true" alt="" src="./assets/img/icons-svg/zen_room.svg">
+            </div>
+            <div class="left">
+                <h3 translate>practice.zen.title</h3>
+                <p translate>practice.zen.body</p>
+                <a autoFocus tabindex="0" class="btn btn-primary" routerLink="/app/practice/zen-room"
+                    translate>practice.zen.button</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6" *ngIf="!hideNotes">
+        <div class="panel thoughtdiary">
+            <div class="right bgimage">
+                <img aria-hidden="true" alt="" src="./assets/img/icons-svg/thought_diary.svg">
+            </div>
+            <div class="left">
+                <h3 translate>practice.thoughtDiary.title</h3>
+                <p translate>practice.thoughtDiary.body</p>
+                <a tabindex="0" class="btn btn-primary" routerLink="/app/practice/thoughtdiary"
+                    translate>practice.thoughtDiary.button</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+        <div class="panel cognitivedistortions">
+            <div class="right bgimage">
+                <img aria-hidden="true" alt="" src="./assets/img/icons-svg/quiz.svg">
+            </div>
+            <div class="left">
+                <h3 translate>practice.cdQuiz.title</h3>
+                <p translate>practice.cdQuiz.body</p>
+                <a tabindex="0" class="btn btn-primary" routerLink="/app/practice/cd-quiz"
+                    translate>practice.cdQuiz.button</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+        <div class="panel funachievement">
+            <div class="right bgimage">
+                <img aria-hidden="true" alt="" src="./assets/img/icons-svg/mountain.svg">
+            </div>
+            <div class="left">
+                <h3 translate>practice.fa.title</h3>
+                <p translate>practice.fa.body</p>
+                <a tabindex="0" tabindex="0" class="btn btn-primary" routerLink="/app/practice/funachievement"
+                    translate>practice.fa.button</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="col-md-12 col-lg-6">
+        <div class="panel activityscheduler">
+            <div class="right bgimage">
+                <img aria-hidden="true" alt="" src="./assets/img/icons-svg/activity_scheduler.svg">
+            </div>
+            <div class="left">
+                <h3 translate>practice.as.title</h3>
+                <p translate>practice.as.body</p>
+                <a tabindex="0" class="btn btn-primary" routerLink="/app/practice/activityscheduler"
+                    translate>practice.as.button</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>

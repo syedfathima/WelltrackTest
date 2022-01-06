@@ -1,0 +1,40 @@
+<div id="page-user-listing" class="page-section">
+    <div class="page-section">
+        <div class="page-section-header">
+            <h1 translate>Favourites</h1>
+        </div>
+        <div class="page-section-content">
+            <div class="table-responsive">
+                <page-loader *ngIf="isloaded"></page-loader>
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th translate style="width:30%">favourite.title</th>
+                            <th translate >favourite.type</th>
+                             <th translate >favourite.name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let favourite of favouriteList" >
+                            <td class="strong" >
+                                <a tabindex="0" class="course-name" [routerLink]="['/app/courses-listing/', favourite.Content.Chapter.Name, favourite.Content.Chapter.ID]" [queryParams]="{favourite: true}">{{favourite.Content.Label}}</a>
+                            <td class="strong">
+                                {{favourite.Type | uppercase}}
+                            </td>
+                            <td class="strong">
+                                {{favourite.Content.Chapter.Label}}
+                            </td>
+                            <td> 
+                                <a (click)="setFavourite(favourite)">
+                                    <img  class="icon" [src]="'/assets/img/icons/icon_fav_filled.svg'"  style="height: 19px;"/></a>
+                            </td>        
+                        </tr>
+                        <tr *ngIf="favouriteList.length === 0">
+                            <td colspan="4" style="text-align: center;">No data to display</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

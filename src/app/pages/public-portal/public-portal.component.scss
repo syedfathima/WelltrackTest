@@ -1,0 +1,290 @@
+    @import "../../../theme/_welltrack.mixins.scss";
+    @import "../../../theme/_welltrack.variables.scss";
+    #public-portal-wrapper {
+        min-height: 100%;
+        position: relative;
+        background-color: #fcfcfc; //#25295f;
+        overflow: hidden;
+
+        .skip{
+            position:relative;
+            a{
+                position:absolute;
+                left: -10000px;
+                &:focus{
+                    position:static;
+
+                }
+            }
+
+        }
+        .overlay{
+            //border-radius:25px;
+            background: rgba(0,0,0,.5);
+            padding:5px 20px;
+        }
+        .row {
+            @include breakpoint(sm) {
+                align-items: center;
+                display: flex;
+                height: 100%;
+            }
+        }
+        .left-col {
+            //background-image: url('/assets/img/welltrack-bg1-o80.jpg');
+            background-image: url('/assets/img/BG_image.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            height: 100%;
+            position:relative;
+            @include breakpoint(xs) {
+                //display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                padding: 0;
+                z-index: 100;
+                height: 100%;
+                width: 0;
+                transition: 0.3s;
+                overflow-x: hidden;
+                width: 80%;
+                margin-left: -80%;
+                &.navIn {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        // .right-col {
+        //     transition: 0.5s;
+        //     &.navIn {
+        //         //margin-left: 80%;
+        //     }
+        // }
+        .marketing-content-wrapper {
+            clear: both;
+            color: white;
+            width:80%;
+            max-width:800px;
+            text-align:center;
+            @include center-align(absolute);
+            h2 {
+                font-size: $font-size-title-xl;
+                letter-spacing: 1.5px;
+                margin-bottom: 32px;
+            }
+            z-index:200;
+        }
+        .bottom{
+            position:absolute;
+            width:80%;
+            bottom:0px;
+            left:50%;
+            -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            .download-holder {
+                @extend .gradient-cta;
+                max-width: 500px;
+                margin: 0 auto;
+                margin-top: 40px;
+                border-radius: 21px;
+                position:relative;
+            }
+        }
+
+        .screen-cap {
+            display: none;
+            height: auto;
+            width: 100px;
+            float: left;
+            position: absolute;
+            bottom: 0;
+            left: 32px;
+            @include breakpoint(lg) {
+                display: block;
+            }
+        }
+        .mobile-download {
+            text-align: center;
+            color: white;
+            //float: right;
+            vertical-align: middle;
+            width: 100%;
+            padding: 8px;
+            @include breakpoint(lg) {
+                width: 75%;
+                margin-left: 25%;
+            }
+            h2 {
+                font-size: $font-size-title-md;
+                font-weight: 800;
+                line-height: 20px;
+            }
+        }
+        .google {
+            img {
+                margin: auto;
+                display: inline-block;
+                width: 141px;
+            }
+        }
+        .apple {
+            img {
+                margin: auto;
+                display: inline-block;
+                width: 141px;
+            }
+        }
+        .testimonials {
+            padding: 0 15px;
+            display:block;
+            p{
+                font-size:  $font-size-title-sm;
+            }
+            .testimonial {
+                img {
+                    width: 81px;
+                    height: auto;
+                    border-radius: 81px;
+
+					 @media screen and ( max-height: 775px ) {
+						display: none;
+					}
+                }
+                .person {
+                    margin-top: 8px;
+                    font-size: $font-size-title-lg;
+                    font-weight:800;
+                }
+            }
+        }
+
+        .top-bar {
+            height: 5px;
+            background-image: linear-gradient(to right, #dc9656, #ef8a75, #f1869a, #e08cbe, #c098d9, #9ca6ef, #68b5fa, #00c1f7, #00d1ea, #00ddc5, #45e391, #a1e359);
+            width: 100%;
+        }
+
+        .portal-logo {
+            margin-top:5px;
+        }
+
+        .header-col {
+            position:relative;
+            width: 100%;
+            background-color: #25295f;
+            padding-bottom: 10px;
+            @media screen and (max-width: 700px){
+                .portal-logo {
+                    width: 0px !important;
+                }
+
+                #languagepicker {
+                    width: 0px !important;
+                }
+            }
+        }
+
+        .login-container{
+            display: block;
+            width: 40%;
+            margin: 50px auto 250px auto;
+            @include breakpoint(xs) {
+                width:90% !important;
+                margin: 0px auto 250px auto;
+            }
+             @media screen and (max-width: 320px){
+               width:90% !important;
+               margin: 0px auto 200px auto
+            }
+            @media screen and (max-width: 375px){
+               width:90% !important;
+               margin: 0px auto 200px auto
+            }
+
+            @media screen and (max-width: 900px) and (min-width: 768px) {
+                width:90% !important;
+               margin: 50px auto 0px auto
+            }
+
+            .form-container {
+                // border-radius: 0px;
+                // background: white;
+				// background-image: url("/assets/img/bleu_bg@2x.png");
+				text-align: center;
+				background-size: 100% 100px;
+				background-repeat: no-repeat;
+                 @include breakpoint(xs) {
+                   width:100%;
+                 }
+
+                border-radius: 10px;
+                background: white;
+                background-image: none;
+                // background-image: linear-gradient(180deg, #c0d6de 0%, #fff 30%);
+                box-shadow: 0 0px 3.6px rgba(0, 0, 0, 0.024),
+                    0 0px 10px rgba(0, 0, 0, 0.035),
+                    0 0px 24.1px rgba(0, 0, 0, 0.046),
+                    0 0px 80px rgba(0, 0, 0, 0.07)
+                ;
+                // background-image: linear-gradient(180deg, #c0d6de 0%, #ffffff 30%, #ffffff 50%, #ffffff 60%, #c0d6de 100%);
+            }
+        }
+
+        .bottom-container{
+            position:absolute;
+            width:80%;
+            bottom:0px;
+            left:50%;
+            -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+
+             @media screen and (max-width: 700px){
+                display: hidden !important;
+                display: none !important
+            }
+
+            .download-holder {
+                @extend .gradient-cta;
+                max-width: 500px;
+                margin: 0 auto;
+                margin-top: 40px;
+                border-radius: 21px;
+                position:relative;
+            }
+        }
+
+        @media screen and (min-width: 320px){
+            nav > ul > li {
+                margin: 12px 17px !important;
+            }
+        }
+
+        @media screen and (min-width: 360px) and (max-width: 375px){
+            nav > ul > li {
+                margin: 12px 15px !important;
+            }
+        }
+
+        @media screen and (min-width: 411px) and (max-width: 590px){
+            nav > ul > li {
+                margin: 12px 20px !important;
+            }
+        }
+
+        @media screen and (width: 384px){
+            nav > ul > li {
+                margin: 12px 20px !important;
+            }
+        }
+
+    }
+
+    .portal-adjustment {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }

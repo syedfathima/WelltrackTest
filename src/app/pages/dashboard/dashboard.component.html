@@ -1,0 +1,40 @@
+<div>
+	<notice-component *ngIf="showNotice"></notice-component>
+	<!--<challenge-notifications *ngIf="showGeneralNotice"></challenge-notifications>-->
+	<div *ngIf="enableScheduler">
+		<div class="page-section">
+			<div class="page-section-header">
+				<div class="page-section-buttons">
+					<a tabindex="0" (click)="inviteShare()" (keydown.enter)="inviteShare()"
+						class="trigger-modal inviteshare btn btn-primary btn-with-icon pull-right" translate>
+						<img alt="Invite to Welltrack"
+							src="./assets/img/icons-svg/user-icon.svg">userListing.inviteShare</a>
+				</div>
+				<h2>View/schedule a user's activity</h2>
+			</div>
+			<h3>Step 1: Select user</h3>
+			<user-selection-single-component [users]="activeUsers" (selectedUser)="updateUser($event)"></user-selection-single-component>
+
+			<h3 *ngIf="activeUser">Step 2: Select Activity</h3>
+			<mat-expansion-panel *ngIf="activeUser">
+				<mat-expansion-panel-header>
+					<mat-panel-description>
+						Schedule events and monitor your user's progress
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+
+				<activity-scheduling-component [activeUser]="activeUser"></activity-scheduling-component>
+			</mat-expansion-panel>
+			
+			<calendar-professional-component [all]="'true'" [activeUser]="activeUser"
+				(eventsLoaded)="updateEvents($event)"></calendar-professional-component>
+			<event-listing-component [activeEvents]="events" [pickedDate]="pickedDate"
+				(eventsChange)="updateEvents($event)"></event-listing-component>
+		</div>
+	</div>
+
+	<dashboard-executive *ngIf="showExecDashboard"></dashboard-executive>
+	<dashboard-admin *ngIf="showAdminDashboard"></dashboard-admin>
+	<user-charts [user]="user" *ngIf="showEndUserDashboard"></user-charts>
+
+</div>

@@ -1,0 +1,71 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+.message{
+    border-radius:10px;
+    background-color:white;
+    border:1px solid white;
+    line-height: $font-size-xxxxl;
+    font-size: $font-size-lg;
+    color: $color-text;
+    border-bottom:1px solid grey;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom:10px;
+    max-width:800px;
+
+    .valign{
+        align-items: center;
+    }
+
+    .content{
+        padding:10px;
+        flex: 1 0;
+    }
+    .image{
+        flex: 0 0 100px;
+        padding:10px;
+        margin-right:30px;
+        text-align: center;
+        img{
+            width:50px;
+            height:auto;
+        }
+    }
+    .link{
+        height:auto;
+        flex: 0 0 100px;
+        padding:0px 10px;
+        img{
+            width:80px;
+        }
+        a{
+            border:none;
+            padding:0px;
+            width:80px;
+            height:100%;
+        }
+        &.type-1{
+            @extend .moodcheck-gradient;
+        }
+    
+        &.type-2{
+            @extend .zenroom-gradient;
+        }
+      
+        &.type-5{
+            @extend .cognitivedistortions-gradient;
+        }
+        &.type-4{
+            @extend .funachievement-gradient;
+        }
+    
+        &.type-4{
+            @extend .activityscheduler-gradient;
+        }
+    }
+
+
+   
+}

@@ -1,0 +1,28 @@
+
+
+<vg-player  class="video" (onPlayerReady)="onPlayerReady($event)"  tabindex="0" >
+	<vg-overlay-play></vg-overlay-play>
+	<vg-buffering></vg-buffering>
+
+	 <vg-controls >
+		<vg-play-pause tabindex="0"></vg-play-pause>
+
+		<vg-time-display [vgProperty]="'current'" [vgFormat]="'mm:ss'"></vg-time-display>
+        <vg-scrub-bar>
+            <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+        </vg-scrub-bar>
+        <vg-time-display [vgProperty]="'total'" [vgFormat]="'mm:ss'"></vg-time-display>
+
+		
+		<vg-volume></vg-volume>
+		<vg-mute></vg-mute>
+		<vg-track-selector></vg-track-selector>
+		<vg-fullscreen></vg-fullscreen>
+    </vg-controls>
+	<video crossorigin="anonymous" [vgMedia]="media" #media class="singlevideo" preload="none" [poster]="thumbnailUrl" type="video/mp4">
+		<source [src]="mediaUrl" [type]="mediaType">
+		<track kind="subtitles" *ngIf="captionUrl" [label]="'English'" [src]="captionUrl" [srclang]="lang"/>
+	</video>
+
+</vg-player>
+

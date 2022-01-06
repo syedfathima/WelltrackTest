@@ -1,0 +1,204 @@
+<page-loader *ngIf="!isLoaded"></page-loader>
+<div id="page-user-listing" class="page-section" *ngIf="isLoaded">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                General
+            </ng-template>
+
+            <div class="page-section">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a autoFocus tabindex="0" (click)="createUser()" (keydown.enter)="createUser()"
+                            class="trigger-modal invite btn btn-primary btn-with-icon pull-right" translate>
+                            <img alt="Create new user" src="./assets/img/icons-svg/user-icon.svg">Create user</a>
+                    </div>
+                    <div class="page-section-buttons" *ngIf="user.permissions.inviteSubscribe">
+                        <a tabindex="0" (click)="inviteSubscribeUser()" (keydown.enter)="inviteSubscribeUser()"
+                            class="trigger-modal inviteshare btn btn-primary btn-with-icon pull-right" translate>
+                            <img alt="Invite to Welltrack"
+                                src="./assets/img/icons-svg/user-icon.svg">userListing.inviteSubscribe</a>
+                    </div>
+                    <h1 translate>userListing.title</h1>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+						<page-loader *ngIf="usersLoading"></page-loader>
+                        <table class="table" *ngIf="!usersLoading && (user.userType == 'admin' || user.userType == 'superadmin')">
+                            <thead>
+                                <tr>
+                                    <th translate style="width:10%">userListing.headers.0</th>
+                                    <th translate>userListing.headers.2</th>
+                                    <th translate>userListing.headers.3</th>
+                                    <th translate>userListing.headers.4</th>
+                                    <th translate style="width:11%">userListing.headers.1</th>
+                                    <th translate style="width:11%">userListing.headers.8</th>
+                                    <th style="width:9%"></th>
+                                    <th style="width:5%"></th>
+                                    <th style="width:5%"></th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <!--Name-->
+                                        <mat-form-field class="wt-mat-form-field">
+                                            <input matInput class="wt-mat-input" type="text" [(ngModel)]="cols[0]"
+                                                (input)="valueChange(0)">
+                                        </mat-form-field>
+                                    </th>
+                                    <th>
+                                        <!--Email-->
+                                        <mat-form-field class="wt-mat-form-field">
+                                            <input matInput class="wt-mat-input" type="text" [(ngModel)]="cols[1]"
+                                                (input)="valueChange(1)">
+                                        </mat-form-field>
+                                    </th>
+                                    <th>
+                                        <!--Organization-->
+                                        <mat-form-field class="wt-mat-form-field">
+                                            <input matInput class="wt-mat-input" type="text" [(ngModel)]="cols[2]"
+                                                (input)="valueChange(2)">
+                                        </mat-form-field>
+                                    </th>
+                                    <th>
+                                        <!--User Type-->
+										<mat-form-field class="wt-mat-form-field">
+											<mat-select name="userType" [(ngModel)]="cols[3]" (selectionChange)="valueChange(3)">
+												<mat-option [value]='""'>All</mat-option>
+												<mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+                                    </th>
+                                    <!--Last login-->
+                                    <th></th>
+                                    <!--Status-->
+                                    <th>
+										<mat-form-field class="wt-mat-form-field">
+											<mat-select name="userType" [(ngModel)]="cols[4]" (selectionChange)="valueChange(4)">
+												<mat-option [value]='""'>All</mat-option>
+												<mat-option *ngFor="let status of userStatuses" [value]="status">{{status}}</mat-option>
+											</mat-select>
+										</mat-form-field>
+                                    </th>
+                                    <!--View Details-->
+                                    <th></th>
+                                    <!--Disable/Approve-->
+                                    <th></th>
+                                    <!--Delete-->
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of activeusers" [ngClass]="{'highlighted': user.isPaired}">
+                                    <td class="strong">
+                                        <img alt="User avatar" class="rounded" height="20"
+                                            src="./assets/img/circle_logo@2x.png">
+                                        {{user.fullName}}
+                                    </td>
+                                    <td class="strong">{{user.email}}</td>
+                                    <td class="strong">
+                                        {{user.organizationStr}}
+                                    </td>
+                                    <td class="strong">
+                                        {{user.userType}}
+                                    </td>
+                                    <td class="subtle">{{user.loginOn | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                                    <td>
+                                        {{user.status}}
+                                    </td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right" [routerLink]="['/admin/user', user.id]"
+                                            translate>userListing.view</a>
+                                    </td>
+                                    <td *ngIf="user.status === 'approved'">
+                                        <a tabindex="0" class="pull-right" (click)="activateUser(user.id, 0)"
+                                            translate>userListing.disable</a>
+                                    </td>
+                                    <td *ngIf="user.status === 'disabled'">
+                                        <a tabindex="0" class="pull-right" (click)="activateUser(user.id, 1)"
+                                            translate>userListing.approve</a>
+                                    </td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right" (click)="deleteUser(user.id)"
+                                            translate>userListing.delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Zoom Integration
+            </ng-template>
+
+            <div class="page-section">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a tabindex="0" (click)="addZoomAccount()" (keydown.enter)="addZoomAccount()"
+                            class="trigger-modal invite btn btn-primary btn-with-icon pull-right" translate>
+                            <img alt="Create new user" src="./assets/img/icons-svg/user-icon.svg">Add user to zoom</a>
+                    </div>
+
+                    <h1>Zoom accounts</h1>
+                </div>
+                <div class="page-section-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Zoom Account Email</th>
+                                <th>WellTrack User?</th>
+                                <th>Organization</th>
+                                <th>Personal meeting URL</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let zoomUser of zoomUsers">
+                                <td>{{zoomUser.email}}</td>
+                                <td>{{zoomUser.welltrack_user ? 'Yes': 'No'}}</td>
+                                <td>{{zoomUser.organization_name}}</td>
+                                <td><a target="_blank"
+                                        href="{{zoomUser.personal_meeting_url}}">{{zoomUser.personal_meeting_url}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Counselor sync
+            </ng-template>
+
+            <div class="page-section">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a tabindex="0" (click)="createUser()" (keydown.enter)="createUser()"
+                            class="trigger-modal invite btn btn-primary btn-with-icon pull-right" translate>
+                            <img alt="Create new user" src="./assets/img/icons-svg/user-icon.svg">Create association</a>
+                    </div>
+
+                    <h1>Counselor and user associations</h1>
+                </div>
+                <div class="page-section-content">
+                    <counselor-user-associations></counselor-user-associations>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Actions
+            </ng-template>
+
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Content
+            </ng-template>
+
+        </mat-tab>
+    </mat-tab-group>
+</div>

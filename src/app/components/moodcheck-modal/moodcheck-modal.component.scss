@@ -1,0 +1,42 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+#moodcheck-modal {
+    background-color: $color-background;
+    border-radius: 15px;
+    .modal-header {
+        h3 {
+            font-size: $font-size-md;
+        }
+    }
+    .modal-footer {
+        .buttons-center {
+            height: 75px;
+        }
+    }
+    .tab-wrapper {
+        background-color: white;
+        @extend .drop-shadow;
+    }
+    .wt-tabs {
+        margin-top: 0;
+        max-width: 550px;
+        margin: 0 auto;
+        @include breakpoint(xs) {
+            justify-content: space-between;
+        }
+        @include breakpoint(sm) {
+            justify-content: space-between;
+        }
+        .wt-tab {
+            padding: 16px;
+        }
+    }
+    .wt-tab-body {
+        height: 380px;
+        overflow-y: scroll;
+        @include breakpoint(xs) {
+            height: 300px;
+        }
+    }
+}

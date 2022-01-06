@@ -1,0 +1,145 @@
+ion-modal.inset-modal {
+    padding: 18px;
+    background-color: rgba(0,0,0,0.3);
+
+    ion-content {
+        border-radius: 4px;
+    }
+
+     h2 {
+        font-size: $font-size-title-sm;
+        font-weight: 800;
+        margin: 0  0 12px 0;
+        padding: 0;
+        text-align: center;
+    }
+}
+.modal-header {
+	background-color: white;
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 15px 15px 0 0;
+
+	.buttons-left {
+		//float: left;
+		width: 30%;
+	}
+
+	h3 {
+		margin: 0;
+		padding: 0;
+		font-size: $font-size-title-md;
+		font-weight: bold;
+		width: 40%;
+		text-align: center;
+	}
+
+	.buttons-right {
+		//float: right;
+		width: 30%;
+		text-align: right;
+	}
+
+	.btn {
+		margin: 0;
+		display: inline-block;
+		padding: 8px 24px;
+	}
+}
+
+.modal-footer {
+	padding: 8px;
+	border-top: 0;
+
+	.buttons-center {
+		max-width: 350px;
+		margin: 0 auto;
+	}
+}
+
+.vex.confirm-modal {
+	width: 95%;
+	max-width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+
+	.vex-content {
+		padding: 16px !important;
+	}
+}
+
+.vex.vex-theme-default .vex-content{
+	max-width:450px;
+}
+
+.form-modal{
+	input, select, textarea{
+		z-index:99999;
+	}
+	.form-wrapper {
+		max-width: 400px;
+		margin: auto;
+		padding: 0px 20px;
+		margin-top: 30px;
+		label {
+			font-weight: normal;
+		}
+		div.label {
+			text-align: left;
+		}
+		.sharing {
+			margin: 10px 0px;
+			img {
+				margin: 0px 8px 0px 5px;
+			}
+			label {
+				line-height: 20px;
+			}
+		}
+	}
+
+	.form-wrapper-60{
+		max-width:60%;
+		margin: auto;
+		padding: 0px 20px;
+		margin-top: 30px;
+	}
+
+	.form-wrapper-80{
+		max-width:80%;
+		margin: auto;
+		padding: 0px 20px;
+		margin-top: 30px;
+	}
+
+	.fixed-footer {
+		position: relative;
+		max-width: 400px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.close-modal{
+    position:absolute;
+    top:25px; 
+    right:25px;
+    background:white;
+    height:35px;
+    width:35px;
+    text-align:center;
+    vertical-align:middle; 
+    line-height:32px;
+    border-radius:25px;
+    :hover{
+        cursor:pointer;
+	}
+	
+	img{
+		height:18px;
+		width:18px;
+	}
+}
+

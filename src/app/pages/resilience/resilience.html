@@ -1,0 +1,51 @@
+<ion-header>
+    <nav-header [headerText]="title" [goBackEnable]="true"></nav-header>
+</ion-header>
+
+<ion-content>
+    <div id="page-theory" class="grey-section">
+
+        <div class="theorypanel coursedisaster clearfix">
+            <div class="panel-heading">
+                <h1 translate>theory.courses.disaster.title</h1>
+                <p translate>theory.courses.disaster.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" translate>theory.courses.disaster.chapter</div>
+                    <div class="duration" translate>theory.courses.disaster.length</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/disaster"  translate>theory.go
+                    <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="theorypanel courseresilience clearfix" >
+            <div class="panel-heading">
+                <h1 translate>theory.courses.resilience.title</h1>
+                <p translate>theory.courses.resilience.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" translate>theory.courses.resilience.chapter</div>
+                    <div class="duration" translate>theory.courses.resilience.length</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey"  routerLink="/app/courses-listing/resilience"  translate>theory.go
+                    <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</ion-content>
+
+<ion-footer>
+    <page-selector></page-selector>
+</ion-footer>

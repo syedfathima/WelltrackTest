@@ -1,0 +1,217 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+h3.zen-header {
+    font-size: $font-size-title-slg;
+    font-weight: 700;
+}
+
+.zen-section {
+    border-bottom: 1px solid #E7E5DC;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+
+	.btn-inline {
+		display: block;
+		
+		@include breakpoint(xs) {
+			margin: 0 0 20px 0;
+		}
+
+		@include breakpoint(sm) {
+			display: inline-block;
+		}
+	}
+}
+
+.audio-player {
+    display: flex;
+    align-items: center; // justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px;
+    @include breakpoint(sm) {
+        flex-wrap: nowrap;
+    }
+}
+
+.audio-btn {
+    width: 200px;
+}
+
+.audio-duration {
+    color: $color-subtle;
+}
+
+.audio-element {
+    margin-right: 16px;
+    width: 50px;
+    @include breakpoint(sm) {
+        margin-right: 30px;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
+    &.btn {
+        width: 100px;
+        @include breakpoint(sm) {
+            width: 200px;
+        }
+    }
+}
+
+.audio-forward {
+    @include breakpoint(sm) {
+        margin-right: 50px;
+    }
+}
+
+.ambiance-container {
+    // @include breakpoint(sm) {
+    display: flex;
+    align-items: flex-start; // justify-content: space-between;
+    // TODO: Introduce solution to the problem with the last row that doesn't have enough item for proper alignment when justify-content: space-between.
+    flex-wrap: wrap; //}
+}
+
+.ambiance-box {
+    margin-bottom: 20px;
+	margin-right: 12px;
+    text-align: center;
+	
+    @include breakpoint(sm) {
+        margin-right: 40px;
+        margin-bottom: 0;
+    }
+}
+
+.ambience-image-container {
+    margin-bottom: 5px;
+    @include breakpoint(sm) {
+        margin-bottom: 20px;
+    }
+}
+
+.ambience-image-container a.active img {
+    border: 3px solid #FDA085;
+}
+
+.ambiance-image {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: 100%;
+
+    @include breakpoint(sm) {
+        max-width: 200px;
+        max-height: 200px;
+    }
+}
+
+.audio-player {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px;
+}
+
+@media (min-width: 768px) {
+    .audio-player {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+}
+
+.audio-btn {
+    width: 200px;
+}
+
+.audio-duration {
+    color: #B8B6AF;
+}
+
+.audio-element {
+    margin-right: 16px;
+    width: 50px;
+}
+
+@media (min-width: 768px) {
+    .audio-element {
+        margin-right: 30px;
+    }
+}
+
+.audio-element:last-child {
+    margin-right: 0;
+}
+
+.audio-element.btn,
+.vex.vex-theme-default .audio-element.vex-dialog-button {
+    width: 100px;
+}
+
+@media (min-width: 768px) {
+    .audio-element.btn,
+    .vex.vex-theme-default .audio-element.vex-dialog-button {
+        width: 200px;
+    }
+}
+
+@media (min-width: 768px) {
+    .audio-forward {
+        margin-right: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .ambiance-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+
+.ambiance-box {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .ambiance-box {
+        margin-right: 40px;
+        margin-bottom: 0;
+    }
+}
+
+.ambiance-caption {
+    font-size: 20px;
+}
+
+.ambience-image-container {
+    margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+    .ambience-image-container {
+        margin-bottom: 20px;
+    }
+}
+
+.question-buttons {
+    padding-left: 0px;
+}
+
+.question-buttons label a.btn {
+    margin-left: 0px;
+    margin-right: 10px;
+}

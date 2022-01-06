@@ -1,0 +1,73 @@
+<div class="form-modal">
+    <mat-dialog-content>
+        <div class="form-wrapper-80">
+            <div class="title-wrapper">
+                <h2 translate>Additional information</h2>
+            </div>
+            <p *ngIf="enableUniversityFields">
+                This information is collected to help your campus better understand the student population that is
+                using WellTrack. Your personal information is never shared with anyone without your consent, and your
+                campus will only view this information as an aggregate.
+            </p>
+            <p *ngIf="!enableUniversityFields">
+                This information is collected to help us better understand the users that are
+                using WellTrack. Your personal information is never shared with anyone without your consent, and WellTrack
+                will only view this information as an aggregate.
+            </p>
+        </div>
+
+        <div class="form-wrapper">
+            <mat-form-field class="example-full-width">
+                <input class="wt-auto-demographic-age" matInput aria-label="Age" placeholder="Age" value=""
+                    [(ngModel)]="age" aria-required="true">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select class="wt-auto-demographic-gender" [(ngModel)]="gender" aria-required="true"
+                    aria-label="Gender" placeholder="Gender">
+                    <mat-option *ngFor="let genderRow of genderRows" [value]="genderRow">
+                        {{genderRow}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select class="wt-auto-demographic-ethnicity" [(ngModel)]="ethnicity" aria-required="true"
+                    aria-label="Ethnicity" placeholder="Ethnicity">
+                    <mat-option *ngFor="let ethnicityRow of ethnicityRows" [value]="ethnicityRow">
+                        {{ethnicityRow}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div *ngIf="enableUniversityFields">
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-years" [(ngModel)]="yearInProgram" aria-required="false"
+                        aria-label="Year in program" placeholder="Year in program">
+                        <mat-option [value]="-1">
+                            N/A
+                        </mat-option>
+                        <mat-option *ngFor="let yearrow of yearInProgramRows" [value]="yearrow">
+                            {{yearrow}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-referred" [(ngModel)]="referred" aria-required="true"
+                        aria-label="I was referred to WellTrack by a counselor?"
+                        placeholder="I was referred to WellTrack by a counselor?">
+                        <mat-option [value]="0">No</mat-option>
+                        <mat-option [value]="1">Yes</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="fixed-footer">
+            <a tabindex="0" class="btn-primary btn-bold btn wt-auto-demographic-save" (click)="doSave()"
+                (keypress)="doSave()">Save</a>
+        </div>
+    </mat-dialog-content>
+</div>

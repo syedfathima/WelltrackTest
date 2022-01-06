@@ -1,0 +1,50 @@
+<div id="challenge-listing">
+    <h2>
+        What is it?
+    </h2>
+    <p>
+        Many people living with a mental illness report that negative stereotypes, and the resulting potential for discrimination,
+        causes them more suffering than the illness itself. As a result, two thirds of those suffering from mental illness
+        are too afraid to seek the help that they need.
+    </p>
+
+    <p>
+        Mental illness affects people of all ages and from all walks of life. It can take many forms, including depression, anxiety
+        and schizophrenia. Most individuals find ways to live with their illnesses but how they are treated by others often
+        proves to be more of a challenge than the illness itself.
+    </p>
+    <p>
+        That’s why it’s important to start a conversation around mental health during the MoodCheck challenge and learn to become
+        more mindful about how the things you do every day affect the way you feel.
+    </p>
+    <h2>
+        How does it work?
+    </h2>
+    <p>
+        The goal is to motivate us all to be mindful about how the things we do affect the way we feel. This increased awareness
+        is known to be a strong predictor of improved mental health and well-being.
+    </p>
+    <p>
+        When you join the challenge, you will be randomly placed on one of the MoodCheck teams. Gain points each time you do a MoodCheck,
+        and gain bonus points for checking your mood regularly over consecutive days of the challenge.
+    </p>
+    <p>
+        You can take part in the challenge by downloading WellTrack on iOS or Android. You can also take part in the challenge on
+        a desktop computer by going to http://app.welltrack.com.
+    </p>
+    <p>
+        Let’s all start a conversation around mental health while learning to be more mindful. Join the MoodCheck challenge today!!
+    </p>
+
+    <h3>Challenges</h3>
+
+    <div class="challenge" *ngFor="let challenge of challenges">
+        <h3>
+            <a [routerLink]="'/challenges/' + challenge.id">{{challenge.name}}</a>
+            <span></span>
+        </h3>
+        <p class="duration">{{challenge.duration}}</p>
+
+    </div>
+
+</div>

@@ -1,0 +1,206 @@
+<div id="invite" *ngIf="!success && type == 'professional' && !subscribe" [ngClass]="type">
+    <div class="img-wrapper">
+        <img src="./assets/img/professional/flyingletter@2x.png" alt="">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+            <h2 *ngIf="showShare" translate>invite.professional.title</h2>
+            <h2 *ngIf="!showShare" translate>invite.professional.titleShare</h2>
+            <p translate *ngIf="showShare">invite.professional.body</p>
+            <p translate *ngIf="!showShare">invite.professional.bodyShare</p>
+        </div>
+    </div>
+
+    <form
+        novalidate
+        [formGroup]="inviteForm"
+        (ngSubmit)="sendInvite()"
+    >
+        <div class="form-wrapper">
+            <mat-form-field class="wt-mat-form-field">
+                <img alt="Email validation checkbox" *ngIf="f.email.touched && !f.email.errors" src="./assets/img/icons/check@2x.png" class="float-right check animated fadeInUp"
+                    item-content>
+                <input matInput class="wt-mat-input" tabindex="0" formControlName="email" name="email" type="text" placeholder="prefix@email.com" />
+				<mat-error
+					*ngIf="
+						f.email.touched &&
+						f.email.errors?.required
+					"
+				>
+					Please enter a valid email
+				</mat-error>
+            </mat-form-field>
+            <div class="sharing" *ngIf="userShare && showShare">
+                <mat-checkbox matInput name="share" type="checkbox" formControlName="share" ></mat-checkbox>
+                <img alt="Cloud icon" height="15" src="./assets/img/icons/cloud_orange.png">
+                <label translate>invite.share</label>
+            </div>
+            <div class="label invitemessage" class="text-left" translate>invite.msg</div>
+            <mat-form-field class="wt-mat-form-field">
+                <textarea matInput class="wt-mat-input" tabindex="0" formControlName="message" name="message" placeholder="200 character max"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="sendInvite()" (keypress)="sendInvite()" class="btn btn-primary" translate>invite.send</a>
+        </div>
+    </form>
+</div>
+
+<div id="invite" *ngIf="!success && type === 'professional' && subscribe" [ngClass]="type">
+    <div class="img-wrapper">
+        <img alt="Crowd icon" src="./assets/img/professional/crowd@2x.png" alt="" style="height:100px;">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+            <h2 translate>invite.professional.title</h2>
+        </div>
+    </div>
+
+    <form
+        novalidate
+        [formGroup]="inviteForm"
+        (ngSubmit)="sendInvite()"
+    >
+        <div class="form-wrapper">
+            <mat-form-field class="wt-mat-form-field">
+                <img alt="Email validation checkbox" *ngIf="f.email.touched && !f.email.errors" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                    item-content>
+                <input matInput class="wt-mat-input" tabindex="0" formControlName="email" name="email" type="text" placeholder="prefix@email.com" />
+            </mat-form-field>
+
+            <div class="text-left invitemessage" translate>invite.msg</div>
+            <textarea tabindex="0" formControlName="message" name="message" placeholder="200 character max"></textarea>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="sendInvite()" (keypress)="sendInvite()" class="btn btn-primary" translate>invite.send</a>
+        </div>
+    </form>
+</div>
+
+<div id="invite" *ngIf="!success && type == 'orgadmin'" [ngClass]="type">
+    <div class="img-wrapper">
+        <img src="./assets/img/professional/crowd@2x.png" alt="Crowd icon" style="height:100px;">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+            <h2 translate>invite.orgAdmin.title</h2>
+            <p translate>invite.orgAdmin.body</p>
+        </div>
+    </div>
+
+    <form
+        novalidate
+        [formGroup]="inviteForm"
+        (ngSubmit)="sendInvite()"
+    >
+        <div class="form-wrapper">
+            <mat-form-field class="wt-mat-form-field">
+                <img alt="Email validation checkbox" *ngIf="f.email.touched && !f.email.errors" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                    item-content>
+                <input matInput class="wt-mat-input" tabindex="0" formControlName="email" name="email" type="text" placeholder="prefix@email.com" />
+            </mat-form-field>
+
+            <div class="text-left invitemessage" translate>invite.msg</div>
+            <mat-form-field class="wt-mat-form-field">
+                <textarea matInput class="wt-mat-input" tabindex="0" formControlName="message" name="message" placeholder="200 character max"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="sendInvite()" (keypress)="sendInvite()" class="btn btn-secondary" translate>invite.send</a>
+        </div>
+    </form>
+</div>
+
+<div id="invite" *ngIf="!success && type === 'admin'" class="professional">
+    <div class="img-wrapper">
+        <img alt="Crowd icon" src="./assets/img/professional/crowd@2x.png" alt="" style="height:100px;">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+            <h2>
+                <span translate>invite.admin.title</span>{{admintitle}}</h2>
+        </div>
+    </div>
+
+    <form
+        novalidate
+        [formGroup]="inviteForm"
+        (ngSubmit)="sendInvite()"
+    >
+        <div class="form-wrapper">
+            <mat-form-field class="wt-mat-form-field">
+                <img alt="Email validation checkbox" *ngIf="f.email.touched && !f.email.errors" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                    item-content>
+                <input matInput class="wt-mat-input" tabindex="0" formControlName="email" name="email" type="text" placeholder="prefix@email.com" />
+                <mat-error
+					*ngIf="
+						f.email.touched &&
+						f.email.errors?.required
+					"
+				>
+					Please enter a valid email
+				</mat-error>
+            </mat-form-field>
+
+            <div class="text-left invitemessage" translate>invite.msg</div>
+            <mat-form-field class="wt-mat-form-field">
+                <textarea matInput class="wt-mat-input" tabindex="0" formControlName="message" name="message" placeholder="200 character max"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="sendInvite()" (keypress)="sendInvite()" class="btn btn-primary" translate>invite.send</a>
+        </div>
+    </form>
+</div>
+
+
+<div id="invite" *ngIf="!success && type === 'user'" class="user">
+    <div class="img-wrapper">
+        <img alt="Crowd icon" src="./assets/img/professional/crowd@2x.png" alt="" style="height:100px;">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+            <h2 translate>invite.userSubscribe.title</h2>
+        </div>
+        <p *ngIf="response" [innerHtml]="response"></p>
+    </div>
+
+    <form
+        novalidate
+        [formGroup]="inviteForm"
+        (ngSubmit)="sendInvite()"
+    >
+        <div class="form-wrapper">
+            <p translate>
+                invite.userSubscribe.body.0
+            </p>
+            <p translate>
+                invite.userSubscribe.body.1
+            </p>
+            <div class="icon-input">
+                <img alt="Email validation checkbox" *ngIf="f.email.touched && !f.email.errors" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                    item-content>
+                <input tabindex="0" formControlName="email" name="email" type="text" placeholder="prefix@email.com" />
+
+            </div>
+
+            <div class="text-left invitemessage" translate>invite.msg</div>
+            <textarea tabindex="0" formControlName="message" name="message" placeholder="200 character max"></textarea>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="sendInvite()" (keypress)="sendInvite()" class="btn btn-primary" translate>invite.send</a>
+        </div>
+    </form>
+</div>
+
+<div class="success center" *ngIf="success">
+    <img alt="Ok" height="170" src="./assets/img/icons-svg/OK.svg" alt="check">
+    <h2 translate>invite.sent</h2>
+    <div *ngIf="this.type == 'admin'">
+        <p [innerHtml]="response"></p>
+    </div>
+    <div *ngIf="this.type != 'admin'">
+        <p class="receive" translate>invite.receive</p>
+        <p class="strong" translate>invite.thanks</p>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<mat-dialog-content>
+
+    <div class="form-wrapper">
+        <div class="title-wrapper">
+            <h1>Create demo user</h1>
+        </div>
+
+        <p>User will receive an invitation containing their generated email and a link to set their password.</p>
+
+        <div class="icon-input">
+            <label for="fullName">Full Name</label>
+            <input type="text" [(ngModel)]="user.fullName" name="fullName" id="fullName"
+                (ngModelChange)="onChangeFullName()" />
+        </div>
+
+        <div class="icon-input" *ngIf="user.fullName">
+            <label for="email">Email</label>
+            <input type="text" [(ngModel)]="user.email" name="email" id="email" />
+        </div>
+
+        <div class="icon-input" *ngIf="user.fullName">
+            <label for="emailInvitation">Email to send invitation</label>
+            <input type="text" [(ngModel)]="emailInvitation" name="emailInvitation" id="emailInvitation" />
+        </div>
+
+
+        <div class="fixed-footer">
+            <a tabindex="0" class="btn-primary btn" (click)="onCreate()" (keypress)="onCreate()">Save</a>
+        </div>
+    </div>
+
+
+</mat-dialog-content>

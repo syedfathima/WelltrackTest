@@ -1,0 +1,19 @@
+<div id="answer">
+    <div class="answer-slide">
+        <div class="body-wrapper">
+            <div class="content">
+                <h1 class="content-header">{{title}}</h1>
+                <div class="results">
+                    <p [innerHTML]="innerhtml">
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-primary" translate>cdQuiz.popups.answer.button</a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,20 @@
+@import "../../../theme/_welltrack.variables.scss";
+
+#page-manage-resources{
+    .table-responsive{
+        td:first-child, th:first-child{
+            width:80%;
+        }
+        td:last-child, th:last-child{
+            width:20%;
+            text-align:right;
+        }
+    }
+    h2{
+        font-size:$font-size-xxxl;
+    }
+
+    .click-title{
+        font-size:$font-size-xxl;
+    }
+}

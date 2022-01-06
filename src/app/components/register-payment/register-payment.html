@@ -1,0 +1,189 @@
+<div id="page-payment" class="public-portal-right-col">
+    <h1 id="section-title" class="wt-access">Purchase WellTrack</h1>
+    <div class="form-screen">
+
+        <div>
+            <div class="title-wrapper center">
+                <h2 translate>Purchase</h2>
+                <p translate *ngIf="!loggedIn">signUp.body</p>
+            </div>
+
+            <div id="promo-selected" *ngIf="promoValidated">
+                <h3 translate>paymentform.lumino</h3>
+                <span translate>paymentform.lumino50</span>
+            </div>
+
+            <div style="clear:both;"></div>
+
+            <div id="payment-info">
+                <div class="dollarsign">$</div>
+                <div class="cost">
+                    {{packages[packageSelected][0].cost}}
+                </div>
+                <div class="text" translate>
+                    Per month
+                    <span *ngIf="packageSelected == 'lumino'">
+                        <br> 50% Discount</span>
+                </div>
+            </div>
+
+            <div id="payment-info">
+                <div class="dollarsign">$</div>
+                <div class="cost">
+                    {{packages[packageSelected][1].cost}}
+                </div>
+                <div class="text" translate>
+                    Per year
+                    <span *ngIf="packageSelected == 'lumino'">
+                        <br> 50% Discount</span>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <div id="package-selector">
+                <h3 translate>paymentform.choosePayment</h3>
+                <select [(ngModel)]="packageChoice">
+                    <option [value]="0" translate>paymentform.monthly</option>
+                    <option [value]="1" translate>paymentform.yearly</option>
+                </select>
+            </div>
+
+            <div class="selected">
+                Selected:
+                <strong>{{packages[packageSelected][packageChoice].title}}</strong>
+            </div>
+
+
+            <div style="clear:both;"></div>
+
+            <div class="divider"></div>
+            <div class="form-wrapper">
+                <div *ngIf="!loggedIn">
+                    <h3 translate>paymentform.loginInformation</h3>
+
+                    <div id="login-info" class="col-sm-6 col-xs-12">
+                        <h4>I would like to create an account</h4>
+                        <div class="icon-input">
+                            <img alt="Full name validates" *ngIf="fullName" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                                item-content>
+                            <label class="hidden" for="fullname">paymentform.fullName</label>
+                            <input tabindex="0" id="fullname" type="text" placeholder="{{inputs[0]}}" [(ngModel)]="fullName"
+                                name="fullName" />
+                        </div>
+                        <div class="icon-input">
+                            <img alt="Email validates" *ngIf="emailAddress && emailValidate && !suffix" src="./assets/img/icons/check@2x.png"
+                                class="check animated fadeInUp" item-content>
+                            <div [class.input-suffix]="suffix">
+                                <div class="checkbox-wrapper">
+                                    <label class="hidden" for="email">paymentform.email</label>
+                                    <input tabindex="0" id="email" type="email" placeholder="{{inputs[1]}}" [(ngModel)]="emailAddress"
+                                        name="emailAddress" [class.fieldl]="suffix" (ngModelChange)="onChangeEmail()" />
+                                    <img alt="Email validates" *ngIf="emailAddress && emailValidate && suffix" src="./assets/img/icons/check@2x.png"
+                                        class="check animated fadeInUp" item-content>
+                                </div>
+                                <div *ngIf="suffix" class="suffix">{{suffix}}</div>
+                            </div>
+                        </div>
+                        <div class="icon-input">
+                            <img alt="Password validates" *ngIf="passwordValidate && password" src="./assets/img/icons/check@2x.png"
+                                class="check animated fadeInUp" item-content>
+                            <label class="hidden" for="password">paymentform.password</label>
+                            <input tabindex="0" id="password" type="password" placeholder="{{inputs[2]}}" [(ngModel)]="password"
+                                name="password" (ngModelChange)="onChangePassword()" />
+                            <p *ngIf="!passwordValidate && password" class="red" translate>signUp.passwordValidate</p>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <h4>I already have an account</h4>
+
+                        <mat-form-field class="wt-mat-form-field">
+                            <input matInput class="wt-mat-input" aria-label="Email" tabindex="0" id="email" type="email" [placeholder]="'loginMobile.emailAddress' | translate"
+                                [(ngModel)]="loginEmailAddress" name="username" />
+						</mat-form-field>
+                        <mat-form-field class="wt-mat-form-field">
+                            <input matInput class="wt-mat-input" aria-label="Password" tabindex="0" id="password" type="password" [placeholder]="'loginMobile.password' | translate"
+                                [(ngModel)]="loginPassword" name="password" />
+						</mat-form-field>
+
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                    <h3 translate>paymentform.billingInfo.title</h3>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="Address1" id="Address1" [(ngModel)]="address1"
+                            [placeholder]="'paymentform.billingInfo.address' | translate" value="" required=""
+                            aria-required="true">
+					</mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="City" id="City" [(ngModel)]="city" [placeholder]="'paymentform.billingInfo.city' | translate"
+                            value="">
+					</mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="Province" id="Province" [(ngModel)]="province"
+                            [placeholder]="'paymentform.billingInfo.province' | translate" value="">
+					</mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="Country" id="Country" [(ngModel)]="country"
+                            [placeholder]="'paymentform.billingInfo.country' | translate" value="">
+                    </mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="Postal" id="Postal" [(ngModel)]="postal"
+                            max-length="7" [placeholder]="'paymentform.billingInfo.postalCode' | translate" value="">
+					</mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <input matInput class="wt-mat-input" type="text" name="Phone" id="Phone" [(ngModel)]="phone" placeholder="(506) 555-5555"
+                            value="" required="" aria-required="true">
+					</mat-form-field>
+                </div>
+
+                <div class="col-sm-6 col-xs-12">
+                    <h3 translate>paymentform.paymentInformation</h3>
+                    <div id="card-element" class="field"></div>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <label for="cardholdername" translate>paymentform.cardholder</label>
+                        <input matInput class="wt-mat-input" type="text" name="NameOnCard" [(ngModel)]="cc_name" id="nameoncard"
+                            placeholder="" required="" aria-required="true">
+					</mat-form-field>
+
+                </div>
+                <!-- end of payment info -->
+                <div class="col-xs-12" *ngIf="!loggedIn">
+                    <div class="form-group">
+                        <input tabindex="0" type="checkbox" [(ngModel)]="agree" name="agree" id="agree" />
+                        <label for="agree">
+                            <span translate>signUp.tos.copy</span>
+                            <a tabindex="0" href="/terms-and-conditions" target="_blank" alt="Terms and conditions"
+                                translate>signUp.tos.tos</a>
+                            <span translate>signUp.tos.and</span>
+                            <a tabindex="0" href="/privacy-policy" target="_blank" alt="Privacy policy" translate>signUp.tos.privacy</a>.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="clear:both;"></div>
+        <div class="clear">
+            <a tabindex="0" (click)="onBuy()" (keypress)="onBuy()" class="btn btn-primary btn-inline" translate>Buy Now</a>
+            <p *ngIf="!loggedIn">
+                <span [translate]="'signUp.exists'"></span>
+                <a tabindex="0" routerLink="/" translate>signUp.sign</a>
+            </p>
+            <a tabindex="0" *ngIf="showNext" (click)="onPrevious()" (keypress)="onPrevious()" class="btn btn-primary"
+                translate>signUp.previous</a>
+        </div>
+    </div>
+</div>

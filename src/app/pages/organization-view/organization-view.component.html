@@ -1,0 +1,308 @@
+<page-loader *ngIf="isloadedCount < callCount"></page-loader>
+<div class="page-section" *ngIf="isloadedCount >= callCount">
+    <div class="marginbottom20 clearfix">
+        <a tabindex="0" class="pull-right" routerLink="/admin/organization-listing" translate>organizationView.back</a>
+    </div>
+
+    <div class="page-section-header">
+        <div class="page-section-buttons">
+            <a tabindex="0" (click)="editOrganization()" (keypress)="editOrganization()"
+                class="btn btn-primary btn-inline">Edit Organization</a>
+        </div>
+
+        <h1>{{organization.name}}</h1>
+        <div class="page-section-content clearfix">
+            <div>
+                <div>
+                    <strong>Subdomain link</strong>
+                </div>
+                {{subdomainlink}}
+                <div>
+                    <strong>Access code link</strong>
+                </div>
+                {{accesscodelink}}
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section-content clearfix">
+        <div class="tab-wrapper">
+            <div class="wt-tabs">
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('stats')}">
+                    <a tabindex="0" (click)="onChangeTab('stats')" (keypress)="onChangeTab('stats')"
+                        translate>organizationView.headers.0</a>
+                </div>
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('activity')}">
+                    <a tabindex="0" (click)="onChangeTab('activity')" (keypress)="onChangeTab('activity')"
+                        translate>organizationView.headers.1</a>
+                </div>
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('members')}">
+                    <a tabindex="0" (click)="onChangeTab('members')" (keypress)="onChangeTab('members')"
+                        translate>organizationView.headers.2</a>
+                </div>
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('accesscodes')}">
+                    <a tabindex="0" (click)="onChangeTab('accesscodes')" (keypress)="onChangeTab('accesscodes')"
+                        translate>organizationView.headers.3</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wt-tab-body">
+            <div [hidden]="!isTabActive('stats')">
+                <dashboard-executive [organization]="organization" [showTitle]="false"></dashboard-executive>
+            </div>
+
+            <div [hidden]="!isTabActive('activity')">
+                <activity-listing [orgId]="id"></activity-listing>
+            </div>
+
+            <div [hidden]="!isTabActive('members')">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a (click)="showInvite('executiveprofessional')"
+                            (keypress)="showInvite('executiveprofessional')" class="btn btn-primary btn-with-icon"
+                            translate>
+                            <img src="./assets/img/icons-svg/user-icon.svg">Invite executive professional</a>
+                    </div>
+                    <h2 translate>organizationListing.executiveprofessional</h2>
+                </div>
+                <div class="responsible-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>userListing.headers.0</th>
+                                <th translate>userListing.headers.1</th>
+                                <th translate>userListing.headers.2</th>
+                                <th translate>userListing.headers.3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let executiveprofessional of executiveprofessionals">
+                                <td class="strong">
+                                    <img class="rounded" height="20" src="./assets/img/circle_logo@2x.png">
+                                    {{executiveprofessional.fullName}}</td>
+                                <td class="subtle">{{executiveprofessional.loginOn | amUtc | amDateFormat: 'DD MMM' }}
+                                </td>
+                                <td class="strong">{{executiveprofessional.email}}</td>
+                                <td class="strong">
+                                    {{executiveprofessional.primaryOrganization.name}}
+                                </td>
+                                <td>
+                                    <a tabindex="0" class="pull-right"
+                                        [routerLink]="['/admin/user', executiveprofessional.id]"
+                                        translate>userListing.view</a>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let invite of invites | filter : 'Action' : 'adminexecutiveprofessional'">
+                                <td>(Pending)</td>
+                                <td>{{invite.Arg1}}</td>
+                                <td>{{invite.Created}}</td>
+                                <td>
+                                    <a tabindex="0" (click)="doResend(invite.ID)"
+                                        (keypress)="doResend(invite.ID)">Resend</a>
+                                </td>
+                                <td>
+                                    <a tabindex="0" (click)="doRemoveInvite(invite.ID)"
+                                        (keypress)="doRemoveInvite(invite.ID)">Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p *ngIf="!executiveprofessionals || executiveprofessionals.length < 1" translate class="center">
+                        organizationView.noUsersfound</p>
+                </div>
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a tabindex="0" (click)="showInvite('executive')" (keypress)="showInvite('executive')"
+                            class="btn btn-primary btn-with-icon" translate>
+                            <img src="./assets/img/icons-svg/user-icon.svg">Invite executive</a>
+                    </div>
+                    <h2 translate>organizationListing.executive</h2>
+                </div>
+                <div class="responsible-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>userListing.headers.0</th>
+                                <th translate>userListing.headers.1</th>
+                                <th translate>userListing.headers.2</th>
+                                <th translate>userListing.headers.3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let executive of executives">
+                                <td class="strong">
+                                    <img class="rounded" height="20" src="./assets/img/circle_logo@2x.png">
+                                    {{executive.fullName}}</td>
+                                <td class="subtle">{{executive.loginOn | amUtc | amDateFormat: 'DD MMM' }}</td>
+                                <td class="strong">{{executive.email}}</td>
+                                <td class="strong">
+                                    {{executive.primaryOrganization.name}}
+                                </td>
+                                <td>
+                                    <a class="pull-right" [routerLink]="['/admin/user', executive.id]"
+                                        translate>userListing.view</a>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let invite of invites | filter : 'Action' : 'adminexecutive'">
+                                <td>(Pending)</td>
+                                <td>{{invite.Arg1}}</td>
+                                <td>{{invite.Created}}</td>
+                                <td>
+                                    <a tabindex="0" (click)="doResend(invite.ID)"
+                                        (keypress)="doResend(invite.ID)">Resend</a>
+                                </td>
+                                <td>
+                                    <a tabindex="0" (click)="doRemoveInvite(invite.ID)"
+                                        (keypress)="doRemoveInvite(invite.ID)">Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p *ngIf="!executives || executives.length < 1" translate class="center">organizationView.noUsersfound
+                </p>
+
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a (click)="showInvite('professional')" (keypress)="showInvite('professional')"
+                            class="btn btn-primary btn-with-icon" translate>
+                            <img src="./assets/img/icons-svg/user-icon.svg">Invite professional</a>
+                    </div>
+                    <h2 translate>organizationListing.professional</h2>
+                </div>
+                <div class="responsible-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>userListing.headers.0</th>
+                                <th translate>userListing.headers.1</th>
+                                <th translate>userListing.headers.2</th>
+                                <th translate>userListing.headers.3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let professional of professionals">
+                                <td class="strong">
+                                    <img class="rounded" height="20" src="./assets/img/circle_logo@2x.png">
+                                    {{professional.fullName}}</td>
+                                <td class="subtle">{{professional.loginOn | amUtc | amDateFormat: 'DD MMM' }}</td>
+                                <td class="strong">{{professional.email}}</td>
+                                <td class="strong">
+                                    {{professional.primaryOrganization.name}}
+                                </td>
+                                <td>
+                                    <a tabindex="0" class="pull-right" [routerLink]="['/admin/user', professional.id]"
+                                        translate>userListing.view</a>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let invite of invites | filter : 'Action' : 'adminprofessional'">
+                                <td>(Pending)</td>
+                                <td>{{invite.Arg1}}</td>
+                                <td>{{invite.Created}}</td>
+                                <td>
+                                    <a tabindex="0" (click)="doResend(invite.ID)"
+                                        (keypress)="doResend(invite.ID)">Resend</a>
+                                </td>
+                                <td>
+                                    <a tabindex="0" (click)="doRemoveInvite(invite.ID)"
+                                        (keypress)="doRemoveInvite(invite.ID)">Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p *ngIf="!professionals || professionals.length < 1" translate class="center">
+                        organizationView.noUsersfound</p>
+                </div>
+
+
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a *ngIf="organization.demoStatus" (click)="createDemoUser()" (keypress)="createDemoUser"
+                            class="btn btn-primary btn-with-icon" translate>
+                            <img src="./assets/img/icons-svg/user-icon.svg">Create demo user</a>
+                        <a (click)="showInvite('user')" (keypress)="showInvite('user')"
+                            class="btn btn-primary btn-with-icon" translate>
+                            <img src="./assets/img/icons-svg/user-icon.svg">Invite user</a>
+
+                    </div>
+                    <h2 translate>organizationListing.user</h2>
+                </div>
+
+                <div class="responsible-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>userListing.headers.0</th>
+                                <th translate>userListing.headers.1</th>
+                                <th translate>userListing.headers.2</th>
+                                <th translate>userListing.headers.3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let userrow of users">
+                                <td class="strong">
+                                    <img class="rounded" height="20" src="./assets/img/circle_logo@2x.png">
+                                    {{userrow.fullName}}</td>
+                                <td class="subtle">{{userrow.loginOn | amUtc | amDateFormat: 'DD MMM' }}</td>
+                                <td class="strong">{{userrow.email}}</td>
+                                <td class="strong">
+                                    {{userrow.primaryOrganization.name}}
+                                </td>
+                                <td>
+                                    <a class="pull-right" [routerLink]="['/admin/user', userrow.id]"
+                                        translate>userListing.view</a>
+                                </td>
+                            </tr>
+
+                            <tr *ngFor="let invite of invites | filter : 'Action' : 'userinvite'">
+                                <td>(Pending)</td>
+                                <td>{{invite.Arg1}}</td>
+                                <td>{{invite.Created}}</td>
+                                <td>
+                                    <a tabindex="0" (click)="doResend(invite.ID)"
+                                        (keypress)="doResend(invite.ID)">Resend</a>
+                                </td>
+                                <td>
+                                    <a tabindex="0" (click)="doRemoveInvite(invite.ID)"
+                                        (keypress)="doRemoveInvite(invite.ID)">Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p *ngIf="!users || users.length < 1" translate class="center">organizationView.noUsersfound</p>
+                </div>
+            </div>
+            <div [hidden]="!isTabActive('accesscodes')">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a (click)="createAccessCode()" (keypress)="createAccessCode()"
+                            class="btn btn-primary btn-with-icon" translate>organizationView.code.button</a>
+                    </div>
+                </div>
+                <div class="responsible-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>organizationView.code.headers.0</th>
+                                <th style="text-align:right;" translate>organizationView.code.headers.1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let code of accesscodes; let i = index;">
+                                <td>{{code.Code}}</td>
+                                <td style="text-align:right;">
+                                    <a tabindex="0" (click)="onDeleteAccessCode(i)" (keypress)="onDeleteAccessCode(i)"
+                                        translate>organizationView.code.delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p *ngIf="!accesscodes || accesscodes.length < 1" translate class="center">
+                    organizationView.noAccessCodesFound</p>
+            </div>
+
+        </div>
+    </div>
+</div>

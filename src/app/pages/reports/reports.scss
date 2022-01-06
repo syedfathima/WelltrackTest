@@ -1,0 +1,19 @@
+#reports{
+    mat-spinner{
+        margin:auto;
+    }
+    label{
+        margin-right:30px;
+    }
+
+    table{
+        border-collapse: collapse ;
+        white-space: nowrap;
+        th{
+            padding:4px;
+        }
+        td{
+            padding:4px;
+        }
+    }
+}

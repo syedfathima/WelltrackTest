@@ -1,0 +1,170 @@
+<div id="page-organization-edit">
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onUpdateMain()" (keypress)="onUpdateMain()" class="btn btn-bold"
+                    translate>organizationInfo.saveOrganizationInformation</a>
+            </div>
+            <h3 translate>organizationInfo.title</h3>
+        </div>
+
+        <div class="page-section-content">
+            <div class="row padding">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="wt-mat-form-field">
+                        <!-- <label for="name" translate>organizationInfo.name</label> -->
+                        <input matInput class="wt-mat-input" tabindex="0" id="name" type="text"
+                            placeholder="{{placeholders && placeholders[0]}}" [(ngModel)]="name" />
+                    </mat-form-field>
+                    <!--
+                        <div class="icon-input">
+                            <label for="email" translate>organizationInfo.email</label>
+                            <input id="email" type="email" placeholder="{{placeholders &&  placeholders[1]}}" [(ngModel)]="email" />
+                        </div>
+                    -->
+                    <mat-form-field class="wt-mat-form-field">
+                        <!-- <label for="phone" translate>organizationInfo.phone</label> -->
+                        <input matInput class="wt-mat-input" tabindex="0" id="phone" type="text"
+                            placeholder="{{placeholders && placeholders[2]}}" [(ngModel)]="phone" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field class="wt-mat-form-field">
+                        <!-- <label for="address" translate>organizationInfo.address</label> -->
+                        <input matInput class="wt-mat-input" tabindex="0" id="address" type="text"
+                            placeholder="{{placeholders && placeholders[3]}}" [(ngModel)]="address" />
+                    </mat-form-field>
+                    <mat-form-field class="wt-mat-form-field">
+                        <!-- <label for="website" translate>organizationInfo.website</label> -->
+                        <input matInput class="wt-mat-input" tabindex="0" id="website" type="text"
+                            placeholder="{{placeholders && placeholders[4]}}" [(ngModel)]="website" />
+                    </mat-form-field>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onUpdateContact()" (keypress)="onUpdateContact()" class="btn btn-primary"
+                    translate>organizationInfo.saveEmergencyContact</a>
+            </div>
+            <h3 translate>organizationInfo.emergency</h3>
+        </div>
+        <div class="page-section-content">
+            <div class="form-wrapper">
+                <label for="emergencyContact" translate>organizationInfo.default</label>
+                <ckeditor tabindex="0" id="emergencyContact" [(ngModel)]="emergencyContact" [config]="config">
+                </ckeditor>
+            </div>
+        </div>
+    </div>
+    
+    <!-- add organization setting to enable this so that it's not enabled by default
+        <div class="page-section">
+            <div class="page-section-header">
+                <div class="page-section-buttons">
+                    <a tabindex="0" (click)="doUpdateResources()" (keypress)="doUpdateResources()" class="btn btn-primary"
+                        translate>organizationInfo.updateResources</a>
+                </div>
+                <h3 translate>organizationInfo.editResources</h3>
+                <p class="red">{{errors}}</p>
+            </div>
+            <div class="page-section-content">
+                <div class="form-wrapper">
+                    <resources-edit [resources]="organization" (onResourceSetChange)="resourceSetChanged($event)">
+                    </resources-edit>
+                </div>
+
+                <div style="width: 100%;">
+                    <div style="margin: auto;">
+                        <p style="text-align: center;" class="red">{{errors}}</p>
+                        <button style="margin: auto;" tabindex="0" class="btn-primary btn" (click)="doUpdateResources()">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    -->
+
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" *ngIf="showInvite" (click)="inviteExecutive()" (keypress)="inviteExecutive()"
+                    class="btn btn-primary btn-with-icon" translate>
+                    <img alt="Invite" src="./assets/img/icons-svg/user-icon.svg">organizationInfo.invite</a>
+            </div>
+            <h3 translate>organizationInfo.professional</h3>
+        </div>
+        <div class="page-section-content">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th translate>organizationInfo.headers.0</th>
+                            <th translate>organizationInfo.headers.1</th>
+                            <th translate>organizationInfo.headers.2</th>
+                            <th translate>organizationInfo.headers.3</th>
+                            <th translate>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let professional of professionals; let i = index">
+                            <td class="strong">
+                                {{professional.fullName ? professional.fullName : 'None'}}
+                            </td>
+                            <td class="subtle" translate>organizationInfo.counselor</td>
+                            <td class="strong">{{professional.email}}</td>
+                            <td class="strong">{{professional.status}}</td>
+                            <td>
+                                <a tabindex="0" *ngIf="professional.status == 'approved'" class="red"
+                                    (click)="deactivateUser(professional.id, i)"
+                                    (keypress)="deactivateUser(professional.id, i)"
+                                    translate>organizationInfo.deactivate</a>
+                                <a tabindex="0" *ngIf="professional.status == 'disabled'" class="red"
+                                    (click)="activateUser(professional.id, i)"
+                                    (keypress)="activateUser(professional.id, i)"
+                                    translate>organizationInfo.activate</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p *ngIf="!professionals || professionals.length < 1" class="center">
+                <strong translate>organizationInfo.noneFound</strong>
+            </p>
+            <!--
+            <div class="table-responsive">
+                <h1 translate>userListing.invitationsTitle</h1>
+                <table class="table" *ngIf="invites && invites.length > 0 ">
+                    <thead>
+                        <tr>
+                            <th translate>userListing.headers.6</th>
+                            <th translate>userListing.headers.7</th>
+                            <th translate>userListing.headers.8</th>
+                            <th translate>userListing.headers.9</th>
+                            <th translate>userListing.headers.10</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invite of invites">
+                            <td class="strong">{{invite.RecipientEmail}}</td>
+                            <td>{{invite.ReminderCount}}
+                                <span translate>userListing.reminders</span>
+                            </td>
+                            <td>
+                                {{this.statuses[invite.Status]}}
+                            </td>
+                            <td>{{invite.Share ? 'Yes' : 'No'}}</td>
+                            <td>
+                                <a *ngIf="invite.Status == 'sent'" (click)="resendInvitation(invite.RecipientEmail)" translate>userListing.resendInvitation</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        -->
+        </div>
+    </div>

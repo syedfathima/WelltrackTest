@@ -1,0 +1,31 @@
+<!-- normal donut --> 
+<div class="progress-wrapper">
+    <canvas id="das-improvement-general" class="chart" width="100%" height="100%"></canvas>
+    <div class="progress-meta">
+        <div class="progress-percentage">{{percent}}
+            <span>%</span>
+        </div>
+        <div class="progress-description">{{text}}</div>
+    </div>
+</div>
+
+<!-- donut with side layout --> 
+
+<div class="row sidechart">
+    <div class="left">
+        <div class="progress-wrapper">
+            <canvas id="das-improvement-depression" class="chart" style="height:200px; width:200px;"></canvas>
+            <div class="progress-meta">
+                <div class="progress-percentage">{{percent}}
+                    <span>%</span>
+                </div>
+                <div class="progress-description">{{text}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div translate>{{sidetext}}
+            <strong translate>{{sidetextStrong}}</strong>
+        </div>
+    </div>
+</div>

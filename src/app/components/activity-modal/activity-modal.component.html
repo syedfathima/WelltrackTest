@@ -1,0 +1,30 @@
+<div class="activity-modal" style="padding: 0 16px;">
+    <h3 class="ww" translate>as.modal.title</h3>
+
+    <div class="form-wrapper">
+        <div class="icon-input">
+            <form (keydown.enter)="addNewActivity()">
+                <input type="text" placeholder="{{placeholder}}" [(ngModel)]="customOption" name="customOption" />
+            </form>
+
+            <a tabindex="0" (click)="addNewActivity()" (keypress)="addNewActivity()">
+                <img alt="Plus" src="./assets/img/plus@2x.png" style="width: 30px; height: auto;">
+            </a>
+        </div>
+    </div>
+
+    <ul class="mcOptions">
+        <li *ngFor="let option of activities">
+            <span [ngClass]="{'custom': option.custom, 'disabled': option.disabled}">{{option.text}}</span>
+            <span>
+                <a tabindex="0" (click)="toggleOption(option)" (keypress)="toggleOption(option)">
+                    <span *ngIf="option.disabled" name="md-add" class="plus">+</span>
+                    <span *ngIf="!option.disabled" name="md-remove" class="minus">-</span>
+                </a>
+            </span>
+        </li>
+    </ul>
+    <div class="footer">
+        <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-bold" translate>as.modal.button</a>
+    </div>
+</div>

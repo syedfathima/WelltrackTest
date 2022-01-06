@@ -1,0 +1,87 @@
+<page-loader *ngIf="isLoaded"></page-loader>
+<div id="page-user-listing" class="page-section" >
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <mat-form-field class="wt-mat-form-field">
+                    <mat-select name="language" [(ngModel)]="selectedLanguage" (selectionChange)="valueChange()" >
+                        <mat-option *ngFor="let lang of this.allLang" [value]="lang">{{lang}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <a autoFocus tabindex="0" (click)="createConfig()" (keydown.enter)="createConfig()"
+                    class="trigger-modal invite btn btn-primary btn-with-icon pull-right " translate>
+                    <img alt="Create new user" src="./assets/img/icons-svg/user-icon.svg">config.createConfig</a>
+            </div>
+            <h1 translate>Config Listing</h1>
+        </div>
+        <div class="page-section-content">
+            <div class="table-responsive">
+                <page-loader *ngIf="isLoaded"></page-loader>
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th translate style="width:10%">config.section</th>
+                            <th translate>config.setting</th>
+                            <th translate>config.key</th>
+                            <th translate>config.value</th>
+                            <th style="width:9%"></th>
+                            <th style="width:5%"></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <mat-form-field class="wt-mat-form-field">
+                                    <mat-select name="userType" [(ngModel)]="filters.Section" (selectionChange)="valueChange()">
+                                        <mat-option [value]='""'>All</mat-option>
+                                        <mat-option *ngFor="let section of this.allSections" [value]="section">{{section}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </th>
+                            <th>
+                                <mat-form-field class="wt-mat-form-field">
+                                    <input matInput class="wt-mat-input" type="text" [(ngModel)]="filters.Setting"
+                                        (input)="searchChange()">
+                                </mat-form-field>
+                            </th>
+                            <th>
+                                <mat-form-field class="wt-mat-form-field">
+                                    <input matInput class="wt-mat-input" type="text" [(ngModel)]="filters.Key"
+                                        (input)="searchChange()">
+                                </mat-form-field>
+                            </th>
+                            <th>
+                                <mat-form-field class="wt-mat-form-field">
+                                    <input matInput class="wt-mat-input" type="text" [(ngModel)]="filters.Value"
+                                        (input)="searchChange()">
+                                </mat-form-field>
+                            </th>
+                            <!--Delete-->
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let config of formattedConfigList" >
+                            <td class="strong">
+                                {{config.Section}}
+                            </td>
+                            <td class="strong">
+                                {{config.Setting}}
+                            </td>
+                            <td class="strong">
+                                {{config.Key}}
+                            </td>
+                            <td class="strong">
+                                {{config.Value}}
+                            </td>
+                            <td (click)="editConfig(config)">
+                                <a tabindex="0" class="pull-right" translate>config.edit</a>
+                            </td>
+                            <td (click)="deleteConfig(config)">
+                                <a tabindex="0" class="pull-right" translate>config.delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

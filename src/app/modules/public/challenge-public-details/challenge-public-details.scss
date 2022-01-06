@@ -1,0 +1,21 @@
+@import "../../../../theme/_welltrack.mixins.scss";
+@import "../../../../theme/_welltrack.variables.scss";
+
+#challenge-details{
+
+  .image{
+        float:right;
+        img{
+            max-height:300px;
+            height:300px;
+        }
+    }
+
+    .challenge-footer{
+        @include breakpoint(md){
+            padding-right:300px;
+        }
+    }
+
+  
+}

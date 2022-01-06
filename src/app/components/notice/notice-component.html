@@ -1,0 +1,11 @@
+<div id="notice" *ngIf="show">
+    <a tabindex="0" (click)="onSetClose()" (keypress)="onSetClose()" class="close-modal" aria-label="Close notice">
+        <img src="./assets/img/icons-svg/close-icon.svg">
+    </a>
+    <h2 translate>blocked.trialVersion</h2>
+    <p>There are {{user.trialDays}} days left to your trial.</p>
+    <p translate>blocked.noticeDescription</p>
+    <p class="text-center">
+        <a routerLink="/app/settings" translate>blocked.noticeline1  <span translate>blocked.line4</span>  blocked.noticeline2</a>
+    </p>
+</div>

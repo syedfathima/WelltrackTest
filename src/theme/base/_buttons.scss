@@ -1,0 +1,186 @@
+.btn {
+    @include border-radius(100px);
+    display: block;
+    font-size: $font-size-xl;
+    line-height: $font-size-xl;
+    padding: 14px 18px;
+    margin: 12px 0;
+    text-decoration: none;
+    font-weight: normal;
+    color: $color-link;
+    border: 2px $color-link solid;  
+    text-align: center;
+    cursor: pointer;
+    outline: 0;
+	background-clip: initial;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	/* Rules below not implemented in browsers yet */
+	-o-user-select: none;
+	user-select: none;
+
+    &:hover, &:hover, &:focus, &:active, &.active {
+        background-color: $color-link;
+        opacity:0.8;
+        color: white;
+    }
+}
+
+.btn-bold {
+    font-weight: 700;
+}
+
+.btn-short {
+    padding: 8px 18px;
+    font-size: $font-size-lg;
+    line-height: $font-size-lg;
+}
+
+.btn-wide {
+	padding-left: 38px;
+	padding-right: 38px;
+	min-width: 150px;
+}
+
+.btn-grey{
+    border: 2px $color-text solid; 
+    color: $color-text;
+     &:hover, &:active, &.active {
+        background-color: $color-text;
+        color: white;
+    }
+    &:focus{
+        background-color: white;
+        border: 1px solid $color-text-light;
+        color: $color-text;
+    }
+}
+
+
+.btn-white{
+    border: 1px white solid; 
+    color: white;
+     &:hover, &:hover, &:focus, &:active {
+        background-color: $color-link;
+        color: white;
+    }
+}
+
+.btn-inline {
+    display: inline-block;
+}
+
+.btn-inline-small{
+    padding:2px 8px;
+    display: inline-block;
+    font-size:$font-size-small;
+    line-height:$font-size-small;
+}
+
+.btn-inline-medium{
+    padding:6px 8px;
+    display: inline-block;
+    font-size:$font-size-md;
+    line-height:$font-size-md;
+}
+
+
+.btn-primary {
+    @extend .gradient-cta-btn;
+    color: white;
+    border: 0;
+    font-weight: 700;
+
+    &:hover, &:focus, &:active {
+        opacity: 0.8;
+    }
+}
+
+.btn-secondary {
+    @extend .gradient-cta2-btn;
+    color: white;
+    border: 0;
+    font-weight: 700;
+
+    &:hover, &:focus, &:active {
+        opacity: 0.8;
+    }
+}
+
+.btn-sso{
+    font-size: $font-size-xxxl;
+    line-height:  $font-size-xxxl;
+    padding: 16px 22px;
+}
+
+.btn-facebook {
+    background-color: #3e60b3;
+    color: white;
+    border: 0;
+    font-weight: normal;
+
+    &:hover, &:focus, &:active {
+        opacity: 0.8;
+        background-color: #3e60b3;
+    }
+}
+
+.btn-disabled {
+    color: white;
+    background-color: $color-subtle;
+    background-image:none;
+    border: 0;
+
+    &:hover, &:focus, &:active {
+        background-color: darken($color-subtle, 20%);
+    }
+}
+
+.btn-white {
+    color: white;
+    border-color: white;
+
+    &:hover, &:focus, &:active {
+        background-color: transparent;
+        color: white;
+        opacity: 0.6;
+    }
+}
+
+
+.btn-primary, .vex.vex-theme-default .vex-dialog-button.vex-dialog-button-primary {
+  color: white;
+  border: 0;
+  font-weight: 700; 
+}
+
+.btn-primary:hover, .vex.vex-theme-default .vex-dialog-button.vex-dialog-button-primary:hover, .btn-primary:focus, .vex.vex-theme-default .vex-dialog-button.vex-dialog-button-primary:focus, .btn-primary:active, .vex.vex-theme-default .vex-dialog-button.vex-dialog-button-primary:active {
+    opacity: 0.8; 
+}
+
+.btn-primary.ghost, .vex.vex-theme-default .ghost.vex-dialog-button.vex-dialog-button-primary {
+    background-color: #fff;
+    background-image: none;
+    border-color: #f6d365;
+    border-style: solid;
+    border-width: 2px;
+    color: #f6d365;
+    padding-top: 12px;
+    padding-bottom: 12px; 
+}
+
+
+.btn-with-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; 
+
+    svg, img{
+        margin-right:10px;
+    }
+}

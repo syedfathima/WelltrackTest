@@ -1,0 +1,152 @@
+<div id="page-user-details" *ngIf='isloaded'>
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onCancelShare(user.id)" (keydown.enter)="onCancelShare(user.id)" class="trigger-modal btn btn-primary pull-right"
+                    translate>
+                    userDetails.cancelSharing</a>
+                <a autoFocus tabindex="0" *ngIf="appointment" (click)="onSave()" (keydown.enter)="onSave()" class="trigger-modal btn btn-secondary btn-with-icon pull-right"
+                    translate>
+                    <img alt="Schedule" src="./assets/img/icons/calendar@1x.png">userDetails.schedule</a>
+                <a tabindex="0" class="pull-right" routerLink="/professional/users" translate>userDetails.back</a>
+            </div>
+            <h1>{{fullName}}</h1>
+
+        </div>
+        <div class="page-section-content clearfix">
+            <div class="mini-section-3">
+                <div>
+                    <div class="first">
+                        <img alt="Welltrack avatar" height="100" src="./assets/img/circle_logo@2x.png" alt="WellTrack"
+                            *ngIf="!user.avatarUrl">
+                        <img src="{{avatarUrl}}" alt="{{user.fullName}}" *ngIf="user.avatarUrl" class="pull-left">
+                    </div>
+                    <div class="second">
+                        <div>{{fullName}}</div>
+                        <div class="email">{{user.email}}</div>
+                        <div *ngIf="loginOn">{{loginOn}}</div>
+                        <div *ngIf="!loginOn" translate>userDetails.neverLoggedIn</div>
+                        <div class="orange">Synched with you</div>
+                    </div>
+                </div>
+                <div>
+                    <!--<div class="timeline" translate>userDetails.last</div>-->
+                    <div class="first">
+                        <img *ngIf="moodcheckimage != ''" alt="moodcheck average icon" [src]="moodcheckimage" height="60">
+                    </div>
+                    <div class="avgnumber">
+                        <span *ngIf="emotion">{{emotion}}</span>
+                        <span *ngIf="!emotion" translate>userDetails.none</span>
+                        <div translate>userDetails.average</div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="first">
+                        <img alt="alert icon" src="./assets/img/professional/alert.png">
+                    </div>
+                    <div class="alerts">{{alerts}}
+                        <span translate>userDetails.bad</span>
+                    </div>
+
+                    <!--<div translate>userDetails.scored</div>-->
+                </div>
+
+            </div>
+            <div *ngIf="isAdmin" class="admin page-section">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th translate>userDetails.organization</th>
+                                <th translate>organizationListing.userType</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="strong">{{organization}}</td>
+                                <td class="strong">{{userType}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-sm-6">
+            <div class="page-section no-margin">
+                <div class="page-section-header">
+                    <div class="page-section-buttons" *ngIf="activity.length > 10 && showMore">
+                        <a tabindex="0" translate>userDetails.more</a>
+                    </div>
+                    <h2 translate>userDetails.latestAct</h2>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let activityrow of activity; let i = index">
+                                    <td class="strong">
+                                        {{activityrow.message}}
+                                    </td>
+                                    <td class="strong"> {{activityrow.created | amDateFormat: 'H:mm a' }}</td>
+                                    <td class="strong"> {{activityrow.created | amDateFormat: 'DD MMM YYYY' }}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-section no-margin">
+                <div class="page-section-header">
+                    <div class="page-section-buttons" *ngIf="moodchecks.length > 10 && showMore">
+                        <a tabindex="0" translate>userDetails.more</a>
+                    </div>
+                    <h2 translate>userDetails.latestMood</h2>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let moodcheck of moodchecks; let i = index">
+                                    <td class="strong">
+                                        <img alt="{{moodcheck.emotion}}" height="20" [src]="'/assets/img/moodcheck/' + (10 - moodcheck.value) + '.png'">
+                                    </td>
+                                    <td class="strong">
+                                        {{moodcheck.emotion}}
+                                    </td>
+                                    <td>
+                                        <img [alt]="moodcheck.value" height="16" *ngIf="moodcheck.value <= 3" src="/assets/img/professional/alert.png">
+                                    </td>
+                                    <td class="strong"> {{moodcheck.created | amDateFormat: 'H:mm a' }}</td>
+                                    <td class="strong"> {{moodcheck.created | amDateFormat: 'DD MMM YYYY' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="user-charts" class="col-md-12">
+        <user-charts [user]="user"></user-charts>
+    </div>
+
+    <div id="das-assessment-listing" class="col-md-12" *ngIf="showAssessment">
+        <div class="page-section">
+            <h2 translate>das.title</h2>
+            <das-assessment-listing [assessments]="assessments" [user]="user"></das-assessment-listing>
+        </div>
+    </div>
+
+    <fun-achievement-listing [user]="user"></fun-achievement-listing>
+    <thought-diary-listing [user]="user" [showIncomplete]="false"></thought-diary-listing>
+    <app-activity-scheduler-listing [user]="user"></app-activity-scheduler-listing>
+
+</div>

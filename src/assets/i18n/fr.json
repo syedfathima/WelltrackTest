@@ -1,0 +1,1880 @@
+{
+    "lang": "fr",
+    "languageSwitcher": {
+        "label": "Changer le langage"
+    },
+    "pagetitles": {
+        "dashboard": "Tableau de bord",
+        "login": "Connexion à Welltrack",
+        "create": "Créer votre compte",
+        "resendpassword": "Renvoyer votre mot de passe",
+        "passwordchange": "Changement du mot de passe",
+        "confirm": "Confirmer",
+        "loginassertion": "Authentification à identifiant unique",
+        "accesscode": "Code d'accès",
+        "emailaccesscode": "Envoyer code d'accès par courriel",
+        "noaccesscode": "Aucun code d'accès",
+        "privacypolicy": "Politique de confidentialité de Welltrack",
+        "termsandconditions": "Termes et conditions de Welltrack",
+        "corporatepolice": "Termes de la politique d'entreprise",
+        "medicalresources": "Medical resources",
+        "challengelisting": "Challenges listing",
+        "challengedetails": "Challenges details",
+        "payment": "Payment",
+        "theory": "Theory",
+        "practice": "Practice",
+        "community": "Community",
+        "emergencycontact": "Emergency contact",
+        "resources": "Resources",
+        "counselors": "Counselor synchronization",
+        "assessmentlisting": "Assessment listing",
+        "assessment": "Assessment",
+        "settings": "Settings",
+        "courselisting": "Course listing",
+        "course": "Course",
+        "thoughtdiary": "Journal des pensées",
+        "thoughtdiarycreate": "Créer un journal des pensées",
+        "thoughtdiaryedit": "Modifier un journal des pensées",
+        "funachievementlisting": "Liste de plaisir et rendement",
+        "funachievementcreate": "Créer une entrée de plaisir et rendement",
+        "funachievement": "Plaisir et rendement",
+        "activityschedulerlisting": "Liste de planification d’activités",
+        "activityschedulercreate": "Créer une activité de calendrier",
+        "activityscheduler": "Calendrier des activités",
+        "zenroom": "Chambre Zen",
+        "cognitivedistortions": "Quiz de distorsions cognitives",
+        "organizationprofile": "Profil de l'organisme",
+        "challenges": "Défis",
+        "myCalendar": "Mon Calendrier",
+        "videosession": "Session vidéo",
+        "videosessionopen": "Video Session Open",
+        "videosessionshare": "Video Session Share",
+        "demographicinfo": "Information de démographique",
+        "users": "Utilisateurs",
+        "userdetails": "Détails d'utilisateur",
+        "organizationedit": "Organization edit",
+        "organizationsetup": "Organization Setup",
+        "userlisting": "User listing",
+        "userprofiledetails": "User profile details",
+        "organizationview": "Vue de l'organisme",
+        "organizationlisting": "Liste des organismes",
+        "activity": "Activité",
+        "managechallenges": "Gérer les défis",
+        "manageresources": "Gérer les ressources",
+        "reports": "Rapport",
+        "system": "Système"
+    },
+    "error": {
+        "ok": "Ok",
+        "title": "Erreur",
+        "connect": "Impossible de se connecter à Welltrack. S.V.P. vérifier votre connexion internet et réessayer."
+    },
+    "idle": {
+        "yes": "Oui",
+        "message": "Votre session a dépassé le délai d’inactivité. Êtes-vous encore actif?"
+    },
+    "blocked": {
+        "title": "Accès limitée",
+        "line1": "Pour accéder à cette fonctionnalité, vous devez associer votre compte à un organisme ou acheter un abonnement.",
+        "line2": "Cliquer le button ci-dessous pour associer avec votre université",
+        "line3": "associer",
+        "line4": "-OU-",
+        "line5": "Cliquer le button ci-dessous pour obtenir un accès complèt",
+        "line6": "obtenir un accès complèt",
+        "close": "Fermer",
+        "trialVersion": "Période d'essai",
+        "noticeDescription": "Pour avoir un accès complèt à WellTrack, vous devez associer votre compte à un organisme ou acheter un abonnement.",
+        "noticeline1": "Associer avec un organisme",
+        "noticeline2": "Acheter un abonnement"
+    },
+    "loginMobile": {
+        "signInFb": "Connectez-vous avec Facebook",
+        "email": "Courriel",
+        "emailAddress": "Adresse Courriel",
+        "password": "Mot de passe",
+        "name": "Nom complèt",
+        "forgot": "J'ai oublié mon mot de passe",
+        "signIn": "Connectez-vous",
+        "signUp": {
+            "0": "Je n'ai pas de compte",
+            "1": "Inscrivez-vous"
+        },
+        "download": "Téléchargez l'application mobile!",
+        "checkOut": "Découvrez WellTrack en ligne",
+        "popups": {
+            "error": "Erreur",
+            "blank": " Le champ du nom d’utilisateur et du mot de passe doivent être remplis",
+            "notFound": "Une erreur s’est produite. C'est possible qu'il n'existe pas de compte confirmé avec ces informations ou que votre courriel ou mot de passe sont incorrects",
+            "oops": "Oops!",
+            "tos": "Vous devez accepter nos conditions de service et les dispositions de notre politique de confidentialité avant de procéder.",
+            "authenticate": "Une erreur s'est produite lors de l'authentification avec WellTrack.",
+            "authenticateFB": "Une erreur s'est produite lors de l'authentification avec Facebook.",
+            "errorFB": "Quelque chose s'est mal passé lors de l’enregistrement avec Facebook. Veuillez réessayer ou vous connecter avec une adresse courriel.",
+            "errorOrganization": "Please select your organization from the dropdown"
+        },
+        "continue": "Continuer",
+        "getStarted": "Entrez votre courriel pour vous connectez ou pour créer votre nouveau compte.",
+        "clickLink": "Cliquez sur le lien pour vous connectez.",
+        "loginSuccessful": "Connexion réussi",
+        "takeMe": "Montrez moi WellTrack"
+    },
+    "loginDesktop": {
+        "full": "Site",
+        "contact": "Contactez-nous",
+        "en": "En",
+        "fr": "Fr",
+        "care": "Obtenez les soins au bon temps",
+        "person": "Shavneel Nand, étudiant, Université de Californie Santa Cruz",
+        "person2": "Peter Cornish, professeur agrégé et directeur, Centre de conseil en santé et bien-être étudiant, Université Memorial",
+        "quote": "J'ai constaté que les services fournis par WellTrack peuvent être un renforcement positif pour les défis de la santé mentale. Welltrack est un excellent outil pour ceux qui cherchent à comprendre leur bien-être mental",
+        "quote2": "Nous avons trouvé que Welltrack était un atout très important à notre modèle « Stepped Care 2.0 ». WellTrack est une option de première ligne, et nos conseillers sont très heureux d’avoir une variété d’outils qui les aide à pratiquer avec une plus grande flexibilité.",
+        "download": "Téléchargez l'application WellTrack!",
+        "marketingHeader": {
+            "0": "Obtenez le ",
+            "1": "bon soin",
+            "2": "au ",
+            "3": "bon moment"
+        }
+    },
+    "forgotPassword": {
+        "title": "Oublié votre mot de passe?",
+        "body": "Nous vous enverrons un courriel avec des instructions pour réinitialiser votre mot de passe",
+        "email": "Envoyez-moi un courriel",
+        "back": "Revenir à ",
+        "sign": "Connectez-vous",
+        "popups": {
+            "error": "Erreur",
+            "oops": "Oops!",
+            "password": "Réinitialisation du mot de passe.",
+            "blank": "Le champ du courriel ne peut pas être laissé vide",
+            "sent": "Un courriel vous a été envoyé avec des instructions pour réinitialiser votre mot de passe."
+        }
+    },
+    "changePassword": {
+        "title": "Modifiez votre mot de passe",
+        "description": "Tapez votre mot de passe dans les deux champs. La mise-à-jour de votre mot de passe sera effectuée immédiatement après votre soumission.",
+        "popups": {
+            "success": "Succès",
+            "Errror": "Erreur",
+            "passwordsuccess": "Votre mot de passe a été changé.",
+            "passwordmatch": "Les deux champs doivent être pareil."
+        },
+        "placeholders": {
+            "password": "Mot de passe",
+            "passwordrepeat": "Répétition du mot de passe"
+        },
+        "btnSubmit": "Modifier mon mot de passe"
+    },
+    "signUp": {
+        "title": "S’inscrire",
+        "body": "Commencer avec WellTrack est facile. Il suffit de remplir l’information suivante.",
+        "toGainFullAccess": "Pour avoir un accès complet à WellTrack",
+        "enterAccessCode": "Entrez un code d'accès",
+        "enterOrgEmail": "Entrez le courriel de votre organisme",
+        "or": "- OU -",
+        "skip": "Je n'ai pas d'association avec un organisme et je souhaite m'inscrire de toute façon",
+        "inputs": [
+            "Nom Complet",
+            "Courriel",
+            "Mot de Passe"
+        ],
+        "emailPlaceholder": "Courriel",
+        "emailPrefixPlaceholder": "Préfix",
+        "selectSubdomain": "Choisir sous-domaine",
+        "selectOrganization": "Choisir votre campus",
+        "button": "Inscrivez-vous",
+        "exists": "Vous avez déjà un compte? ",
+        "sign": "Connectez-vous",
+        "create": "Créer mon compte",
+        "previous": "Précédent",
+        "errorPopup": {
+            "title": "Erreur"
+        },
+        "registrationPopup ": {
+            "body": "Veuillez sélectionner une des options",
+            "oneOrOther": "Vous avez deux champs de remplis. Veuillez sélectionner seulement l’une des options"
+        },
+        "emailPopup": {
+            "title": "Erreur de courriel",
+            "body": "Veuillez remplir le champ courriel."
+        },
+        "passwordPopup": {
+            "title": "Mot de passe n’est pas assez sécuritaire ",
+            "body": "Assurez-vous que votre mot de passe comporte au moins 8 caractères, comprend au moins une lettre majuscule, une lettre minuscule et un chiffre."
+        },
+        "passwordMissingPopup": {
+            "title": "Erreur de mot de passe",
+            "body": "Le champ mot de passe doit être rempli."
+        },
+        "passwordMatch": {
+            "title": "Erreur de répétition",
+            "body": "Vous devez remplir chacun des champs de mot de passe."
+        },
+        "domainPopup": {
+            "title": "Choisir un domaine",
+            "body": "S.V.P. choisir votre domaine de courriel avant de procéder."
+        },
+        "organizationPopup": {
+            "title": "Choisir un campus",
+            "body": "Vous devez choisir un campus avant de procéder."
+        },
+        "successPopup": {
+            "title": "Succès",
+            "body": "Votre compte a été créé. Veuillez vérifier votre courriel pour un lien afin de confirmer votre compte."
+        },
+        "emptyPopup": {
+            "title": "Oops!",
+            "body": "Tous les champs doivent être remplis."
+        },
+        "tosPopup": {
+            "oops": "Oops!",
+            "tos": "Vous devez accepter nos conditions d'utilisation et notre politique de confidentialité avant de procéder."
+        },
+        "chooseOrganization": {
+            "title": "Selectioner votre campus",
+            "body": "Sélectioner votre campus en utilisant le champ de campus."
+        },
+        "tos": {
+            "title": "Une chose avant de commencer:",
+            "copy": "Avant de créer votre compte, vous devez accepter les",
+            "tos": " conditions d'utilisation",
+            "and": " et ",
+            "privacy": "la politique de confidentialité",
+            "corporatepolicy": "la politique d'entreprise",
+            "agree": "J'accepte"
+        },
+        "ada": "Je reconnais que certaines parties de ce site ne sont possiblement pas conformes à l’ADA",
+        "passwordValidate": "Votre mot de passe doit être au moins 8 caractères, avoir au moins 1 majuscule, au moins 1 miniscule, et au moins 1 chiffre.",
+        "passwordRepeatValidate": "Vos deux champs de mot de passe doivent être identiques.",
+        "healthCanada": "Utiliser votre compte WTC pour vous-connecter. <br> Vous pouvez également télécharger l'application et utiliser le code <strong> \"canada \" </strong> pour un accès gratuit.",
+        "heatthCanadaAddl": "Pour vous connectez a WellTrack sans un compte WTC, utiliser ce <a href=\"https://app.welltrack.com\">lien</a>."
+    },
+    "confirm": {
+        "success": "Succès",
+        "readylogin": "Votre compte est maintenant actif. Vous devriez être prêt à vous connecter à Welltrack.",
+        "login": "Login"
+    },
+	"notFound": {
+		"title": "Page non trouvée",
+		"body": "La page que vous recherchez n'existe pas.",
+		"back": "Aller à ",
+		"sign": "Connectez-vous"
+	},
+    "accessCode": {
+        "title": "Bienvenue à Welltrack!",
+        "body": "Si votre école ou votre travail est enregistré avec WellTrack, entrez votre code d'accès et nous vous fournirons un accès complet.",
+        "pair": "Pairer avec l'organisme",
+        "noCode": "Je ne connais pas mon code d'accès",
+        "popups": {
+            "oops": "Oops!",
+            "blank": "Vous avez oublié votre code d'accès.",
+            "success": "Succès",
+            "pair": "Votre compte a été pairé avec ",
+            "error": "Erreur"
+        }
+    },
+    "noCode": {
+        "title": "C'est bien!",
+        "body": "Si votre école ou votre travail est enregistré auprès de WellTrack, entrez votre adresse courriel personelle ou professionnelle et nous vous fournirons un accès complet.",
+        "send": "Envoyez-moi mon accès",
+        "skip": "Passer maintenant"
+    },
+    "start": {
+        "title": "Pas de soucis",
+        "body": "Vous aurez toujours accès à votre tableau de bord ainsi qu'à Moodcheck qui sont les deux fonctions les plus importantes de WellTrack!",
+        "start": "Commencez à utiliser WellTrack",
+        "popups": {
+            "oops": "Oops!",
+            "blank": "Vous avez oublié d'entrer votre courriel.",
+            "success": "Succès",
+            "inbox": "S.V.P. vérifier votre courriel pour votre lien d'accès.",
+            "error": "Erreur"
+        }
+    },
+    "menu": {
+        "dashboard": "Tableau de bord",
+        "moodcheck": "MoodCheck",
+        "theory": "Théorie",
+        "practice": "Pratique",
+        "courses": "Cours",
+        "tools": "Outils",
+        "calendar": "Calendrier",
+        "assessment": "Évaluation",
+        "assessments": "Évaluations",
+        "course": "Cours",
+        "depression": "Dépression",
+        "anxiety": "Anxiété",
+        "emergency": "Contact d'urgence",
+        "sync": "Partager avec les conseillers",
+        "dashPro": "Tableau de bord",
+        "userDetail": "Utilisateurs",
+        "clientList": "Liste des clients",
+        "orgDetails": "Organisme",
+        "myCalendar": "Mon calendrier",
+        "resources": "Ressources",
+        "domains": "Domains",
+        "coreContributors": "Core Contributors",
+        "manageResources": "Resources",
+        "setting": "Mes paramètres",
+        "support": "Soutien",
+        "signout": "Déconnexion",
+        "download": "Télécharger",
+        "challenges": "Défis",
+        "users": "Utilisateurs",
+        "orgs": "Organisme",
+        "activity": "Activités",
+        "reports": "Rapports",
+		"viewAll": "Voir tout",
+		"assessmentListing": "Liste d'évaluation",
+		"resourcesAdmin": "Ressources",
+		"adminCourseListing": "Liste des cours",
+		"pushNotification": "Push Notification",
+		"datedEvents": "Événements Datés",
+		"additionalResources": "Ressources Additionnelles"
+    },
+    "moodcheck": {
+        "title": "MoodCheck",
+        "cancel": "Annuler",
+        "save": "Sauvegarder",
+        "next": "Prochain",
+        "more": "+ Plus",
+        "done": "Compléter",
+        "enternumber": "Entrez un numéro de 1 à 10 dans la case ci-dessous ou utilisez la roue pour évaluer votre humeur",
+        "mood": {
+            "tab": "Humeur"
+        },
+        "activity": {
+            "tab": "Activité",
+            "title": " Qu’est-ce que vous êtes en train de faire?"
+        },
+        "people": {
+            "tab": "Personnes",
+            "title": " Avec qui êtes-vous?"
+        },
+        "place": {
+            "tab": "Endroit",
+            "title": " Où êtes-vous?"
+        },
+        "notes": {
+            "tab": "Notes",
+            "title": " Ajoutez des notes?"
+        },
+        "customize": "Personnalisez vos options",
+        "popups": {
+            "incomplete": "MoodCheck incomplet",
+            "dial": "Vous devez choisir une humeur et préciser une activité avant de soumettre votre MoodCheck.",
+            "error": "Erreur",
+            "deleteBody": "Êtes-vous certain(es) de vouloir supprimer ce MoodCheck?"
+        }
+    },
+    "tutorial": {
+        "welcome": {
+            "title": "Bienvenue à WellTrack",
+            "body": "Sur votre page d'accueil, vous pourrez suivre l'évolution de votre humeur et mieux comprendre ce qui affecte votre humeur.",
+            "ok": "Ok!"
+        },
+        "moodcheck": {
+            "title": "MoodCheck",
+            "body": "MoodCheck est la fonction clé de WellTrack. Cet outil nous permettra de recueillir des données pour vous fournir les bons soins au bon moment. C'est pour cette raison qu'il est important de le faire quotidiennement.",
+            "ok": "Ok!"
+        },
+        "practice": {
+            "title": "Outils",
+            "body": "Une fois que vous-avez visité la section outils, utilisez les outils pour tiendre compte de votre progrès.",
+            "ok": "Visiter la section outils!",
+            "no": "Non Merci"
+        },
+        "theory": {
+            "title": "Théorie",
+            "body": "Prêt pour la prochaine étape? Prêt à commencer une thérapie?",
+            "ok": "Ok!"
+        },
+        "assessment": {
+            "title": "Évaluation",
+            "body": "Votre évaluation régulièrement est cruciale pour le bon fonctionnement de Welltrack. Cela nous permettra de vous guider vers des solutions adaptées à vos besoins. En fait, une vérification d'évaluation régulièrement vous aidera à tirer le meilleur parti de WellTrack et nous aider à adapter nos recommandations en fonction de la façon dont vous vous sentez en ce moment.",
+            "ok": "Commencer l'évaluation",
+            "no": "Non merci"
+        },
+        "resilience": {
+            "title": "Resilience",
+            "body": "Resilience has been defined as the ability to bounce back or recover quickly from difficulties. Complete this short Resilience Assessment to determine a baseline for your current resilience level. Regular resilience assessments will help you keep track and help us to tailor our recommendations for you based on how you’re feeling with now.",
+            "ok": "Start Assessment",
+            "no": "No thanks"
+        }
+    },
+    "dashboard": {
+        "last": "Les 30 derniers jours",
+        "30days": "30 jours",
+        "heatmap": {
+            "title": "Carte des humeurs",
+            "all": "Toutes les humeurs",
+            "good": "Humeurs positives",
+            "bad": "Humeurs négatives"
+        },
+        "tableHeaders": {
+            "0": "Rendez-vous amoureux",
+            "1": "Niveau",
+            "2": "Ambiance",
+            "3": "Activité",
+            "4": "Personnes",
+            "5": "Endroit",
+            "6": "Remarques"
+        },
+        "emptyMoodcheckList": "Il y a aucun moodcheck à afficher.",
+        "number": {
+            "title": "Nombre de MoodChecks",
+            "total": "MoodChecks totaux: ",
+            "average": "Moyenne / jour : "
+        },
+        "indicator": {
+            "title": "Indicateur d'humeur",
+            "good": "Bonne humeur",
+            "bad": "Mauvaise humeur",
+            "last": "Les 30 derniers jours",
+            "graphText": "de votre humeur",
+            "activity": "Activité",
+            "people": "Personnes",
+            "place": "Place"
+        },
+        "click": "Cliquer pour plus d'info"
+    },
+    "theory": {
+        "title": "Cours",
+        "go": "Aller au cours",
+        "chapter": "chapitre:",
+        "length": "longueur:",
+        "courses": {
+            "anxiety": {
+                "title": "Anxiété et stress",
+                "body": "Suivez un programme de 5 semaines pour en savoir plus sur l'anxiété et améliorer vos pensées, vos comportements et votre humeur",
+                "chapitre": "chapitres: 5",
+                "length": "length: 32 mins"
+            },
+            "depression": {
+                "title": "Dépression",
+                "body": "Suivez un programme de 6 semaines pour en savoir plus sur la dépression et améliorer vos pensées, vos comportements et votre humeur",
+                "chapitre": "chapitres: 6",
+                "length": "length: 30 mins"
+            },
+            "phobia": {
+                "title": "Phobie",
+                "body": "Informez-vous sur l'anxiété, puis pratiquez la relaxation en visionnant des simulations 3D d'objets ou de situations redoutés",
+                "chapitre": "chapitres: 6",
+                "length": "length: 2 h"
+            },
+            "publicpeaking": {
+                "title": "Prise de parole en public",
+                "body": "Pratiquez votre prise de parole en public tout en visionnant une simulation 3D qui vous aidera à vous mettre devant un public.",
+                "chapitre": "chapitres: 1",
+                "length": "length: 17 mins"
+            },
+            "addiction": {
+                "title": "Addiction",
+                "body": "Suivez un programme de 6 semaines qui vous aidera à vous renseigner sur la toxicomanie et la toxicomanie.",
+                "chapitre": "chapitres: 1",
+                "length": "length: 17 mins"
+            },
+            "disaster": {
+                "title": "Compétences de résilience",
+                "body": "Terminez un programme pour apprendre à développer la résilience pendant une crise.",
+                "chapitre": "chapitres: 2",
+                "length": "length: 23 mins"
+            },
+            "resilience": {
+                "title": "Résilience",
+                "body": "Ce programme se concentre sur l'équilibre entre les impacts physiques et psychologiques du stress. Apprenez comment le stress, la nutrition, l'exercice et votre environnement jouent tous un rôle dans votre résilience.",
+                "chapitre": "chapitres: 4",
+                "length": "durée: 1 h et 6 min"
+            },
+            "resiliences": {
+                "title": "Resilience",
+                "body": "Ces programmes se concentrent sur l'équilibre entre les impacts physiques et psychologiques du stress. Apprenez comment le stress, la nutrition, l'exercice et votre environnement jouent tous un rôle dans votre résilience."
+            },
+            "sleep": {
+                "title": "Your Guide to Healthier Sleep",
+                "body": "Sleep is a fundamental pillar of wellness and resilience, and many of us could benefit from improved consistency and quality in our sleep patterns.",
+                "instructions": "This video series will:<br><ul><li>Put you right to sleep - in the best way possible</li><li>Coach you on how to get restorative sleep at night, in order to experience greater enjoyment and energy in your day</li></ul>",
+                "chapter": "chapters: 1",
+                "length": "length: 38 mins"
+            },
+            "wellbeing": {
+                "title": "Bien-être",
+                "body": "Les six dimensions du bien-être sont étroitement liées à votre résilience. Parcourez ce cours avec la Dre Mary Jo Kreitzer pour identifier où vous pourriez grandir et développer les outils pour y parvenir.",
+                "chapitre": "chapitres: 4",
+                "length": "length: 1 h and 3 min"
+            },
+            "mindfulness": {
+                "title": "Find Your Inner Calm Through Mindfulness",
+                "body": "Mindfulness is a powerful tool that can be used in just about any setting to bring you a greater sense of peace and comfort in the present moment.",
+                "chapter": "chapters: 1",
+                "length": "length: 30 mins"
+            },
+            "purpose": {
+                "title": "The Journey to Purpose and Meaning",
+                "body": "Purpose is a journey, not a destination. No matter where you are along this journey, find a deeper sense of peace and meaning by actively exploring your purpose, values, and inspirations. This video series will help you forge inner harmony and develop the skills to lead a life rich with purpose, intentionality, and resilience.",
+                "chapter": "chapters: 1",
+                "length": "length: 24mins"
+            },
+            "work": {
+                "title": "Resilience in the Workplace",
+                "body": "Enrich your workdays with energy, enjoyment, and purpose driven motivation as we explore varying techniques to experience greater satisfaction in your career.",
+                "chapter": "chapters: 1",
+                "length": "length: 27 mins"
+            },
+            "beyondnormal": {
+                "title": "Beyond Normal",
+                "body": "Health and wellbeing leaders share self-care ideas for creating a better normal during and after COVID-19.",
+                "chapter": "Currently on season 1",
+                "length": ""
+            },
+            "podcast": {
+                "title": "Podcasts",
+                "body": "",
+                "chapter": "",
+                "length": ""
+            }
+        }
+    },
+    "courseListing": {
+        "back": "Retour",
+        "chapterTitle": "Chapitre",
+        "timeTitle": "Temps",
+        "completed": "Complété",
+        "title": [
+            "Anxiété et Stress",
+            "Dépression",
+            "Phobie",
+            "Resiliency Skills",
+            "Resilience",
+            "Sleep",
+            "Well-being",
+            "Purpose"
+        ]
+    },
+    "practice": {
+        "title": "Pratique",
+        "zen": {
+            "title": "Chambre zen",
+            "body": "La chambre vous proposera une narration guidée et une musique d’ambiance pour vous aider à trouver un état d’esprit zen.",
+            "button": "Aller à la chambre zen"
+        },
+        "thoughtDiary": {
+            "title": "Journal de pensées",
+            "body": "Utilisez le journal des pensées pour analyser un événement qui vous a rendu déprimé ou anxieux",
+            "button": "Aller au journal de pensée"
+        },
+        "cdQuiz": {
+            "title": "Distorsions Cognitives",
+            "body": "Le but de ce quiz est de vous aider à comprendre les différents styles de pensées reliés à la santé mentale.",
+            "button": "Commencer un Quiz"
+        },
+        "fa": {
+            "title": "Plaisir et rendement",
+            "body": "Notez votre dépression, votre bonheur et votre sentiment d’accomplissement avant et après une activité",
+            "button": "Démarrer"
+        },
+        "as": {
+            "title": "Calendrier des activités",
+            "body": "Utilisez l’emploi du temps pour prévoir à la fois les activités désirables et vos responsabilités pendant la semaine.",
+            "button": "Aller au calendrier"
+        },
+        "addiction": {
+            "title": "Addiction",
+            "body": "Addiction planner.",
+            "button": "Go to the addiction tool"
+        }
+    },
+    "zenRoom": {
+        "title": "Chambre Zen",
+        "subtitle": "Fermez vos yeux et détendez-vous",
+        "back": "Retourner",
+        "select": "Sélectionnez votre ambiance",
+        "background": "Sons d'arrière-plan",
+        "sounds": {
+            "0": "Vagues",
+            "1": "Organique",
+            "2": "Espace"
+        },
+        "type": "Type de méditation",
+        "meditationType": {
+            "gettingStarted": "Getting Started",
+            "0": "Respiration profonde traditionnelle",
+            "1": "Respiration profonde alternative",
+            "2": "The Forest",
+            "3": "Beach Relaxation",
+            "4": "Increasing Awareness",
+            "5": "Relaxing phrases",
+            "6": "Sort boxes",
+            "7": "Sending Thoughts Away on Clouds",
+            "8": "Sending Your Thoughts Away on Leaves",
+            "none": "Aucun"
+        },
+        "meditationVoice": "Voix de méditation",
+        "play": "Jouer",
+        "pause": "Pause"
+    },
+    "thoughtDiary": {
+        "title": "Journal de la pensée",
+        "body": "Utilisez le journal de pensée pour analyser un événement qui vous a rendu déprimé ou anxieux.",
+        "disclaimer": "WellTrack n'est pas un outil de communication. Les informations saisies dans WellTrack ne sont pas supervisées.",
+        "back": "Retourner",
+        "begin": "Commencer un nouveau journal de pensée",
+        "completed": "Journaux de pensée complétés",
+        "unfinished": "Journaux de pensée incomplets",
+        "thinkingStyles": [
+            {
+                "key": "catastrophising",
+                "info": "Faire du catastrophisme",
+                "text": "Exagérer une situation ou se focaliser sur le pire scénario, même s’il est peu probable."
+            },
+            {
+                "key": "blackandwhite",
+                "info": "Penser en noir et blanc",
+                "text": "Penser selon de fausses dichotomies, en voyant tout sous le prisme de fausses dichotomies, en supposant qu’il n’y a jamais que deux solutions — la perfection et l’échec — sans rien entre les deux"
+            },
+            {
+                "key": "overgeneralization",
+                "info": "Généraliser à outrance",
+                "text": "Tirer des conclusions très générales en dépit du manque de preuves objectives, en se contentant d’un ou deux événements seulement pour imaginer que les choses se passent toujours de telle ou telle façon.\""
+            },
+            {
+                "key": "jumping",
+                "info": "Tirer des conclusions hâtives",
+                "text": "Décider que telle chose a de tel résultat sans avoir de preuves — par exemple, quand on suppose qu’on sait ce que quelqu’un d’autre pense ou comment un événement à venir va se dérouler."
+            },
+            {
+                "key": "emotional",
+                "info": "Privilégier l’affectif",
+                "text": "Penser que quelque chose est vrai à cause de ce qu’on ressent. Exemple : \"Je me sens stupide, ce qui signifie que je dois être stupide.\""
+            },
+            {
+                "key": "personalization",
+                "info": "Personnalisation",
+                "text": "Supposer que ce que les autres font ou disent est directement en réaction à vous, même s'il existe de meilleures explications pour leurs actions."
+            },
+            {
+                "key": "ignoring",
+                "info": "Ne pas prêter attention aux aspects positifs",
+                "text": "Faire comme s’ils ne comptaient pas ou négliger toutes sortes d’expériences positives pour se focaliser sur un petit nombre d’expériences négatives."
+            }
+        ],
+        "steps": {
+            "0": {
+                "title": "Étape 1: Choisissez un événement d'activation",
+                "body": "Songez aux journées qui viennent de s’écouler et mettez en évidence un événement, une situation ou une pensée qui vous a rendu déprimé ou anxieux. Saisissez une description de l’événement.",
+                "inputText": "Décrivez l'événement"
+            },
+            "1": {
+                "title": "Étape 2: Dressez la liste de vos sentiments",
+                "body": "Songez à quelques mots qui décrivent ce que cet événement vous a fait ressentir (« trahison », « culpabilité », etc.). Saisissez ces mots ci-dessous et indiquez pour chacun l’intensité du sentiment.",
+                "inputTag": "Entrez un sentiment",
+                "lowScale": "À peine",
+                "highScale": "Accablant",
+                "add": "+ Ajouter un autre sentiment",
+                "examples": {
+                    "title": "Exemples: ",
+                    "line1": [
+                        "Lorsque l'amie de Monique a soudainement annulé ses plans de dîner, elle s’est sentie ",
+                        "rejetée",
+                        " et ",
+                        "inadéquate"
+                    ],
+                    "line2": [
+                        "La recherche d’emploi d’Éric n'a pas bien fonctionné. Quand ses parents l’ont questionné, il se sentait ",
+                        "désespéré ",
+                        "et ",
+                        "comme s'il voulait s'enfuir"
+                    ],
+                    "line3": [
+                        "Paul a dû demander de l'aide pour une tâche au travail que son collègue a dit être \"facile.\" Il se sentait ",
+                        "stupide ",
+                        ", et ",
+                        "embarassé"
+                    ],
+                    "line4": [
+                        "Jennifer est entrée dans un ascenseur. Lorsque les portes se sont fermées, elle s’est soudain sentie ",
+                        "piégée ",
+                        " et ",
+                        "effrayée"
+                    ]
+                }
+            },
+            "2": {
+                "title": "Étape 3: Mettre en évidence les pensées qui se cachent derrière les sentiments",
+                "body": "Pour chacun des sentiments indiqués à l’étape précédente, mettez maintenant en évidence la pensée qui a suscité le sentiment. Demandez-vous ce qui vous traversait l’esprit au moment où vous avez éprouvé ce sentiment. Saisissez une pensée pour chaque sentiment. Indiquez votre degré de conviction vis-à-vis de la véracité de chaque pensée.",
+                "boxInputTag": "Qu'est-ce que vous pensiez?",
+                "scaleInputTag": "Quel niveau donneriez-vous à cette pensée?",
+                "lowScale": "Pas probable",
+                "upperScale": "Absolument vrai",
+                "aboutFeeling": "Qu’est-ce qui me traversait l’esprit quand j’avais cette pensée?",
+                "examples": {
+                    "title": "Exemples: ",
+                    "line1": {
+                        "0": "Paul a été assigné à une nouvelle tâche et a été assuré qu'elle était facile, mais il a trouvé qu'il avait besoin de demander de l'aide. Suite à ceci, Paul se sentait",
+                        "1": "stupide ",
+                        "2": "et",
+                        "3": " embarrassé",
+                        "4": ". Il pensait"
+                    },
+                    "line2": {
+                        "0": "Si Paula n'a eu aucun problème avec cela, mais je ne peux pas le comprendre, c'est parce que je suis stupide."
+                    },
+                    "line3": {
+                        "0": "Quand les gens découvrent que j'ai besoin d'aide pour une tâche facile, je perds leur respect."
+                    },
+                    "line4": {
+                        "0": "Quand Eric devait dire à ses parents qu'il n'avait pas trouvé d’emploi, il se sentait ",
+                        "1": "désespéré",
+                        "2": " et ",
+                        "3": "comme s'il voulait s'enfuir",
+                        "4": ". Il pensait"
+                    },
+                    "line5": {
+                        "0": "Si je n'ai pas encore trouvé de travail, je ne pense pas être capable d'en trouver un"
+                    },
+                    "line6": {
+                        "0": "Je ne peux pas leur dire et voir comment ils sont déçus, je préfère ne pas leur parler du tout!"
+                    }
+                }
+            },
+            "3": {
+                "title": "Étape 4: Mettre en évidence les façons de penser qui n’aident pas",
+                "body": "Est-ce que vous reconnaissez des façons de penser qui n’aident pas et que vous avez utilisé? Sélectionnez toutes les options qui s’appliquent pour chaque pensée. Passez avec votre souris sur chaque façon de penser pour lire une brève description.",
+                "thought": "Votre pensée:"
+            },
+            "4": {
+                "title": "Étape 5: Remettre en question vos pensées",
+                "body": {
+                    "0": " Maintenant que vous connaissez les façons de penser qui n’aident pas et qui produisent vos pensées, il est temps de remettre en question ces pensées.",
+                    "1": " Pour chaque pensée, posez-vous une partie ou l’ensemble des questions suivantes et indiquez ensuite quelques faits qui démontrent que votre pensée n’était ni réaliste ni utile."
+                },
+                "list": {
+                    "0": "Si je n’étais pas déprimé(e), en quoi verrais-je la situation différemment?",
+                    "1": "Quelle est la probabilité que cela arrive?",
+                    "2": "Y a-t-il d’autres façons pour moi de voir la situation?",
+                    "3": "Comment une personne différente verrait-elle la situation?"
+                },
+                "thought": "Votre pensée",
+                "said": "Ce que vous avez dit était",
+                "challenge": "Entrez un défi pour la pensée ci-dessus"
+            },
+            "6": {
+                "title": "Étape 6: Créer un plan d'action",
+                "body": "Créez un simple plan d’action à utiliser si vous vous retrouvez dans la même situation. Songez à ce que vous feriez dans la situation pour éviter d’avoir ces pensées négatives ou pour les remettre en question quand elles se manifestent. Si, par exemple, l’événement déclencheur est le fait qu’un ami a annulé un rendez-vous avec vous pour le dîner, vous avez pensé que cet ami ne vous aimait plus. Votre plan d’action pourrait être de vous remémorer les moments où votre ami a pris du plaisir à passer un moment avec vous et de vous raisonner en vous disant qu’il a probablement eu une urgence ou un imprévu.<br/> <br/>Soyez précis et appliquez ce que vous avez appris sur la remise en question de vos pensées. Saisissez votre plan ci-dessous:"
+            }
+        },
+        "save": "Sauvegarder pour plus tard",
+        "next": "Suivant",
+        "finish": "Terminer",
+        "popups": {
+            "ok": "Ok",
+            "error": "Erreur",
+            "success": {
+                "header": "Succès",
+                "body": "Votre journal des pensées a été sauvegardé.",
+                "later": "Votre journal des pensées a été enregistré pour plus tard."
+            },
+            "validation": {
+                "header": "Erreur de validation",
+                "bodys": [
+                    "Le champ d’évènement activant ne peut pas être laissé vide",
+                    "Le champ des sentiments ne peut être laissé vide",
+                    "Les pensées derrière chaque sentiment ne peuvent être laissées vide.",
+                    "Vous devez identifier un style de pensée pour chaque sentiment/pensée.",
+                    "Vous devez entrer un défi pour chaque pensée.",
+                    "Le champ du plan d’action ne peut être laissé vide"
+                ]
+            },
+            "deleteBody": "Êtes-vous certain(es) que vous voulez supprimer ce journal de pensée?"
+        }
+    },
+    "cdQuiz": {
+        "title": "Distorsions Cognitives",
+        "body": "Nous vous recommandons de passer un quiz pour voir à quel point vous avez retenu les nouveaux termes.",
+        "back": "Retourner",
+        "begin": "Commencer un nouveau quiz",
+        "last": "Dernier score",
+        "best": "Votre meilleur score",
+        "showDefinitions": "Montrer les définitions",
+        "answers": {
+            "0": "Penser noir et blanc",
+            "1": "Personnalisation",
+            "2": "Ignorer les positifs",
+            "3": "Généraliser à outrance",
+            "4": "Raisonnement émotionnel",
+            "5": "Faire du catastrophisme"
+        },
+        "previous": "Précédent",
+        "submit": "Soumettre vos réponses",
+        "popups": {
+            "answer": {
+                "right": "Correct!",
+                "wrong": "Incorrect!",
+                "button": "Continuer"
+            },
+            "result": {
+                "header": "Vos résultats du quiz",
+                "button": "Terminer"
+            }
+        },
+        "questions": [
+            "Le chien de Terry, Sparks, est entré à la poubelle et a mangé quelque chose qui aurait pu le rendre malade. Terry a agi rapidement et a amené Sparks chez le vétérinaire, où il a été traitée et s'est complètement rétablie. Terry pense: \"Je suis un terrible propriétaire et je ne devrais pas avoir le droit d'avoir un animal domestique.\" Terry fait preuve de quel genre de distorsion?",
+            "Nathalie quitte un magasin sans avoir rien acheté. Alors qu’elle s’apprête à franchir les dispositifs antivol à la porte de sortie, elle se dit : « Et si l’alarme sonne, même si je n’ai rien pris? Et si les agents de sécurité viennent et m’accusent de vol? Et si on me traite comme si j’avais fait quelque chose de mal? » Nathalie fait preuve de quel genre de distorsion?",
+            "Robert a besoin de passer un coup de téléphone, mais commence à se sentir anxieux. Il se dit : « Il se passera quelque chose de mal si je fais cet appel. Je ne sais pas quoi, mais je sais que ce sera mauvais. »",
+            "Le fils adulte de Jeanne a appelé pour dire qu’il ne viendrait pas au dîner de fêtes de famille cette année. Jeanne se sent malheureuse et conclut : « Il ne viendra jamais plus nous rendre visite. » Quel genre de distorsion cognitive Jeanne démontre-t-elle?",
+            "Benoît est un enseignant très apprécié dans une école secondaire de la région. Il trouve un site Web où les élèves partagent les évaluations de leurs enseignants. Il est surpris de voir que de nombreux étudiants ont évalué sa façon d’enseigner. Ces évaluations sont toutes très positives — à l’exception d’un message haineux. Benoît se dit : « Mes élèves ne m’aiment pas après tout. » Quelle distorsion cognitive Benoît présente-t-il?",
+            "Le fils de Philippe, Étienne, a échoué à un test de mathématiques. L’enseignante a envoyé une note à la maison pour dire qu’Étienne parle souvent avec ses amis en classe, et qu’elle changera le plan de classe pour qu’il soit moins porté à être distrait. Philippe se dit : « C’est de ma faute si Étienne a échoué à son test, si j’étais plus intelligent, j’aurais pu l’aider à étudier. » ",
+            "Marie organise un dîner et fait des préparatifs de dernière minute. Elle se rend compte qu’elle a oublié le fromage pour la salade grecque et qu’elle n’a pas le temps d’aller en chercher d’autres. Elle se dit, toute découragée : “J’ai gâché la nourriture : il vaut mieux la jeter.”"
+        ],
+        "responses": [
+            {
+                "true": "Dans l’esprit de Thierry, sa capacité en tant que propriétaire d’animaux de compagnie dépend de l’absence de tout problème. En réalité, il a réagi à l’accident de manière responsable.",
+                "false": "Thierry manifeste des pensées “tout ou rien”. Dans l’esprit de Thierry, sa capacité en tant que propriétaire d’animaux de compagnie dépend de l’absence de tout problème. En réalité, il a réagi à l’accident de manière responsable. Pensée non déformée : “Je suis soulagé que Sparks aille bien! J’ai fait le bon choix en l’amenant chez le vétérinaire. ‘Je ferai plus attention aux ordures pour que ça ne se reproduise plus.’"
+            },
+            {
+                "true": "Nathalie dramatise l’incident — elle imagine un scénario improbable et extrême, ce qui la rend anxieuse. Pensée non déformée : ‘Je n’ai rien pris sans payer : l’alarme ne sonnera donc pas.’",
+                "false": "Nathalie imagine un scénario improbable et extrême, ce qui la rend anxieuse. Pensée non déformée : ‘Je n’ai rien pris sans payer, l’alarme ne sonnera donc pas.’"
+            },
+            {
+                "true": "Robert se sent anxieux à l’idée d’utiliser le téléphone. Il en déduit que ce doit être pour une bonne raison qu’il se sent ainsi. Pensée non déformée : ‘Je suis anxieux, mais c’est sans raison, je le sais bien. Je vais me détendre en me concentrant sur ma respiration pendant quelques instants, puis je vais faire mon appel.’",
+                "false": "Robert emploie des raisonnements émotifs — il se sent anxieux à l’idée d’utiliser le téléphone, et en déduit que ce doit être pour une bonne raison qu’il se sent ainsi. Pensée non déformée : ‘Je suis anxieux, mais c’est sans raison, je le sais bien. Je vais me détendre en me concentrant sur ma respiration pendant quelques instants, puis je vais faire mon appel.’"
+            },
+            {
+                "true": "Annuler une visite une seule fois ne signifie pas que le fils de Jeanne va toujours manquer les Fêtes en famille. Pensée non déformée : ‘Je suis déçu qu’il ne soit pas ici avec nous. J’ai hâte de le voir la prochaine fois.’",
+                "false": "Jeanne généralise à — l’annulation d’une visite une fois ne signifie pas que le fils de Jeanne va manquer chaque jour férié. Pensée non déformée : ‘Je suis déçu qu’il ne soit pas ici avec nous. J’ai hâte de le voir la prochaine fois.’"
+            },
+            {
+                "true": "Benoît ferme les yeux sur les nombreuses critiques positives qu’il lit et ne s’attarde qu’à un seul message négatif. Pensée non déformée : ‘Je suis heureux que tant d’élèves aient apprécié d’être dans ma classe!’",
+                "false": "Benoît ignore les aspects positifs — il ferme les yeux sur les nombreuses critiques positives qu’il lit et ne s’attarde qu’à un seul message négatif. Pensée non déformée : ‘Je suis heureux que tant d’élèves aient apprécié d’être dans ma classe!"
+            },
+            {
+                "true": "L’intelligence de Philippe n’est pas un facteur dans la mauvaise performance d’Étienne, et l’enseignant a suggéré une cause plus probable. Pensée non déformée : ‘C’est bien que le professeur ait remarqué qu’il était distrait. Je vais trouver un tuteur en mathématiques qui aidera Étienne à rattraper son retard.’",
+                "false": "Philippe personnalise l’incident — son intelligence n’est pas un facteur dans la mauvaise performance d’Étienne, et l’enseignant a suggéré une cause plus probable. Pensée non déformée : ‘C’est bien que le professeur ait remarqué qu’il était distrait. Je vais trouver un tuteur en mathématiques qui aidera Étienne à rattraper son retard.’"
+            },
+            {
+                "true": "Marie a décidé qu’une réussite culinaire n’est possible que si chaque aspect de son plat est parfait Pensée non déformée : ‘C’est dommage que j’aie oublié le fromage, mais ça ne fait rien, je vais quand même servir mon plat. Les autres ingrédients sont toujours bons.’",
+                "false": "Marie a des pensées ‘tout ou rien’ — elle a décidé qu’une réussite culinaire n’est possible que si chaque aspect de son plat est parfait. ‘C’est dommage que j’aie oublié le fromage, mais ça ne fait rien, je vais quand même servir mon plat. Les autres ingrédients sont toujours bons."
+            }
+        ]
+    },
+    "fa": {
+        "title": "Plaisir et rendement",
+        "body": "Évaluez votre dépression, votre bonheur et votre sentiment d’accomplissement avant et après une activité",
+        "back": "Revenir",
+        "table": {
+            "title": "Analyse du plaisir et du rendement",
+            "headers": {
+                "0": "Activité",
+                "1": "Bonheur",
+                "2": "Plaisir",
+                "3": "Réalisation",
+                "4": "Date"
+            }
+        },
+        "levels": [
+            "Absolument aucun",
+            "Minime",
+            "Léger",
+            "Doux",
+            "Modéré",
+            "Beaucoup",
+            "Haut",
+            "Très haut",
+            "Extrême"
+        ],
+        "save": "Sauvegarder",
+        "new": "Nouvelle analyse du plaisir et du rendement",
+        "view": "Voir plus",
+        "steps": {
+            "0": {
+                "header": "Étape 1: Noter les activités",
+                "body": "Utilisez cette échelle de notation pour évaluer votre dépression, votre bonheur et votre sens d'accomplissement avant et après chaque activité. Vous pouvez imprimer une feuille vierge afin de la conserver avec vous pendant la journée afin de sauvegarder votre humeur avant et après vos activités et les rentrer plus tard.",
+                "inputs": {
+                    "0": {
+                        "title": "Nom de l'activité",
+                        "default": "Nom d'une activité"
+                    },
+                    "1": {
+                        "title": "Sélectionnez une date"
+                    },
+                    "2": {
+                        "title": "Niveau AVANT"
+                    },
+                    "3": {
+                        "title": "Niveau APRÈS"
+                    }
+                },
+                "columns": {
+                    "0": "Bonheur",
+                    "1": "Plaisir",
+                    "2": "Réalisation"
+                }
+            },
+            "1": {
+                "header": "Étape 2: Ajouter vos observations",
+                "body": "Maintenant, vous pouvez ajouter des observations ou des informations supplémentaires pour les notes attribuées aux activités, qui pourront vous être utiles quand vous relirez ces notes plus tard.",
+                "inputs": {
+                    "0": {
+                        "title": "Ajouter toutes réflexions d'observations pour votre activité ci-dessous"
+                    }
+                }
+            }
+        },
+        "popups": {
+            "success": {
+                "title": "Succès",
+                "body": "Votre activité a été enregistrée"
+            },
+            "validation": {
+                "title": "Erreur de validation",
+                "body": [
+                    "Le champ d'activité ne peut être laissé vide",
+                    "Veuillez spécifier votre niveau de bonheur avant et après l'activité.",
+                    "Veuillez préciser votre niveau de plaisir avant et après l'activité.",
+                    "Veuillez indiquer votre niveau de réussite avant et après l'activité.",
+                    "Le champ d'observation ne peut pas être vide"
+                ]
+            },
+            "deleteBody": "Êtes-vous certain(es) de vouloir supprimer cette analyse du plaisir et du rendement?"
+        }
+    },
+    "as": {
+        "title": "Calendrier des activités",
+        "body": "Utilisez le calendrier des activités pour programmer des activités amusantes et des responsabilités que vous allez faire pendant la semaine.",
+        "back": "Retour",
+        "new": "Nouveau Calendrier des activités",
+        "view": "plus",
+        "table": {
+            "completed": "Calendrier des activités complétées",
+            "unfinished": "Calendrier des activités incomplets"
+        },
+        "selectType": "Choisir un type d'activité",
+        "pleasurable": "Désirable",
+        "social": "Social",
+        "achievement": "Accomplissement",
+        "steps": {
+            "0": {
+                "header": "Step 1: Choisir vos activités",
+                "body": {
+                    "0": "Choisissez certaines des activités listées pour ajouter à votre calendrier cette semaine, ou ajoutez la vôtre.",
+                    "1": "Les activités agréables sont simplement des activités amusantes. Commencez lentement et choisissez des activités que vous savez que vous appréciez.",
+                    "2": "Lors de la lutte contre la dépression, il est important de passer du temps avec les amis et la famille. Sélectionnez au moins une activité dans la liste des activités sociales.",
+                    "3": "Enfin, choisissez au moins une action dans la liste des activités de réalisation. Les tâches de réalisation sont liées à des responsabilités que vous avez négligé récemment."
+                },
+                "inputs": {
+                    "0": {
+                        "label": "Activités plaisantes",
+                        "values": {}
+                    },
+                    "1": {
+                        "label": "Activités sociales",
+                        "values": {}
+                    },
+                    "2": {
+                        "label": "Activités de réussite",
+                        "values": {}
+                    }
+                }
+            },
+            "1": {
+                "button": "Ajouter une activité",
+                "header": "Étape 2: planifier les activités",
+                "placeholder": "Taper ici pour ajouter une nouvelle activité",
+                "body": "Maintenant que vous avez choisi certaines activités, cliquez sur l'horaire ci-dessous pour programmer des heures pour chacunes. Commencer petit en entrant seulement quelques activités. et ensuite entrer des nouvelles activités personalisés en les entrant dans la zone de texte."
+            },
+            "2": {
+                "header": "Étape 3: réviser",
+                "body": "Assurez-vous que vous avez correctement entré les activités que vous allez faire pendant la semaine."
+            }
+        },
+        "save": "Sauvegarder",
+        "next": "Prochain",
+        "finish": "Terminer",
+        "errorPopups": {
+            "error": "Erreur",
+            "activityType": "Veuillez choisir un type d'activité",
+            "activity": "Veuillez choisir une activité",
+            "dateTime": "Veuillez choisir une date et un temps"
+        },
+        "successPopups": {
+            "success": "Succès",
+            "body": "Calendrier des activités soumis!"
+        },
+        "popups": {
+            "deleteBody": "Êtes-vous certain(es) que vous voulez supprimer cette activité?"
+        },
+        "modal": {
+            "title": "Personaliser vos activités",
+            "placeholder": "Votre activité personnalisée...",
+            "button": "Terminer"
+        },
+        "select": {
+            "title": "Choisir votre activité pour...",
+            "placeholder1": "Sélectionnez votre activité",
+            "or": "ou",
+            "placeholder2": "Tapez votre activité ici",
+            "button": "Terminer"
+        },
+        "start": "Cliquez pour sélectioner un temps de début",
+        "end": "Cliquez pour sélectioner un temps de fin"
+    },
+    "calendar": {
+        "pagetitle": "Calendrier",
+        "header": "Démarrer un appel vidéo avec vos utilisateurs",
+        "bodyUser": "Les rendez-vous et les événements du calendrier d'activités apparaîtront ici.",
+        "bodyCounselor": "Les rendez-vous n'ont jamais été aussi faciles et plus accessibles. Envoyer une invitation à un utilisateur pour commencer une consultation vidéo.",
+        "add": "Ajouter un rendez-vous pour: ",
+        "title": "Titre",
+        "user": "Utilisateur",
+        "select": "Sélectionner un participant",
+        "time": "Temps",
+        "duration": "Durée",
+        "desc": "Description du rendez-vous",
+        "send": "Inviter un utilisateur à un rendez-vous",
+        "entries": "Il n'y a pas d'entrées",
+        "selectHour": "Sélectionner une heure",
+        "selectDuration": "Sélectionner une durée",
+        "delete": " Supprimer",
+        "edit": " Modifier",
+        "popups": {
+            "success": "Succès",
+            "error": "Erreur",
+            "oops": "Oops!",
+            "blank": "Assurez-vous d'avoir inscrit un titre, un participant et une durée pour le rendez-vous. "
+        },
+        "deleteAppointment": "Voulez-vous supprimer ce rendez-vous?",
+        "participants": "Participants",
+        "scheduledBy": "Organisé par",
+        "appointment": "Rendez-vous",
+        "activityScheduler": "Calendrier des activités",
+        "legend": {
+            "moodcheck": "Moodcheck",
+            "assessment": "Évaluation",
+            "course": "Cours",
+            "depression": "Cours de dépression",
+            "anxiety": "Cours d'anxiété",
+            "scheduled": "Schédulé",
+            "thoughtdiary": "Journal des pensées",
+            "activityscheduler": "Calendrier des activités",
+            "funachievement": "Plaisir et rendement",
+            "appointment": "Appointement",
+            "zenroom": "Chambre zen"
+        },
+        "createVideoSession": "Créer une session vidéo avec un lien de partage.",
+        "or": "- OU -",
+        "previous": "Précédent",
+        "next": "Prochain",
+        "noEntries": "Il n'y a aucune entrée pour cette date"
+    },
+    "das": {
+        "title": "Évaluation du bien-être",
+        "dasforcedintro": "Bienvenue à WellTrack! Faisons une évaluation rapide du bien-être afin que nous puissions mesurer vos niveaux actuels de stress, d'anxiété et de dépression. Cela ne prendra qu'un moment.",
+        "dasintro": "Veuillez lire chaque question et sélectionner une valeur indiquant le niveau de la déclaration durant le cours de la dernière semaine. Il n'y a pas de bonnes ou de mauvaises réponses. Ne passez pas trop de temps sur chaque question.",
+        "ptsdintro": "Lisez chaque question énoncé sur l'écran suivant. Si vous ressentez ces symptômes depuis plus d'un mois, cliquez sur le bouton correspondant. Choisir toutes les options qui correspondent.",
+        "body": "Compléter un quiz qui calcule votre niveau de dépression, de stress et d'anxiété. Compléter régulièrement l'évaluation du bien-être vous permettra de voir votre progrès sur chaque catégorie.",
+        "back": "Retour",
+        "button": "Faire l'évaluation du bien-être",
+        "viewResults": "Voir les résultats",
+        "opinionofprofessional": "Cette évaluation ne remplace pas l'opinion d'un professionnel de la santé.",
+        "tableHeaders": {
+            "0": "Dépression",
+            "1": "Anxiété",
+            "2": "Stress",
+            "3": "Alerte DAS",
+            "4": "Alerte TSPT",
+            "5": "Date",
+            "6": "Alerte"
+        },
+        "header": "Évaluation",
+        "start": "Débuter",
+        "continue": "Continuer",
+        "previous": "Précédent",
+        "next": "Prochain",
+        "finish": "Terminer",
+        "result": {
+            "title": "Vos résultats d'évaluation du bien-être",
+            "depression": {
+                "title": "DÉPRESSION",
+                "level": "Votre niveau de dépression est ",
+                "suggest": "Alors que tout le monde se sent triste ou bleu à l'occasion, la dépression dure beaucoup plus longtemps que quelques heures ou quelques jours et peut affecter vos relations, vos passe-temps et votre travail.  La dépression est hautement traitable en utilisant une thérapie cognitivo-comportementale pour vous aider à modifier vos pensées. Vous bénéficieriez du cours sur la dépression.",
+                "you": "Vous avez un niveau ",
+                "levelOf": " de dépression."
+            },
+            "stress": {
+                "title": "STRESS",
+                "level": "Votre niveau de stress est ",
+                "you": "Vous avez un niveau ",
+                "levelOf": " de stress.",
+                "effect": "Le stress affecte presque tout le monde dans une certaine mesure, mais trop de stress peut causer de l'irritabilité et peut affecter votre santé.",
+                "suggest": "Le stress peut être géré en prenant le temps de vous détendre avec des techniques de relaxation efficaces. Vous bénéficieriez du cours sur l'anxiété et le stress, en vous concentrant sur les techniques de relaxation"
+            },
+            "anxiety": {
+                "title": "ANXIÉTÉ",
+                "level": "Votre niveau d'anxiété est ",
+                "you": "Vous avez un niveau ",
+                "levelOf": " d'anxiété.",
+                "suggest": "L'anxiété se manifeste souvent tels des tremblements, un sentiment de panique ou un serrement dans la poitrine. L'anxiété peut être gérée avec succès en utilisant des techniques de relaxation appropriées. Vous bénéficieriez du cours sur l'anxiété et le stress."
+            },
+            "ptsd": {
+                "title": "SSTP",
+                "levels": {
+                    "lowtitle": "Vous gérez très bien votre situation",
+                    "hightitle": "Il se peut que vous subissiez des symptômes de SSTP",
+                    "lowbody": "Cliquez sur \"Terminer\" pour afficher les ressources qui sont disponibles.",
+                    "highbody": "Vous devriez appeler un médecin si vous souffrez de symptômes pendant plus d'un mois. Cliquez sur \"Terminer\" pour afficher les ressources qui vous sont disponibles."
+                }
+            }
+        },
+        "popups": {
+            "deleteBody": "Êtes-vous certain(es) que vous voulez supprimer cette évaluation?"
+        }
+    },
+    "resilience": {
+        "wellnessDomains":{
+            "title": "Wellness Domains",
+            "description": "There are seven wellness domains that factor into your complete well-being. These seven important areas of your life affect your mental fitness and your ongoing ability to weather ongoing demands and unpredictable pressures."    
+        },
+        "title": "Resilience Assessment",
+        "button": "Take the resilience assessment",
+        "start": "Start",
+        "continue": "Continue",
+        "previous": "Previous",
+        "next": "Next",
+        "finish": "Finish",
+        "back": "Back",
+        "introduction": "These six questions will help you identify the factors affecting your complete well-being. As you review the six questions, reflect on how you have felt through the past 1-2 weeks to help you answer. This assessment will provide insight into how you may be approaching the situations you are currently facing and highlight areas you might want to focus your work on right now!",
+        "explain": "Your resilience, or ability to prepare yourself proactively for ongoing demands and unpredictable pressures, is made up of 7 wellness domains that contribute to your overall wellbeing. Looking back on your life over the past 1-2 weeks, how would you rank the demands on each of these contributors to your total health? Rank each based on where you feel you could use additional resources and support to strengthen that aspect of your health.",
+        "body": {
+            "0": "How are you doing? Fine is never the full story. There are six wellness domains to your complete well-being. These include behavioral, physical, purpose/meaning, career, psychological, and social contributors to your overall health. Check in with yourself and take stock of how these factors are affecting your total health.",
+            "1": "Your answers to these questions will provide you with personalized resources to help you strengthen your resilience over time.",
+            "2": "Keep track of your resilience and monitor changes over time. As you bring your awareness to your proactive work to strengthen your mental and emotional fitness in these areas, your ability to weather ongoing demands and unpredictable pressures will increase, as well."
+        },
+        "lastAssessment": {
+            "0": "In your last assessment, you indicated you could use extra help in the ",
+            "1": "realms. Click on the corresponding wellness domain to find tools and tips for building your resilience in those areas."
+        },
+        "tableHeaders": {
+            "0": "Score",
+            "1": "Alert",
+            "2": "Date",
+            "3": "View",
+            "4": "Delete"
+        },
+        "alert": {
+            "titles": {
+                "reactive": "Reactive",
+                "inthemoment": "In The Moment",
+                "proactive": "Proactive"
+            },
+            "descriptions": {
+                "reactive": "Based on your responses today, you are reacting to demands on your mental well-being. You are facing some very real challenges and stressors, and they are finding their way in to affect you. Just like physical immunity, you can take some steps to build your mental fitness routines to strengthen your natural supports. Take a breath, and allow yourself some space. This is manageable. Start with taking a small step forward to focusing on your well-being. Take 5 minutes to review the tools and resources that seem most important to you today, and check back in frequently for new tools and resources chosen specifically for you!",
+                "inthemoment": "You’re on the right track! You are on the right track to prioritizing your mental and developing skills to help you navigate challenging and stressful situations and environments. By logging on, tapping in and checking up with yourself, you are making time to acknowledge your needs honestly. The work you are doing today is helping you to strengthen your mental supports to meet ongoing demands and unpredictable pressures. You are on the way to building these skills! Make some time to review our resources and tools to continue adding to your toolbox of well-being and resilience!",
+                "proactive": "You’re doing it! You are taking a proactive approach to develop skills to help you navigate the unexpected. You’re making your mental well-being a priority and setting habits that will help you in the future. Keep going! Based on your responses today, your resilience levels are indicating that you have highly developed skills that are helping you navigate challenging and stressful situations and environments. While you are demonstrating these high levels today, we would like to suggest taking a look at our different resources and tools to learn even more about how you can continue to maintain your resilience!"
+            }
+        },
+        "resilienceResult": {
+            "title":"Your resilience assessment result",
+            "subTitle":  "Your result",
+            "explain": {
+                "0": "This brief questionnaire assesses our resilience, meaning the ability to bounce back or recover from stress. Based on your assessment today, your resilience is",
+                "1": "  Navigate to the next screen to learn more about how you can strengthen your resilience in different aspects of your life."
+            }
+        }
+    },
+    "addiction": {
+        "title": "Addiction assessment",
+        "start": "Start",
+        "continue": "Continue",
+        "previous": "Previous",
+        "next": "Next",
+        "finish": "Finish"
+    },
+    "addictionassessment": {
+        "title": "Addiction assessment"
+    },
+    "contact": {
+        "title": "Contact d'urgence",
+        "subtitle": "Pour les situations d'urgence",
+        "need": "Besoin d'aide?",
+        "body": {
+            "0": "En cas d'urgence, s'il vous plaît ",
+            "1": "appeler le 911 immédiatement"
+        },
+        "professionals": "Assistance 24 heures sur 24, 7 jours sur 7, gratuite et confidentielle pour les personnes en détresse, la prévention et les ressources de crise pour vous et vos proches, et les meilleures pratiques pour les professionnels.",
+        "call": "Appeler le 911",
+        "popTitle": "Call",
+        "popup911": "Are you sure you want to dial 911?",
+        "popupEmergencyHotline": "Are you sure you want to dial the suicide/emergency hotline?",
+        "popupEmergencyTextVeteran": "Are you sure you want to dial the Veteran and Family Support Line?"
+    },
+    "setting": {
+        "title": "Mes paramètres",
+        "name": "Nom complet",
+        "email": "Courriel",
+        "newPassword": "Nouveau mot de passe",
+        "repeatPassword": "Nouveau mot de passe (de nouveau)",
+        "access": "Mon code d'accès",
+        "accessText": "Entrer le code d'accès pour votre école ou votre travail et obtenez un accès complet à toutes les fonctionnalités de WellTrack",
+        "pair": "Pairer avec l'organisme",
+        "paired": "Votre compte est actuellement associé à ",
+        "notifications": "Mes notifications",
+        "disconnect": "Déconnecter de l'organisme",
+        "sendNotifications": "Envoyez moi les rappels MoodCheck",
+        "myNotification": "Mes notifications",
+        "chooseOrganization": "Choisissez votre campus",
+        "save": "Sauvegarder",
+        "popups": [
+            {
+                "title": "Oops!",
+                "body": "Les champs du nom et du courriel ne peuvent être vides"
+            },
+            {
+                "title": "Oops!",
+                "body": "Mots de passe doivent être pareils."
+            },
+            {
+                "title": "Succès",
+                "body": "Votre profile fut sauvergardé"
+            },
+            {
+                "title": "Oops!",
+                "body": "Vous avez oublié votre code d'accès."
+            },
+            {
+                "title": "Succès",
+                "body": "Votre compte fut pairé avec "
+            },
+            {
+                "title": "Succès",
+                "body": "Votre compte a été déconnecté"
+            },
+            {
+                "title": "Erreur",
+                "body": "Un problème s'est produit lors de la déconnexion de l'organisme"
+            },
+            {
+                "title": "Erreur",
+                "body": "Erreur lors de la mise à jour de vos préférences. Veuillez réessayer."
+            },
+            {
+                "title": "Erreur",
+                "body": "Entrez soit un code d'accès ou un courriel."
+            },
+            {
+                "title": "Erreur",
+                "body": "Les deux champs sont remplis. Vous devez enlever soit le code d'accès ou le courriel."
+            },
+            {
+                "title": "Succès",
+                "body": "Votre choix de campus fut sauvegardé."
+            },
+            {
+                "title": "Succès",
+                "body": "Veuillez vérifier votre courriel pour confirmer votre nouvelle adresse courriel."
+            }
+        ]
+    },
+    "support": {
+        "title": "Formulaire de demande d'assistance",
+        "help": "Comment pouvons nous aider?",
+        "section": "Où avez-vous rencontré le problème?",
+        "hintsection": "N'hésitez pas à nous dire la section ou un lien vers la page.",
+        "hintdescription": "s'il vous plaît soyez aussi précis que possible. En gros, dites-nous quelles étapes nous devons suivre pour reproduire le problème, ce que vous attendiez et ce qui s'est réellement passé.",
+        "name": "Nom",
+        "email": "Email",
+        "description": "S'il vous plaît décrire en détail ce qui s'est passé.",
+        "submit": "Soumettre",
+        "cancel": "Annuler",
+        "popups": [
+            {
+                "title": "Oops!",
+                "body": "S'il vous plaît remplir les détails du problème."
+            },
+            {
+                "title": "Oops!",
+                "body": "Le nom ne peut pas être laissé en blanc."
+            },
+            {
+                "title": "Oops!",
+                "body": "L'email ne peut pas être laissé en blanc."
+            },
+            {
+                "title": "Erreur",
+                "body": "Adresse e-mail invalide."
+            },
+            {
+                "title": "Succès",
+                "body": "Nous recevons votre demande. Je vous remercie."
+            },
+            {
+                "title": "Erreur",
+                "body": "Une erreur s'est produite lors de l'envoi de la demande. Veuillez réessayer plus tard."
+            }
+        ]
+    },
+    "invite": {
+        "share": "Demander pour partager",
+        "msg": "Écrire un message personnalisé pour votre invitation",
+        "send": "Envoyer l'invitation",
+        "userSubscribe": {
+            "title": "Invité un conseiller",
+            "body": {
+                "0": "Le partage de vos données avec votre conseiller améliorera la qualité de vos traitements. Si vous travaillez actuellement avec un conseiller, parlez-lui de WellTrack, puis ensuite inviter votre conseiller à consulter vos données.",
+                "1": "En invitant un conseiller, vous comprenez que cette individuel sera capable de voir toutes les informations que vous entrez dans WellTrack et vous acceptez le partage de ces données."
+            }
+        },
+        "executive": {
+            "title": "Inviter un administrateur",
+            "body": "Ajouter un utilisateur administratif à votre organisme"
+        },
+        "professional": {
+            "title": "Inviter un utilisateur à Welltrack",
+            "titleShare": "Inviter un utilisateur existant à partager ces données",
+            "body": "En tant que professionnel, vous pouvez inviter un utilisateur à Welltrack et leur demander de partager leur données avec vous. Entrer leur adresse courriel et ils recevront une invitation.",
+            "bodyShare": "En tant que professionnel, vous pouvez inviter un utilisateur à partager ses données avec vous. Entrez leur adresse courriel et ils recevront une invitation à partager."
+        },
+        "orgAdmin": {
+            "title": "Grandir votre équipe en ajoutant un professionel.",
+            "body": "En tant qu'administrateur', vous pouvez agrandir votre équipe en ajoutant un professionel. Entrez leur adresse courriel et ils recevront une invitation."
+        },
+        "admin": {
+            "title": "Inviter n'importe quel type d'utilisateurs",
+            "types": [
+                {
+                    "text": "Utilisateur",
+                    "type": "userinvite"
+                },
+                {
+                    "text": "Professionnel",
+                    "type": "proinvite"
+                },
+                {
+                    "text": "Administratif",
+                    "type": "executiveinvite"
+                },
+                {
+                    "text": "Admin professionnel",
+                    "type": "adminprofessional"
+                },
+                {
+                    "text": "Admin administratif",
+                    "type": "adminexecutive"
+                }
+            ]
+        },
+        "sent": "Courriel envoyé!",
+        "receive": "Vous recevrez une notification par courriel lorsque l'utilisateur acceptera ou rejettera votre invitation.",
+        "thanks": "Nous vous remercions d'avoir aidé quelqu'un à améliorer leur santé mentale",
+        "popups": {
+            "error": "Erreur",
+            "blank": "Entrer le courriel d'un utilisateur que vous aimeriez inviter.",
+            "select": "Vous devez sélectioner un type d'utilisateur"
+        }
+    },
+    "moodcheckHistory": {
+        "title": "Historique Moodcheck",
+        "on": "le",
+        "submitted": "Soumis @ ",
+        "feeling": "Tu t'es sent",
+        "activity": "Vous faisiez",
+        "people": "Vous étiez avec",
+        "place": "Vous étiez à",
+        "notes": "Notes:",
+        "ok": "Ok!"
+    },
+    "sync": {
+        "title": "Partager avec un conseiller",
+        "body": "Partager vos données avec votre conseiller peut améliorer la qualité de vos rendez-vous de suivi et votre traitement. Si votre conseiller vous a demandé de partager vos données, sa requête va apparaître ci-dessous et vous pouvez l'accepter ou la rejeter.",
+        "bodySubscribe": "Partager vos données avec votre conseiller peut améliorer la qualité de vos rendez-vous de suivi et votre traitement. Faites certain de discuter le partage de votre données avant d'envoyer l'invitation.",
+        "subscribe": "S'abonner",
+        "subscribeorAssociate": "S'abonner ou associer votre compte",
+        "headers": {
+            "0": "Nom",
+            "1": "Titre",
+            "2": "Courriel"
+        },
+        "usersSharingHeader": "Utilisateurs qui partagent",
+        "synchedHeader": "Conseillers",
+        "pendingHeader": "Invitation(s) non confirmée(s)",
+        "synced": "Synchronisé",
+        "pending": "Synchronisation en attente",
+        "off": "Éteint",
+        "on": "Allumé",
+        "noneFound": "Aucun conseiller trouvé.",
+        "noneSynched": "Aucun conseiller n'est actuellement synchronisé",
+        "popup": {
+            "errortitle": "Erreur",
+            "successtitle": "Succès",
+            "fetch": "Erreur à récupérer les conseillers.",
+            "pair": "Erreur avec le pairage d'un conseiller. S.V.P. réessayer.",
+            "confirmCancel": "Voulez-vous vraiment annuler le partage de votre progrès?",
+            "acceptError": "Une erreur s'est produite lors de la confirmation. Veuillez réessayer.",
+            "rejectError": "Une erreur s'est produite lors du rejet. Veuillez réessayer.",
+            "waiting": "Veuiller attendre que le conseiller approuve votre requête."
+        },
+        "syncButton": "Synchroniser avec un conseiller",
+        "none": "Aucun",
+        "cancelText": "Annuler",
+        "cancel": "Annuler",
+        "accept": "Accepter",
+        "reject": "Refuser",
+        "syncwCounselor": "Synchroniser avec un conseiller"
+    },
+    "userListing": {
+        "title": "Utilisateurs",
+        "invitationsTitle": "Invitations envoyées",
+        "invite": "Inviter un utilisateur",
+        "inviteNew": "Inviter un nouvel utilisateur",
+        "inviteShare": "Inviter un utilisateur à partager leur progrès",
+        "inviteSubscribe": "Inviter un utilisateur à s'abonner.",
+        "headers": {
+            "0": "Nom",
+            "1": "Dernière connexion",
+            "2": "Courriel",
+            "3": "Organisme",
+            "4": "Alertes de mauvaises humeurs",
+            "5": "Organisme",
+            "6": "Courriel",
+            "7": "Rappels",
+            "8": "Status",
+            "9": "Partage?",
+            "10": "Réenvoyer"
+        },
+        "view": "Afficher les détails",
+        "noneFound": "Aucun utilisateur trouvé. Inviter un utilisateur et lui demander de partager",
+        "noneFoundnoShare": "Inviter un utilisateur à joindre Welltrack.",
+        "noneFoundSubscribe": "Aucun utilisateur trouvé. Inviter un utilisateur à s'abonner.",
+        "noneInvites": "Aucune invitation n'a été trouvée",
+        "resendInvitation": "Réenvoyer l'invitation.",
+        "reminders": "Rappel(s)",
+        "deleteInvitation": "Supprimer",
+        "removeInvitation": "Enlever l'invitation",
+        "popup": {
+            "errortitle": "Erreur",
+            "successtitle": "Succès",
+            "success": "Un rappel fut envoyé"
+        },
+        "statuses": {
+            "sent": "Envoyé",
+            "created": "Créé",
+            "rejected": "Rejeté",
+            "accepted": "Accepté"
+        },
+		"delete": "Supprimer",
+		"disable": "Désactiver",
+		"approve": "Approuver"
+    },
+    "userDetails": {
+        "schedule": "Planifier un rendez-vous",
+        "back": "Retour à la liste",
+        "last": "derniers 30 jours",
+        "bad": "Alertes de mauvaises humeurs",
+        "scored": "Deux mauvaises humeurs sur Moodcheck",
+        "more": "Voir plus",
+        "latestAct": "Dernières activités",
+        "latestMood": "Derniers Moodchecks",
+        "average": "Évaluation moyenne de Moodcheck",
+        "neverLoggedIn": "Jamais connecté",
+        "none": "Aucun",
+        "organization": "Organisme",
+        "userType": "Type d'utilisateur",
+        "noneFound": "Aucune activité trouvée",
+        "cancelSharing": "Annuler le partage",
+        "popup": {
+            "cancelSharing": "Voulez-vous arrêter de voir le progrès de cet utilisateur.",
+            "success": "Le partage avec cet utilisateur est annulé.",
+            "successtitle": "Succès",
+            "errortitle": "Erreur",
+            "error": "Il y a eu un problème avec la demande de cessation de partage . Veuillez réessayer."
+        }
+    },
+    "organizationInfo": {
+        "title": "Informations sur l'organisme",
+        "save": "Enregister",
+        "saveOrganizationInformation": "Sauvegarder l'information",
+        "saveEmergencyContact": "Sauvegarder les coordonnées d’urgence",
+        "name": "Nom",
+        "subdomain": "Sous-Domaine",
+        "allowedDomains": "Domaines alloués",
+        "address": "Addresse",
+        "email": "Courriel",
+        "phone": "Téléphone",
+        "website": "Site web",
+        "emergencycontact": "Coordonées d'urgence",
+        "description": "Description",
+        "resources": "Ressources",
+        "city": "Ville",
+        "country": "Pays",
+        "edit": "Modifier l'information",
+        "emergency": "Contact d'urgence",
+        "default": "Message par défaut",
+        "invite": "Inviter un professionnel",
+        "professional": "Professionels de l'organisme",
+        "headers": {
+            "0": "Nom",
+            "1": "Rôle",
+            "2": "Couriel",
+            "3": "Status"
+        },
+        "counselor": "Conseiller",
+        "deactivate": "Désactiver",
+        "activate": "Activer",
+        "noneFound": "Aucun professionnel ne fût trouvé.",
+        "placeholders": [
+            "Nom de l'organisme",
+            "Courriel principal",
+            "Numéro de téléphone",
+            "Adresse",
+            "Adresse de site web"
+        ],
+        "popups": [
+            "Erreur",
+            {
+                "title": "Succès",
+                "body": "L'utilisateur est désactivé."
+            },
+            {
+                "title": "Succès",
+                "body": "L'utilisateur est réactivé."
+            },
+            {
+                "title": "Succès",
+                "body": "L'organisme est mis à jour."
+            },
+            {
+                "title": "Oops!",
+                "body": "Le champs \"Coordonnées d'urgence\" doit être rempli."
+            },
+            {
+                "title": "Oops!",
+                "body": "Tous les champs doivent être remplis."
+            }
+        ],
+        "editResources": "Modifier les ressources",
+        "updateResources": "Mettre à jour"
+    },
+    "organizationListing": {
+        "title": "Organisme",
+        "headers": {
+            "0": "Nom",
+            "1": "Sous-domaine",
+            "2": "Domaines alloués",
+            "3": "Actif"
+        },
+        "create": "Créer un organisme",
+        "view": "Voir détails",
+        "edit": "Modifier",
+        "noneFound": "Aucun organisme trouvé.",
+        "executive": "Administrateurs",
+        "professional": "Professionnel",
+        "jointprofessionals": "Professionnels adjoint",
+        "executiveprofessional": "Professionnels administratifs",
+        "user": "Utilisateurs",
+		"activate": "Activer",
+		"deactivate": "Désactiver",
+		"disabledOrgTitle": "Organisation handicapée"
+    },
+    "organizationView": {
+        "back": "Retour à la liste d'organismes",
+        "headers": {
+            "0": "Statistiques",
+            "1": "Activités",
+            "2": "Membres",
+            "3": "Codes",
+            "4": "Défis"
+        },
+        "code": {
+            "button": "Créer un code d'accès",
+            "headers": {
+                "0": "Code",
+                "1": "Supprimer"
+            },
+            "delete": "Supprimer"
+        },
+        "noUsersfound": "Aucun utilsateur trouvé",
+        "noAccessCodesFound": "Aucun code d'accès trouvé"
+    },
+    "dashboardExecutive": {
+        "title": "Données générales d'utilisateurs",
+        "all": "Tous les utilisateurs ensembles",
+        "total": "Total des utilisateurs",
+        "active": "Utilisateurs actifs",
+        "moodcheckUsers": "Utilisateurs MoodCheck",
+        "returningUsers": "Utilisateurs retournant",
+        "invitesSent": "Invitations envoyées",
+        "invitesAccepted": "Invitations acceptées",
+        "men": "Hommes",
+        "women": "Femmes",
+        "unconfirmed": "Non confirmé",
+        "average": "État moyen de l'humeur",
+        "bad": "Alertes de mauvaise humeur",
+        "low": "Alertes deux fois de suite",
+        "sync": "Utilisateur synchronisé avec un conseiller",
+        "submissions": "Soumissions",
+        "signupsandlogins": "Signups and Logins",
+        "signups": "Enregistrements",
+        "logins": "Connexions",
+        "last": "Dernier",
+        "days": "Jours",
+        "thereare": "Il y a",
+        "completedassessments": "évaluations du bien-être complétées.",
+        "submissionshigh": "des soumissions sont soit élevées ou très élevées",
+        "scoredhigh": "Élevé+",
+        "users": "Utilisateurs",
+        "usersGotBetter": "de tous les utilisateurs ont améliorer",
+        "depression": "Dépression",
+        "anxiety": "Anxiété",
+        "stress": "Stress",
+        "first": "Premier",
+        "filters": {
+            "last30days": "Derniers 30 jours",
+            "last60days": "Derniers 60 jours",
+            "last90days": "Derniers 90 jours",
+            "alltime": "Tous",
+            "custom": "Personalisé"
+        },
+        "graphs": {
+            "general": {
+                "title": "Carte d'humeurs",
+                "last": "Les 30 derniers jours",
+                "good": "Bonne humeur",
+                "normal": "Humeur normale",
+                "bad": "Mauvaise humeur"
+            },
+            "dasavg": {
+                "extremelysevere": "Extrêmement Élevé",
+                "severe": "Élevé",
+                "moderate": "Modéré",
+                "mild": "Minime",
+                "normal": "Normal"
+            },
+            "das": {
+                "title": "Changement moyen au niveau du bien-être "
+            },
+            "better": {
+                "title": "Les gens qui se sont améliorés",
+                "improved": "Améliorer le niveau de ",
+                "depression": "dépression",
+                "anxiety": "anxiété",
+                "stress": "stress"
+            },
+            "assessmentresults": {
+                "title": "Résultats des évaluations du bien-être",
+                "depression": "Dépression",
+                "anxiety": "Anxiété",
+                "stress": "Stress"
+            }
+        }
+    },
+    "datePicker": {
+        "clear": "Effacer",
+        "today": "Aujourd'hui",
+        "select": "Choisir l'année"
+    },
+    "results": {
+        "title": "Vos résultats du quiz",
+        "well": "Excellent! Vous connaissez vraiment votre théorie. Cela sera utile une fois que vous commencerez à utiliser le journal de la pensée et vous aidera à donner un sens aux événements que vous rencontrez.",
+        "ok": "Pas mal, mais vous voudrez peut-être revoir une partie du contenu juste pour l'examiner une deuxième fois. Vous devrez utiliser ces termes une fois que vous commencez à travailler avec le journal de pensée.",
+        "bad": "Oups, on dirait que c'est une bonne idée de revenir en arrière et d'examiner le chapitre 5 du module de dépression. Il est utile d'avoir une bonne façon de distinguer ces modèles de pensée lorsque vous commencez à utiliser le journal de la pensée.",
+        "review": "Nous vous recommandons de passer en revue le chapitre 5 du module de dépression avant de passer à autre chose.",
+        "finish": "Terminer"
+    },
+    "challenges": {
+        "title": "Défis",
+        "back": "Retour",
+        "active": "Défis actifs",
+        "noActive": "Il n'y a actuellement aucun défi actif",
+        "upcoming": "Défis à venir",
+        "noUpcoming": "Il n'y a actuellement défi à venir.",
+        "noFinished": "Il n'y a actuellement défis déja terminer.",
+        "noChallenges": "Il n'y a pas de défis à afficher. Dès qu'il y aura un défi disponible, il apparaîtra ici.",
+        "past": {
+            "title": "Défis passés",
+            "teams": " Équipes",
+            "number": "Nombre de Moodchecks",
+            "total": "Total: ",
+            "totalScore": "MoodChecks total par jour ",
+            "headers": {
+                "team": "Équipes participantes",
+                "avg": "Participation moyenne",
+                "total": "Score total"
+            },
+            "days": [
+                "Lun",
+                "Mar",
+                "Mer",
+                "Jeu",
+                "Ven"
+            ],
+            "how": "Comment ça marche?"
+        },
+        "description": "Description",
+        "moodcheckChallenge": "Défi Moodcheck",
+        "noScoring": "Aucun MoodChecks à afficher",
+        "totalScoreperDay": "MoodChecks total par jour",
+        "teams": "Équipes",
+        "emailCopy": {
+            "upcomingEmailUserGeneral": "<p>The [challenge_name] is only 7 days away! [org_name] invites you to take part in the challenge from [challenge_start] to [challenge_end]!</p><p>You’ve already created a WellTrack account. Joining the challenge will give you a fun way to track your mood and activity and will give you an easy way to begin the conversation around mental wellness to help reduce the stigma associated with mental health.</p><p>Click here to learn more about the [challenge_name] and to join in the fun.</p>",
+            "startEmailUserGeneral": "<p>Thanks for joining the [challenge_name].</p><p>By checking your mood up to 2 times each day using MoodCheck, you will earn points for your team. The goal of the contest is to increase awareness around mental health issues and to help you become mindful of how your moods are related to activities. Discussing the [challenge_name] with friends or family is a great way to start the conversation.</p>",
+            "midEmailUserGeneral": "<p>We're halfway through the [challenge_name], keep up the momentum! You can still sign up for the [challenge_name] if you haven't already by going <a href=\"[public_challenge_link]\">here</a>.",
+            "endEmailUserGeneral": "<p>Thank you for participating in the [challenge_name]! The momentum created around student mental wellness on campus is encouraging.</p><p>We hope that you continue using the tools in WellTrack which include MoodCheck, Thought Diary, Activity Scheduler, etc., post-Challenge. Click <a href=\"[public_challenge_link]\">here</a> to see how each of the teams did during the challenge!</p> ",
+            "upcomingEmailCounselorGeneral": "Beginning [startdate], we will be launching the [name]. Enclosed you will find various promotional items for you to use to spread the word about the upcoming challenge. The goal is to engage as many students on your campus as possible. The aggregate data will be provided on the site along with regular updates. The more participation you can generate, the better chance you will have of winning the challenge and taking home the [challenge_name] title on [enddate]</p>",
+            "startEmailCounselorGeneral": "<p>The [challenge_name] has started. Monitor how your school is doing by going to the challenges section in Welltrack.</p>",
+            "midEmailCounselorGeneral": "<p>We're entering mid-way point of the [challenge_name], keep up the momentum! Have you been submitting 2 MoodChecks every day? Make sure you do this to tap into the Streak Bonus, every point counts! Check out the challenges section of the app to view how your university is doing.</p>",
+            "endEmailCounselorGeneral": "<p>Thank you for supporting the [challenge_name]! Today marks the last day of the event but we hope to keep the momentum going. Check back on Monday to see if your campus won!</p>"
+        }
+    },
+    "select": {
+        "place": "Faites un choix dans la liste ou tapez votre propre activité",
+        "pleasure": [
+            "Prendre un bain",
+            "Aller faire une promenade à pied",
+            "Écrire dans un journal ou sur un blogue",
+            "Jouer un instrument de musique",
+            "Manger quelque chose de spécial",
+            "Regarder un film ou une émission de télévision amusante",
+            "Jouer avec un animal de compagnie",
+            "Créer une œuvre artistique",
+            "Aller faire une promenade en voiture",
+            "Recevoir un massage",
+            "Faire un casse-tête",
+            "Porter de beaux vêtements",
+            "Prendre des photos",
+            "Acheter des fleurs",
+            "Visiter un parc ou un jardin",
+            "Aller à la bibliothèque",
+            "Planifier des vacances",
+            "Essayer une nouvelle recette",
+            "Apprendre une nouvelle danse",
+            "Aller en vélo",
+            "Profiter du plein air"
+        ],
+        "social": [
+            "Appeler un(e) ami(e)",
+            "Faire du bénévolat",
+            "Rencontrer un(e) ami(e) pour un café",
+            "Aller voir un film avec un membre de la famille ou un(e) ami(e)",
+            "Sortir au restaurant",
+            "Faire un cadeau",
+            "Passer du temps avec des amis ou des membres de la famille à se remémorer de bons souvenirs",
+            "Jouer aux cartes ou à un jeu de société",
+            "Organiser un souper ou un barbecue",
+            "Aller suivre un cours offert aux membres de la communauté",
+            "Jouer à un sport d’équipe",
+            "Assister à un concert avec un membre de la famille ou un(e) ami(e)",
+            "Visiter un café d'art en famille ou avec un(e) ami(e)",
+            "Participer à un festival en famille ou avec un(e) ami(e)",
+            "Aller danser avec un(e) ami(e)",
+            "Jouer à un jeu vidéo en famille ou avec un(e) ami(e)",
+            "Visiter le marché d'un agriculteur en famille ou un(e) ami(e)"
+        ],
+        "achievement": [
+            "S’occuper de plantes",
+            "Faire de l’exercice",
+            "Rembourser ses dettes",
+            "Faire des réparations dans la maison",
+            "Cuisiner ou faire de la pâtisserie",
+            "Nettoyer ou ranger la cuisine",
+            "Nettoyer ou ranger une salle de bain",
+            "Nettoyer ou ranger le salon",
+            "Nettoyer ou ranger une chambre",
+            "Faire la lessive",
+            "Laver ou pomponner un animal de compagnie",
+            "Se débarrasser du superflu dans un coin de la maison",
+            "Aller à la bibliothèque",
+            "Rapporter des livres à la bibliothèque",
+            "Organiser ses photos",
+            "Faire du travail d’entretien dans la cour",
+            "Apporter le recyclage au dépôt",
+            "Rédiger une note de remerciement"
+        ],
+        "add": "Ajouter une nouvelle activité",
+        "hit": "Tapez votre nouvelle activité, puis appuyez sur \"Entrée\"",
+        "hide": "Cliquez pour masquer cet écran"
+    },
+    "resources": {
+        "title": "Ressources",
+        "gotosection": "Aller à la section",
+        "go": "Aller",
+        "learnmore": "En apprendre davantage",
+        "recommendedResources": "Ressources recommandées",
+        "editResourse": "Modifier les ressource"
+    },
+    "activity": {
+        "headers": {
+            "0": "Message",
+            "1": "Utilisateur",
+            "2": "Organisme",
+            "3": "Date"
+        }
+    },
+    "userProfile": {
+        "back": "Retour à la liste d'utilisateurs"
+    },
+    "payment": {
+        "interactive": "Thérapie d'Auto-Assistance Interactive",
+        "takeCharge": "Prenez votre santé mentale en main en utilisant Welltrack. Nos outils thérapeutiques vous aideront à améliorer votre santé mentale.",
+        "tryWelltrack": "Essayez WellTrack aujourd'hui",
+        "WelltrackIs": "WellTrack est pour tout le monde",
+        "courses": "Cours",
+        "welltrackProvides": "WellTrack est un excellent ajout à la thérapie en personne, vous permettant de partager vos données avec votre conseiller",
+        "tools": "Outils",
+        "weProvide": "On fournit des outils thérapeutiques que vous pouvez utiliser pour modifier vos pensées et votre comportement",
+        "sharing": "Partage",
+        "welltrackisGreat": " WellTrack is a great addition to in-person therapy, allowing you to share your data with your therapist",
+        "pricing": "Prix",
+        "subscription": "Un abonnement à WellTrack inclut:",
+        "featuresTitle": "Fonctionalités WellTrack",
+        "features": {
+            "moodcheck_title": "MoodCheck",
+            "moodcheck_description": "Votre journal quotidien d'humeur",
+            "courses_title": "Cours de santé mentale",
+            "courses_description": "Apprener à gérer votre stress, votre anxiété, et votre dépression",
+            "zenroom_title": "La chambre zen",
+            "zenroom_description": " Pratiquer de la relaxation guidée",
+            "thoughtDiary_title": "Journal des pensées",
+            "thoughtDiary_description": "Identifier des styles de pensées nuisibles ",
+            "activityScheduler_title": "Calendrier des activités",
+            "activityScheduler_description": " Planifier des évenements qui améliorent votre humeur",
+            "funAchievement_title": "Plaisir et rendement",
+            "funAchievement_description": " Évaluer vos activités",
+            "wellness_title": "Évaluations du bien-être",
+            "wellness_description": "Évaluer vos niveaux de stress, anxiété, et de dépression.",
+            "dataSharing_title": "Partage des données",
+            "dataSharing_description": "Partager vos données avec votre conseiller si vous recevez de la thérapie traditionnelle"
+        },
+        "numberPeople": "Plus d'un million de personnes ont accès",
+        "psychologists": "Les psychologues des centres de consultation universitaires utilisent WellTrack pour offrir une thérapie d'auto-assistance aux étudiants sur le campus.",
+        "copyright": "Droits d'auteur WellTrack"
+    },
+    "paymentform": {
+        "choosePayment": "Choisir votre méthode de paiement",
+        "monthly": "Abonnement récurrent mensuel",
+        "yearly": "Abonnement récurrent annuel",
+        "perMonth": " Paiement pour l'année ou 5$ par mois",
+        "promoCode": "Code de promotion",
+        "apply": "Appliquez",
+        "sunlife": "Promotion LuminoHealth",
+        "sunlife50": "Rabais de 50% pour un temps limité",
+        "50": "Recevez 50% sur le taux d'abonnement pour un temps limité",
+        "loginInformation": "Information de login",
+        "paymentInformation": "Information de paiement",
+        "cardholder": "Nom sur la carte",
+        "billingInfo": {
+            "title": "Information de facturation",
+            "address": "Adresse",
+            "city": "Ville",
+            "province": "Province/État",
+            "country": "Pays",
+            "postalCode": "Code postal/Code zip",
+            "phone": "Téléphone"
+        }
+    },
+    "videoSharing": {
+        "endSession": "Terminer la session"
+    },
+    "unsubscribe": {
+        "title": "TU VAS NOUS MANQUER",
+        "message": "Vous avez été désabonné de la liste de diffusion Welltrack."
+    }
+}

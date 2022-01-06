@@ -1,0 +1,85 @@
+<div id="page-calendar">
+    <div class="page-section">
+        <h2 id="section-title" translate>calendar.pagetitle</h2>
+        <p *ngIf="host" class="page-section-description" translate>calendar.bodyCounselor</p>
+        <p *ngIf="!host" class="page-section-description" translate>calendar.bodyUser</p>
+
+        <div class="calendar">
+            <div *ngIf="host && user.primaryOrganization.settings.enableVideo" id="counselor-buttons">
+                <p>If you'd like to invite a user to share their progress with you, please use the invite button below.
+                </p>
+                <a id="invite-share" tabindex="0" (click)="inviteShare()" (keydown.enter)="inviteShare()"
+                    class="trigger-modal inviteshare btn btn-primary btn-with-icon" translate>
+                    <img alt="Invite to share" src="./assets/img/icons-svg/user-icon.svg">Invite user to share</a>
+
+                <p>To invite a user to a video appointment, please use the form below.</p>
+
+                <a autoFocus id="appointment-invite" tabindex="0" class="btn btn-secondary btn-inline btn-with-icon"
+                    (click)="onToggleInvite()">
+                    <img alt="Send appointment invite" src="./assets/img/icons-svg/mail-icon.svg">Schedule video
+                    appointment
+                    <i class="fa" [ngClass]="inviteOpen ? 'fa-chevron-down': 'fa-chevron-right'"></i>
+                </a>
+
+                <appointment-invite *ngIf="inviteOpen" (reloadEvents)="fetchEvents(true)"
+                    (closeInvite)="onToggleInvite()">
+                </appointment-invite>
+                <!--
+                    <p translate>calendar.or </p>
+                    <p translate>calendar.createVideoSession</p>
+                    <a id="create-video-session" class="btn-primary btn" routerLink="/app/videoshare/open/new">Start video
+                        session now</a>
+                    -->
+            </div>
+            <div class="row text-center" id="nav-buttons">
+                <div class="col-md-4 col-xs-12">
+                    <div autoFocus tabindex="0" id="previous" class="btn btn-inline" mwlCalendarPreviousView
+                        [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false" translate>
+                        calendar.previous
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div tabindex="0" id="next" class="btn btn-inline" mwlCalendarNextView [view]="view"
+                        [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false" translate>
+                        calendar.next
+                    </div>
+                </div>
+            </div>
+            <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event)">
+            </mwl-calendar-month-view>
+        </div>
+
+        <div class="mini-legend">
+            <div class="item appointment" translate>
+                <i class="bullet"></i>calendar.legend.appointment</div>
+
+            <div class="item moodcheck" translate>
+                <i class="bullet"></i>calendar.legend.moodcheck</div>
+
+            <div class="item assessment" translate>
+                <i class="bullet"></i>calendar.legend.assessment</div>
+
+            <div class="item depression" translate>
+                <i class="bullet"></i>calendar.legend.depression</div>
+
+            <div class="item anxiety" translate>
+                <i class="bullet"></i>calendar.legend.anxiety</div>
+
+            <div class="item thoughtdiary" translate>
+                <i class="bullet"></i>calendar.legend.thoughtdiary</div>
+
+            <div class="item funachievement" translate>
+                <i class="bullet"></i>calendar.legend.funachievement</div>
+
+            <div class="item activityscheduler" translate>
+                <i class="bullet"></i>calendar.legend.activityscheduler</div>
+
+            <div class="item zenroom" translate>
+                <i class="bullet"></i>calendar.legend.zenroom</div>
+        </div>
+        <event-listing-component [activeEvents]="activeEvents" [pickedDate]="pickedDate"></event-listing-component>
+    </div>
+</div>

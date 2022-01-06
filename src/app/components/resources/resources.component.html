@@ -1,0 +1,42 @@
+<div id="general" role="dialog">
+    <mat-dialog-content>
+        <div class="general-slide">
+            <div class="body-wrapper">
+                <div class="content resource-info modal-wrapper">
+                    <div class="content-header step{{resource.number}}" aria-live="assertive">
+                        <h3>{{resource.title}}</h3>
+                    </div>
+                    <div class="results">
+                        <p [innerHTML]="resource.summary"></p>
+                        <div *ngIf="resource.videos[0]?.length > 0" class="--d-flex">
+                            <div class="resource-desc">
+                            <div *ngIf="resource.videos[0].label" class="title">{{resource.videos[0].label}}</div>
+                            <div *ngIf="resource.videos[0].length" class="title">{{resource.videos[0].length}}</div>
+                            <p *ngIf="resource.videos[0].description" [innerHTML]="resource.videos[0].description" class="description"></p>
+                            </div>
+                            
+                            <div class="preview video-preview column" *ngIf="resource.videos[0].media">
+                                <wt-video [mediaUrl]="resource.videos[0].media"  [thumbnailUrl]="resource.videos[0].image"
+                                [captionUrl]="resource.videos[0].captionFile"></wt-video>
+                            </div>
+                       </div>
+                        <div class="contact" *ngFor="let contact of resource.resourcesetGroup; let i = index; ">
+                            <div *ngIf="!contact.website || contact.websiteTitle" class="title">{{contact.title}}</div>
+                            <div *ngIf="contact.website && !contact.websiteTitle" class="title"><a (click)="onResourceClick(contact)">{{contact.title}}</a></div>
+                            <p class="description" [innerHTML]="contact.description"></p>
+                            <div *ngIf="contact.contact"> {{contact.contact}}</div>
+                            <div *ngIf="contact.alternateContact">{{contact.alternateContact}}</div>
+                            <div>{{contact.address}}</div>
+                            <div *ngIf="contact.website"><a (click)="onResourceClick(contact)">{{contact.websiteTitle ? contact.websiteTitle : contact.website }}</a></div>
+                            <a *ngIf="contact.internal" tabindex="0" (click)="onResourceInternalClick(contact)" (click)="onResourceInternalClick(contact)" class="btn btn-primary btn-inline" translate>Go to resource</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fixed-footer">
+                <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-primary" translate>Close</a>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

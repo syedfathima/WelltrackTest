@@ -1,0 +1,40 @@
+<div id="page-resources">
+    <div class="col-md-12">
+        <!-- <div class="page-section-buttons">
+            <a tabindex="0" (click)="onEdit()" (keypress)="onEdit()" class="btn btn-bold" translate>resources.editResourse</a>
+        </div> -->
+        <h2 translate>resources.title</h2>
+    </div>
+
+	<page-loader *ngIf="loadedCount < 2"></page-loader>
+    <div *ngIf="loadedCount >= 2">
+        <div [innerHtml]="resources" class="resources col-md-12"></div>
+        <div *ngIf="organization.resourceSet && organization.resourceSet.length > 0">
+            <!--
+                    <div class="col-md-12">
+                        <div class="recommendedInstructions clearfix">
+                            <img alt="Recommended" height="40" width="40" src="./assets/img/icons-svg/recommended-star.svg">
+                            <h1 translate>resources.recommendedResources</h1>
+                        </div>
+                    </div>
+                -->
+
+            <div *ngFor="let resourceset of organization.resourceSet; let i = index; " class="col-md-12 col-lg-6" [ngClass]="{active: assessmentsExists}">
+                <div class="panel step{{resourceset.number}}" [ngClass]="{recommended: (resourceset.step && currentLevelMap && currentLevelMap.includes(resourceset.step))}">
+                    <div class="right bgimage">
+                        <img aria-hidden="true" alt=""  [src]="'./assets/img/icons/resources/' + images[i] + '.png'">
+                    </div>
+                    <div class="left">
+                        <h3 aria-live="polite" tabindex="0">{{resourceset.title}}</h3>
+                        <p aria-live="polite" tabindex="0" [innerHtml]="resourceset.summary"></p>
+                        <a [autoFocus] = "{apply: i === 0}" tabindex="0" aria-label="Learn more" title="Learn more" class="trigger-modal btn btn-primary" (click)="onGoTo(i)" (keypress)="onGoTo(i)" translate>resources.learnmore</a>
+                    </div>
+                    <div class="recommended-star" *ngIf="resourceset.step && currentLevelMap &&  currentLevelMap.includes(resourceset.step)">
+                        <img alt="Recommended" height="30" width="30" src="./assets/img/icons-svg/recommended-star.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>

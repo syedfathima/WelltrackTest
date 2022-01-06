@@ -1,0 +1,22 @@
+.carousel {
+    padding: 0 0 64px;
+
+    .carousel-control {
+        background-image: none;
+        display: none; //hide the arrows
+    }
+
+    .carousel-indicators {
+
+        li {
+            background-color: white;
+            margin: 0 6px;
+
+            &.active {
+                background-color: $color-link;
+                border-color: $color-link;
+            }
+        }
+        
+    }
+}

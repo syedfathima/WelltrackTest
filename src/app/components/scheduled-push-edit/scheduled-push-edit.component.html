@@ -1,0 +1,133 @@
+<div class="form-modal">
+	<mat-dialog-content>
+		<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+			aria-label="Close push notificatioin edit form">
+			<img src="./assets/img/icons-svg/close-icon.svg" />
+		</a>
+		<div class="img-wrapper">
+			<div class="clearfix"></div>
+			<div class="title-wrapper">
+				<h1>{{ title }}</h1>
+			</div>
+		</div>
+		<popup-loader *ngIf="!isLoaded"></popup-loader>
+		<div id="resource-section" class="form-wrapper-80" *ngIf="isLoaded">
+			<form novalidate [formGroup]="pushEditForm" (ngSubmit)="doSave()">
+				<h3>Content</h3>
+				<div formArrayName="revisions">
+					<mat-expansion-panel class="push-notification"
+						*ngFor="let revision of revisionItems.controls; let revisionIndex=index;"
+						[formGroupName]="revisionIndex">
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								{{revision.value.languagePrefix}}
+							</mat-panel-title>
+							<mat-panel-description>
+
+							</mat-panel-description>
+						</mat-expansion-panel-header>
+
+						<mat-form-field class="wt-mat-form-field">
+							<input matInput class="wt-mat-input" placeholder="Title" type="text"
+								formControlName="title" />
+							<mat-error *ngIf="
+									getRevisionFormGroup(revisionIndex).controls['title'].errors?.required
+								">
+								The push notification needs a title
+							</mat-error>
+						</mat-form-field>
+						<mat-form-field class="wt-mat-form-field">
+							<textarea matInput class="wt-mat-input" placeholder="Body" type="text"
+								formControlName="body"></textarea>
+							<mat-error *ngIf="
+									getRevisionFormGroup(revisionIndex).controls['body'].errors?.required
+								">
+								The push notification needs a body
+							</mat-error>
+						</mat-form-field>
+
+						<p>Url should be complete (include http(s)://)</p>
+						<mat-form-field class="wt-mat-form-field">
+							<input matInput class="wt-mat-input" placeholder="Url" tabindex="0" type="text"
+								formControlName="url" id="resourcesettitle" [pattern]="urlPattern" />
+						</mat-form-field>
+						<a class="btn btn-inline-medium btn-secondary" (click)="removeRevision(revisionIndex)">Remove
+						</a>
+					</mat-expansion-panel>
+				</div>
+				<!---->
+
+				<span *ngFor="let language of languages">
+					<a *ngIf="!language.active" class="btn btn-inline-medium btn-secondary"
+						(click)="addRevision(language.prefix)">Add
+						{{language.full}}</a>
+				</span>
+
+				<div class="margintop20" *ngIf="user.userType === 'admin'">
+					<mat-form-field>
+						<mat-select #pushTypeSelect formControlName="type" placeholder="Type of push">
+							<mat-option *ngFor="let pushType of pushTypes" [value]="pushType.type">{{pushType.name}}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="f.type.errors?.required">
+							The push notification needs a type
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field *ngIf="pushTypeSelect.value === 'organization'">
+						<mat-select formControlName="orgIds" placeholder="Organizations" multiple>
+							<mat-option *ngFor="let organization of organizations" [value]="organization.id">
+								{{organization.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="margintop20" *ngIf="user.userType === 'orgadmin'">
+					<mat-form-field class="wt-mat-form-field">
+						<mat-select class="wt-mat-input" formControlName="orgIds" placeholder="Organizations" multiple>
+							<mat-option *ngFor="let organization of organizations" [value]="organization.id">
+								{{organization.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<mat-form-field class="wt-mat-form-field">
+					<!-- <span class="appointment-label" translate>Scheduled Date</span> -->
+					<input matInput class="wt-mat-input" class="wt-input" [owlDateTimeTrigger]="dt4"
+						[owlDateTime]="dt4" formControlName="scheduledDate" placeholder="Scheduled Date" />
+					<owl-date-time [stepMinute]="10" #dt4></owl-date-time>
+				</mat-form-field>
+				<mat-checkbox #recurring formControlName="recurring">
+					Recurring?
+				</mat-checkbox>
+				<div *ngIf="recurring.checked">
+					<mat-form-field>
+						<mat-select formControlName="day" placeholder="Scheduled Day">
+							<mat-option *ngFor="let day of days_of_week" [value]="day">{{day}}</mat-option>
+						</mat-select>
+						<mat-error *ngIf="
+								f.day.errors?.required
+							">
+							The recurring push notification needs a day
+						</mat-error>
+					</mat-form-field>
+					<mat-form-field class="wt-mat-form-field">
+						<input matInput formControlName="time" class="wt-mat-input" [ngxTimepicker]="picker"
+							placeholder="Scheduled Time" />
+						<ngx-material-timepicker #picker></ngx-material-timepicker>
+						<mat-error *ngIf="
+								f.time.errors?.required
+							">
+							The recurring push notification needs a time
+						</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="fixed-footer">
+					<button tabindex="0" class="btn-primary btn">
+						Save
+					</button>
+				</div>
+			</form>
+		</div>
+	</mat-dialog-content>
+</div>

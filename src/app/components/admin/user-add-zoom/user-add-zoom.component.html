@@ -1,0 +1,20 @@
+<div class="form-modal">
+  <mat-dialog-content>
+
+    <div class="form-wrapper">
+      <div class="title-wrapper">
+        <h1>Add user to zoom</h1>
+      </div>
+      <p>Enter the email of an existing user that you would like to add to zoom.</p>
+      
+      <div class="icon-input">
+        <label for="fullName">Email</label>
+        <input type="text" [(ngModel)]="email" name="email" id="email" />
+      </div>
+
+      <div class="fixed-footer">
+        <a tabindex="0" class="btn-primary btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

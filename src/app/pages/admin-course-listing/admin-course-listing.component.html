@@ -1,0 +1,32 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<div class="page-section-buttons">
+			<a (click)="doCreate()" (keypress)="doCreate()" class="btn btn-primary btn-with-icon"
+				translate>Create New Course</a>
+		</div>
+		<h1>Courses</h1>
+	</div>
+	<div class="page-section-content">
+		<page-loader *ngIf="!isLoaded"></page-loader>
+		<div class="table-responsive" *ngIf="isLoaded">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width:50%;" translate>Name</th>
+						<th style="width:25%;"></th>
+						<th style="width:25%;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let course of courses">
+						<td>{{course.label}}</td>
+						<td><a tabindex="0" class="pull-right" [routerLink]="'/app/courses-listing/' + course.key"
+							 translate>View</a></td>
+						<td><a tabindex="0" class="pull-right" (click)="onEdit(course.id)"
+							(keypress)="onEdit(course.id)" translate>Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

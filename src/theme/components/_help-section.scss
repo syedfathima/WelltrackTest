@@ -1,0 +1,19 @@
+
+.help-section {
+	height: 0;
+	overflow: hidden;
+	//display: none;
+	background-color: $color-line;
+
+	-webkit-transition: height 0.3s;
+	-moz-transition: height 0.3s;
+	transition: height 0.3s;
+
+	&.in {
+		height: auto;
+		//display: block;
+		margin-bottom: 20px;
+		padding: 20px;
+		overflow: visible;
+	}
+}

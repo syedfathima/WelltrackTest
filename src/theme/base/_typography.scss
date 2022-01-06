@@ -1,0 +1,88 @@
+.paragraph {
+    font-size: $font-size-lg;
+    line-height: 21px;
+    margin-bottom: 12px;
+}
+
+body {
+    
+    letter-spacing: $letter-spacing;
+    font-family: $font-normal;
+
+    strong {
+        font-weight: 700;
+    }
+
+    p {
+        @extend .paragraph;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: $font-size-title-lg;
+        padding-top: 16px;
+    }
+
+    h2{
+        font-weight: 800;
+        font-size: $font-size-title-lg;
+    }
+
+
+    a {
+        text-decoration: none;
+        font-weight: 700;
+
+        &:hover, &:focus, &:active {
+            opacity: 0.8;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        &.warning {
+            color: $color-warning;
+        }
+
+        &.white {
+            color: white;
+        }
+
+        &.subtle {
+            color: $color-subtle;
+        }
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+    dl {
+        text-align: left;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px;
+
+        dt {
+            width: 20%;
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+            margin-bottom: 12px;
+            word-wrap: normal;
+            margin-right: 6px;
+        }
+
+        dd {
+            width: 75%;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 12px;
+        }
+    }
+
+
+    page-header + .page-section + p {
+        font-size: $font-size-xxl;
+    }
+
+}

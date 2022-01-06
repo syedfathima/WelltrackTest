@@ -1,0 +1,66 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+    mkdir ./dist-int
+    ng build
+  displayName: 'npm install and dev build'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive output from dev build '
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist-int'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)_dev.zip'
+    replaceExistingArchive: true
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from dev build'
+  inputs: 
+    sourceFolder: '$(System.DefaultWorkingDirectory)/dist-int'
+  
+- script: 
+    npm run buildprod
+  displayName: 'Production build'
+    
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist-int'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)_prod.zip'
+    replaceExistingArchive: true
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from prod build'
+  inputs: 
+    sourceFolder: '$(System.DefaultWorkingDirectory)/dist-int'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish development artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)_dev.zip'
+    ArtifactName: 'dev'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish production artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)_prod.zip'
+    ArtifactName: 'prod'

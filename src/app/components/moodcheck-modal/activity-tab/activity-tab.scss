@@ -1,0 +1,31 @@
+page-activity-tab {
+
+}
+
+@keyframes fivePhasesFadeIn {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+        border: none;
+    }
+}
+
+.fivePhasesFadeIn {
+    border: 2px solid #b2450c;
+    border-radius:10px; 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px; 
+    animation-name: fivePhasesFadeIn;
+    animation-duration: 4s;  
+}

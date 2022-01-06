@@ -1,0 +1,30 @@
+<div id="activity-popup" style="padding: 0 16px;">
+    <div class="title-wrapper center">
+        <h4 class="strong" translate>as.select.title</h4>
+        <p class="strong">{{date}}</p>
+    </div>
+    <div class="col-sm-12">
+        <div class="grid-buttons col3">
+            <a tabindex="0" *ngFor="let option of data.activities[0]" [ngClass]="{'active': option.isSelected, 'pleasurable' : true}" class="pleasurable" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.text}}</span></a>
+            <a tabindex="0" *ngFor="let option of data.activities[1]" [ngClass]="{'active': option.isSelected, 'social' : true}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.text}}</span></a>
+            <a tabindex="0" *ngFor="let option of data.activities[2]" [ngClass]="{'active': option.isSelected, 'achievement' : true}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.text}}</span></a>
+            <a tabindex="0" *ngFor="let option of newActivities" [ngClass]="{'active': option.isSelected, 'custom': true}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.text}}</span></a>
+        </div>
+    </div>
+    <p class="middle strong center" translate>as.select.or</p>
+    <div class="form-wrapper">
+        <div class="icon-input">
+            <form (keydown.enter)="addNewActivity()">
+                <input tabindex="0" type="text" placeholder="{{placeholder}}" [(ngModel)]="active" name="customOption" />
+            </form>
+
+            <a tabindex="0" (click)="addNewActivity()" (keypress)="addNewActivity()">
+                <img alt="Plus" class="icon" src="./assets/img/plus@2x.png" style="width: 30px; height: 30px;">
+            </a>
+        </div>
+    </div>
+    <div class="footer">
+        <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-bold" translate>as.select.button</a>
+    </div>
+
+</div>

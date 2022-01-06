@@ -1,0 +1,39 @@
+<div *ngIf="assessments" id="assessment-resilience-listing">
+    <div class="table-responsive">
+        <table class="table" role="grid">
+            <thead role="rowgroup">
+                <tr role="row">
+                    <th role="columnheader" translate>resilience.tableHeaders.0</th>
+                    <th translate>resilience.tableHeaders.2</th>
+                    <th translate class="text-right">resilience.tableHeaders.3</th>
+                    <!--<th translate class="text-right">resilience.tableHeaders.4</th>-->
+                </tr>
+            </thead>
+            <tbody role="rowgroup">
+                <tr scope="row" *ngFor="let assessment of assessments; let i = index">
+
+                    <td scope="col" class="strong"
+                        [ngClass]="{'negative': assessment.score / 6 < 2.99, 'positive': assessment.score / 6 >= 3}">
+                        {{assessment.score / 6 | number : '1.2-2'}}</td>
+
+                    <td scope="col" class="strong"> {{assessment.created | date:'dd MMM yyyy'}}</td>
+                    <td scope="col" class="text-right">
+                        <a class="trigger-modal info" tabindex="0" aria-label="Show alerts" (click)="showAlerts(i)"
+                            (keypress)="showAlerts(i)" translate>i</a>
+                    </td>
+                    <!--
+                    <td scope="col" class="text-right">
+                        <a class="trigger-modal info" tabindex="0" aria-label="Show core contributors" (click)="showCoreContributors(i)"
+                            (keypress)="showCoreContributors(i)" translate>i</a>
+                    </td>
+               
+                        <td scope="col" class="text-right" *ngIf="loggedInUser.id == user.id">
+                            <a class="trigger-modal delete" tabindex="0" aria-label="Delete assessment" (click)="delete(assessment.userQuizId)"
+                                (keypress)="delete(assessment.userQuizId)"><img src="./assets/img/icons-svg/x-icon.svg"></a>
+                        </td>
+                    -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

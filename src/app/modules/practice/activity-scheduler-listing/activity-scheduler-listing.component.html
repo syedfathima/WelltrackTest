@@ -1,0 +1,56 @@
+<div id="page-fun-achievement">
+
+    <page-header [headerText]="headerText" [backLink]="'/app/practice'" [cssClass]="'activityscheduler'" [backText]="backText"
+        [headerImage]="'./assets/img/icons/activity_scheduler@2x.png'"></page-header>
+
+    <div class="col-sm-12">
+        <div class="page-section no-margin page-header-body">
+            <p translate>
+                as.body
+            </p>
+            <a tabindex="0" routerLink="new" class="btn btn-primary btn-inline btn-wide" translate>as.new</a>
+        </div>
+    </div>
+
+    <div class="col-sm-12 mt">
+        <div class="page-section no-margin">
+            <div class="page-section-header">
+                <div class="page-section-buttons">
+                    <a tabindex="0" *ngIf="(activityschedules | filter: 'status' : 'complete').length > 1000" (click)="loadMore()"
+                        translate>as.view</a>
+                </div>
+                <h2 translate>as.table.completed</h2>
+            </div>
+            <div class="page-section-content">
+				<page-loader *ngIf="!isLoaded"></page-loader>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let activityschedule of activityschedules  | filter: 'status' : 'complete'">
+                                <td class="strong">
+                                    <a tabindex="7" (click)="navigate(activityschedule.id)">{{activityschedule.title}}</a>
+                                </td>
+
+                                <td class="date">
+                                    <div text-right>{{activityschedule.start | date:'dd MMM yyyy'}}</div>
+                                </td>
+                                <td class="hourtohour">
+                                    <div>{{activityschedule.start | date:'hh:mm a'}} to {{activityschedule.end |
+                                        date:'hh:mm a'}}</div>
+                                </td>
+                                <td align="right">
+                                    <a *ngIf="user.id == activityschedule.userId" class="delete" tabindex="0" (click)="delete(activityschedule.id)"
+                                        (keypress)="delete(fa.id)">
+                                        <img src="./assets/img/icons-svg/x-icon.svg">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

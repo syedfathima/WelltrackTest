@@ -1,0 +1,68 @@
+<div class="form-modal">
+    <mat-dialog-content>
+  
+      <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+          aria-label="Close organization edit form">
+          <img src="./assets/img/icons-svg/close-icon.svg">
+      </a>
+      <div class="img-wrapper">
+          <div class="clearfix"></div>
+          <div class="title-wrapper">
+              <h1>Create config</h1>
+          </div>
+      </div>
+      <popup-loader *ngIf="isloaded"></popup-loader>
+      <div class="form-wrapper" >
+          <form
+              novalidate
+              [formGroup]="configCreateForm"
+              (ngSubmit)="doSave()"
+          >
+              <tags-autocomplete label="Section" placeholder="Add new section" [allTags]="section"
+                                formControlName="Section">
+                            </tags-autocomplete>
+                <mat-error *ngIf="isSubmitted && configCreateForm.value.Section.length === 0">
+                    Section is required
+                </mat-error>
+              <mat-form-field >
+                <label for="fullName">Language</label>
+                <input matInput class="wt-mat-input" type="text"  id="setting"  formControlName="Language"/>
+                </mat-form-field>
+              <mat-form-field>
+                  <label for="fullName">Setting</label>
+                  <input matInput class="wt-mat-input" type="text" formControlName="Setting" id="email" />
+                  <mat-error *ngIf="isSubmitted && configCreateForm.get('Setting').hasError('required')">
+                    Setting is required
+                </mat-error>
+              </mat-form-field>
+  
+              <mat-form-field>
+                <label for="fullName">Key</label>
+                <input matInput class="wt-mat-input" type="text" formControlName="Key" id="email" />
+                <mat-error *ngIf="isSubmitted && configCreateForm.get('Key').hasError('required')">
+                    Key is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label for="fullName">Value</label>
+                <input matInput class="wt-mat-input" type="text" formControlName="Value" id="email" />
+                <mat-error *ngIf="isSubmitted && configCreateForm.get('Value').hasError('required')">
+                    Value is required
+                </mat-error>
+            </mat-form-field>
+  
+              <div class="fixed-footer">
+                  <button
+                      tabindex="0"
+                      class="btn-primary btn"
+                     
+                  >
+                      Save
+                  </button>
+              </div>
+          </form>
+      </div>
+    </mat-dialog-content>
+  </div>
+  

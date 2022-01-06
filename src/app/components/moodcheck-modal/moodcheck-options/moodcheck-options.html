@@ -1,0 +1,30 @@
+<div style="padding: 0 16px;">
+        <h3 class="center" translate>moodcheck.customize</h3>
+
+        <div class="form-wrapper">
+            <div class="icon-input">
+                <form (keydown.enter)="onAddCustomOption()">
+                    <input autoFocus class="wt-auto-moodcheck-options-custom" tabindex="0" type="text"
+                        placeholder="Your custom option..." [(ngModel)]="customOption" name="customOption" />
+                </form>
+
+                <a tabindex="0" class="wt-auto-moodcheck-options-add-custom" (click)="onAddCustomOption()"
+                    (keypress)="onAddCustomOption()">
+                    <img alt="Plus" src="./assets/img/plus@2x.png" style="width: 30px; height: auto;">
+                </a>
+            </div>
+        </div>
+
+        <ul class="mcOptions">
+            <li *ngFor="let option of moreOptions">
+                <span [ngClass]="{'custom': option.custom, 'disabled': !option.enabled}">{{option.Key}}</span>
+                <span>
+                    <a class="wt-auto-moodcheck-options-toggle" tabindex="0" (click)="toggleOption(option)"
+                        (keypress)="toggleOption(option)">
+                        <span *ngIf="!option.enabled" name="md-add" class="plus">+</span>
+                        <span *ngIf="option.enabled" name="md-remove" class="minus">-</span>
+                    </a>
+                </span>
+            </li>
+        </ul>
+</div>

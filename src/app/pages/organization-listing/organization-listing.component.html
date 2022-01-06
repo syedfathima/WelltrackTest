@@ -1,0 +1,263 @@
+<page-loader *ngIf="isLoaded !== 3"></page-loader>
+<div id="page-organization-listing" class="page-section" *ngIf="isLoaded == 3">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Organizations Active
+            </ng-template>
+            <div class="page-section">
+                <div class="page-section-header">
+                    <div class="page-section-buttons">
+                        <a (click)="doCreate()" (keypress)="doCreate()" class="btn btn-primary btn-with-icon"
+                            translate>organizationListing.create</a>
+                        <a (click)="exportListingCsv()" (keypress)="exportCsv()" class="btn btn-primary btn-with-icon"
+                            translate>Export listing</a>
+                        <a (click)="exportResourcesCsv()" (keypress)="exportResourcesCsv()"
+							class="btn btn-primary btn-with-icon" translate>Export resources</a>
+						<a (click)="doClone()" (keypress)="doClone()"
+                            class="btn btn-primary btn-with-icon" translate>Clone organization</a>
+                    </div>
+                    <h1 translate>organizationListing.title</h1>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th style="width:40%;" translate>organizationListing.headers.0</th>
+                                    <th style="width:20%;" translate>organizationListing.headers.1</th>
+                                    <th style="width:7%;" translate>organizationListing.headers.2</th>
+                                    <th style="width:7%;" translate>organizationListing.headers.3</th>
+                                    <th style="width:8%;"></th>
+                                    <th style="width:9%;"></th>
+                                    <th style="width:9%;"></th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th style="width:45%;">
+                                        <mat-form-field class="wt-mat-form-field"><input matInput type="text" class="wt-mat-input" [(ngModel)]="cols[0]" (input)="valueChange(0)"></mat-form-field>
+                                    </th>
+                                    <th>
+                                        <mat-form-field><input matInput class="wt-mat-input" type="text" [(ngModel)]="cols[1]" (input)="valueChange(1)"></mat-form-field>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let organization of activeorganizations"
+                                    [ngClass]="{'highlighted': organization.isPaired}">
+                                    <td>
+
+                                        <img [alt]="organization.name" *ngIf="organization.logoPath"
+                                            [src]="organization.logoPath" class="rounded" width="20">
+                                        <img alt="Welltrack" *ngIf="!organization.logoPath" class="rounded" height="20"
+                                            src="./assets/img/circle_logo@2x.png">
+                                    </td>
+                                    <td class="strong" style="width:45%;">
+                                        <a tabindex="0" [routerLink]="['/admin/organization', organization.id]">
+                                            {{organization.name}}</a>
+                                        <div *ngIf="organization.parentOrganization">
+                                            <span>Parent:</span>
+                                            <a
+                                                [routerLink]="['/admin/organization', organization.parentOrganization.id]">{{organization.parentOrganization.name}}</a>
+                                        </div>
+                                        <div *ngIf="organization.childOrganizations">
+                                            <span>Children:</span>
+                                            <div *ngFor="let child of organization.childOrganizations">
+                                                <a tabindex="0"
+                                                    [routerLink]="['/admin/organization', child.id]">{{child.name}}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="strong">{{organization.subdomain}}</td>
+                                    <td class="strong allowed-domains">{{organization.allowedDomains}}</td>
+                                    <td class="strong">{{organization.active ? 'Active': 'Not Active'}}</td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right"
+                                            [routerLink]="['/admin/organization', organization.id]"
+                                            translate>organizationListing.view</a>
+                                    </td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right" (click)="onEdit(organization.id)"
+                                            (keypress)="onEdit(organization.id)" translate>organizationListing.edit</a>
+                                    </td>
+									<td>
+										<a tabindex="0" class="pull-right" (click)="onActivate(organization.id, false)"
+										(keypress)="onActivate(organization.id, false)" translate>organizationListing.deactivate</a>
+									</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p *ngIf="!organizations || organizations.length < 1" translate class="center">
+                        organizationListing.noneFound</p>
+
+                </div>
+            </div>
+        </mat-tab>
+
+		<mat-tab>
+            <ng-template mat-tab-label>
+                Disabled Organizations
+            </ng-template>
+            <div class="page-section">
+                <div class="page-section-header">
+                    <!-- <div class="page-section-buttons">
+                        <a (click)="doCreate()" (keypress)="doCreate()" class="btn btn-primary btn-with-icon"
+                            translate>organizationListing.create</a>
+                        <a (click)="exportListingCsv()" (keypress)="exportCsv()" class="btn btn-primary btn-with-icon"
+                            translate>Export listing</a>
+                        <a (click)="exportResourcesCsv()" (keypress)="exportResourcesCsv()"
+							class="btn btn-primary btn-with-icon" translate>Export resources</a>
+						<a (click)="doClone()" (keypress)="doClone()"
+                            class="btn btn-primary btn-with-icon" translate>Clone resources</a>
+                    </div> -->
+                    <h1 translate>organizationListing.disabledOrgTitle</h1>
+                </div>
+                <div class="page-section-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th style="width:40%;" translate>organizationListing.headers.0</th>
+                                    <th style="width:20%;" translate>organizationListing.headers.1</th>
+                                    <th style="width:7%;" translate>organizationListing.headers.2</th>
+                                    <th style="width:7%;" translate>organizationListing.headers.3</th>
+                                    <th style="width:8%;"></th>
+                                    <th style="width:9%;"></th>
+                                    <th style="width:9%;"></th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th style="width:45%;">
+                                        <mat-form-field class="wt-mat-form-field"><input matInput type="text" class="wt-mat-input" [(ngModel)]="disCols[0]" (input)="disabledValueChange(0)"></mat-form-field>
+                                    </th>
+                                    <th>
+                                        <mat-form-field><input matInput class="wt-mat-input" type="text" [(ngModel)]="disCols[1]" (input)="disabledValueChange(1)"></mat-form-field>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let organization of disabledOrganizations"
+                                    [ngClass]="{'highlighted': organization.isPaired}">
+                                    <td>
+
+                                        <img [alt]="organization.name" *ngIf="organization.logoPath"
+                                            [src]="organization.logoPath" class="rounded" width="20">
+                                        <img alt="Welltrack" *ngIf="!organization.logoPath" class="rounded" height="20"
+                                            src="./assets/img/circle_logo@2x.png">
+                                    </td>
+                                    <td class="strong" style="width:45%;">
+                                        <a tabindex="0" [routerLink]="['/admin/organization', organization.id]">
+                                            {{organization.name}}</a>
+                                        <div *ngIf="organization.parentOrganization">
+                                            <span>Parent:</span>
+                                            <a
+                                                [routerLink]="['/admin/organization', organization.parentOrganization.id]">{{organization.parentOrganization.name}}</a>
+                                        </div>
+                                        <div *ngIf="organization.childOrganizations">
+                                            <span>Children:</span>
+                                            <div *ngFor="let child of organization.childOrganizations">
+                                                <a tabindex="0"
+                                                    [routerLink]="['/admin/organization', child.id]">{{child.name}}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="strong">{{organization.subdomain}}</td>
+                                    <td class="strong allowed-domains">{{organization.allowedDomains}}</td>
+                                    <td class="strong">{{organization.active ? 'Active': 'Not Active'}}</td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right"
+                                            [routerLink]="['/admin/organization', organization.id]"
+                                            translate>organizationListing.view</a>
+                                    </td>
+                                    <td>
+                                        <a tabindex="0" class="pull-right" (click)="onEdit(organization.id)"
+                                            (keypress)="onEdit(organization.id)" translate>organizationListing.edit</a>
+                                    </td>
+									<td> <a tabindex="0" class="pull-right" (click)="onActivate(organization.id)"
+										(keypress)="onEdit(organization.id)" translate>organizationListing.activate</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p *ngIf="!organizations || organizations.length < 1" translate class="center">
+                        organizationListing.noneFound</p>
+
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Organization Resources
+            </ng-template>
+
+            <mat-table [dataSource]="organizationResources" class="mat-elevation-z8 single-user-selection">
+                <ng-container matColumnDef="Name">
+                    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.Name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="Modify">
+                    <mat-header-cell *matHeaderCellDef>Modify</mat-header-cell>
+                    <mat-cell *matCellDef="let row"><a (click)="onEdit(row.ID)">Modify</a></mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumnsResources"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnsResources;"></mat-row>
+            </mat-table>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                Single sign-on integrations
+            </ng-template>
+
+            <mat-table [dataSource]="organizationsAuth" class="mat-elevation-z8 single-user-selection">
+                <ng-container matColumnDef="Name">
+                    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.Name}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="EntityID">
+                    <mat-header-cell *matHeaderCellDef>Entity ID</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.EntityId}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ID">
+                    <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+                    <mat-cell *matCellDef="let row"><a (click)="onEditAuth(row.ID)">Edit</a></mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="DownloadJson">
+                    <mat-header-cell *matHeaderCellDef>Download Json Config</mat-header-cell>
+                    <mat-cell *matCellDef="let row"><a (click)="onDownloadConfigJson(row)">Download</a></mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="DownloadText">
+                    <mat-header-cell *matHeaderCellDef>Download Config text</mat-header-cell>
+                    <mat-cell *matCellDef="let row"><a (click)="onDownloadConfigText(row)">Download</a></mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+
+        </mat-tab>
+    </mat-tab-group>
+</div>

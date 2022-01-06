@@ -1,0 +1,168 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<div class="page-section-buttons">
+			<a (click)="doCreate()" (keypress)="doCreate()" class="btn btn-primary btn-with-icon" translate>Schedule
+				a Push Notification</a>
+		</div>
+		<h1>Scheduled Push Notifications</h1>
+	</div>
+	<page-loader *ngIf="!isLoaded"></page-loader>
+	<mat-tab-group *ngIf="isLoaded">
+		<mat-tab>
+			<ng-template mat-tab-label> Push Notifications ({{notificationCount}}) </ng-template>
+			<div class="page-section-content">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th translate>Title</th>
+								<th translate>Body</th>
+								<th translate>Scheduled Date</th>
+								<th translate>Audience</th>
+								<th translate>Created by</th>
+								<th translate>Recurring</th>
+								<th></th>
+								<th></th>
+								<th *ngIf="userRole === 'admin'"></th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr *ngFor="
+									let pushNotification of pushNotifications | filter : 'status' : 1
+								">
+								<td>{{ pushNotification.revisions[0].title }}</td>
+								<td>{{ pushNotification.revisions[0].body }}</td>
+								<td> 
+									{{
+									convertDateToLocal(pushNotification.scheduledDate)
+									| amUtc
+									| amDateFormat: "DD MMM YYYY"
+									}}
+								</td>
+								<td>
+									{{pushNotification.orgNames}}
+								</td>
+								<td>
+									{{pushNotification.user.Name}} ({{pushNotification.user.Email}})
+								</td>
+								<td>{{ pushNotification.recurring ? 'Yes': 'No'}}</td>
+								<td>
+									<a tabindex="0" class="pull-right" (click)="onEdit(pushNotification.id)"
+										(keypress)="onEdit(pushNotification.id)" translate>Edit</a>
+								</td>
+								<td>
+									<a tabindex="0" class="pull-right" (click)="onDelete(pushNotification.id)"
+										(keypress)="
+											onDelete(pushNotification.id)
+										" translate>Delete</a>
+								</td>
+								<td *ngIf="userRole === 'admin'">
+									<a tabindex="0" class="pull-right" (click)="reject(pushNotification.id)"
+										(keypress)="approve(pushNotification.id, false)">Reject</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</mat-tab>
+		<mat-tab *ngIf="userRole === 'admin' || userRole === 'orgadmin'">
+			<ng-template mat-tab-label>For Approval ({{ approvalCount }})</ng-template>
+			<div class="page-section-content">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th translate>Title</th>
+								<th translate>Body</th>
+								<th translate>Scheduled Date</th>
+								<th translate>Audience</th>
+								<th translate>Created by</th>
+								<th translate>Recurring</th>
+								<th *ngIf="userRole === 'admin'"></th>
+								<th *ngIf="userRole === 'admin'"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="
+									let pushNotification of pushNotifications | filter : 'status' : 0
+								">
+								<td>{{ pushNotification.revisions[0].title }}</td>
+								<td>{{ pushNotification.revisions[0].body }}</td>
+								<td>
+									{{
+									pushNotification.scheduledDate
+									| amUtc
+									| amDateFormat: "DD MMM YYYY"
+									}}
+								</td>
+								<td>
+									{{pushNotification.orgNames}}
+								</td>
+								<td>
+									{{pushNotification.user.Name}} ({{pushNotification.user.Email}})
+								</td>
+								<td>{{ pushNotification.recurring ? 'Yes': 'No'}}</td>
+								<td *ngIf="userRole === 'admin'">
+									<a tabindex="0" class="pull-right" (click)="approve(pushNotification.id)"
+										(keypress)="approve(pushNotification.id, true)">Approve</a>
+								</td>
+								<td *ngIf="userRole === 'admin'">
+									<a tabindex="0" class="pull-right" (click)="reject(pushNotification.id)"
+										(keypress)="approve(pushNotification.id, false)">Reject</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</mat-tab>
+		<mat-tab *ngIf="userRole === 'admin' || userRole === 'orgadmin'">
+			<ng-template mat-tab-label>Rejected ({{rejectedCount}})</ng-template>
+			<div class="page-section-content">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th translate>Title</th>
+								<th translate>Body</th>
+								<th translate>Scheduled Date</th>
+								<th translate>Audience</th>
+								<th translate>Created by</th>
+								<th translate>Recurring</th>
+								<th *ngIf="userRole === 'admin'"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="
+									let pushNotification of pushNotifications | filter : 'status' : 2
+								">
+								<td>{{ pushNotification.revisions[0].title }}</td>
+								<td>{{ pushNotification.revisions[0].body }}</td>
+								<td>
+									{{
+									pushNotification.scheduledDate
+									| amUtc
+									| amDateFormat: "DD MMM YYYY"
+									}}
+								</td>
+								<td>
+									{{pushNotification.orgNames}}
+								</td>
+								<td>
+									{{pushNotification.user.Name}} ({{pushNotification.user.Email}})
+								</td>
+								<td>{{ pushNotification.recurring ? 'Yes': 'No'}}</td>
+								<td *ngIf="userRole === 'admin'">
+									<a tabindex="0" class="pull-right" (click)="approve(pushNotification.id, true)"
+										(keypress)="approve(pushNotification.id, true)">Approve</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>

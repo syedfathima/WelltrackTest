@@ -1,0 +1,77 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+#page-theory {
+    .theorypanel {
+        margin-bottom:15px;
+        @include breakpoint(lg) {
+            margin-bottom:20px;
+        }
+        .panel-heading {
+            min-height: 248px;
+            color: white;
+            padding: 20px;
+            h1 {
+                padding-top: 0;
+                font-size: $font-size-title-lg;
+            }
+            p {
+                font-size: $font-size-xl;
+            }
+        }
+        .panel-body {
+            background-color:white;
+            padding: 0px 20px;
+            .byline {
+                height: 40px;
+                line-height: 40px;
+                .chapter {
+                    display: block;
+                    float: left;
+
+                }
+                .duration {
+                    display: block;
+                    float: right;
+                    text-align: right;
+                }
+                clear:both;
+            }
+        }
+        .panel-footer {
+            background-color: white;
+            border-top: 1px solid #ccc;
+            padding: 10px 20px;
+            .arrow {
+                position: absolute;
+                right: 15px;
+                top: 9px;
+                width: 34px;
+            }
+        }
+
+        h1 {
+            @include breakpoint(xs) {
+                font-size: $font-size-title-slg;
+            }
+        }
+        .btn{
+            margin:0px;
+            position:relative; 
+            ion-icon{
+                font-size:24px;
+                position:absolute; 
+                right: 20px;
+                top: 7px;
+            }
+        }
+        .btn-grey {
+            border: 1px solid #B8B6AF;
+            position: relative;
+            padding: 13px 18px;
+        }
+        .btn-grey:hover {
+            background-color: #B8B6AF;
+        }
+    }
+}

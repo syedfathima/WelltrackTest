@@ -1,0 +1,119 @@
+<div class="mini-calendar">
+    <div class="row text-center" id="nav-buttons">
+        <div class="col-sm-3 col-xs-12">
+            <div tabindex="0" id="previous" class="btn-nav" mwlCalendarPreviousView [view]="view"
+                [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false" translate>
+                <i class="fa fa-arrow-left"></i>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 calendar-title">
+            {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+        </div>
+        <div class="col-sm-3 col-xs-12">
+            <div tabindex="0" id="next" class="btn-nav" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="activeDayIsOpen = false" translate>
+                <i class="fa fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+    <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event)"
+        (beforeViewRender)="beforeMonthViewRender($event)" [refresh]="refresh">
+    </mwl-calendar-month-view>
+    <strong>Scheduled events:</strong><br>
+    <div class="mini-legend">
+        <div class="item scheduled" translate>
+            <i class="bullet"></i>calendar.legend.scheduled
+        </div>
+    </div>
+    <strong>Completed events:</strong><br>
+    <div class="mini-legend">
+        <div class="item appointment" translate>
+            <i class="bullet"></i>calendar.legend.appointment</div>
+
+        <div class="item moodcheck" translate>
+            <i class="bullet"></i>calendar.legend.moodcheck</div>
+
+        <div class="item assessment" translate>
+            <i class="bullet"></i>calendar.legend.assessment</div>
+
+        <div class="item depression" translate>
+            <i class="bullet"></i>calendar.legend.depression</div>
+
+        <div class="item anxiety" translate>
+            <i class="bullet"></i>calendar.legend.anxiety</div>
+
+        <div class="item thoughtdiary" translate>
+            <i class="bullet"></i>calendar.legend.thoughtdiary</div>
+
+        <div class="item funachievement" translate>
+            <i class="bullet"></i>calendar.legend.funachievement</div>
+
+        <div class="item activityscheduler" translate>
+            <i class="bullet"></i>calendar.legend.activityScheduler</div>
+    </div>
+
+</div>
+
+<!--
+<div [class]="eventCss" id="style-default">
+    <div id="mini-event-listing">
+        <h3>{{pickedDate | date:'dd MMM, yyyy'}}</h3>
+        <div id="events">
+            <div class="event" *ngFor="let event of activeEvents; let i = index">
+                <div class="title">
+                    <div class="item" [ngClass]="event.type" translate>
+                        <i class="bullet"></i>
+                    </div>{{event.title}}
+                </div>
+
+                <div class="event-date">{{event.start | date:'hh:mm a'}}
+                    <span *ngIf="event.endDate">to {{event.endDate | date:'hh:mm a'}}</span>
+                </div>
+
+                <div *ngIf="event.type =='appointment'">
+                    <div *ngIf="event.participants && event.creatorId == user.id">
+                        <div class="strong" translate>calendar.participants</div>
+                        <div *ngFor="let participant of event.participants;" class="participant">
+                            {{participant.fullName}}
+                            <span *ngIf="participant.fullName">- (</span>{{participant.email}}
+                            <span *ngIf="participant.fullName">)</span>
+                            <div>Status:
+                                <span class="status strong" [innerHtml]="participant.status"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="event.creatorId !== user.id">Status:
+                        <span class="status strong" [innerHtml]="event.status"></span>
+                    </div>
+
+                    <div *ngIf="event.creatorId !== user.id">
+                        <span translate>calendar.scheduledBy</span>:
+                        <span class="strong">{{event.creator.fullName}} ({{event.creator.email}})</span>
+                    </div>
+
+                    <div class="row-action-content" *ngIf="event.type == 'appointment'">
+                        <a *ngIf="event.status === 'pending' && event.creatorId !== user.id "
+                            class="join btn-inline btn" translate (click)="onAccept(event.id)">Accept</a>
+                        <a *ngIf="event.status === 'pending' && event.creatorId !== user.id "
+                            class="join btn-inline btn" translate (click)="onDecline(event.id)">Decline</a>
+                        <a *ngIf="event.status === 'approved'" class="btn btn-inline join"
+                            [routerLink]="'/app/videoshare/session/' + event.id" translate>Join</a>
+                        <a *ngIf="event.creatorId === user.id " class="btn-inline btn edit" (click)="onUpdate(i)"
+                            translate>
+                            <img src="./assets/img/icons-svg/edit-pencil-icon.svg">calendar.edit</a>
+                        <a *ngIf="event.creatorId === user.id " class="btn-inline btn delete" (click)="onDestroy(i)"
+                            translate>
+                            <img src="./assets/img/icons-svg/x-icon.svg">calendar.delete</a>
+                    </div>
+                </div>
+
+                <div [innerHtml]="event.description"></div>
+            </div>
+            <div *ngIf="!activeEvents" translate>
+                calendar.noEntries
+            </div>
+        </div>
+    </div>
+ 
+</div>
+   -->

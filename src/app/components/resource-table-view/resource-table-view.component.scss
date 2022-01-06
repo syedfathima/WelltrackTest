@@ -1,0 +1,56 @@
+table {
+    width: 100%;
+}
+
+.xcheckbox {
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: white;
+    width: 15px;
+    height: 15px;
+    border-width: 1px;
+    border-color: black;
+    // border: 1px black;
+    outline: 2px solid #777;
+    position: relative;
+}
+.xcheckbox:checked {
+    background: red;
+    outline: 2px solid #c00;
+}
+.xcheckbox:checked:after {
+    /* Heres your symbol replacement */
+    content: "X";
+    color: #fff;
+    /* The following positions my tick in the center, 
+     * but you could just overlay the entire box
+     * with a full after element with a background if you want to */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /*
+     * If you want to fully change the check appearance, use the following:
+     * content: " ";
+     * width: 100%;
+     * height: 100%;
+     * background: blue;
+     * top: 0;
+     * left: 0;
+     */
+}
+.resource-select{
+    margin-left: 8px;
+}
+.import-list{
+    tr{
+        td{
+            &:nth-child(2){
+                max-width: 200px;
+            }
+        }
+    }
+}

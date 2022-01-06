@@ -1,0 +1,29 @@
+page-moodcheck {
+    
+    $slider-padding: 24px;
+
+    #mood-slider {
+        margin: $slider-padding auto;
+        &.rs-animation .rs-transition {
+            -webkit-transition-duration: 0.1s;
+            /* Safari */
+            transition-duration: 0.1s;
+        }
+    }
+
+    #mood-icon {
+        width: 81px;
+        height: 81px;
+        margin: 0 auto;
+        margin-top: -132px - $slider-padding;
+        margin-bottom: 68px + $slider-padding;
+        position: relative;
+        z-index: 9000;
+
+        img {
+             width: 81px;
+            height: 81px;
+        }
+    }
+}
+

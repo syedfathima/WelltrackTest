@@ -1,0 +1,132 @@
+@import "../../../theme/_welltrack.mixins.scss";
+@import "../../../theme/_welltrack.variables.scss";
+#languagedropdown {
+    position:relative;
+    z-index:3;
+    max-width: 211px;
+ 
+    .dropdown {
+        height: 35px;
+        border-radius: 100px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 30px;
+       
+        margin: 20px 0px;
+        position: relative;
+        cursor: pointer;
+        i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .subdropdown {
+            list-style-type: none;
+            padding: 4px;
+            margin-top:6px;
+            margin-bottom: 0px;
+            @extend .gradient-cta;
+            z-index: 9999;
+            a {
+                cursor: pointer;
+                z-index: 9999;
+            }
+            li::first-child {
+                padding-top: 20px;
+            }
+        }
+    }
+
+    &.white{
+        .dropdown{
+            border: 1px solid #F4F4F6;
+            color: #fff;
+            .subdropdown {
+                color: #fff;
+            }
+        }
+    }
+
+    &.grey{
+        .dropdown{
+            border: 1px solid #b8b7af;
+            color: #b8b7af;
+            .subdropdown {
+                color: #fff;
+            }
+        }
+    }
+    .dropdown:hover {
+        opacity: 1;
+    }
+    
+    .lang-select {
+        width: 198px;
+
+        .mat-select {
+            display: contents !important;
+        }
+
+        .mat-select-value-text {
+            margin-left: 30px;
+        }
+
+        .mat-select-value {
+            color: white;
+        }
+
+
+        .mat-select-arrow {
+            color: white;
+        }
+
+        .mat-option:focus {
+           background-color: red !important;
+        }
+
+        .mat-select-panel .mat-option.mat-selected {
+            background: green !important;
+        }
+    }
+
+    .lang-menu {
+        width: 211px;
+        
+       .mat-button {
+            min-width: 211px !important;
+        }
+    }
+}
+
+.mat-menu-panel {
+    min-width: 211px !important;
+    position: fixed!important;
+}
+
+#language-picker{
+    
+    a{
+        display:block;
+       
+        color:white !important;
+        font-size:14px;
+    }
+    &.white{
+        color:white;
+    }
+    &.grey{
+        color:white;
+    }
+
+    &.inside{
+        margin:10px 0px;
+        a{
+            text-align:center;
+        }
+    }
+
+}
+
+
+
+

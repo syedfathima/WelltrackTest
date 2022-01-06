@@ -1,0 +1,48 @@
+<div class="assessment-alert">
+    <mat-dialog-content>
+        <a tabindex="0" (click)="close()" (keypress)="close()" class="close-modal"
+            aria-label="Close assessment results">
+            <img src="./assets/img/icons-svg/close-icon.svg">
+        </a>
+        <div class="img-wrapper">
+            <img alt="Assessment icon" src="./assets/img/assessment_grey@2x.png" style="width: 59px; height: auto;"
+                alt="">
+            <div class="clearfix"></div>
+            <div class="title-wrapper">
+                <h2 translate>resilience.resilienceResult.title</h2>
+            </div>
+        </div>
+
+        <div class="col-xs-12 assessmentsection">
+            <div class="alertwrapper" [ngClass]="{'low': !alert, 'high': alert}">
+                <div class="header">
+                    <h3 class="uppercase" translate>resilience.resilienceResult.subTitle</h3>
+                    <div class="alerttitle">{{resiliencyLevel}}</div>
+                </div>
+                <div class="content">
+                    <p>
+                        <span translate>resilience.resilienceResult.explain.0</span>
+                        <strong>{{ resiliencyLevel }}</strong>.
+                    </p>
+
+                    <p>
+                        {{ resiliencyDescription }}
+                    </p>
+                    <p translate>
+                        resilience.resilienceResult.explain.1
+                    </p>
+
+                    <emergency-contact *ngIf="alert" [user]="user"></emergency-contact>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+        <div class="fixed-footer">
+            <a tabindex="0" *ngIf="finish" (click)="close()" (keypress)="close()" class="btn btn-primary"
+                translate>das.finish</a>
+        </div>
+        <div class="clearfix"></div>
+    </mat-dialog-content>
+</div>

@@ -1,0 +1,107 @@
+<div class="form-modal">
+  <mat-dialog-content>
+    <div class="form-wrapper-80">
+      <div class="title-wrapper">
+        <h1>Saml2 authentication configuration for {{orgAuth.Name}}</h1>
+      </div>
+
+      <mat-form-field>
+        <label for="EntityId">Entity Id</label>
+        <input matInput type="text" [(ngModel)]="orgAuth.EntityId" name="EntityId" id="EntityId" />
+	  </mat-form-field>
+
+      <mat-form-field>
+        <label for="xml">XML</label>
+        <textarea matInput [(ngModel)]="orgAuth.Xml_idp" name="xml" id="xml"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <label for="url">Idp URL</label>
+        <input matInput type="text" [(ngModel)]="orgAuth.Url_idp" name="url" id="url" />
+      </mat-form-field>
+      <mat-form-field>
+        <label for="url">Logout Url</label>
+        <input matInput type="text" [(ngModel)]="orgAuth.Logout_idp" name="logout" id="logout" />
+      </mat-form-field>
+
+      <div>
+        <h2>Security settings</h2>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.nameIdEncrypted">
+            Encrypt Name Id?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.authnRequestsSigned">
+            Signed Authn request?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.signMetadata">
+            Sign Metadata?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.wantMessagesSigned">
+            Want Message Signed?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.wantAssertionsSigned">
+            Want Assertion Signed?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.wantNameId">
+            Want Name Id?
+          </mat-checkbox>
+        </div>
+        <div class="mat-field">
+          <mat-checkbox [(ngModel)]="orgAuth.Settings.security.wantNameIdEncrypted">
+            Want Name Id Encrypted?
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div>
+
+        <h2>Attributes</h2>
+
+        <div
+          *ngFor="let requestedAttribute of orgAuth.Settings.sp.attributeConsumingService.requestedAttributes; let i = index">
+          <mat-card>
+            <a class="remove-attribute" tabindex="0" (click)="onRemove(i)" (keypress)="onRemove(i)"><img
+                src="./assets/img/icons-svg/x-icon.svg"></a>
+
+            <mat-form-field>
+              <input matInput aria-label="Name" placeholder="Name" value="" [(ngModel)]="requestedAttribute.name">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput aria-label="Name Format" placeholder="Name Format" value=""
+                [(ngModel)]="requestedAttribute.nameFormat">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput aria-label="Friendly Name" placeholder="Friendly Name" value=""
+                [(ngModel)]="requestedAttribute.friendlyName">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput aria-label="Attribute Value(s)" placeholder="Attribute Value(s)" value=""
+                [(ngModel)]="requestedAttribute.attributeValues">
+            </mat-form-field>
+
+            <mat-checkbox [(ngModel)]="requestedAttribute.isRequired">
+              Required
+            </mat-checkbox>
+          </mat-card>
+        </div>
+
+        <a class="btn btn-inline" (click)="addField()" (keypress)="addField()">Add field</a>
+      </div>
+      <div class="fixed-footer">
+        <a tabindex="0" class="btn-primary btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

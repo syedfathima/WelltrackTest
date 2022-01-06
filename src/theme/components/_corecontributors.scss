@@ -1,0 +1,94 @@
+.domainpanel {
+    border: none;
+    a {
+        margin: 0px;
+    }
+    .panel-heading {
+        min-height: 200px;
+        color: white;
+        h3 {
+            padding-top: 0;
+            font-size: $font-size-title-xl;
+            font-weight: 800;
+        }
+        p {
+            font-size: $font-size-xl;
+        }
+    }
+    .panel-body {
+        padding: 0px 20px;
+        background-color: white;
+        .byline {
+            height: 40px;
+            line-height: 40px;
+            .chapter {
+                display: block;
+                float: left;
+                margin-right: 20px;
+                width: 120px;
+            }
+            .duration {
+                display: block;
+                float: right;
+                width: 140px;
+                text-align: right;
+            }
+            clear: both;
+        }
+    }
+    .panel-footer {
+        background-color: white;
+        border-top: 1px solid #ccc;
+        padding: 10px 10px;
+        .arrow {
+            position: absolute;
+            right: 15px;
+            top: 9px;
+            width: 34px;
+        }
+    }
+
+
+    &.step1 .panel-heading{
+        @extend .zenroom-gradient-horizontal;
+    }
+       
+    &.step2  .panel-heading{
+        @extend .thoughtdiary-gradient-horizontal;
+    }
+
+    &.step3 .panel-heading{
+        @extend .cognitivedistortions-gradient-horizontal;
+    }
+
+    &.step4 .panel-heading{
+        @extend .funachievement-gradient-horizontal;
+    }
+
+    &.step5 .panel-heading{
+        @extend .activityscheduler-gradient-horizontal;
+    }
+    
+    &.step6 .panel-heading{
+        @include gradient-horizontal(#f80759, #bc4e9c);
+    }
+
+    &.step7 .panel-heading{
+        @include gradient-horizontal(#3382E1, #42E7E5);
+    }
+
+    h1 {
+        @include breakpoint(xs) {
+            font-size: $font-size-title-slg;
+        }
+    }
+
+    .btn-grey {
+        border: 1px solid #b8b6af;
+        position: relative;
+        padding: 13px 18px;
+    }
+    .btn-grey:hover {
+        background-color: $color-text-light;
+    }
+}

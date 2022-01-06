@@ -1,0 +1,8 @@
+<div>
+    <h1 class="mt0" translate><img alt="Moodcheck activity icon" src="./assets/img/icons/pulse@2x.png" style="width: 16px; height: auto;">moodcheck.activity.title</h1>
+    <div class="grid-buttons col3">
+        <a class="wt-auto-moodcheck-activity-option" tabindex="0" *ngFor="let option of options" [ngClass]="{'active': option.isSelected}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.Key | truncate: 30}}</span></a>
+        <!--<a href="" class="active">Happy</a>-->
+        <a class="wt-auto-moodcheck-activity-more more featured" tabindex="0" (click)="onMore()" (keypress)="onMore()"><span translate>moodcheck.more</span></a>
+    </div>
+</div>

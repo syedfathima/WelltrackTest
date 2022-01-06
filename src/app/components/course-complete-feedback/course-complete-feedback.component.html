@@ -1,0 +1,35 @@
+<div class="form-modal">
+    <div class="course-feedback">
+        <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+            aria-label="Close course feedback form">
+            <img src="./assets/img/icons-svg/close-icon.svg">
+        </a>
+        <div class="form-wrapper-80">
+            <div class="title-wrapper">
+                <h2 translate>Provide chapter feedback</h2>
+            </div>
+        </div>
+
+        <div class="form-wrapper feedback-content">
+            <div *ngIf="!submitted">
+                <p class="left-align">This course increased my knowledge and/or understanding of the topic
+                    discussed.</p>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="helpful" aria-required="true">
+                        <mat-option value="5"> Strongly agree</mat-option>
+                        <mat-option value="4">Neither agree nor disagree</mat-option>
+                        <mat-option value="3">Agree</mat-option>
+                        <mat-option value="2">Disagree</mat-option>
+                        <mat-option value="1">Strongly disagree</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+            <p *ngIf="submitted" class="strong">Thank you for your review.</p>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()">Send Feedback</a>
+        </div>
+    </div>
+</div>

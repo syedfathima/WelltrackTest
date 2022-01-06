@@ -1,0 +1,59 @@
+@import "../../../theme/_welltrack.variables.scss";
+.activity-modal {
+    h3 {
+        font-size: $font-size-title-md;
+        font-weight: bold;
+        margin: 16px 0;
+        padding-top: 15px;
+    }
+    .form-wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .icon-input {
+        a {
+            display: block;
+            position: relative;
+            float: right;
+            margin-top: -59px;
+            margin-right: -6px;
+            height: 30px;
+            width: 30px;
+        }
+    }
+    .mcOptions {
+        list-style-type: none;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        width: 90%;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid $color-line;
+        }
+        .custom {
+            color: $color-link;
+        }
+        .disabled {
+            color: $color-line;
+        }
+        .plus {
+            color: $color-positive;
+        }
+        .minus {
+            color: $color-negative;
+        }
+    }
+    .btn {
+        background: transparent;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn:hover {
+        background: #f8ac6d;
+        color: white;
+    }
+}

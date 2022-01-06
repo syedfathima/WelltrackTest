@@ -1,0 +1,31 @@
+<div class="col-sm-12 mt">
+    <div class="page-section no-margin">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" *ngIf="(activityschedules | filter: 'status' : 'complete').length > 100" (click)="loadMore()"
+                    (keypress)="loadMore()" translate>as.view</a>
+            </div>
+            <h2 translate>as.table.completed</h2>
+        </div>
+        <div class="page-section-content">
+            <div class="table-responsive">
+                <table class="table" role="grid">
+                    <tbody>
+                        <tr *ngFor="let activityschedule of activityschedules  | filter: 'status' : 'complete'">
+                            <td class="strong">
+                                <a tabindex="0" (click)="onId(activityschedule.id)" (keypress)="onId(activityschedule.id)">{{activityschedule.title}}</a>
+                            </td>
+
+                            <td class="date">
+                                <div text-right>{{activityschedule.start | date:'dd MMM'}}</div>
+                                <div>{{activityschedule.start | date:'hh:mm a'}} to {{activityschedule.end |
+                                    date:'hh:mm a'}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

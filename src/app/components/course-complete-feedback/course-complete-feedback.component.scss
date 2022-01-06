@@ -1,0 +1,46 @@
+.form-modal{
+    padding-top:40px;
+}
+
+mat-form-field{
+    width:100%;
+}
+
+.course-feedback{
+    padding-top:40px;
+}
+
+.five-star-wrapper{
+    padding-top:2px;
+    text-align:center;
+    width:150px;
+    height:20px;
+    margin:auto;
+    .five-star{
+        ion-icon{
+            margin:0px 6px;
+            float: left;
+            padding-right:15px;
+            font-size:30px;
+            &.active{
+                color: #FFCA28;
+            }
+            &:hover{
+               color: #FFCA28;
+            }
+        }
+    }
+    .title{
+        font-size:14px;
+        color:grey;
+    }
+}
+
+.close-modal{
+    top:20px !important;
+}
+
+.feedback-content{
+    padding:0px 50px;
+    padding-top:40px;
+}

@@ -1,0 +1,21 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.helpers.scss";
+
+h2 {
+    font-size: $font-size-title-xl;
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.img-wrapper {
+    background-image: url('/assets/img/bleu_bg@2x.png');
+    text-align: center;
+    color: white;
+    height: 100px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    img {
+        margin-top: 40px;
+        max-height: 60px;
+    }
+}

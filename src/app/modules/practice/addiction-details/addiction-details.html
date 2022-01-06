@@ -1,0 +1,168 @@
+<div id="page-thoughtdiary">
+    <page-header [cssClass]="'addiction'" [headerText]="title" [backText]="back" [backLink]="backLink"
+        [headerImage]="'./assets/img/icons/resources/substance.png'"></page-header>
+    <div class="col-sm-12">
+        <div class="page-section page-header-body">
+            <p translate>
+                Have you decided that you would like to change your alcohol consumption? These steps are designed to
+                help you make a plan and execute on it.
+            </p>
+        </div>
+    </div>
+
+    <div *ngIf="isLoaded" class="col-sm-12">
+
+        <div *ngIf="step >= 1" class="page-section" id="step-1">
+            <h3 translate>Evaluate the cost of your addiction</h3>
+            <p class="page-section-description" translate>If you’re not sure if you’re ready to change or you’re
+                struggling with the decision, it can help to think about the costs and benefits of each choice.</p>
+
+            <div class="benefit-row" *ngFor="let benefit of benefits; ">
+                <div class="col-sm-12 col-md-6">
+                    <h4 class="feeling-name">Benefit of drinking</h4>
+                    <textarea autoFocus tabindex="0" id="event" class="wt-input-grey" name="event"></textarea>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <h4 class="feeling-name">Benefit of not drinking</h4>
+                    <textarea autoFocus tabindex="0" id="event" class="wt-input-grey" name="event"></textarea>
+                </div>
+            </div>
+
+            <a tabindex="0" class="feeling-add-link" (click)="onAddBenefit()" (keypress)="onAddBenefit()"
+                *ngIf="viewMode !== 'readonly'" translate>Add another set of benefits</a>
+
+
+        </div>
+
+        <div *ngIf="step >= 2" class="page-section" id="step-2">
+            <h3 translate>
+                Set a goal
+                <a tabindex="0" class="info-icon" (click)="onToggleHelpSection('feelings')"
+                    (keydown)="onToggleHelpSection('feelings')">?</a>
+            </h3>
+
+            <div class="help-section" [ngClass]="{'in': helpSections.feelings}">
+                <h6 translate>thoughtDiary.steps.1.examples.title</h6>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line1.0
+                    <b translate>thoughtDiary.steps.1.examples.line1.1</b>thoughtDiary.steps.1.examples.line1.2
+                    <b translate>thoughtDiary.steps.1.examples.line1.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line2.0
+                    <b translate>thoughtDiary.steps.1.examples.line2.1</b>thoughtDiary.steps.1.examples.line2.2
+                    <b translate>thoughtDiary.steps.1.examples.line2.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line3.0
+                    <b translate>thoughtDiary.steps.1.examples.line3.1</b>thoughtDiary.steps.1.examples.line3.2
+                    <b translate>thoughtDiary.steps.1.examples.line3.3</b>
+                </p>
+                <p translate>
+                    thoughtDiary.steps.1.examples.line4.0
+                    <b translate>thoughtDiary.steps.1.examples.line4.1</b>thoughtDiary.steps.1.examples.line4.2
+                    <b translate>thoughtDiary.steps.2.examples.line4.3</b>
+                </p>
+            </div>
+
+            <p class="page-section-description" translate>Set a goal that makes sense to you and that you can stick to. Your goal could involve reducing the amount you drink per occasion, or drinking no alcohol in higher-risk situations.</p>
+
+            <div class="row" *ngFor="let entry of diary.entries; let i = index">
+
+                <div class="col-sm-12 col-md-6">
+                    <div class="input-group feeling-input-container">
+                        <span class="input-label" translate>Enter a goal</span>
+                        <label class="hidden" for="feeling">Enter a goal</label>
+                        <input tabindex="0" id="goal" type="text" [(ngModel)]="entry.feeling">
+                    </div>
+                </div>
+            
+            </div>
+
+            <a tabindex="0" class="feeling-add-link" (click)="onAddFeeling()" (keypress)="onAddFeeling()"
+                *ngIf="viewMode !== 'readonly'" translate>Add another goal</a>
+        </div>
+
+        <div *ngIf="step >= 3" class="page-section" id="step-3">
+            <h3 translate>
+                Take action
+                <a tabindex="0" tabindex="0" class="info-icon" (click)="onToggleHelpSection('thoughts')"
+                    (keypress)="onToggleHelpSection('thought')">?</a>
+            </h3>
+
+            <div class="help-section" [ngClass]="{'in': helpSections.thoughts}">
+                <h6 translate>thoughtDiary.steps.2.title</h6>
+
+                <p translate>
+                    thoughtDiary.steps.2.examples.line1.0
+                    <b translate>thoughtDiary.steps.2.examples.line1.1</b>thoughtDiary.steps.2.examples.line1.2
+                    <b translate>thoughtDiary.steps.2.examples.line1.3</b>thoughtDiary.steps.2.examples.line1.4
+                </p>
+                <ul>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line2.0</i>
+                    </li>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line3.0</i>
+                    </li>
+                </ul>
+
+                <p translate>
+                    thoughtDiary.steps.2.examples.line4.0
+                    <b translate>thoughtDiary.steps.2.examples.line4.1</b>thoughtDiary.steps.2.examples.line4.2
+                    <b translate>thoughtDiary.steps.2.examples.line4.3</b>thoughtDiary.steps.2.examples.line4.4
+                </p>
+                <ul>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line5.0</i>
+                    </li>
+                    <li>
+                        <i translate>thoughtDiary.steps.2.examples.line6.0</i>
+                    </li>
+                </ul>
+
+            </div>
+
+            <p class="page-section-description" translate>For each of the goals that you set in the previous step, describe an action that you will take to realize that goal.</p>
+
+            <div *ngFor="let entry of diary.entries; let i = index">
+                <h4 class="feeling-name">{{entry.feeling}}</h4>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="input-group">
+                            <span class="input-label" translate>What action are you going to take?</span>
+                            <label class="hidden" for="event">Thought</label>
+                            <textarea tabindex="0" id="event" class="wt-input-grey" name="event"
+                                [(ngModel)]="entry.thought"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer id="bottom" class="page-section page-footer" *ngIf="viewMode !== 'readonly'">
+            <nav class="steps-navigation" style="display:flex;">
+                <ul class="steps-nav-list">
+                    <li *ngFor="let num of steps" class="step-nav-item"
+                        [ngClass]="{'done': step > num, 'active': step === num}">{{num}}</li>
+                </ul>
+            </nav>
+            <div class="footer-actions" style="display:block">
+                <!--<a class="btn btn-primary ghost btn-inline" href="#">Save for later</a>
+				<a class="btn btn-primary btn-inline" href="#">Next</a>-->
+                <a tabindex="0" (click)="onSaveForLater()" (keypress)="onSaveForLater()" class="btn btn-inline btn-wide"
+                    translate>thoughtDiary.save</a>
+                <a tabindex="0" *ngIf="step < totalSteps" (click)="onNext()" (keypress)="onNext()"
+                    class="btn btn-primary btn-inline btn-wide" translate>thoughtDiary.next</a>
+                <a tabindex="0" *ngIf="step === totalSteps" (click)="onComplete()" (keypress)="onComplete()"
+                    class="btn btn-primary btn-inline btn-wide" translate>thoughtDiary.finish</a>
+            </div>
+        </footer>
+        <div class="page-section" translate>
+            thoughtDiary.disclaimer
+        </div>
+    </div>
+</div>

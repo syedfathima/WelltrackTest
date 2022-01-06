@@ -1,0 +1,96 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+#results {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    &.welcome {
+        @extend .gradient-tutorial;
+        .swiper-pagination {
+            display: none;
+        }
+    }
+    &.moodcheck {
+        @extend .gradient-dashboard;
+        .swiper-pagination {
+            display: none;
+        }
+    }
+    .btn {
+        color: #f8ac6d;
+        border: 2px #f8ac6d solid;
+    }
+    .img-wrapper {
+        height: 222px;
+        justify-content: center;
+        background-image: url('/assets/img/red_banner_quiz@2x.png');
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        background-size: 100% 100%;
+        img {
+            height: 85px;
+            width: 85px;
+            margin-top: 45px;
+        }
+        #header {
+            margin-top: 25px;
+            color: #FFFFFF;
+            font-family: "Nunito Sans";
+            font-size: 32px;
+            line-height: 26px;
+            text-align: center;
+        }
+    }
+    .results-slide {
+        padding: 0;
+        display: block !important;
+        height: 600px;
+        display: flex;
+        align-items: flex-end;
+        h2 {
+            font-size: $font-size-title-xl;
+            font-weight: 800;
+            margin: 8px 0;
+        }
+        .content {
+            margin-top: 5px;
+            width: 90%;
+            margin: auto;
+            word-wrap: break-word;
+            text-align: left;
+            margin-bottom: auto;
+            p {
+                margin: 6px;
+                font-size: $font-size-lg;
+                color: $color-subtle ;
+                font-family: "Nunito Sans";
+                line-height: 22px;
+                text-align: center;
+            }
+            .content-header {
+                color: #EA4C5E;
+                font-family: "Nunito Sans";
+                font-size: 60px;
+                font-weight: 800;
+                line-height: 82px;
+                text-align: center;
+            }
+        }
+        .title-wrapper {
+            margin-top: 32px;
+            padding: 0 20px;
+        }
+    }
+    .fixed-footer {
+        a {
+            color: #FFFFFF;
+            border: 0;
+            padding: 18px 18px;
+        }
+        position: relative;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35px;
+    }
+}

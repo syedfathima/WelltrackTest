@@ -1,0 +1,11 @@
+
+
+.assessment-alert{
+    .resource-group{
+        display:none;
+        margin-bottom:20px;
+        &.active{
+            display:block;
+        }
+    }
+}

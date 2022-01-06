@@ -1,0 +1,49 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+#page-assertion {
+    .verify {
+        margin: auto;
+        margin-top: 20px;
+    }
+    padding: 0 32px;
+    #confirm-header {
+        height: 200px;
+        margin-bottom: 48px;
+        background-size: 100% 155px;
+        background-position: bottom;
+        text-align: center;
+        @include breakpoint(xs) {
+            height: 100px;
+        }
+        img {
+            width: 122px;
+            height: 122px;
+            margin: 0 auto;
+            margin-top: 94px;
+            @include breakpoint(xs) {
+                margin-top: 16px;
+            }
+        }
+    }
+    .or {
+        @include breakpoint(xs) {
+            display: none;
+        }
+    }
+    #text-logo {
+        margin: 16px auto 32px;
+        display: block;
+        width: 100%;
+        max-width: 293px;
+        height: auto;
+    }
+    // @media screen and (max-width: 320px) {
+    //     #login-header {
+    //         height: 140px;
+    //     }
+    // }
+}
+
+.mobile-app-ad {
+    display:none;
+}

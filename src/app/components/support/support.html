@@ -1,0 +1,92 @@
+<div id="support-page">
+    <mat-dialog-content>
+        <div class="page-section">
+            <div class="page-section-header">
+                <h2 translate translate aria-live="polite" tabindex="0">support.title</h2>
+            </div>
+
+            <div class="page-section-content" *ngIf="user">
+                <form [formGroup]="supportForm" (ngSubmit)="onSubmitSupportRequest()">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-section-subheader">
+                                <h3 translate aria-live="polite" tabindex="0">support.help</h3>
+                            </div>
+                            <div class="content-padding">
+                                <div class="form-label content-padding" aria-live="polite" id="support-description" tabindex="0" translate>support.description
+                                </div>
+                                <mat-form-field>
+                                    <textarea matInput autoFocus aria-live="polite" tabindex="0" aria-describedby="hint-description" formControlName="supportRequest"
+                                        name="supportRequest" id="supportRequest"></textarea>
+                                </mat-form-field>
+                                <mat-error aria-live="assertive" *ngIf="f.supportRequest.touched && f.supportRequest.errors?.required">
+                                    {{popups[0].body}}
+                                </mat-error>
+                                <span class="helper-text" id="hint-description" aria-live="polite" tabindex="0" translate>support.hintdescription</span>
+                            </div>
+
+                            <div class="page-section-content content-padding">
+                                <p class="red" aria-live="assertive" *ngIf="submitButtonPressed && !supportForm.valid">Please check the errors
+                                </p>
+                                <a tabindex="0" class="btn btn-bold" (click)="onSubmitSupportRequest()"
+                                    translate>support.submit</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="page-section-content" *ngIf="!user">
+                <form [formGroup]="supportForm" (ngSubmit)="onSubmitSupportRequest()">
+                    <div>
+                        <div class="page-section-subheader">
+                            <h3 translate>support.help</h3>
+                        </div>
+                        <mat-form-field>
+                            <div class="form-label content-padding" translate>support.name</div>
+                            <input matInput aria-label="Name" tabindex="0" id="name" type="text" name="name"
+                                formControlName="name" />
+                            <mat-error *ngIf="(submitButtonPressed || f.name.touched) && f.name.errors?.required">
+                                {{popups[1].body}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <div class="form-label content-padding" translate>support.email</div>
+                            <input matInput aria-label="Email" tabindex="0" id="email" type="text" name="email"
+                                formControlName="email" />
+                            <mat-error *ngIf="(submitButtonPressed || f.email.touched) && f.email.errors?.required">
+                                {{popups[2].body}}
+                            </mat-error>
+                            <mat-error *ngIf="f.email.touched && f.email.errors?.pattern">
+                                {{popups[3].body}}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <div class="form-label content-padding" translate>support.description
+                            </div>
+                            <textarea matInput tabindex="0" formControlName="supportRequest" name="supportRequest"
+                                id="supportRequest"></textarea>
+                            <mat-error
+                                *ngIf="(submitButtonPressed || f.supportRequest.touched) && f.supportRequest.errors?.required">
+                                {{popups[0].body}}
+                            </mat-error>
+                            <span class="helper-text" translate>support.hintdescription</span>
+                        </mat-form-field>
+
+                        <div class="page-section-content content-padding">
+                            <p class="red" *ngIf="submitButtonPressed && !supportForm.valid && errors === ''">Please
+                                check the errors</p>
+                            <div class="support-btn-container">
+                                <a tabindex="0" class="btn btn-bold support-btn" (click)="onSubmitSupportRequest()"
+                                    translate>support.submit</a>
+                                <a tabindex="0" class="btn btn-bold support-btn" (click)="onCancelSupportRequest()"
+                                    translate>support.cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

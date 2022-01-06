@@ -1,0 +1,61 @@
+<div id="activity-scheduling">
+    <div id="homework-selector">
+        <p>
+            Choose one of the following activities that you want to assign to this user.
+        </p>
+
+        <div class="mat-field">
+            <label for="event-type">Select event type</label>
+            <mat-select id="event-type" [(ngModel)]="eventSelected" placeholder="Event Type">
+                <mat-option *ngFor="let eventType of eventTypes" [value]="eventType.type">
+                    {{eventType.name}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="mat-field" *ngIf="eventSelected === 'course'">
+            <label for="course-type">Select course</label>
+            <mat-select id="course-type" [(ngModel)]="courseSelected" placeholder="Choose course">
+                <mat-option *ngFor="let courtType of courseTypes" [value]="courtType.type">
+                    {{courtType.name}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <mat-form-field *ngIf="eventSelected !== 'appointment'">
+            <input [(ngModel)]="date" matInput [matDatepicker]="pickerdate" placeholder="Choose a date" (click)="pickerdate.open()">
+            <mat-datepicker-toggle matSuffix [for]="pickerdate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerdate></mat-datepicker>
+        </mat-form-field>
+
+        <div *ngIf="eventSelected === 'appointment'">
+            <appointment-invite [invitee]="activeUser"></appointment-invite>
+        </div>
+
+        <a *ngIf="eventSelected !== 'appointment'" tabindex="0" class="btn-primary btn-inline btn" (click)="addEvent()"
+            (keypress)="addEvent()">Schedule</a>
+    </div>
+
+    <div id="events-listing" *ngIf="events.length > 0 && mode === 'multipleSave'">
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+        <div *ngIf="events">
+            <h2>Event schedule</h2>
+            <p>The events below will created once "save user schedule" is clicked</p>
+            <div class="event" *ngFor="let event of events; let index = index;">
+                <div class="item" [ngClass]="event.type" translate>
+                    <i class="bullet"></i>
+                </div>{{event.name}}
+                <div>
+                    {{event.start | date:'dd MMM yyyy'}}
+                </div>
+                <a class="remove" (click)="onRemoveEvent(index)" (keypress)="onRemoveEvent(index)">
+                    <img src="./assets/img/icons-svg/x-icon.svg">
+                </a>
+            </div>
+            <div class="text-center">
+                <a (click)="onSaveEvents()" (keypress)="onSaveEvents()" class="btn btn-primary btn-inline">Save user
+                    schedule</a>
+            </div>
+        </div>
+    </div>
+</div>

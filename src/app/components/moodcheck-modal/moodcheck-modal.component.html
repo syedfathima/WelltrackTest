@@ -1,0 +1,48 @@
+<div id="moodcheck-modal">
+    <div class="modal-header" tabindex="-1">
+        <div class="buttons-left">
+            <a tabindex="0" *ngIf="!showOptions" (click)="onDismiss()" (keypress)="onDismiss()" translate>moodcheck.cancel</a>
+        </div>
+        <h3 translate>moodcheck.title</h3>
+        <div class="buttons-right">
+            <a tabindex="0" *ngIf="!showOptions" class="btn wt-auto-moodcheck-save" [ngClass]="{'btn-disabled': !saveEnabled, 'btn-primary': saveEnabled}"
+                (click)="!submitting ? onSave(): false" (keypress)="!submitting ? onSave(): false" translate>moodcheck.save</a>
+        </div>
+    </div>
+
+    <div class="tab-wrapper" [hidden]="showOptions">
+        <div class="wt-tabs">
+            <div class="wt-tab wt-auto-moodcheck-mood" [ngClass]="{'active': isTabActive('mood')}"><a tabindex="0"
+                    (click)="onChangeTab('mood')" (keypress)="onChangeTab('mood')" translate>moodcheck.mood.tab</a></div>
+            <div class="wt-tab wt-auto-moodcheck-activity-tab" [ngClass]="{'active': isTabActive('activity')}"><a
+                    tabindex="0" (click)="onChangeTab('activity')" (keypress)="onChangeTab('activity')" translate>moodcheck.activity.tab</a></div>
+            <div class="wt-tab wt-auto-moodcheck-people-tab" [ngClass]="{'active': isTabActive('people')}"><a tabindex="0"
+                    (click)="onChangeTab('people')" (keypress)="onChangeTab('people')" translate>moodcheck.people.tab</a></div>
+            <div class="wt-tab wt-auto-moodcheck-save-place-tab" [ngClass]="{'active': isTabActive('place')}"><a
+                    tabindex="0" (click)="onChangeTab('place')" (keypress)="onChangeTab('place')" translate>moodcheck.place.tab</a></div>
+            <div *ngIf="!hideNotes" class="wt-tab wt-auto-moodcheck-save-notes-tab" [ngClass]="{'active': isTabActive('notes')}"><a
+                    tabindex="0" (click)="onChangeTab('notes')" (keypress)="onChangeTab('notes')" translate>moodcheck.notes.tab</a></div>
+        </div>
+    </div>
+
+    <div class="wt-tab-body">
+        <page-mood-tab [hidden]="!isTabActive('mood') || showOptions" (onMoreClicked)="onMore($event)" [options]="moodOptions.emotions" [feelings]="moodOptions.feelings"></page-mood-tab>
+        <page-activity-tab [hidden]="!isTabActive('activity')  || showOptions" (onMoreClicked)="onMore($event)" [options]="moodOptions.activities"></page-activity-tab>
+        <page-people-tab [hidden]="!isTabActive('people') || showOptions" (onMoreClicked)="onMore($event)" [options]="moodOptions.people"></page-people-tab>
+        <page-place-tab [hidden]="!isTabActive('place') || showOptions" (onMoreClicked)="onMore($event)" [options]="moodOptions.place"></page-place-tab>
+        <page-note-tab [hidden]="!isTabActive('notes') || showOptions"></page-note-tab>
+        <page-moodcheck-options *ngIf="showOptions" [moreOptions]="moreOptions"></page-moodcheck-options>
+    </div>
+
+    <div class="modal-footer">
+        <div class="buttons-center">
+            <a tabindex="0" class="btn btn-bold wt-auto-moodcheck-next" (click)="onNextTab()" (keypress)="onNextTab()"
+                *ngIf="!isTabLast() && !showOptions" translate>moodcheck.next</a>
+            <a tabindex="0" class="btn btn-primary  wt-auto-moodcheck-save" [ngClass]="{'btn-disabled': !saveEnabled, 'btn-primary': saveEnabled}"
+                (click)="onSave()" (keypress)="onSave()" *ngIf="isTabActive('notes') && !showOptions" translate>moodcheck.save</a>
+            <a tabindex="0" class="btn btn-bold  wt-auto-moodcheck-close" (click)="onCloseOptions()" (keypress)="onCloseOptions()"
+                *ngIf="showOptions" translate>moodcheck.done</a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,61 @@
+<div id="auth-portal-wrapper">
+	<aside id="menu" [ngClass]="{ navIn: menuService.navIn }" role="main" aria-labelledby="section-title">
+		<app-admin-menu *ngIf="menuService.userType == 'admin'"></app-admin-menu>
+		<app-user-menu *ngIf="menuService.userType == 'user'"></app-user-menu>
+		<app-professional-menu *ngIf="menuService.userType == 'professional'"></app-professional-menu>
+		<app-org-admin-menu *ngIf="menuService.userType == 'orgadmin'"></app-org-admin-menu>
+		<app-super-admin-menu *ngIf="menuService.userType == 'superadmin'"></app-super-admin-menu>
+		<app-others-menu *ngIf="
+				menuService.userType !== 'admin' &&
+				menuService.userType !== 'user' &&
+				menuService.userType !== 'professional' &&
+				menuService.userType !== 'orgadmin' &&
+				menuService.userType !== 'superadmin'
+			"></app-others-menu>
+	</aside>
+	<div id="page" [ngClass]="{ navIn: menuService.navIn }" aria-labelledby="content-section-title">
+		<div class="top-bar"></div>
+		<h1 id="content-section-title" class="wt-access">WellTrack content</h1>
+		<div class="banner">
+			<a class="header-logo" tabindex="0" alt="Welltrack main page" routerLink="/app">
+				<img id="logo" src="/assets/img/logo_welltrack_large@2x.png" alt="WellTrack" />
+			</a>
+
+			<a tabindex="0" type="button" class="navbar-toggle visible-xs" (click)="menuService.onNavToggle()"
+				(keypress)="menuService.onNavToggle()">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		</div>
+
+		<main id="content">
+			<div id="demo-notice" *ngIf="menuService.demoMode" [hidden]="menuService.demoClose">
+				<div class="inside">
+					<a *ngIf="menuService.showDemoClose" tabindex="0" (click)="menuService.onDemoClose()"
+						(keypress)="menuService.onDemoClose()" class="close-modal" aria-label="Close notice">
+						<img src="./assets/img/icons-svg/close-icon.svg" />
+					</a>
+					<div class="content">
+						<h2 translate>This site is in demo mode</h2>
+						<p>
+							Feel free to browse through the site. 
+							Existing information cannot be modified and new 
+							information cannot be saved while the site is in demo mode.
+						</p>
+					</div>
+				</div>
+			</div>
+			<router-outlet></router-outlet>
+			<!--
+				<div class="feedback-desc" *ngIf="user.hasContent">
+					We'd like to know what you think.  Please send us your feedback. <a (click)="showFeedbackForm()">&lt;Click here&gt;</a> to rate WellTrack. 
+				</div>
+				<div class="feedback-form" *ngIf="showFeedback">
+					<feedback-form></feedback-form>
+				</div>
+			-->
+		</main>
+	</div>
+</div>

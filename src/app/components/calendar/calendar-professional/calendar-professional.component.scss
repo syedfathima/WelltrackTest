@@ -1,0 +1,36 @@
+
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+.legend{
+    text-align:left; 
+    width:100%;
+}
+
+.mat-spinner{
+    mat-spinner{
+        margin:0 auto;
+    }
+  
+}
+
+#nav-buttons{
+    #previous{
+        float:left;
+        @include breakpoint(xs){
+            float:none;
+        }
+    }
+    #next{
+        float:right;
+        @include breakpoint(xs){
+            float:none;
+        }
+    }
+    div{
+        @include breakpoint(xs){
+            text-align:center;
+        }
+    }
+}
+

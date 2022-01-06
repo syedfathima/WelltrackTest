@@ -1,0 +1,204 @@
+<page-loader *ngIf="loadedCallCount < 3"></page-loader>
+<div text-center no-bounce [hidden]="loadedCallCount < 3">
+    <div class="page-section">
+        <h1 *ngIf="organization && showTitle">{{organization.name}}</h1>
+        <div class="chart-header">
+            <h2 translate>dashboardExecutive.title
+                <!--
+                    <a [tooltip]="generalstats" tabindex="0" class="smallinfo gridtooltip" [tooltipDisabled]="false" [tooltipAnimation]="true"
+                        tooltipPlacement="right">?</a>
+                -->
+            </h2>
+            <!--
+                <tooltip-content #generalstats [animation]="true" placement="left">
+                    <div style="color: #C21F39">Active users</div>
+                    <div>Unique users that have at least one login</div>
+                    <div style="color: #C21F39">Returning users</div>
+                    <div>Unique users that have more than one login</div>
+                    <div style="color: #C21F39">Moodcheck users</div>
+                    <div>Unique users that have done at least one moodcheck</div>
+                    <div style="color: #C21F39">Bad mood alerts.</div>
+                    <div>Moodchecks submitted with a bad mood.</div>
+                    <div style="color: #C21F39">Users synched with counselors</div>
+                    <div>Users that are currently sharing their data.</div>
+                </tooltip-content>
+              -->
+            <div class="filters">
+                <div class="filter" [ngClass]="{'active': isFilterActive('30days')}">
+                    <a tabindex="0" (click)="onChangeFilter('30days')" (keypress)="onChangeFilter('30days')" translate>dashboardExecutive.filters.last30days</a>
+                </div>
+                <div class="filter" [ngClass]="{'active': isFilterActive('60days')}">
+                    <a tabindex="0" (click)="onChangeFilter('60days')" (keypress)="onChangeFilter('60days')" translate>dashboardExecutive.filters.last60days</a>
+                </div>
+                <div class="filter" [ngClass]="{'active': isFilterActive('90days')}">
+                    <a tabindex="0" (click)="onChangeFilter('90days')" (keypress)="onChangeFilter('90days')" translate>dashboardExecutive.filters.last90days</a>
+                </div>
+                <div class="filter" [ngClass]="{'active': isFilterActive('alltime')}">
+                    <a tabindex="0" (click)="onChangeFilter('alltime')" (keypress)="onChangeFilter('alltime')"
+                        translate>dashboardExecutive.filters.alltime</a>
+                </div>
+                <div class="filter" [ngClass]="{'active': isFilterActive('custom')}">
+                    <a tabindex="0" (click)="onChangeFilter('custom')" (keypress)="onChangeFilter('custom')" translate>dashboardExecutive.filters.custom</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-section-content clearfix">
+            <div *ngIf="activeFilter == 'custom'" class="text-right">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="pickerfrom" placeholder="From" [(ngModel)]="from">
+                    <mat-datepicker-toggle matSuffix [for]="pickerfrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerfrom></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="pickerto" placeholder="To" [(ngModel)]="to">
+                    <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerto></mat-datepicker>
+                </mat-form-field>
+
+                <a class="set" (click)="onSet()">Set</a>
+            </div>
+
+            <div class="mini-section-3">
+                <div class="nopadding">
+                    <div class="left text-center">
+                        <img alt="Men and women icon" src="./assets/img/professional/womenmen.png">
+                    </div>
+                    <div class="right">
+                        <!--<div class="horizontal">-->
+
+                        <div translate class="stat">
+                            <span>{{totalusers}}</span> dashboardExecutive.total
+
+                        </div>
+                        <!--
+                            <div translate class="stat">
+                                <span>{{activeusers}}</span> dashboardExecutive.active
+                            </div>
+                        -->
+                        <div translate class="stat">
+                            <span>{{inviteCount}}</span> dashboardExecutive.invitesSent
+                        </div>
+                        <div translate class="stat">
+                            <span>{{inviteAcceptedCount}}</span> dashboardExecutive.invitesAccepted
+                        </div>
+                        <div translate class="stat">
+                            <span>{{moodcheckUsers}}</span> dashboardExecutive.moodcheckUsers
+                        </div>
+                        <!--</div>-->
+                        <!--
+                            <div class="horizontaldivide horizontal">
+                                <div class="pull-left blue" translate><span>{{men}}</span> dashboardExecutive.men</div>
+                                <div class="pull-right red" translate><span>{{women}}</span> dashboardExecutive.women</div>
+                                <div class="clearfix" style="clear:both;" translate><span>{{unconfirmed}}</span> dashboardExecutive.unconfirmed</div>
+                            </div>
+                        -->
+                    </div>
+                </div>
+                <div>
+                    <div class="timeline" translate></div>
+                    <div class="first">
+                        <img *ngIf="avgmoodcheck" alt="moodcheck average icon" [src]="'/assets/img/moodcheck/' + (10 - avgmoodcheck) + '.png'"
+                            height="50">
+                        <!--<img alt="women icon" src="./assets/img/professional/arrow.png">-->
+                    </div>
+                    <div class="avgnumber">
+                        <span *ngIf="avgmoodcheck" [style.color]="moodcheckcolor">{{emotion}}</span>
+                        <div translate>userDetails.average</div>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <div class="padding horizontal">
+                        <div>
+                            <img alt="alert icon" src="./assets/img/professional/alert.png" class="pull-left">
+                            <div class="strong">
+                                <span>{{moodalerts}}</span>
+                                <span translate>dashboardExecutive.bad</span>
+                            </div>
+                            <div translate>dashboardExecutive.low</div>
+                        </div>
+                    </div>
+                    <div class="horizontal horizontaldivide padding">
+                        <div>
+                            <img alt="women icon" src="./assets/img/professional/Cloud.png" class="pull-left">
+                            <div>
+                                <span class="strong">{{pairedCount}}</span> / {{totalusers}}</div>
+                            <div translate>dashboardExecutive.sync</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-section">
+
+        <!--
+            <linechart *ngIf="loadedCallCount >= 3" [id]="'logins-signups'" [header]="dashboardExecutiveStrings.signupsandlogins" [subheader]="dashboardExecutiveStrings.last + ' ' + filtersText[this.activeFilter] +  ' ' + dashboardExecutiveStrings.days"
+                [graphData]="signupsLogins" [titles]="[dashboardExecutiveStrings.logins, dashboardExecutiveStrings.signups]"
+                [legend]="[dashboardExecutiveStrings.logins, dashboardExecutiveStrings.signups]" [colors]="['#BE262A', '#712675']"></linechart>
+        -->
+        <barchart *ngIf="loadedCallCount >= 3" [id]="'logins-signups'" [header]="dashboardExecutiveStrings.signupsandlogins"
+            [subheader]="(this.activeFilter !== 'alltime' ? dashboardExecutiveStrings.last: '') + ' ' + filtersText[this.activeFilter] +  ' ' + (this.activeFilter !== 'alltime' ? dashboardExecutiveStrings.days  : '')"
+            [graphData]="signupsLogins" [titles]="[dashboardExecutiveStrings.logins, dashboardExecutiveStrings.signups]"
+            [legend]="[dashboardExecutiveStrings.logins, dashboardExecutiveStrings.signups]" [colors]="['#BE262A', '#712675']"
+            [info]="'Unique logins and signups during the chosen period'" width="100%" height="auto"></barchart>
+        <table class="table margintop20">
+            <tbody>
+                <tr>
+                    <td>
+                        Total Logins
+                    </td>
+                    <td class="strong text-right">
+                        {{totalLogins}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Total Signups
+                    </td>
+                    <td class="strong text-right">
+                        {{totalSignups}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--
+    <div class="page-section" >
+        <div class="chart-header">
+            <h2>General Moodcheck Results</h2>
+        </div>
+
+        <div class="tab-wrapper">
+            <div class="wt-tabs">
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('good')}"><a (click)="onChangeTab('good')" translate>Good</a></div>
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('normal')}"><a (click)="onChangeTab('normal')" translate>Normal</a></div>
+                <div class="wt-tab" [ngClass]="{'active': isTabActive('bad')}"><a (click)="onChangeTab('bad')" translate>Bad</a></div>
+            </div>
+        </div>
+
+        <div class="wt-tab-body">
+            <div [hidden]="!isTabActive('good')">
+                <canvas id="moodcheck-activity-good" class="chart"></canvas>
+                <canvas id="moodcheck-activity-ok" class="chart"></canvas>
+                <canvas id="moodcheck-activity-bad" class="chart"></canvas>
+            </div>
+            <div [hidden]="!isTabActive('normal')">
+                <canvas id="moodcheck-place-good" class="chart"></canvas>
+                <canvas id="moodcheck-place-ok" class="chart"></canvas>
+                <canvas id="moodcheck-place-bad" class="chart"></canvas>
+            </div>
+            <div [hidden]="!isTabActive('bad')">
+                <canvas id="moodcheck-people-good" class="chart"></canvas>
+                <canvas id="moodcheck-people-ok" class="chart"></canvas>
+                <canvas id="moodcheck-people-bad" class="chart"></canvas>
+            </div>
+
+        </div>
+    </div>
+-->
+</div>

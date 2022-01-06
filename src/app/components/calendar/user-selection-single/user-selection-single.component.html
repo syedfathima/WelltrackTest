@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-select name="userId" [(ngModel)]="userId"
+        placeholder="Select a user" (ngModelChange)="onSelectUser($event)">
+        <mat-option  [value]="-1" >
+            All
+        </mat-option>
+        <mat-option *ngFor="let user of users" [value]="user.id" >
+            {{user.fullName}} - {{user.email}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

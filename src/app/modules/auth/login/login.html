@@ -1,0 +1,257 @@
+<div id="page-login" class="form-screen public-portal-right-col">
+    <h2 id="section-title" class="wt-access">Login</h2>
+    <div id="login-header" *ngIf="!loginApiService.healthCanadaEnable">
+        <img [alt]="name" *ngIf="loginApiService.logoPath" [src]="loginApiService.logoPath" class="animated fadeInDown welltrack-img-horizontal">
+        <img alt="Weltrack badge" *ngIf="!loginApiService.logoPath" src="./assets/img/circle_logo@2x.png"
+            style="max-width:120px; height:auto; max-height:120px; margin:50px" class="animated fadeInDown">
+    </div>
+
+    <div id="login-header" *ngIf="loginApiService.healthCanadaEnable">
+        <p class="enable-health-canada" [innerHTML]="'signUp.healthCanada' | translate"></p>
+    </div>
+
+    <div *ngIf="!closeNotice" id="main-content">
+        <div>
+            <img alt="Weltrack secondary logo" id="text-logo" src="./assets/img/welltrack_gray@2x.png">
+
+            <div class="center" *ngIf="loginApiService.state == 'login'">
+                <p translate>loginMobile.getStarted</p>
+            </div>
+            <form (keydown.enter)="triggerNextStep()" #loginForm="ngForm">
+                <!-- Account detection form | triggers next step which is either account creation or login-->
+                <div *ngIf="loginApiService.state !== 'complete' && loginApiService.state !== 'sso'">
+                    <div *ngIf="!continue">
+                        <div class="icon-input email-text " (click)="onToggleContinue()">
+                            {{emailAddress}}<span *ngIf="loginApiService.suffix">{{loginApiService.suffix}}</span><span *ngIf="domain">{{domain}}</span>
+                            <i tabindex="0" role="link" class="fa fa-edit"></i>
+                        </div>
+                    </div>
+
+                    <div *ngIf="continue">
+                        <div class="icon-input" *ngIf="loginApiService.suffix">
+                            <img alt="Email validates" *ngIf="emailAddress && emailValidate && !loginApiService.suffix"
+                                src="./assets/img/icons/check@2x.png" class="check animated fadeInUp" item-content>
+                            <div [class.input-suffix]="loginApiService.suffix">
+                                <div class="checkbox-wrapper">
+
+                                    <input class="wt-auto-login-email" tabindex="0" id="email" type="email"
+                                        aria-label="Email" placeholder="{{'signUp.emailPlaceholder' | translate}}"
+                                        [(ngModel)]="emailAddress" name="emailAddress" [class.fieldl]="loginApiService.suffix"
+                                        (ngModelChange)="onChangeEmail()" />
+                                    <img alt="Email validates" *ngIf="emailAddress && emailValidate && loginApiService.suffix"
+                                        src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                                        item-content>
+                                </div>
+                                <div *ngIf="loginApiService.suffix" class="suffix">{{loginApiService.suffix}}</div>
+                                <div *ngIf="loginApiService.domains" class="suffix">
+                                    <select class="wt-auto-login-domain" name="suffix" [(ngModel)]="domain" tabindex="0"
+                                        aria-label="Select subdomain">
+                                        <option value="" translate>signUp.selectSubdomain</option>
+                                        <option *ngFor="let domain of loginApiService.domains" [value]="domain">{{domain}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon-input" *ngIf="!loginApiService.suffix">
+                            <input class="wt-auto-login-email" tabindex="0" aria-label="Email" type="email"
+                                placeholder="{{'loginMobile.emailAddress' | translate}}"
+                                (ngModelChange)="onChangeEmail($event)" name="emailAddress"
+                                [(ngModel)]="emailAddress" />
+                        </div>
+                    </div>
+                </div>
+                <!-- login form-->
+                <div *ngIf="loginApiService.state == 'login'">
+
+                    <div class="icon-input" *ngIf="!continue">
+                        <img *ngIf="passwordValidate && password" src="./assets/img/icons/check@2x.png"
+                            class="check animated fadeInUp" item-content>
+                        <input class="wt-auto-login-password" tabindex="0" aria-label="Password" type="password"
+                            placeholder="{{'loginMobile.password' | translate}}" name="password" [(ngModel)]="password"
+                            (ngModelChange)="onChangePassword()" />
+                    </div>
+
+                    <p class="right-align strong mt-half">
+                        <a tabindex="0" routerLink="forgot-password" translate>loginMobile.forgot</a>
+                    </p>
+                </div>
+
+                <!-- Create form-->
+                <div *ngIf="loginApiService.state == 'register'">
+                    <div *ngIf="!loginApiService.showNext">
+                        <div class="icon-input">
+                            <img *ngIf="fullName" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+                                item-content>
+                            <input class="wt-auto-login-fullname" tabindex="0" aria-label="Name" type="text"
+                                placeholder="{{'loginMobile.name' | translate}}" name="fullName"
+                                [(ngModel)]="fullName" />
+                        </div>
+
+                        <div class="icon-input">
+                            <img *ngIf="passwordValidate && password" src="./assets/img/icons/check@2x.png"
+                                class="check animated fadeInUp" item-content>
+                            <input class="wt-auto-login-password" tabindex="0" aria-label="Password" tabindex="0"
+                                type="password" placeholder="{{'loginMobile.password' | translate}}" name="password"
+                                [(ngModel)]="password" (ngModelChange)="onChangePassword()" />
+                            <p aria-live="assertive" role="alert" *ngIf="!passwordValidate && password" class="red"
+                                translate>
+                                signUp.passwordValidate</p>
+                        </div>
+
+                        <div class="icon-input">
+                            <img alt="password validates" *ngIf="passwordRepeatValidate && passwordrepeat"
+                                src="./assets/img/icons/check@2x.png" class="check animated fadeInUp" item-content>
+                            <input class="wt-auto-login-passwordrepeat" tabindex="0" aria-label="Password repeat"
+                                id="passwordrepeat" type="password"
+                                placeholder="{{passwordChangeText.placeholders.passwordrepeat}}"
+                                [(ngModel)]="passwordrepeat" name="passwordrepeat" (ngModelChange)="onChangeRepeat()" />
+
+                            <p aria-live="assertive" role="alert" *ngIf="!passwordRepeatValidate && passwordrepeat"
+                                class="red" translate>signUp.passwordRepeatValidate</p>
+                        </div>
+
+                        <div class="icon-group input-full-width" *ngIf="loginApiService.organizations">
+                            <mat-form-field>
+                                <mat-select class="wt-auto-login-organization" name="orgId" [(ngModel)]="orgId"
+                                    placeholder="Select an organization">
+                                    <mat-option *ngFor="let organization of loginApiService.organizations" [value]="organization.id">
+                                        {{organization.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div *ngIf="loginApiService.showNext">
+                        <h2 class="center" translate>signUp.toGainFullAccess</h2>
+
+
+                        <label translate for="accessCode">signUp.enterAccessCode</label>
+                        <div class="icon-input">
+                            <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content>
+                            <input aria-label="Access code" tabindex="0" type="text" placeholder="GHJK432"
+                                name="accesscode" [(ngModel)]="accesscode" id="accessCode" name="accesscode"
+                                class="uppercase wt-auto-login-accesscode" />
+                        </div>
+
+
+                        <p translate class="center">
+                            signUp.or
+                        </p>
+
+
+                        <label translate>signUp.enterOrgEmail</label>
+                        <div class="icon-input">
+                            <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content>
+                            <label class="hidden" for="orgemail">Email</label>
+                            <input name="organizationEmail" class="wt-auto-login-orgemail"
+                                aria-label="Organization email" tabindex="0" id="orgemail" type="email"
+                                placeholder="john@unb.com" [(ngModel)]="orgEmail" name="emailAddress" />
+                        </div>
+
+
+                        <p translate class="center">
+                            signUp.or
+                        </p>
+
+                        <p>
+                            <mat-checkbox class="wt-auto-login-skip" name="skip" [(ngModel)]="skip"><span
+                                    translate>signUp.skip</span>
+                            </mat-checkbox>
+                        </p>
+
+                    </div>
+                </div>
+
+                <div
+                    *ngIf="loginApiService.showTerms && !loginApiService.showNext && (loginApiService.state === 'register' || loginApiService.state === 'sso' || validAssertion === true)">
+                    <div translate>signUp.tos.copy</div>
+                    <p>
+                        <a *ngIf="activateCorporatePolicy" tabindex="0" href="/corporate-policy" target="_blank"
+                            alt="Corporate policy" translate>signUp.tos.corporatepolicy</a>
+                        <a *ngIf="!activateCorporatePolicy" tabindex="0" href="/terms-and-conditions" target="_blank"
+                            alt="Terms and conditions" translate>signUp.tos.tos</a>
+                        <span translate class="strong">signUp.tos.and</span>
+                        <a tabindex="0" href="/privacy-policy" target="_blank" alt="Privacy policy"
+                            translate>signUp.tos.privacy</a>.
+                    </p>
+                    <p class="strong" [innerHtml]="loginApiService.customConfirm" *ngIf="loginApiService.customConfirm"></p>
+
+                    <mat-checkbox name="agree" [(ngModel)]="loginApiService.agree" translate>
+                        <span translate>signUp.tos.agree</span>
+                    </mat-checkbox>
+
+                    <div class="icon-group input-full-width" *ngIf="loginApiService.organizations && loginApiService.state === 'sso'">
+                        <mat-form-field>
+                            <mat-select class="wt-auto-login-organization" name="orgId" [(ngModel)]="orgId"
+                                placeholder="Select an organization">
+                                <mat-option *ngFor="let organization of loginApiService.organizations" [value]="organization.id">
+                                    {{organization.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <a *ngIf="loginApiService.validAssertion" tabindex="0" (click)="onConfirmSso()" class="btn btn-secondary btn-sso"
+                        translate>loginMobile.continue</a>
+                </div>
+
+
+                <!-- Action buttons-->
+                <div class="center">
+                    <div *ngIf="loginApiService.state == 'login'" class="center">
+                        <a tabindex="0" (click)="onContinue()" (keyup.enter)="onContinue()"
+                            class="btn btn-primary wt-auto-login-continue" translate
+                            *ngIf="continue">loginMobile.continue</a>
+                        <a tabindex="0" [ngClass]="{'btn-disabled': loginApiService.submitting}"
+                            (click)="!loginApiService.submitting? onLogin(): false " (keyup.enter)="!loginApiService.submitting? onLogin(): false "
+                            class="btn btn-primary wt-auto-login-signin" translate
+                            *ngIf="!continue">loginMobile.signIn</a>
+                    </div>
+                    <div *ngIf="loginApiService.state == 'register'" class="center">
+                        <a tabindex="0" [ngClass]="{'btn-disabled': loginApiService.submitting}"
+                            (click)="!loginApiService.submitting? onCreate(): false" (keyup.enter)="!loginApiService.submitting? onCreate(): false"
+                            class="btn btn-primary wt-auto-login-create" translate>signUp.create</a>
+                        <a tabindex="0" *ngIf="loginApiService.showNext" (click)="onPrevious()" (keyup.enter)="onPrevious()"
+                            class="btn btn-primary wt-auto-login-next" translate>Previous</a>
+                    </div>
+                    <div *ngIf="loginApiService.state == 'sso' && loginApiService.ssoType === 'saml2' &&  loginApiService.validAssertion === false" class="center">
+                        <p class="center" translate>loginMobile.clickLink</p>
+                        <a tabindex="0" href="{{loginApiService.sso}}" class="btn btn-secondary btn-sso wt-auto-login-sso"
+                            translate>loginMobile.signIn</a>
+                    </div>
+                    <div *ngIf="loginApiService.ssoType === 'oauth2pkce'">
+                        <sso-authorization-login [ssoParams]="loginApiService.sso"></sso-authorization-login>
+                    </div>
+                    <div *ngIf="loginApiService.state == 'complete'">
+                        <a tabindex="0" tabindex="0" (click)="onComplete()" (keyup.enter)="onComplete()"
+                            class="btn btn-secondary wt-auto-login-complete" translate>loginMobile.continue</a>
+                    </div>
+                </div>
+            </form>
+
+            <div id="policies-wrapper" class="text-center" *ngIf="loginApiService.state == 'login'">
+                <a *ngIf="activateCorporatePolicy" tabindex="0" href="/corporate-policy" target="_blank"
+                    alt="Corporate policy" translate>signUp.tos.corporatepolicy</a>
+                <a *ngIf="!activateCorporatePolicy" tabindex="0" href="/terms-and-conditions" target="_blank"
+                    alt="Terms and conditions" translate>signUp.tos.tos</a>
+                <span>|</span>
+                <a tabindex="0" href="/privacy-policy" target="_blank" alt="Privacy policy"
+                    translate>signUp.tos.privacy</a>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="closeNotice" translate class="center close-text">
+        Please close
+    </div>
+
+    <div class="mobile-app-ad">
+        <h4 translate>loginMobile.download</h4>
+        <a tabindex="0" *ngIf="playStore" class='mobile-google' href={{playStore}}>
+            <img alt='Get it on Google Play' src='/assets/img/icons/google-play-badge@2.png' />
+        </a>
+        <a tabindex="0" *ngIf="appStore" class='mobile-apple' href={{appStore}}>
+            <img alt='Download on the App Store'
+                src='/assets/img/icons/Download_on_the_App_Store_Badge_US-UK_564x167@2.png'>
+        </a>
+    </div>

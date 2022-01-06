@@ -1,0 +1,43 @@
+<div id="moodcheck-history">
+    <div class="tutorial-slide">
+        <div class="img-wrapper">
+            <div class="circle">
+                <img src={{image}} [alt]="moodchecks[selected].created.toLocaleString()">
+            </div>
+        </div>
+        <div class="title-wrapper">
+            <div class="dropdown" *ngIf="moodchecks.length > 1">
+                <div class="dropdown-content" (click)="display()" (keypress)="display()">
+                    <span>{{moodchecks[selected].created.toLocaleString()}}</span>
+                    <i class="pull-right glyphicon glyphicon-chevron-down"></i>
+                    <ul *ngIf="displayed" class="subdropdown">
+                        <li class="dropdown-moodchecks" *ngFor="let moodcheck of moodchecks; let i = index" (click)="select(i)" (keypress)="select(i)" tabindex="0">{{moodcheck.created.toLocaleTimeString()}}</li>
+                    </ul>
+                </div>
+            </div>
+            <h3 translate>moodcheckHistory.title</h3>
+            <b translate>moodcheckHistory.submitted<span>{{time.toLocaleTimeString()}} <span translate>moodcheckHistory.on</span> {{time | date: 'MMM dd' }}</span></b>
+            <div class="content">
+                <div class="info-wrapper center">
+                    <p *ngIf="info.emotion" translate>moodcheckHistory.feeling<br><strong>{{info.emotion}}</strong></p>
+                    <p *ngIf="info.activity" translate>moodcheckHistory.activity<br><strong>{{info.activity}}</strong></p>
+                    <p *ngIf="info.people" translate>moodcheckHistory.people<br><strong>{{info.people}}</strong></p>
+                    <p *ngIf="info.place" translate>moodcheckHistory.place<br><strong>{{info.place}}</strong></p>
+                </div>
+
+                <div class="notes center">
+                    <p class="center" *ngIf="notes" translate>moodcheckHistory.notes</p>
+                    <div class="notes-border">
+                        <p *ngIf="notes">{{notes}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()"  class="btn btn-bold" translate>moodcheckHistory.ok</a>
+            <a tabindex="0" *ngIf="moodchecks[selected].userId == user.id" (click)="onDelete( moodchecks[selected].id)" (keypress)="onDelete(moodchecks[selected].id)"  class="btn btn-bold" translate>Remove</a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,84 @@
+#promo-selected{
+    padding:20px;
+
+    background-color:white;
+    color:grey;
+    font-size: 18px;
+
+}
+
+#page-payment{
+    max-width:1200px;
+    margin:auto;
+    h2{
+        font-size: 26px;
+    }
+
+    h1, h2, h3{
+        color: #38123B;
+    }
+    .purple{
+        color: #38123B;
+    }
+    .divider{
+        height:3px;
+        width:100%;
+        background-color:#38123B;
+        display:block;
+        margin-top:40px;
+        &:after {
+            clear:both;
+        }
+    }
+
+    .strikeout{
+        text-decoration: line-through;
+    }
+
+    #payment-info{
+        margin-top:20px;
+        display:flex;
+        align-items: top;
+        justify-content: top;
+        .dollarsign{
+            font-size:20px;
+        }
+        .cost{
+            width:150px;
+            font-size:100px;
+            line-height:70px;
+            padding:0px 20px 0px 0px;
+        }
+        .text{
+            font-size:20px;
+            line-height:30px;
+            width:300px;
+            color:#A5A5A5;
+        }
+    }
+
+    #pricing-block{
+        font-style:italic;
+        margin-top:20px;
+        font-size:20px;
+    }
+
+    #package-selector{
+        margin-top:20px;
+    }
+    .selected{
+        font-size:20px;
+        margin-top:10px;
+    }
+
+    .discount{
+        font-size:20px;
+        margin-top:10px;
+    }
+}
+
+// for overriding material input padding
+.wt-mat-form-field .mat-form-field-infix {
+	padding-top: 1em !important;
+	padding-bottom: 0.8em !important;
+}

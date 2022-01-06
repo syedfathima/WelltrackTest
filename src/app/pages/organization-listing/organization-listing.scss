@@ -1,0 +1,16 @@
+#page-organization-listing {
+    .btn {
+        img {
+            margin-right: 10px;
+        }
+    }
+    table{
+        table-layout:fixed;
+        width:100%;
+        td { 
+            overflow:hidden;
+            white-space:nowrap;  
+        } 
+    }
+   
+}

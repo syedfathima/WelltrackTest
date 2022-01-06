@@ -1,0 +1,179 @@
+<div class="col-sm-12">
+    <div class="page-section no-margin page-header-body">
+        <h2 class="challenge" translate> challenges.active </h2>
+        <p *ngIf="!progressExists"><span translate>challenges.noActive</span></p>
+        <ng-container *ngIf="progressExists">
+            <div class="page-section-content" *ngFor="let challenge of dataInprogress;">
+                <h3>{{challenge.name}}<span></span></h3>
+                <p class="duration">{{challenge.duration}}</p>
+                <div class="row">
+                    <div class="content-graph mt" [ngClass]="challenge.showTeams ? 'col-sm-6' : 'col-sm-12'">
+                        <div class="table-responsive">
+                            <table class="table"> 
+                                <thead>
+                                    <tr>
+                                        <th translate>challenges.past.number</th>
+                                        <th><span translate>challenges.past.total</span><span>{{challenge.totalMoodchecks}}</span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="chart-holder" (window:resize)="onResize($event)">
+                            <canvas class="inprogressMoodchecks chart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <span translate>challenges.past.totalScore</span>
+                        </div>
+                    </div>
+                    <div class="mt col-sm-6" *ngIf="challenge.showTeams">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th translate>challenges.past.headers.team</th>
+                                        <th class="" translate>challenges.past.headers.avg</th>
+                                        <th class="" translate>challenges.past.headers.total</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="no-border">
+                                    <tr *ngFor="let team of challenge.teams">
+                                        <td class="strong">
+                                            <span>{{team.Name}}</span>
+                                        </td>
+                                        <td class="strong ">
+                                            <span>{{team.avg | number : '1.0-0' }}</span>
+                                        </td>
+                                        <td class="strong ">{{team.score}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div #endOfForProgress class="challenge-footer">
+                    <h3 class="challenge-footer-header" translate>challenges.past.how</h3>
+                    <p class="challenge-footer-body" [innerHtml]="challenge.how"></p>
+                </div>
+            </div>
+        </ng-container>
+        <h2 class="challenge" translate> challenges.upcoming </h2>
+        <p *ngIf="!upcomingExists" translate>challenges.noUpcoming</p>
+        <ng-container *ngIf="upcomingExists">
+            <div class="page-section-content" *ngFor="let challenge of dataUpcoming;">
+                <h3>{{challenge.name}}<span></span></h3>
+                <p class="duration">{{challenge.duration}}</p>
+                <div class="row">
+                    <div class="content-graph mt" [ngClass]="challenge.showTeams ? 'col-sm-6' : 'col-sm-12'">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th translate>challenges.past.number</th>
+                                        <th><span translate>challenges.past.total</span><span>{{challenge.totalMoodchecks}}</span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="chart-holder" (window:resize)="onResize($event)">
+                            <canvas class="upcomingMoodchecks chart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <span translate>challenges.past.totalScore</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mt" *ngIf="challenge.showTeams">
+                        <div class="table-responsive">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th translate>challenges.past.headers.team</th>
+                                        <th class="" translate>challenges.past.headers.avg</th>
+                                        <th class="" translate>challenges.past.headers.total</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="no-border">
+                                    <tr *ngFor="let team of challenge.teams">
+                                        <td class="strong">
+                                            <span>{{team.Name}}</span>
+                                        </td>
+                                        <td class="strong ">
+                                            <span>{{team.avg | number : '1.0-0' }}</span>
+                                        </td>
+                                        <td class="strong ">{{team.score}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div #endOfForUpcoming class="challenge-footer">
+                    <h3 class="challenge-footer-header" translate>challenges.past.how</h3>
+                    <p class="challenge-footer-body" [innerHtml]="challenge.how"></p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div class="col-sm-12 mt">
+    <div class="page-section no-margin">
+        <div class="page-section-header">
+            <h2 translate>challenges.past.title</h2>
+        </div>
+        <div class="page-section-content" *ngFor="let challenge of dataFinished;">
+            <h3>{{challenge.name}}<span></span></h3>
+            <p class="duration">{{challenge.duration}}</p>
+            <div class="row">
+                <div class="content-graph mt" [ngClass]="challenge.showTeams ? 'col-sm-6' : 'col-sm-12'">
+                    <div class="table-responsive">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th translate>challenges.past.number</th>
+                                    <th><span translate>challenges.past.total</span><span>{{challenge.totalMoodchecks}}</span></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="chart-holder" (window:resize)="onResize($event)">
+                        <canvas class="finishedMoodchecks chart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <span translate>challenges.past.totalScore</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt" *ngIf="challenge.showTeams">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th translate>challenges.past.headers.team</th>
+                                    <th class="" translate>challenges.past.headers.avg</th>
+                                    <th class="" translate>challenges.past.headers.total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="no-border">
+                                <tr *ngFor="let team of challenge.teams">
+                                    <td class="strong">
+                                        <span>{{team.Name}}</span>
+                                    </td>
+                                    <td class="strong ">
+                                        <span>{{team.avg | number : '1.0-0' }}</span>
+                                    </td>
+                                    <td class="strong ">{{team.score}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div #endOfFor class="challenge-footer">
+                <h3 class="challenge-footer-header" translate>challenges.past.how</h3>
+                <p class="challenge-footer-body" [innerHtml]="challenge.how"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

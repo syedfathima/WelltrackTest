@@ -1,0 +1,40 @@
+<!-- <page-loader *ngIf="!isloaded"></page-loader> -->
+<div id="emergency-contact-page" *ngIf="isloaded">
+    <div class="page-section">
+        <div class="page-section-header">
+            <h2 translate aria-live="polite" tabindex="0" *ngIf="!organization.contactGroup.title">contact.title</h2>
+        </div>
+
+        <div *ngIf="contactGroupTelephone">
+            <h2 aria-live="polite" role="alert" tabindex="0">{{organization.contactGroup.title}}</h2>
+            <p aria-live="polite" role="alert" tabindex="0">{{organization.contactGroup.description}}</p>
+            <p aria-live="polite" role="alert" tabindex="0"><a [href]="'tel:' + contactGroupTelephone" class="btn btn-primary btn-inline"
+                    (click)="onCallContact($event)"><i class="fa fa-phone icon-margin"></i>Get help now</a></p>
+        </div>
+
+        <div *ngIf="emergencyContact">
+            <h3 translate aria-live="polite" role="alert" tabindex="0">contact.need</h3>
+            <div aria-live="polite" role="alert" tabindex="0" [innerHTML]="emergencyContact"></div>
+        </div>
+
+        <div *ngIf="showOther">
+            <div class="row">
+                <div class="col-sm-6" *ngIf="hotline && hotline.title">
+                    <div style="margin-bottom: 32px;">
+                <div class="col-sm-6" *ngIf="hotline && hotline.title">
+                        <h4 translate aria-live="polite" role="alert" tabindex="0">contact.need</h4>
+                        <p class="mb" translate aria-live="polite" role="alert" tabindex="0">contact.profesionals</p>
+                        <a tabindex="0" href="{{hotline.url}}" class="btn btn-bold btn-inline"
+                            (click)="onHotline($event)" (keypress)="onHotline($event)" aria-live="polite">{{hotline.title}}</a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h4 translate aria-live="polite" role="alert" tabindex="0">contact.subtitle</h4>
+                    <p class="mb" aria-live="polite" role="alert" tabindex="0" translate>contact.body.0<strong translate>contact.body.1</strong></p>
+                    <a tabindex="0" href="tel:911" class="btn btn-bold btn-inline" (click)="on911($event)"
+                        (keypress)="on911($event)" translate  aria-live="polite">contact.call</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+#page-addiction-assessment {
+    #days-of-week-schedule {
+        .day{
+            display:flex; 
+            flex-wrap: wrap;
+            align-content: center;
+            label{
+                display:block;
+                width:auto;
+                min-width:200px;
+            }
+        }
+      
+    }
+
+    ul{
+        margin-top:20px;
+        text-align:left;
+        list-style-position:inside;
+        li{
+            font-size:$font-size-md;
+            text-align:left;
+        }
+    }
+
+    input[type=text]{
+        max-width:200px;
+    }
+
+    .row-3, .row-4{
+        input[type=text]{
+            margin:auto;
+            margin-top:20px;
+        }
+    }
+
+    .row-5{
+        h1{
+            text-align:center;
+        }
+        h2{
+            color:#d94c0a;
+        }
+        text-align:left;
+    }
+   
+}
+
+ 

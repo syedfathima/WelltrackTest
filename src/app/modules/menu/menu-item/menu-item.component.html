@@ -1,0 +1,18 @@
+<a
+	tabindex="0"
+	[ngClass]="{
+		active: isActive
+	}"
+	routerLinkActive="active"
+	[routerLinkActiveOptions]="{ exact: activeDefault }"
+	(click)="menuService.nav(redirectTo)"
+	(keypress)="menuService.nav(redirectTo)"
+>
+	<img
+		[alt]="alt"
+		class="icon"
+		[src]="imgSrc"
+		style="height: 20px"
+	/>
+	<span translate>{{title}}</span>
+</a>

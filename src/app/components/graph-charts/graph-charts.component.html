@@ -1,0 +1,6 @@
+<div *ngIf="graphType == 'Line'" class="linechart">
+    <linechart [id]="graphConfig['id']" [header]="graphConfig['header']" [subheader]="graphConfig['subheader']"
+        [graphData]="graphConfig['graphData']" [titles]="graphConfig['titles']" [legend]="graphConfig['legend']"
+        [colors]="graphConfig['colors']" [graphStyles]="graphStyles">
+    </linechart>
+</div>

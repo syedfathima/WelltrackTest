@@ -1,0 +1,34 @@
+<div class="page-section">
+    <div class="page-section-header">
+        <h3>- Edit Resources -</h3>
+    </div>
+    <page-loader *ngIf="!isLoaded"></page-loader>
+    <div class="page-section-content">
+        <div class="form-wrapper">
+            <mat-form-field>
+                <div>
+                    <mat-select class="wt-mat-input" id="parentId" required
+                        placeholder="Select an organization to edit the resources"
+                        (selectionChange)="onSelectOrganization($event)" #orgs >
+                        <mat-option [value]="null">None</mat-option>
+                        <mat-option *ngFor="let org of organizations" [value]="org.id">
+                            {{ org.name }}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-form-field>
+            <div *ngIf="isLoaded && orgId">
+                <resources-edit [resources]="organization" [updatedData]="updatedData" (onResourceSetChange)="resourceSetChanged($event)">
+                </resources-edit>
+                <!-- <div class="fixed-footer"> -->
+                <p class="red" *ngIf="submitButtonPressed && errors === ''">{{errors}}</p>
+                <p class="red">{{errors}}</p>
+                <!-- <a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a> -->
+                <button tabindex="0" class="btn-primary btn" (click)="doSave()">
+                    Save
+                </button>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

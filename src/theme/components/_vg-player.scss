@@ -1,0 +1,22 @@
+vg-player.video {
+	height: auto;
+	width:100%;
+	video{
+		object-fit:fill;
+	}
+}
+
+vg-overlay-play.audioPlayer {
+	height: 300px;
+	width: 100%;
+}
+
+vg-player.audio {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+vg-controls vg-scrub-bar-current-time {
+	background-color: #222;
+}

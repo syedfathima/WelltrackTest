@@ -1,0 +1,19 @@
+
+
+
+<!--
+
+    -->
+
+<h2>View all activity:</h2>
+<p>Click user tiles to filter the listing</p>
+<mat-form-field class="example-chip-list">
+    <mat-chip-list #chipList aria-label="User Selection" [multiple]="multiple" role="listbox">
+        <mat-chip role="option" [selected]="activeuser.selected" (click)="onChipClick(activeuser)"
+            *ngFor="let activeuser of activeUsers" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(activeuser)">
+            <img alt="User avatar" class="rounded" height="20" src="./assets/img/circle_logo@2x.png">
+            <span class="name">{{activeuser.fullName}}</span>
+        </mat-chip>
+    </mat-chip-list>
+</mat-form-field>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="49px" viewBox="0 0 48 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>OK</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="20" cy="20.4814815" r="20"></circle>
+        <filter x="-17.5%" y="-12.5%" width="135.0%" height="135.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="End_User_mvp2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Intro_HD" transform="translate(-760.000000, -361.000000)">
+            <g id="OK" transform="translate(764.000000, 363.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="Ok-Copy" transform="translate(8.888889, 7.888889)" fill="#56BE96">
+                    <path d="M7.18008123,20.1027199 C7.75581759,20.1027199 8.29709592,19.8763808 8.70197785,19.4666783 L22.5545797,5.34758055 C23.1145228,4.78030017 23.1145228,3.8634834 22.5545797,3.29620302 C21.9932009,2.73035517 21.0843701,2.73035517 20.5244271,3.29620302 L7.18008123,16.9038889 L2.4511868,11.9116544 C1.8912437,11.3458066 0.982412984,11.3458066 0.421034136,11.9116544 C-0.140344712,12.4789348 -0.140344712,13.3957516 0.421034136,13.9630319 L5.65674886,19.4666783 C6.06450229,19.8763808 6.60290912,20.1027199 7.18008123,20.1027199 L7.18008123,20.1027199 Z" id="Ok-Icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,64 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+#page-challenges {
+    #moodchecks {}
+    .page-header-body {
+        .challenge {}
+        p {
+            font-size: 16px;
+        }
+    }
+    .page-section {
+        .row {
+            width: 100%;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        .page-section-header {
+            border-bottom: 1px solid #ddd;
+        }
+        .page-section-content {
+            display: table;
+            @include breakpoint(xs) {
+                display: block;
+            }
+            .page-section-header {
+                font-size: 22px;
+                margin-bottom: 0px;
+            }
+            h3 {
+                font-size: $font-size-title-md;
+                font-weight: bold;
+                margin-bottom: 0x;
+            }
+            .duration {
+                font-size: 16px;
+            }
+        }
+        .col-sm-6 {
+            display: table-cell;
+            @include breakpoint(xs) {
+                display: block;
+            }
+            th {
+                font-size: 14px;
+                padding-left: 0px;
+            }
+        }
+        .content-graph {
+            padding-left: 0px;
+        }
+        .challenge-footer {
+            .challenge-footer-header {
+                font-size: 20px;
+            }
+            .challenge-footer-body {
+                margin-bottom: 22px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #ddd;
+            }
+            display: table-footer-group
+        }
+    }
+}

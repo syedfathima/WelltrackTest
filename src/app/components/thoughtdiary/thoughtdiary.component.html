@@ -1,0 +1,62 @@
+<page-loader *ngIf="!isLoaded"></page-loader>
+<div *ngIf="isLoaded" class="clearfix">
+    <div [class]="showIncomplete ? 'col-sm-6 mt' : 'col-sm-12 mt'">
+        <div class="page-section no-margin">
+            <div class="page-section-header">
+                <div class="page-section-buttons">
+                    <!--<a>View more</a>-->
+                </div>
+                <h2 translate>thoughtDiary.completed</h2>
+            </div>
+            <div class="page-section-content">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let diary of diaries | filter : 'status' : 'complete'">
+                                <td class="strong">
+                                    <a tabindex="0" [routerLink]="'/app/practice/thoughtdiary/' + diary.id">{{diary.thought.event
+                                        || 'Untitled'}}</a>
+                                </td>
+                                <td class="minidate"> {{diary.createdOn | date:'dd MMM yyyy'}}</td>
+                                <td align="right" *ngIf="currentUser.id == diary.userId">
+                                    <a class="delete" tabindex="0" (click)="delete(diary.id)" (keypress)="delete(diary.id)"><img
+                                            src="./assets/img/icons-svg/x-icon.svg"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 mt" *ngIf="showIncomplete">
+        <div class="page-section no-margin">
+            <div class="page-section-header">
+                <div class="page-section-buttons">
+                    <!--<a>View more</a>-->
+                </div>
+                <h2 translate>thoughtDiary.unfinished</h2>
+            </div>
+            <div class="page-section-content">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let diary of diaries | filter : 'status' : 'inprogress'">
+
+                                <td class="strong">
+                                    <a tabindex="0" [routerLink]="diary.id">{{diary.thought.event || 'Untitled'}}</a>
+                                </td>
+                                <td class="minidate"> {{diary.createdOn | amUtc | amDateFormat: 'DD MMM' }}</td>
+                                <td align="right" *ngIf="currentUser.id == diary.userId">
+                                    <a class="delete" tabindex="0" (click)="delete(diary.id)" (keypress)="delete(diary.id)"><img
+                                            src="./assets/img/icons-svg/x-icon.svg"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

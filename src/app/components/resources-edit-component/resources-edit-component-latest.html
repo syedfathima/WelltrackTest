@@ -1,0 +1,190 @@
+<div class="form-wrapper-80">
+    <h2>Resources</h2>
+    <form novalidate [formGroup]="resourcesEditForm">
+        <div class="icon-input">
+            <mat-checkbox #enableResourcesFlag formControlName="enableResources" id="enableResources"></mat-checkbox>
+            <label for="enableResources">Enable resources?</label>
+        </div>
+
+        <div *ngIf="enableResourcesFlag.checked">
+            <div class="icon-input">
+                <label for="resources" translate>General info</label>
+                <ckeditor formControlName="resources" [config]="config" id="resources"></ckeditor>
+            </div>
+
+            <div id="ressourceSection" *ngIf="organization.resourceSet">
+                <h2>Resource sets</h2>
+
+                <mat-accordion [id]="'resourceId'" cdkDropList (cdkDropListDropped)="drop($event)"
+                    formArrayName="resourceSet">
+                    <mat-expansion-panel class="groupset" *ngFor="let resource of resourceSet.controls; let i = index;"
+                        [formGroupName]="i" cdkDrag (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>Resource set {{i + 1}}</mat-panel-title>
+                            <mat-panel-description>
+                                <a class="removeGroup" tabindex="0" (click)="onRemoveResourceset(i)"
+                                    (keypress)="onRemoveResourceset(i)"><img
+                                        src="./assets/img/icons-svg/x-icon.svg"></a>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <ng-container padding>
+                            <mat-form-field class="wt-mat-form-field">
+                                <input class="wt-mat-input" matInput placeholder="Resource Title" type="text"
+                                    formControlName="title" />
+                                <mat-error *ngIf="
+                                getResourceSetFormGroup(i).controls['title'].touched &&
+                                getResourceSetFormGroup(i).controls['title'].errors?.required
+									">
+                                    Resource set needs a title
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="wt-mat-form-field"><input class="wt-mat-input" matInput
+                                    placeholder="Resource Summary" type="text" formControlName="summary" />
+                            </mat-form-field>
+                        </ng-container>
+                        
+                        <!---Videos Start-->
+                        <ng-container>
+                            <h4>Videos</h4>
+                            <mat-accordion class="videos-wrapper" formArrayName="videos">
+                                <mat-expansion-panel *ngFor="let video of getResourceVideoDetails(resource);
+                                        let j = index" (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroupName]="j">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>Video {{ j + 1 }}</mat-panel-title>
+                                        <!-- <mat-panel-description>Video Label {{i}}<a tabindex="0" class="remove"
+                                                (click)="removeVideo(i, j)" (keypress)="removeVideo(i, j)"><img
+                                                    src="./assets/img/icons-svg/x-icon.svg" /></a>
+                                        </mat-panel-description> -->
+                                    </mat-expansion-panel-header>
+                                    <div class="">
+                                        <mat-form-field class="wt-mat-form-field">
+                                            <input matInput class="wt-mat-input" placeholder="Video Title" type="text"
+                                                formControlName="label" />
+                                            <!-- <mat-error
+                                                *ngIf="
+                                                    getVideoFormGroup(i, j).controls['label'].touched &&
+                                                    getVideoFormGroup(i, j).controls['label'].errors?.required
+                                                "
+                                            >
+                                                Video needs a title
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                        <mat-form-field class="wt-mat-form-field">
+                                            <input matInput class="wt-mat-input" placeholder="Video Duration" type="text"
+                                                formControlName="length" />
+                                        </mat-form-field>
+        
+                                        <div class="icon-input">
+                                            <label for="logo">Description</label>
+                                            <ckeditor formControlName="description" [config]="config"
+                                                id="videoDescription">
+                                            </ckeditor>
+                                        </div>
+        
+                                        <div class="attachments" formArrayName="attachments">
+                                            <h4>File attachment(s)</h4>
+                                            <div class="attachment"
+                                                *ngFor="let attachment of getAttachmentDetails(video); let k = index;" [formGroupName]="k">
+                                                <div class="icon-input">
+                                                    <label for="logo">File Attachment ({{r + 1}})</label>
+                                                    <input placeholder="File Attachment" type="file"
+                                                        (change)="changeAttachmentUploadListener($event, i, j, k)" #input>
+                                                    <div>Uploaded: <a class="caption-download" [href]="attachment.value.filePath"
+                                                            target="_blank">Download</a></div>
+                                                </div>
+                                                <mat-form-field>
+                                                    <input matInput placeholder="Title" type="text"
+                                                        formControlName="title" />
+                                                </mat-form-field>
+        
+                                            </div>
+        
+                                            <a tabindex="0" class="btn-secondary btn-inline btn"
+                                                (click)="addFileAttachment(video,i,j)" (keypress)="addFileAttachment(video,i,j)">Add file
+                                                attachment</a>
+                                        </div>
+        
+                                        <div class="icon-input">
+                                            <label for="logo">Video File</label>
+                                            <input placeholder="Video File" type="file"
+                                                (change)="changeVideoUploadListener($event, i, j)" #input>
+                                        </div>
+                                        <div class="preview video-preview" *ngIf="video.value.media">
+                                            <p>Video preview</p>
+                                            <wt-video [mediaUrl]="" [thumbnailUrl]=""
+                                                [captionUrl]=""></wt-video>
+                                        </div>
+                                        <div class="icon-input">
+                                            <label for="logo">Video Image</label>
+                                            <input placeholder="Video Image" type="file"
+                                                (change)="changeVideoImageUploadListener($event, i, j)">
+                                        </div>
+                                        <div class="preview image-preview" *ngIf="">
+                                            <p>Image preview</p>
+                                            <img [src]="" />
+                                        </div>
+                                        <div class="icon-input">
+                                            <label for="logo">Caption File</label>
+                                            <input placeholder="Caption File" type="file"
+                                                (change)="changeCaptionUploadListener($event, i, j)">
+                                        </div>
+                                        <div class="preview caption-preview" *ngIf="">
+                                            <p>Caption Upload: <a class="caption-download" [href]=""
+                                                    target="_blank">Download</a></p>
+        
+                                        </div>
+                                        <div class="icon-input">
+                                            <label for="logo">Audio File</label>
+                                            <input placeholder="Audio file" type="file"
+                                                (change)="changeAudioUploadListener($event, i, j)">
+                                        </div>
+                                        <div class="preview audio-preview" *ngIf="video.audioFile">
+                                            <label for="logo">Audio preview</label>
+                                            <wt-video [mediaUrl]="" [captionUrl]="">
+                                            </wt-video>
+                                        </div>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </ng-container>
+                        <!--Videos end-->
+                        <a tabindex="0" class="btn-primary btn-inline btn" (click)="addResourceGroup(i, {})"
+                            (keypress)="addResourceGroup(i, {})">Add
+                            resource</a>
+                        <a tabindex="0" class="btn-primary btn-inline btn" (click)="addResourceVideo(i, {})"
+                        (keypress)="addResourceVideo(i)">Add Video</a>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <a tabindex="0" class="btn-primary btn-inline btn" (click)="addRessourceSet({})"
+                    (keypress)="addRessourceSet({})">Add
+                    resource group</a>
+
+                <div formArrayName="questionSet" >
+                    <div class="questionSet" *ngFor="let question of questionSet.controls; let i = index; "
+                        [formGroupName]="i">
+                        <a class="removeGroup" tabindex="0" (click)="onRemoveQuestionset(i)"
+                            (keypress)="onRemoveQuestionset(i)"><img src="./assets/img/icons-svg/x-icon.svg"></a>
+                        Question {{i + 1}}
+                        <mat-form-field class="wt-mat-form-field"><input matInput class="wt-mat-input"
+                                placeholder="Question" type="text" formControlName="question"></mat-form-field>
+                        <mat-form-field class="wt-mat-form-field"><input matInput class="wt-mat-input"
+                                placeholder="Instruction" type="text" formControlName="instruction"></mat-form-field>
+                        <mat-form-field>
+                            <mat-select placeholder="Resource Number" formControlName="resourceNumber">
+                                <mat-option *ngFor="let i of numberResourceGroups|times" [value]="i">Resource group
+                                    {{i}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <a tabindex="0" class="btn-primary btn-inline btn" (click)="addQuestionSet({})"
+                    (keypress)="addQuestionSet()">Add
+                    question group</a>
+
+            </div>
+        </div>
+    </form>
+</div>

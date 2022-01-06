@@ -1,0 +1,43 @@
+<div class="assessment-alert" *ngIf="show">
+    <mat-dialog-content >
+        <a tabindex="0" (click)="close()" (keypress)="close()" class="close-modal"
+            aria-label="Close assessment results">
+            <img src="./assets/img/icons-svg/close-icon.svg">
+        </a>
+        <div class="img-wrapper">
+            <img alt="Assessment icon" src="./assets/img/assessment_grey@2x.png" style="width: 59px; height: auto;"
+                alt="">
+            <div class="clearfix"></div>
+            <div class="title-wrapper">
+                <h2 translate>Your ranked resources:</h2>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <p>You indicated you could use extra help in the <strong>{{titleStr}}</strong> realms. Navigate to the
+                resources hub to find tools and tips for building your resilience in those areas. </p>
+    
+            <div class="alertwrapper">
+                <div class="content">
+                    <div *ngFor="let resourceset of organization.resourceSet; let i = index; " class="resource-group" [ngClass]="{active: enabledRanks.includes(i + 1) === true}" >
+                        <div class="domainpanel clearfix step{{resourceset.number}}">
+                            <div class="panel-heading">
+                                <h3>{{resourceset.title}}</h3>   
+                                <p [innerHtml]="resourceset.summary"></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+        <div class="fixed-footer">
+            <a tabindex="0" *ngIf="finish" (click)="close()" (keypress)="close()" class="btn btn-primary"
+                translate>das.finish</a>
+        </div>
+        <div class="clearfix"></div>
+    </mat-dialog-content>
+</div>

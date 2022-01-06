@@ -1,0 +1,257 @@
+<menu-header></menu-header>
+<nav id="nav" role="navigation">
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app' == menuService.pathActive || '' == menuService.pathActive }"
+		routerLinkActive="active"
+		[routerLinkActiveOptions]="{ exact: true }"
+		(click)="menuService.nav('/app')"
+		(keypress)="menuService.nav('/app')"
+	>
+		<img
+			alt="Dashboard"
+			class="icon"
+			src="/assets/img/icons/dashboard@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.dashboard</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/professional/users' == menuService.pathActive }"
+		routerLinkActive="active"
+		*ngIf="menuService.userDetailsShow"
+		(click)="menuService.nav('/professional/users')"
+		(keypress)="menuService.nav('/professional/users')"
+	>
+		<img
+			alt="Client list"
+			class="icon"
+			src="./assets/img/icons/user-icon@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.clientList</span>
+	</a>
+
+	<a
+		tabindex="0"
+		*ngIf="menuService.moodcheckShow"
+		[ngClass]="{ disabled: menuService.locked }"
+		(click)="menuService.onMoodCheck()"
+		(keypress)="menuService.onMoodCheck()"
+	>
+		<img
+			alt="Moodcheck"
+			class="icon"
+			src="/assets/img/icons/moodcheck@2x.png"
+			style="height: 19px"
+		/>
+		<span translate>menu.moodcheck</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/theory' == menuService.pathActive, disabled: menuService.locked }"
+		routerLinkActive="active"
+		*ngIf="menuService.practiceShow"
+		(click)="menuService.nav('/app/theory')"
+		(keypress)="menuService.nav('/app/theory')"
+		[ngClass]="{ disabled: this.user.userType == 'user' && menuService.locked }"
+	>
+		<img
+			alt="Courses"
+			class="icon"
+			src="/assets/img/icons/practice@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.courses</span>
+	</a>
+
+	<a
+		tabindex="0"
+		*ngIf="menuService.podcastsShow"
+		[ngClass]="{ active: '/app/podcasts' == menuService.pathActive, disabled: menuService.locked }"
+		routerLinkActive="active"
+		(click)="menuService.nav('/app/podcasts')"
+		(keypress)="menuService.nav('/app/podcasts')"
+		[ngClass]="{ disabled: this.user.userType == 'user' && menuService.locked }"
+	>
+		<img
+			alt="Courses"
+			class="icon"
+			src="/assets/img/icons/podcast-mic@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.podcasts</span>
+	</a>
+
+	<!--*ngIf="this.user.primaryOrganization.id === 2644"-->
+	<a
+		tabindex="0"
+		*ngIf="menuService.enableCoreContributors"
+		[ngClass]="{
+			active: '/app/corecontributors' == menuService.pathActive,
+			disabled: menuService.locked
+		}"
+		routerLinkActive="active"
+		(click)="menuService.nav('/app/corecontributors')"
+		(keypress)="menuService.nav('/app/corecontributors')"
+		[ngClass]="{ disabled: this.user.userType == 'user' && menuService.locked }"
+	>
+		<img
+			alt="Domains"
+			class="icon"
+			src="/assets/img/icons/resources@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.wellnessDomains</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/practice' == menuService.pathActive, disabled: menuService.locked }"
+		routerLinkActive="active"
+		*ngIf="menuService.theoryShow"
+		(click)="menuService.nav('/app/practice')"
+		(keypress)="menuService.nav('/app/practice')"
+		[ngClass]="{ disabled: this.user.userType == 'user' && menuService.locked }"
+	>
+		<img
+			alt="Tools"
+			class="icon"
+			src="/assets/img/icons/theory@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.tools</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/calendar' == menuService.pathActive, disabled: menuService.locked }"
+		routerLinkActive="active"
+		*ngIf="menuService.calendarShow"
+		(click)="menuService.nav('/app/calendar')"
+		(keypress)="menuService.nav('/app/calendar')"
+	>
+		<img
+			alt="Calendar"
+			class="icon"
+			src="/assets/img/icons/calendar@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.calendar</span>
+		<div class="notifications" *ngIf="menuService.user.eventCount > 0">
+			{{ menuService.user.eventCount }}
+		</div>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{
+			active: '/app/assessments' == menuService.pathActive,
+			disabled: menuService.locked
+		}"
+		routerLinkActive="active"
+		*ngIf="menuService.assessmentShow && menuService.defaultAssessment === 'resilience'"
+		(click)="menuService.nav('/app/assessments')"
+		(keypress)="menuService.nav('/app/assessments')"
+	>
+		<img
+			alt="Assessment"
+			class="icon"
+			src="./assets/img/icons/assessment_icon@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.assessments</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{
+			active: '/app/assessment' == menuService.pathActive,
+			disabled: menuService.locked
+		}"
+		routerLinkActive="active"
+		*ngIf="menuService.assessmentShow && menuService.defaultAssessment === 'das'"
+		(click)="menuService.nav('/app/assessments/das/listing')"
+		(keypress)="menuService.nav('/app/assessments/das/listing')"
+	>
+		<img
+			alt="Assessment"
+			class="icon"
+			src="./assets/img/icons/assessment_icon@2x.png"
+			style="height: 20px"
+		/>
+		<span translate>menu.assessment</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{
+			active: '/app/emergency-contact' == menuService.pathActive,
+			disabled: menuService.locked
+		}"
+		class="secondary"
+		routerLinkActive="active"
+		(click)="menuService.nav('/app/emergency-contact')"
+		(keypress)="menuService.nav('/app/emergency-contact')"
+		*ngIf="menuService.user.primaryOrganization"
+	>
+		<img
+			alt="Emergency contact"
+			class="icon"
+			src="/assets/img/icons/hand@2x.png"
+			style="height: 22px"
+		/>
+		<span translate>menu.emergency</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/resources' == menuService.pathActive, disabled: menuService.locked }"
+		class="secondary"
+		routerLinkActive="active"
+		*ngIf="menuService.enableResources"
+		(click)="menuService.nav('/app/resources')"
+		(keypress)="menuService.nav('/app/resources')"
+	>
+		<img
+			alt="Resources"
+			class="icon"
+			src="/assets/img/icons/resources@2x.png"
+			style="height: 22px"
+		/>
+		<span translate>menu.resources</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/settings' == menuService.pathActive, disabled: menuService.locked }"
+		class="secondary"
+		routerLinkActive="active"
+		(click)="menuService.nav('/app/settings')"
+		(keypress)="menuService.nav('/app/settings')"
+	>
+		<img
+			alt="Settings"
+			class="icon"
+			src="./assets/img/icons/settings@2x.png"
+			style="height: 15px"
+		/>
+		<span translate>menu.setting</span>
+	</a>
+
+	<a
+		tabindex="0"
+		[ngClass]="{ active: '/app/support' == menuService.pathActive, disabled: menuService.locked }"
+		class="secondary"
+		routerLinkActive="active"
+		(click)="menuService.onSupportClick()"
+		(keypress)="menuService.onSupportClick()"
+	>
+		<i class="fa fa-envelope" aria-hidden="true"></i>
+		<span translate>menu.support</span>
+	</a>
+</nav>
+<menu-footer></menu-footer>

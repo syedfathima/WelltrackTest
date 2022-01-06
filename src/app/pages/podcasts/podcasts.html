@@ -1,0 +1,41 @@
+<div id="podcast-page">
+    <page-header [headerText]="chapterTitle" [midheaderText]=""  [cssClass]='cssModule'
+        [backText]="backText"></page-header>
+
+    <div class="page-section">
+        <div class="page-section-content">
+            <div class="page-header-body">
+                <p>
+                    {{chapterDesc}}
+                </p>
+            </div>
+
+            <div class="podcast-section" *ngFor="let content of chapterContents">
+                <h3 *ngIf="content.step">{{content.step}}</h3>
+                <div class="card-container">
+                    <figure class="audio-card" *ngFor="let video of content.videos">
+            
+                        <div  class="audio-still" >
+                            <div class="overlay">
+                                <img class="audio-image" src="{{video.videoImage}}">
+                                <div *ngIf="video.isCompleted" class="video-status">
+                                    <img src="./assets/img/icons-svg/OK.svg" style="width: 40px;">
+                                </div>
+                                <div class="video-play"></div>
+                            </div>
+                        </div>
+
+                        <figcaption class="audio-caption">
+                            <div (click)="toggleVideo(video, true)" (onPause)="onStop()" *ngIf="!playing || video.videoFile != currentTrack.src" class="play-container vg-icon-play_arrow">
+                            </div>
+                            <div (click)="toggleVideo(video, true)" (onPause)="onStop()" *ngIf="playing && video.videoFile === currentTrack.src" class="play-container vg-icon-pause">
+                            </div>
+                            <h5 class="audio-title"> {{video.videoTitle}}</h5>
+                            <div class="audio-duration">{{video.videoDuration}}</div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

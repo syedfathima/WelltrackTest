@@ -1,0 +1,252 @@
+.panel {
+    height: 270px;
+    border: 0;
+    background-color:white;
+    margin-bottom:20px;
+
+    h2, h3{
+        font-weight: 800;
+        font-size: 26px;
+    }
+
+    &.last-child{
+        margin-bottom:0px;
+    }
+
+    .bgimage img{
+        @include center-align();
+    }
+    img {
+        // height: 126px;
+        // width: 126px;
+        display: block;
+        // margin: auto;
+        // margin-top: 54px;
+        width:auto;
+        height:110px;
+    }
+    .thin-img {
+        width: 89px;
+    }
+
+    .left{
+        float:left;
+        padding:15px;
+        width:60%;
+        position:relative;
+        @media (max-width: 1199px){
+            text-align:center;
+            float:none;
+            width:100%;
+            height:60%;
+            padding-top:10px;
+            h1{
+                margin:0px;
+                padding:0px;
+            }
+            .btn{
+                width:80%;
+                position:absolute;
+                bottom:10px;
+                left:50%;
+                transform: translate(-50%, 0%);
+            }
+        }
+
+    }
+
+    .right{
+        padding:15px;
+        float:right;
+        width:40%;
+        @media (max-width: 1199px){
+            text-align:center;
+            float:none;
+            width:100%;
+            height:40%;
+            padding-top:10px;
+            img{
+                height:70px;
+                width:auto;
+                top:50%;
+            }
+        }
+    }
+
+    div{
+        position:relative;
+        height:100%;
+    }
+
+
+    &.zenroom .right{
+        @extend .zenroom-gradient;
+        h1 {
+            padding-top: 16px;
+        }
+    }
+    &.assessment .right{
+        @extend .assessment-gradient;
+    }
+    &.thoughtdiary .right{
+        @extend .thoughtdiary-gradient;
+    }
+    &.cognitivedistortions .right{
+        @extend .cognitivedistortions-gradient;
+    }
+    &.funachievement .right{
+        @extend .funachievement-gradient;
+    }
+
+    &.activityscheduler .right{
+        @extend .activityscheduler-gradient;
+    }
+
+    &.addiction .right{
+        @extend .addiction-gradient;
+    }
+
+    &.assessment-wellness .right{
+        @extend .assessment-wellness-gradient;
+    }
+
+    &.assessment-resilience .right{
+        @extend .assessment-resilience-gradient;
+    }
+
+    &.step1{
+        .right{
+        @extend .zenroom-gradient;
+        }
+        h1 {
+            padding-top: 16px;
+        }
+    }
+    &.step2 .right{
+        @extend .thoughtdiary-gradient;
+    }
+    &.step3 .right{
+        @extend .cognitivedistortions-gradient;
+    }
+    &.step4 .right{
+        @extend .funachievement-gradient;
+    }
+
+    &.step5 .right{
+        @extend .activityscheduler-gradient;
+    }
+
+    &.step6 .right{
+        background: -webkit-linear-gradient(353deg, #f80759 0%, #bc4e9c 100%);
+        background: -moz-linear-gradient(353deg, #f80759 0%, #bc4e9c 100%);
+        background: -o-linear-gradient(353deg, #f80759 0%, #bc4e9c 100%);
+        background: linear-gradient(83deg, #f80759 0%, #bc4e9c 100%);
+    }
+
+    &.step7 .right{
+        background: -webkit-linear-gradient(353deg, #3382E1 0%, #42E7E5 100%);
+        background: -moz-linear-gradient(353deg, #3382E1 0%,#42E7E5 100%);
+        background: -o-linear-gradient(353deg, #3382E1 0%, #42E7E5 100%);
+        background: linear-gradient(83deg, #3382E1 0%, #42E7E5 100%);
+    }
+
+    .btn {
+        display:block;
+        width:100%;
+        max-width:230px;
+        position:absolute;
+        bottom:10px;
+
+    }
+    .col-sm-4 {
+        height: 234px;
+    }
+    .col-sm-8 {
+        width: 60%;
+        margin-left: 30px;
+        margin-top: 18px;
+    }
+
+    @include breakpoint(xs) {
+        h1{
+            font-size: $font-size-title-slg;
+        }
+    }
+}
+
+#page-resources{
+    .panel{
+        img {
+            width:auto;
+            height:90px;
+        }
+    }
+}
+
+
+.card-container{
+    > * + * > figure {
+        padding-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+        padding:20px;
+
+        > * + * > figure {
+            padding-top: 0px;
+        }
+    }
+    .card {
+        margin: 0px;
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        -ms-flex-preferred-size: calc(50% - 15px);
+        flex-basis: calc(50% - 15px);
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        margin-top: 30px;
+        position:relative;
+        background-color:white;
+        padding-bottom:20px;
+        text-align:left;
+        padding:20px;
+
+
+        .title {
+            font-size: $font-size-title-lg;
+            font-weight:800;
+            color: #4d4c4c;
+            font-weight: 700;
+            margin-bottom:20px;
+        }
+        .description{
+            padding:30px 0px;
+            font-size:$font-size-xl;
+        }
+        .logo-wrapper{
+            text-align:center;
+            img{
+                width:60%;
+                height:auto;
+            }
+        }
+
+        .actions{
+            margin-top:40px;
+            .btn{
+                margin:auto;
+                max-width:200px;
+                display:block;
+            }
+            &.center{
+                text-align:center;
+
+            }
+        }
+    }
+
+}

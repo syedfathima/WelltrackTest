@@ -1,0 +1,50 @@
+<div class="row text-center" id="nav-buttons">
+    <div class="col-md-4 col-xs-12">
+        <div tabindex="0" id="previous" class="btn btn-inline" mwlCalendarPreviousView [view]="view"
+            [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false" translate>
+            calendar.previous
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div tabindex="0" id="next" class="btn btn-inline" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+            (viewDateChange)="activeDayIsOpen = false" translate>
+            calendar.next
+        </div>
+    </div>
+</div>
+
+<mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event)">
+</mwl-calendar-month-view>
+
+<div class="legend">
+    <div class="item appointment" translate>
+        <i class="bullet"></i>calendar.legend.appointment</div>
+
+    <div class="item moodcheck" translate>
+        <i class="bullet"></i>calendar.legend.moodcheck</div>
+
+    <div class="item assessment" translate>
+        <i class="bullet"></i>calendar.legend.assessment</div>
+
+    <div class="item depression" translate>
+        <i class="bullet"></i>calendar.legend.depression</div>
+
+    <div class="item anxiety" translate>
+        <i class="bullet"></i>calendar.legend.anxiety</div>
+
+    <div class="item thoughtdiary" translate>
+        <i class="bullet"></i>calendar.legend.thoughtdiary</div>
+
+    <div class="item funachievement" translate>
+        <i class="bullet"></i>calendar.legend.funachievement</div>
+
+    <div class="item activityscheduler" translate>
+        <i class="bullet"></i>calendar.legend.activityscheduler</div>
+
+    <div class="item zenroom" translate>
+        <i class="bullet"></i>calendar.legend.zenroom</div>
+
+</div>

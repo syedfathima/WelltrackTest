@@ -1,0 +1,38 @@
+<div id="results">
+    <div class="results-slide">
+        <div class="img-wrapper">
+            <div>
+                <img alt="Quiz icon" src='./assets/img/quiz_icon.png' style="width: 70px; height: auto;">
+            </div>
+            <h3 id='header' translate>results.title</h3>
+        </div>
+        <div class="body-wrapper">
+            <div class="content">
+                <h1 class="content-header">{{score}}%</h1>
+                <div class="results">
+                    <p *ngIf="score >= 90" translate>
+                        results.well
+                    </p>
+
+                    <p *ngIf="score >= 65 && score < 90" translate>
+                        results.ok
+                    </p>
+
+                    <p *ngIf="score >= 30 && score < 65" translate>
+                        results.bad
+                    </p>
+
+                    <p *ngIf="score < 30" translate>
+                        results.review
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed-footer">
+            <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-primary" translate>results.finish</a>
+        </div>
+    </div>
+
+</div>

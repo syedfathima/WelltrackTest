@@ -1,0 +1,176 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+.main-content-header {
+    color: #fff;
+    min-height: 80px;
+    margin: 0px 16px;
+    padding: 20px;
+    @include breakpoint(sm) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+    .btn {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    clear:both;
+}
+
+.main-content-header-subtitle {
+    @include breakpoint(sm) {
+        display: flex;
+        align-items: flex-end;
+    }
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.main-content-header-midtitle {
+    font-family: "Nunito Sans";
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    display: block;
+    @include breakpoint(sm) {
+        margin-top: 24px;
+        text-align: center;
+    }
+}
+
+.main-content-header-title {
+    display: flex;
+    align-items: center;
+    @include breakpoint(xs) {
+        margin-bottom: 12px;
+    }
+    h2 {
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 0;
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 500;
+        span{
+            font-weight: 800;
+            margin-right:30px;
+        }
+    }
+    .image-wrapper {
+        img {
+            margin-right: 20px;
+            max-height:50px;
+        }
+    }
+}
+
+.main-content-header-actions {
+    a {
+        margin-top: auto;
+        margin-bottom: auto;
+        min-width: 115px;
+        span {
+            vertical-align: middle;
+        }
+    }
+}
+
+.quiz {
+    @extend .cognitivedistortions-gradient-horizontal;
+}
+
+.achievement {
+    @extend .funachievement-gradient-horizontal;
+}
+
+.zen {
+    @extend .zenroom-gradient-horizontal;
+}
+
+.thoughtdiary {
+    @extend .thoughtdiary-gradient-horizontal;
+}
+
+.activityscheduler{
+    @extend .activityscheduler-gradient-horizontal;
+}
+
+.challenges {
+    @extend .challenges-gradient-horizontal;
+}
+
+.assessment{
+    @extend .assessment-gradient-horizontal;
+}
+
+.anxiety{
+    @extend .courseanxiety; 
+}
+
+.depression{
+    @extend .coursedepression;
+}
+
+.phobia{
+    @extend .coursephobia; 
+}
+
+.disaster{
+    @extend .coursedisaster;
+}
+
+.resilience{
+    @extend .courseresilience;
+}
+
+.sleep{
+    @extend .coursesleep;
+}
+
+.wellbeing{
+    @extend .coursewellbeing;
+}
+
+.mindfulness{
+    @extend .coursemindfulness;
+}
+
+.purpose{
+    @extend .coursepurpose;
+}
+
+.work{
+    @extend .coursework;
+}
+
+.addiction{
+    @extend .addiction-gradient-horizontal;
+}
+
+.video{
+    @extend .challenges-gradient-horizontal;
+}
+
+.assessment-resilience{
+    @extend .assessment-resilience-gradient-horizontal;
+}
+
+.assessment-wellness{
+    @extend .assessment-wellness-gradient-horizontal;
+}
+
+.additional-resources{
+    @extend .courseadditionalresources;
+}
+
+.podcasts{
+    @extend .podcasts-gradient-horizontal;
+}
+
+
+

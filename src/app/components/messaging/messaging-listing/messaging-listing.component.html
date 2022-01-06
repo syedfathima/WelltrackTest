@@ -1,0 +1,77 @@
+<div id="messaging-listing" tabindex="-1">
+    <div class="inner" [ngClass]="{'active animate': active, 'slideInUp': active, 'slideInDown': active}">
+        <!--
+            <div class="tab-wrapper">
+                <div class="wt-tabs">
+                    <div class="wt-tab" [ngClass]="{'active': tabs['notifications']}">
+                        <a tabindex="0" (keypress)="toggleTab('notifications')" (click)="toggleTab('notifications')" translate>
+                            <i class="fa fa-bell"></i>Notifications</a>
+                    </div>
+                    <div class="wt-tab" [ngClass]="{'active': tabs['messages']}">
+                        <a tabindex="0" (keypress)="toggleTab('messages')" (click)="toggleTab('messages')" translate>
+                            <i class="fa fa-comment"></i>Messages</a>
+                    </div>
+                </div>
+            </div>
+        -->
+        <div class="tab-content">
+            <div class="notifications-details" *ngIf="view == 'details'">
+                <div id="messages-wrapper">
+                    <messaging-thread [messages]="messages" [user]="user" (backToListing)="backToListing()">
+                    </messaging-thread>
+                </div>
+            </div>
+            <div class="notifications" *ngIf="view == 'listing'">
+                <div id="messages-wrapper">
+                    <div id="notification-icon">
+                        <a (click)="onToggle()" class="toggle">
+                            <i class="fa fa-times-circle"></i>
+                            <div class="relative"></div>
+                        </a>
+                    </div>
+                    <br />
+                    <div id="message-{{message.id}}" class="message msg-container" *ngFor="let message of messages">
+                        <message [message]="message" (threadLoad)="onChangeListing($event)" [threadLink]="true">
+                        </message>
+                    </div>
+                    <a name="bottom" id="bottom">&nbsp;</a>
+                </div>
+                <!--
+                    <div id="message-sender">
+                        <div class="inner">
+                            <div class="select-wrapper">
+                                <div class="select-trigger" (click)="onToggleListing()">
+                                    Select user
+                                </div>
+                                <div class="select-listing" [ngClass]="{'active': showUserListing}">
+                                    <div (click)="selectUser()">User</div>
+                                    <div (click)="selectUser()">User</div>
+                                    <div (click)="selectUser()">User</div>
+                                    <div (click)="selectUser()">User</div>
+                                </div>
+                            </div>
+
+                            <textarea placeholder="Send message" [(ngModel)]="message"></textarea>
+                            <a (click)="onMessageSend()">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                  -->
+            </div>
+
+            <div class="counselors">
+
+            </div>
+            <div class="peers">
+
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <a (click)="onToggle()" class="toggle">
+            <i class="fas fa-comments fa fa-comments-o"></i>
+            <div class="notifications relative" *ngIf="badgeCount > 0">{{badgeCount}}</div>
+        </a>
+    </div>
+</div>

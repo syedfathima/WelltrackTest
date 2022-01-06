@@ -1,0 +1,37 @@
+<div class="form-modal">
+    <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+        aria-label="Close course feedback form">
+        <img src="./assets/img/icons-svg/close-icon.svg">
+    </a>
+    <div class="form-wrapper-80">
+        <div class="title-wrapper">
+            <h2 translate>Provide feedback</h2>
+        </div>
+        <p>
+            This information will help us assess if this information was useful to you.
+        </p>
+    </div>
+
+    <div class="form-wrapper">
+
+        <p >This video increased my knowledge and/or understanding of the topic
+            discussed.</p>
+
+        <mat-form-field>
+            <mat-select [(ngModel)]="helpful" aria-required="true">
+                <mat-option value="5"> Strongly agree</mat-option>
+                <mat-option value="4">Neither agree nor disagree</mat-option>
+                <mat-option value="3">Agree</mat-option>
+                <mat-option value="2">Disagree</mat-option>
+                <mat-option value="1">Strongly disagree</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="fixed-footer">
+        <a tabindex="0" aria-label="Save" class="btn-primary btn-bold btn" (click)="doSave()"
+            (keypress)="doSave()">Save</a>
+    </div>
+</div>

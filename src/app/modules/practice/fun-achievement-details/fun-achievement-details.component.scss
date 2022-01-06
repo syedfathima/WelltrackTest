@@ -1,0 +1,65 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+#page-fa-details {
+
+	h3 {
+		font-size: $font-size-title-md;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+    .input-group {
+		input, textarea {
+			color: #444;
+		}
+    }
+	
+    .fun-box-title {
+        border-bottom: 2px solid #f9f8f5;
+        color: $color-link;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 0 0 20px;
+        padding: 10px;
+        text-align: center;
+    }
+    .fun-scale-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #F2F2F3;
+        border-radius: 3px;
+        font-size: 14px;
+        padding: 9px 16px;
+        width: 100%;
+		background: url('/assets/img/icons/dropdown.png') 96% / 20px no-repeat #eee;
+    }
+    .page-section {
+        border-bottom: 2px solid #f9f8f5;
+        margin: 0;
+        padding: 20px;
+    }
+
+	.page-footer {
+		@include breakpoint(xs) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+    input[type=text].fun-textarea,
+    input[type=text].input-field-fun,
+    textarea.fun-textarea,
+    textarea.input-field-fun, 
+    input.greybox {
+        background-color: #F2F2F3;
+        border-radius: 3px;
+    }
+
+	@include breakpoint(xs) {
+		.btn-inline {
+			display: block;
+		}		
+	}
+}

@@ -1,0 +1,29 @@
+.legend{
+    float:right;
+    text-align:center;
+    margin:20px 0px 0px 0px;
+    
+    .item{
+        display:inline-block; 
+        margin-right:10px;
+        .bullet{
+            border-radius:10px;
+            display:inline-block;
+            height:10px;
+            width:10px;
+            margin-right:5px;
+        }
+        &.good .bullet{
+            background-color: #F9A287; 
+        }
+        &.normal .bullet{
+            background-color:#BA4D82; 
+        }
+        &.bad .bullet{
+            background-color:#B9EB9E; 
+        }
+    }
+    ::after{
+        clear:both;
+    }
+}

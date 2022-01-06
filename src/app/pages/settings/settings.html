@@ -1,0 +1,187 @@
+<div id="settings-page">
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a autoFocus tabindex="0" (click)="onSave()" (keypress)="onSave()" class="btn btn-bold"
+                    translate>setting.save</a>
+            </div>
+            <h2 translate>setting.title</h2>
+        </div>
+
+        <div class="page-section-content">
+            <div class="user-profile">
+                <img alt="Avatar" src="./assets/img/circle_logo@2x.png" alt="WellTrack" *ngIf="!user.avatarUrl">
+                <img alt="Avatar" src="{{ avatarUrl }}" alt="{{user.fullName}}" *ngIf="user.avatarUrl">
+            </div>
+
+            <form (keydown.enter)="onSave()">
+                <div class="row padding">
+                    <div class="col-sm-6">
+                        <mat-form-field class="wt-mat-form-field">
+                            <div class="form-label" translate>setting.name</div>
+                            <input matInput class="wt-mat-input" aria-label="Full Name" tabindex="0" id="fullname"
+                                type="text" name="fullName" [(ngModel)]="user.fullName" />
+                        </mat-form-field>
+
+                        <mat-form-field class="wt-mat-form-field">
+                            <div class="form-label" translate>setting.email</div>
+                            <input matInput class="wt-mat-input" aria-label="Email" tabindex="0" id="email" type="text"
+                                name="email" [(ngModel)]="emailChange" />
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-sm-6" *ngIf="!disablePassword">
+                        <mat-form-field class="wt-mat-form-field">
+                            <div class="form-label" translate>setting.newPassword</div>
+                            <input matInput class="wt-mat-input" aria-label="Password" tabindex="0" id="password"
+                                type="password" name="password" [(ngModel)]="password" name="password" />
+                        </mat-form-field>
+
+                        <mat-form-field class="wt-mat-form-field">
+                            <div class="form-label" translate>setting.repeatPassword</div>
+                            <input matInput class="wt-mat-input" aria-label="Password repeat" tabindex="0"
+                                id="repeatpassword" type="password" name="password" [(ngModel)]="passwordConfirmation"
+                                name="passwordConfirmation" />
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <demographic-edit></demographic-edit>
+    <div class="page-section" *ngIf="organizations && (user.userType == 'user' || user.userType == 'professional')">
+
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onChangeOrg()" (keypress)="onChangeOrg()" class="btn btn-bold"
+                    translate>setting.save</a>
+            </div>
+            <h2 translate>setting.chooseOrganization</h2>
+        </div>
+
+        <div class="page-section-content">
+            <div class="icon-group select-group">
+                <label for="organization">Select an organization</label>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="orgId">
+                        <mat-option *ngFor="let organization of organizations" [value]="organization.id">
+                            {{organization.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <div class="col-sm-6" *ngIf="user.userType == 'user' && !user.subscriptionExists">
+            <div class="page-section no-margin">
+                <div class="page-section-header center" *ngIf="!activeOrg">
+                    <h2 translate>signUp.toGainFullAccess</h2>
+                </div>
+
+                <div class="page-section-content">
+                    <!-- User has an association. Allow user chance to dissassociate-->
+                    <div padding *ngIf="activeOrg" class="center">
+                        <p>
+                            <span [translate]="'setting.paired'"></span>
+                            <strong>{{user.primaryOrganization.name}}</strong>
+                        </p>
+
+                        <div>
+                            <a tabindex="0" (click)="onUnpair()" (keypress)="onUnpair()" class="btn btn-bold"
+                                translate>setting.disconnect</a>
+                        </div>
+                    </div>
+                    <!-- User is not associated and not subscribed.  Allow user a change to associate-->
+                    <div *ngIf="!activeOrg" class="padding center">
+
+                        <form>
+                            <label translate>signUp.enterAccessCode</label>
+                            <!-- <div class="icon-input"> -->
+                            <!-- <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content> -->
+                            <mat-form-field class="wt-mat-form-field">
+                                <input class="wt-mat-input" matInput aria-label="Access Code" tabindex="0"
+                                    id="accesscode" type="text" placeholder="GHJK432" [(ngModel)]="accessCode"
+                                    name="accessCode" />
+                            </mat-form-field>
+                            <!-- </div> -->
+                        </form>
+
+                        <p translate>
+                            signUp.or
+                        </p>
+
+                        <form class="clearfix">
+                            <label translate>signUp.enterOrgEmail</label>
+                            <!-- <div class="icon-input"> -->
+                            <!-- <img alt="Edit" src="./assets/img/icons/edit@2x.png" item-content> -->
+                            <mat-form-field class="wt-mat-form-field">
+                                <input class="wt-mat-input" matInput aria-label="Organization Email" tabindex="0"
+                                    id="orgemail" type="email" placeholder="john@unb.com" [(ngModel)]="emailAddress"
+                                    name="emailAddress" />
+                            </mat-form-field>
+                            <!-- </div> -->
+                        </form>
+
+                        <div class="margintop20">
+                            <a tabindex="0" (click)="onPair()" (keypress)="onPair()" class="btn btn-bold margintop20"
+                                translate>setting.pair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6" *ngIf="user.subscriptionExists">
+
+            <div class="page-section no-margin">
+                <div class="page-section-header center">
+
+                </div>
+                <div class="page-section-content">
+                    <h2 translate>You have a paid subscription to WellTrack</h2>
+                    <a class="btn btn-bold" (click)="onCancelSubscription()">Cancel Subscription</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6" *ngIf="user.userType == 'user'">
+            <div class="page-section no-margin">
+                <div class="page-section-header">
+                    <h2 translate>setting.myNotification</h2>
+                </div>
+
+                <div class="page-section-content">
+                    <div class="notification-wrap">
+                        <input aria-label="Organization Email" tabindex="0"  type="checkbox"
+                            name="moodcheck-reminders" id="moodcheck-reminders" class="wt-checkbox"
+                            [(ngModel)]="reminders" (ngModelChange)="onToggleReminders('notificationOn',reminders)" />
+                        <label for="moodcheck-reminders" class="wt-label" translate>setting.sendNotifications</label>
+                    </div>
+                    <div class="notification-wrap">
+                        <input aria-label="Organization Email"  type="checkbox"
+                            name="moodcheck-wellnessNotification" id="moodcheck-wellnessNotification" class="wt-checkbox"
+                            [(ngModel)]="wellnessNotification" (ngModelChange)="onToggleReminders('WellnessNotifications',wellnessNotification)" />
+                        <label for="moodcheck-wellnessNotification" class="wt-label" translate>setting.notificationWellnessNotifications</label>
+                    </div>
+                    <div>
+                        <input aria-label="Organization Email"  type="checkbox"
+                            name="moodcheck-wellnesstrackerNotification" id="moodcheck-wellnesstrackerNotification" class="wt-checkbox"
+                            [(ngModel)]="wellnesstrackerNotification" (ngModelChange)="onToggleReminders('WellnessTrackerNotification',wellnesstrackerNotification)" />
+                        <label for="moodcheck-wellnesstrackerNotification" class="wt-label" translate>setting.notificationWellnessTracker</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-payment" class="page-section" *ngIf="!user.primaryOrganization && !user.subscriptionExists">
+        <div class="page-section-content">
+            <register-payment-form [loggedIn]="true" (loadUser)="onLoadUser()"></register-payment-form>
+        </div>
+    </div>
+</div>

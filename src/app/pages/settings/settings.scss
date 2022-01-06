@@ -1,0 +1,23 @@
+@import "../../../theme/_welltrack.variables.scss";
+
+#settings-page {
+	.user-profile {
+		padding: 16px;
+		border: 1px solid $color-line;
+		margin-bottom: 16px;
+
+		img {
+			border-radius: 94px;
+			width: 94px;
+			height: 94px;
+			border: 7px solid $color-line;
+		}
+	}
+
+	#register-payment{
+		margin-top:20px;
+	}
+}
+.notification-wrap{
+	margin-bottom: 8px !important;
+}

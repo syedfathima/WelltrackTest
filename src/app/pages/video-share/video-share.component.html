@@ -1,0 +1,22 @@
+<div id="videosharing">
+  <page-header [cssClass]="'video'" [headerText]="title" [backText]="back" [backLink]="backLink" [headerImage]="'./assets/img/icons/thought_diary_icon@2x.png'"></page-header>
+  <div class="col-sm-12">
+    <div id="video-wrapper">
+      <div *ngIf="host && mode =='open'">To have a user join this video session, copy the following link. The user will have to login to Welltrack.
+        <div class="box">{{link}}</div>
+        <div class="share-group">
+          <input type="text" [(ngModel)]="email" placeholder="john@domain.com">
+          <a class="btn btn-secondary btn-inline" (click)="onSend()">Send by email</a>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+      <div>
+        <div *ngIf="session" id="video-section" >
+            <app-publisher  [session]="session" id="publisher"></app-publisher>
+            <app-subscriber id="subcriber" *ngFor="let stream of streams; let i = index" [ngClass]="'thumb-' + i" [stream]="stream" [session]="session"></app-subscriber>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+</div>

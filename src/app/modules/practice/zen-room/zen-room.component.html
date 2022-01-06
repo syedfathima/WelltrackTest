@@ -1,0 +1,438 @@
+<page-header [cssClass]="'zen'" [headerText]="title" [midheaderText]="midTitle" [backText]="back" [backLink]="backLink"
+    [headerImage]="'./assets/img/icons/zen_room_icon@2x.png'"></page-header>
+
+<div class="page-section">
+    <div class="zen-section">
+        <h3 class="zen-header" translate>zenRoom.select</h3>
+        <div class="ambiance-container">
+
+            <figure class="ambiance-box">
+                <div class="ambience-image-container">
+                    <a tabindex="0" [ngClass]="{'active': ambianceType === 'waves'}"
+                        (click)="onChooseBackgroundTrack(this.waves_track, 'waves')"
+                        (keypress)="onChooseBackgroundTrack(this.waves_track, 'waves')">
+                        <img alt="Wave" class="ambiance-image" src="./assets/img/zenroom/wave@2x.png" alt="Wave">
+                    </a>
+                </div>
+                <figcaption class="ambiance-caption" translate>zenRoom.sounds.0</figcaption>
+            </figure>
+
+            <figure class="ambiance-box">
+                <div class="ambience-image-container">
+                    <a tabindex="0" [ngClass]="{'active': ambianceType ===  'organic'}"
+                        (click)="onChooseBackgroundTrack(this.organic_track, 'organic')"
+                        (keypress)="onChooseBackgroundTrack(this.organic_track, 'organic')">
+                        <img alt="Organic" class="ambiance-image" src="./assets/img/zenroom/organic@2x.png"
+                            alt="Organic">
+                    </a>
+                </div>
+                <figcaption class="ambiance-caption" translate>zenRoom.sounds.1</figcaption>
+            </figure>
+
+            <figure class="ambiance-box">
+                <div class="ambience-image-container">
+                    <a tabindex="0" [ngClass]="{'active': ambianceType === 'splash'}"
+                        (click)="onChooseBackgroundTrack(this.splash_track, 'splash')"
+                        (keypress)="onChooseBackgroundTrack(this.splash_track, 'splash')">
+                        <img alt="Space" class="ambiance-image" src="./assets/img/zenroom/space@2x.png" alt="Space">
+                    </a>
+                </div>
+                <figcaption class="ambiance-caption" translate>zenRoom.sounds.2</figcaption>
+            </figure>
+            <!--
+      <figure class="ambiance-box">
+        <div class="ambience-image-container">
+          <a [ngClass]="{'active': ambianceType === null}" (click)="onChooseBackgroundTrack('null', null)">
+          <img class="ambiance-image" src="./assets/img/zenroom/space@2x.png" alt="Space">
+        </a>
+        </div>
+        <figcaption class="ambiance-caption"> <a (click)="onChooseBackgroundTrack('null', null)">None</a></figcaption>
+      </figure>
+      -->
+        </div>
+
+        <h3 class="zen-header" translate>zenRoom.background</h3>
+        <div class="range-slider">
+            <div class="range-scale range-scale-low">0</div>
+            <input tabindex="0" class="range-slider-range" type="range" name="background" min="0" max="100" #bgVolume
+                (input)="onChangeBackgroundVolume(bgVolume.value)" [(ngModel)]="backgroundVolume">
+            <div class="range-scale range-scale-high">10</div>
+            <input tabindex="0" class="single" type="text" [(ngModel)]="backgroundVolumeRounded"
+                (ngModelChange)="onValueChangeBackground($event)" />
+        </div>
+    </div>
+
+    <div class="zen-section">
+        <h3 class="zen-header" translate>zenRoom.type</h3>
+        <div class="question-buttons form-group col-xs-12">
+            <div *ngIf="language === 'en'">
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'getting_started'}" class="btn btn-grey btn-inline"
+                    style="margin-left: 0;" (click)="onChooseVoiceTrack(this.getting_started_track, 'getting_started')"
+                    (keypress)="onChooseVoiceTrack(this.getting_started_track, 'getting_started')"
+                    translate>zenRoom.meditationType.gettingStarted</a>
+
+            </div>
+            <a tabindex="0" [ngClass]="{'active': voiceType ===  'traditional'}" class="btn btn-grey btn-inline"
+                style="margin-left: 0;" (click)="onChooseVoiceTrack(this.breathing_track, 'traditional')"
+                (keypress)="onChooseVoiceTrack(this.breathing_track, 'traditional')"
+                translate>zenRoom.meditationType.0</a>
+            <a tabindex="0" [ngClass]="{'active': voiceType ===  'alternative'}" class="btn btn-grey btn-inline"
+                (click)="onChooseVoiceTrack(this.color_track, 'alternative')"
+                (keypress)="onChooseVoiceTrack(this.color_track, 'alternative')" translate>zenRoom.meditationType.1</a>
+
+            <div *ngIf="language === 'en'">
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'forest'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.forest_track, 'forest')"
+                    (keypress)="onChooseVoiceTrack(this.forest_track, 'forest')" translate>zenRoom.meditationType.2</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'beach'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.beach_track, 'beach')"
+                    (keypress)="onChooseVoiceTrack(this.beach_track, 'beach')" translate>zenRoom.meditationType.3</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'awareness'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.awareness_track, 'awareness')"
+                    (keypress)="onChooseVoiceTrack(this.awareness_track, 'awareness')"
+                    translate>zenRoom.meditationType.4</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'relaxing_phrases'}"
+                    class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.relaxing_phrases_track, 'relaxing_phrases')"
+                    (keypress)="onChooseVoiceTrack(this.relaxing_phrases_track, 'relaxing_phrases')"
+                    translate>zenRoom.meditationType.5</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'sort_boxes'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.sort_boxes_track, 'sort_boxes')"
+                    (keypress)="onChooseVoiceTrack(this.sort_boxes_track, 'sort_boxes')"
+                    translate>zenRoom.meditationType.6</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'thoughts_clouds'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.thoughts_cloud_track, 'thoughts_clouds')"
+                    (keypress)="onChooseVoiceTrack(this.thoughts_cloud_track, 'thoughts_clouds')"
+                    translate>zenRoom.meditationType.7</a>
+
+                <a tabindex="0" [ngClass]="{'active': voiceType ===  'thoughts_leaves'}" class="btn btn-grey btn-inline"
+                    (click)="onChooseVoiceTrack(this.thoughts_leaves_track, 'thoughts_leaves')"
+                    (keypress)="onChooseVoiceTrack(this.thoughts_leaves_track, 'thoughts_leaves')"
+                    translate>zenRoom.meditationType.8</a>
+            </div>
+            <a tabindex="0" [ngClass]="{'active': voiceType ===  null}" class="btn btn-grey btn-inline"
+                (click)="onChooseVoiceTrack(null, null)" (keypress)="onChooseVoiceTrack(null, null)"
+                translate>zenRoom.meditationType.none</a>
+
+        </div>
+
+        <a tabindex="0" (click)="onToggleText()" (keydown)="onToggleText()"><span class="info-icon">?</span>
+            &nbsp;Caption</a>
+        <div class="help-section margintop10" [ngClass]="{'in': helpOpen}">
+            <div *ngIf="voiceType ===  'getting_started'">
+                <p>Getting started</p>
+                <p>Much of the emotional distress people experience is the result of thinking about
+                    upsetting things that have already happened or anticipating negative events that have yet to occur.
+                </p>
+                <p>
+                    Distressing emotions such as anger, anxiety, guilt, and sadness are much easier to bear if you only
+                    focus on the present – on each moment one at a time. This is an exercise to increase your
+                    mindfulness of the present moment so that you can clear away thoughts about past and future events.
+                </p>
+            </div>
+            <div *ngIf="voiceType ===  'traditional'">
+                <p>Find a quiet spot where you can be without distraction, and make yourself comfortable. You may sit or
+                    lie
+                    down, and you may close your eyes or keep them softly focused on an object in the room. </p>
+
+                <p>Begin to bring your attention to your breathing. Observe its qualities. Is it shallow or deep? Fast
+                    or
+                    slow? Smooth or ragged? </p>
+                <p>Place your hands lightly on your stomach, and feel it rise as you breathe in deeply, filling your
+                    lungs
+                    all the way down to your navel. Notice it fall slowly when you exhale. Inhale…hold…and exhale. Allow
+                    your breath to settle into a gentle rhythm, steady and even, breathing only as deeply and as slowly
+                    as
+                    is comfortable for you.</p>
+                <p>Be conscious of your body, and notice where you feel tension. Inhale, and with each exhalation, let
+                    go of
+                    some of that tension. </p>
+                <p>Feel the change as the tightness leaves your forehead and your jaw relaxes. Observe your shoulders
+                    loosening as you breathe out. </p>
+                <p>Allow the stiffness to leave your back. </p>
+                <p>Let your arms rest easy and your fingers be loose. </p>
+                <p>Release your hips and let your legs settle toward the ground. </p>
+                <p> Breathe in and out. </p>
+                <p>You feel more relaxed with each exhalation. </p>
+                <p>Continue to breathe until all tension is released. Notice how it feels to be totally relaxed, and sit
+                    with that feeling for a few moments. </p>
+                <p>When you are ready, shift your awareness from your breath to your surroundings. Slowly open your eyes
+                    if
+                    they are closed. If you are lying down, roll to your side and then come up into a seated position.
+                    You
+                    are relaxed and refreshed. </p>
+            </div>
+            <div *ngIf="voiceType ===  'alternative'">
+                <p>Picture yourself in a warm, comfortable place. Feel your breath as you inhale. Notice how your lungs
+                    expand, filling your chest. As you exhale, observe how your abdomen contracts. Take a moment to
+                    allow your breathing to settle into a comfortable rhythm. </p>
+                <p>As you breathe, picture the color red. Red represents negative energies—your anger, sadness, and
+                    anxiety. It encompasses any stressors or distractions. Red is everything that is keeping you from
+                    being completely relaxed and content at this moment. Notice where red energy can be found in your
+                    body. Maybe it is the anxiety in the pit of your stomach or the tension in your neck or the thoughts
+                    running through your head. Observe how much of your body is red.</p>
+                <p>Now, picture the color blue. Blue symbolizes serenity, joy, and tranquility. Blue is positive, calm
+                    energy—stress free and relaxed. The air you breathe is charged with blue energy. </p>
+                <p>Breathe in, and as you inhale, feel the peaceful blue energy enter your lungs and settle in your
+                    center. </p>
+                <p>Breathe out red, expelling the anger, stress, and discontent. </p>
+                <p>With each inhalation, the blue energy expands and spreads from your center. With each exhalation, the
+                    red energy shrinks. </p>
+                <p>Breathe in, letting blue fill your chest. Breathe out, releasing red. </p>
+                <p>Breathe in, and feel the blue calm spreading through your arms, down your legs, and into your neck.
+                    Breathe out, releasing red. </p>
+                <p>Breathe in, allowing blue to reach all the way to the top of your head and the tips of your fingers
+                    and toes. Breathe out the last remaining red energy. </p>
+                <p>You are now filled with the blue energy. The negative, red energy is gone, and you feel relaxed,
+                    refreshed, and alert. Take a moment to savor this experience. </p>
+                <p>When you are ready, bring your attention back to your surroundings, knowing that you can
+                    re-­experience this feeling at any time by bringing your awareness back to your breath and using it
+                    to change your energy. </p>
+            </div>
+            <div *ngIf="voiceType ===  'forest'">
+
+                <p>
+                    To begin this visualization exercise, sit in a comfortable chair or lie down in a comfortable
+                    position and close your eyes. Take some slow, deep breaths. As you begin relaxing you will become
+                    aware of a variety of physical sensations and thoughts. Scan your body for any tension in your
+                    muscles. If you become aware of any muscle tension, tense the muscles for a couple of seconds and
+                    relax them. Acknowledge any thoughts without trying to get rid of them. You may imagine thoughts or
+                    concerns as puffs of smoke that rise into the air and eventually disappear.
+                </p>
+                <p>
+                    Imagine that you are walking down a path into a lush, green forest. As you walk along the path
+                    you begin to take in the sights, sounds, smells, of the forest. All around you are trees, grass,
+                    ground cover, and fragrant flowers. You hear the sounds of birds singing and the sound of the wind
+                    as it blows through the treetops. You smell the rich dampness of the forest floor, the smells of the
+                    vegetation and new growth. Through gaps in the treetops you can see the sun high in the blue sky.
+                    The sun filters down onto the forest floor, through the canopy of tree tops creating patterns of
+                    light and shadow. With each breath you take in this place you feel a deep sense of peace and
+                    relaxation.
+                </p>
+                <p>
+                    You continue to walk and come to a clearing. There see several flat rocks surrounded by soft
+                    moss. A small river runs among the rocks. You sit on one of the rocks and put your feet into the
+                    cool water. You feel the warm sun and a gentle, light breeze across your skin. The sparkling water
+                    rushes around the rocks, making little whirlpools and eddies. The water is cool and refreshing as it
+                    flows around your feet. You close your eyes listen to the water trickling through the rock. You
+                    begin to feel as though you are floating... relaxing deeper and deeper.
+                </p>
+                <p>
+                    You let yourself sink further into relaxation, while continuing to be aware of the sights, sounds,
+                    and smells, of the forest around you. You allow yourself to let go of any concerns or worries and to
+                    feel completely refreshed and rejuvenated in this place.
+                </p>
+                <p>
+                    When you are ready, imagine that you slowly get up and leave the clearing. As you walk back
+                    down the path through the forest, fully take in this place and realize that you may return
+                    whenever you wish by the same path. Each time you enter this place you will feel relaxed and at
+                    peace.
+                </p>
+                <p>
+                    When you are ready, you can gently bring your attention back to the room... still letting yourself
+                    feel nice and comfortable sitting where you are.
+                </p>
+            </div>
+            <div *ngIf="voiceType ===  'beach'">
+            
+                <p>
+                    Allow yourself to take several long, deep breaths. Notice the air filling your lungs, and the
+                    soothing
+                    warm air going out. Let all of your thoughts float away as you focus on your breathing... in and
+                    out.
+                    Scan your body and notice if you're holding any tension in your muscles. If you are, gently let all
+                    that
+                    tension melt away as you breath out.... bring your attention to your breathing, in and out.... in
+                    and
+                    out... let yourself feel more and more comfortable.
+                </p>
+                <p>
+                    Imagine yourself descending down a long, narrow, pathway towards a beautiful, sandy beach. Your bare
+                    feet feel the warm sand, and with each step, you feel more and more tension gently melting away from
+                    your body. As you continue down the path, you notice that the bright warm sand stretches down the
+                    shoreline as far as the eye can see. The ocean is a deep shade of blue with white crests of the
+                    waves sweeping towards the shore. You reach the end of the path and begin to walk on the beach and
+                    your feet begin to sink into the warm soothing sand. As the sand moves lightly between your toes,
+                    the feeling of relaxation begins to move through your entire body. The roaring sounds of the sea's
+                    surf, the waves crashing over each other, calms your mind and allows you to feel even more relaxed.
+                </p>
+                <p>
+                    You begin walking slowly towards the edge of the water and notice the warm sun on your face. The
+                    salty smell of the sea air invigorates you, and you take in a deep breath... now breathe slowly
+                    out... With each breath you feel more relaxed and refreshed. Finally, you reach the water's edge
+                    and you step into the warm water as the waves to flow over your toes and ankles. You watch the
+                    waves glide towards you and around your feet, and then the sea water flows slowly back out
+                    again. The cool water feels soft and comforting as you enjoy a few moments allowing yourself to
+                    gaze out on the horizon. All of these sights, sounds, and sensations allow you to become more
+                    and more relaxed.
+                </p>
+                <p>
+                    After a moment you begin strolling down the beach at the water's edge. You feel a cool
+                    gentle breeze pressing lightly against your back, and with every step you feel yourself
+                    relaxing more and more. As you walk down the beach you notice the sights and sounds around
+                    you. The soothing sensations of the sun, the breeze, and the sand below your feet.
+                </p>
+                <p>
+                    As you continue your walk down the beach, you notice a beach chair resting in a peaceful
+                    spot where the powdery warm, soft sand lies undisturbed. You approach the beach chair
+                    and then you sit down, lie back, and settle in. You take in a long deep breath ….. , and
+                    then breathe slowly out. You feel even more relaxed and comfortable resting in your
+                    chair. Let yourself enjoy the sights and sounds of this beautiful beach…… When you are
+                    ready, you can gently bring your attention back to the room... still letting yourself
+                    feel nice and comfortable sitting where you are.
+                </p>
+            </div>
+            <div *ngIf="voiceType ===  'awareness'">
+          
+                <p>Start by observing your breathing…..</p>
+                <p>Don’t try to change anything about your breathing, just notice the sensations of breathing air into
+                    and out of your body...</p>
+                <p>Try to focus all of your attention on your breathing...</p>
+                <p>As you become increasingly aware of your breathing, begin to notice other sensations in your bod
+                </p>
+                <p>Become mindful of the posture of your body…..</p>
+                <p>Notice how parts of your body feel as you sit, stand, or lie down...</p>
+                <p> Notice where your body makes contact with something......with the floor, with a chair, with a desk,
+                    or
+                    with something else...</p>
+                <p> Notice how your clothes feel against your skin...</p>
+                <p> Observe the sensations in your muscles.......along your skin.....in your stomach.....in your
+                    lungs as
+                    you breathe air in and out...</p>
+                <p>Continue to observe all of the sensations of your body, becoming increasingly aware of your
+                    physical
+                    body...</p>
+                <p>If other thoughts come into your awareness, gently push them out of your mind and re-focus your
+                    attention on your body in this moment.....
+                    When you are ready, you can gently bring your attention back to the room... still letting
+                    yourself feel
+                    nice and comfortable sitting where you are.</p>
+
+            </div>
+            <div *ngIf="voiceType ===  'relaxing_phrases'">
+         
+                <p>Sometimes it’s helpful to repeat certain phrases to yourself in order to deepen your state of
+                    relaxation. These phrases can be used along with a deep breathing exercise or anytime when
+                    you would just like to close your eyes and relax. Listen to each phrase and imagine saying it to
+                    yourself, either out loud or in your mind.</p>
+
+                <p>I feel nice and quiet....</p>
+                <p>My breathing is deep, slow, and relaxed.....</p>
+                <p>My ankles, my knees, and my hips feel heavy, relaxed, and comfortable....</p>
+                <p>My chest, my stomach, and my whole body, feel relaxed and quiet....</p>
+                <p>I am beginning to feel very relaxed....</p>
+                <p>My hands, my arms, and my shoulders feel heavy, relaxed, and comfortable....</p>
+                <p>I can feel my neck and shoulders unwind, loosen up, smooth out, and relax more and more...</p>
+                <p>My neck, my jaw, and my forehead feel relaxed.....</p>
+                <p>They feel comfortable and smooth....</p>
+                <p>My eyes feel heavy and relaxed....</p>
+                <p>My whole body feels loose, comfortable, and relaxed....</p>
+                <p>My arms and hands are heavy and warm....</p>
+                <p>I feel very relaxed....</p>
+                <p>My whole body is relaxed and my hands are warm, relaxed and quiet....</p>
+                <p>My mind is quiet.....</p>
+                <p> My mind is calm, relaxed, and quiet.....</p>
+                <p>Warmth is flowing into my hands, they feel nice and warm....</p>
+                <p>I feel a quietness inside....</p>
+                <p>I feel calm and peaceful....</p>
+                <p>My mind is quiet and my whole body is relaxed and comfortable....</p>
+
+            </div>
+            <div *ngIf="voiceType ===  'sort_boxes'">
+         
+                <p>Start by observing your breathing…..
+                    <p>Don’t try to change anything about your breathing, just notice the sensations of breathing air
+                        into and
+                        out of your body...</p>
+                    <p>Try to focus all of your attention on your breathing...</p>
+                    <p>As you breathe, you may notice that a thought comes to mind, or you may become aware of a
+                        sensation, or experience an emotion of some kind...</p>
+                    <p> Continue breathing and noticing thoughts, sensations, and emotions as they come into your
+                        awareness...</p>
+                    <p> Now, imagine that your mind contains three boxes. One box is labeled “Thoughts”, one box is
+                        labeled “Sensations”, and one box is labeled “Emotions”...</p>
+                    <p>Continue focusing on your breathing and if anything else comes into your awareness, observe
+                        whether it’s a thought, a sensation, or an emotion and imagine sorting it into the right box…..
+                    </p>
+                    <p> Continue clearing your mind of any thoughts, sensations, or emotions by putting each in their
+                        correct
+                        box. When you are ready, you can gently bring your attention back to the room... still letting
+                        yourself
+                        feel nice and comfortable sitting where you are.</p>
+            </div>
+            <div *ngIf="voiceType ===  'thoughts_clouds'">
+         
+                <p>Start by observing your breathing...</p>
+                <p>Don’t try to change anything about your breathing, just notice the sensations of breathing air into
+                    and
+                    out of your body...</p>
+                <p>Try to focus all of your attention on your breathing...</p>
+                <p> As you breathe, close your eyes and imagine that you are laying on a lawn of soft grass, looking up
+                    at a
+                    blue sky...</p>
+                <p>Let your mind become as clear and empty as a perfect blue sky...</p>
+                <p>If any thoughts drift into your mind, imagine yourself breathing them out so that each thought forms
+                    a
+                    cloud that you send blowing across the clear, blue sky...</p>
+                <p>Allow your thoughts to drift away from you, like clouds across the sky, until your mind becomes
+                    empty again – filled only by the image of a clear, blue sky...</p>
+
+                <p>When you are ready, you can gently bring your attention back to the room... still letting yourself
+                    feel
+                    nice and comfortable sitting where you are.</p>
+
+            </div>
+            <div *ngIf="voiceType ===  'thoughts_leaves'">
+                <p>Start by observing your breathing</p>
+                <p>Don’t try to change anything about your breathing, just notice the sensations of breathing air
+                    into and
+                    out of your body...</p>
+                <p>Try to focus all of your attention on your breathing...</p>
+                <p>As you breathe, close your eyes and imagine that you are sitting beside a stream, with
+                    water gently
+                    flowing over rocks and rippling past you...</p>
+                <p>Let your mind become as clear as the water in the stream...</p>
+
+                <p>If any thoughts drift into your mind, imagine yourself breathing them out so that each
+                    thought flows
+                    downstream, like leaves on the current...</p>
+                <p>Allow your thoughts to drift away from you, like leaves floating downstream, until your mind
+                    becomes empty again – filled only by the image of crystal clear water.</p>
+
+                <p>When you are ready, you can gently bring your attention back to the room... still letting
+                    yourself feel
+                    nice and comfortable sitting where you are.</p>
+            </div>
+
+        </div>
+        <h3 class="zen-header" translate>zenRoom.meditationVoice</h3>
+        <div class="range-slider">
+            <div class="range-scale range-scale-low">0</div>
+            <input tabindex="0" type="range" name="audio" min="0" max="100" #vVolume
+                (input)="onChangeVoiceVolume(vVolume.value)" [(ngModel)]="voiceVolume">
+            <div class="range-scale range-scale-high">10</div>
+            <input tabindex="0" class="single" type="text" [(ngModel)]="voiceVolumeRounded"
+                (ngModelChange)="onValueChangeVoice($event)" />
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-actions audio-player">
+
+            <a tabindex="0" class="audio-element btn btn-primary btn-inline audio-btn" (click)="onPlay()"
+                (keypress)="onPlay()">{{ (playing) ? pauseText : playText }}</a>
+
+            <a tabindex="0" class="audio-element audio-volume" (click)="onToggle()" (keypress)="onToggle()">
+                <img alt="Mute" *ngIf="!mute" src="./assets/img/zenroom/speaker_on.png">
+                <img alt="Unmute" *ngIf="mute" src="./assets/img/zenroom/speaker_off.png">
+            </a>
+            <a tabindex="0" class="audio-element audio-duration"><span>{{playTime}}</span></a>
+        </div>
+    </footer>
+
+</div>

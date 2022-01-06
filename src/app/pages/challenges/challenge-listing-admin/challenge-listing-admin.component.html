@@ -1,0 +1,102 @@
+<div id="page-challenge-listing-admin">
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onCreate()" class="btn btn-primary btn-with-icon">
+                    Create</a>
+            </div>
+            <h1>Challenge listing</h1>
+        </div>
+		<page-loader *ngIf="!isLoaded"></page-loader>
+        <div class="page-section-content" *ngIf="isLoaded">
+            <h2>Single Organization Single User Challenge</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Edit
+                        </th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let challenge of challenges | filter: 'type': 1">
+                        <td>{{challenge.name}}</td>
+                        <td>{{challenge.start | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                        <td>{{challenge.end | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                        <td class="text-capitalize">{{challenge.status}}</td>
+                        <td>
+                            <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onEdit(challenge.id)" (keypress)="onEdit(challenge.id)">Edit</a>
+                        </td>
+                        <td>
+                            <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onDelete(challenge.id)" (keypress)="onDelete(challenge.id)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Single Organization Team Challenge</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Edit
+                        </th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let challenge of challenges | filter: 'type': 3">
+                        <td>{{challenge.name}}</td>
+                        <td>{{challenge.start | amUtc | amDateFormat: 'DD MMM' }}</td>
+                        <td>{{challenge.end | amUtc | amDateFormat: 'DD MMM' }}</td>
+                        <td class="text-capitalize">{{challenge.status}}</td>
+                        <td>
+                            <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onEdit(challenge.id)" (keypress)="onEdit(challenge.id)">Edit</a>
+                        </td>
+                        <td>
+                            <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onDelete(challenge.id)" (keypress)="onDelete(challenge.id)">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Multiple Organization Challenge(s)</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Edit
+                            </th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let challenge of challenges| filter: 'type': 2">
+                            <td>{{challenge.name}}</td>
+                            <td>{{challenge.start | amUtc | amDateFormat: 'DD MMM' }}</td>
+                            <td>{{challenge.end | amUtc | amDateFormat: 'DD MMM' }}</td>
+                            <td class="text-capitalize">{{challenge.status}}</td>
+                            <td>
+                                <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onEdit(challenge.id)" (keypress)="onEdit(challenge.id)">Edit</a>
+                            </td>
+                            <td>
+                                <a tabindex="0" *ngIf="challenge.status !== 'finished'" (click)="onDelete(challenge.id)" (keypress)="onDelete(challenge.id)">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

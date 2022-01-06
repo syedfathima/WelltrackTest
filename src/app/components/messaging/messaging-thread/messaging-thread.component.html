@@ -1,0 +1,8 @@
+<div id="messaging-thread">
+    <div class="">
+        <a (click)="onGoBack()" class="white go-back">Go back</a>
+    </div>
+    <div id="message-" class="message" *ngFor="let message of messages">
+        <message [message]="message" (threadLoad)="onChangeListing()"></message>
+    </div>
+</div>

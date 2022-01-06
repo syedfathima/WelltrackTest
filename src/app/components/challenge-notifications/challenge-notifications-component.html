@@ -1,0 +1,22 @@
+<div id="notice" *ngIf="show">
+    <a tabindex="0" (click)="onSetClose()" (keypress)="onSetClose()" class="close-modal" aria-label="Close notice">
+        <img src="./assets/img/icons-svg/close-icon.svg">
+    </a>
+    <h2 translate>Challenges</h2>
+    <div class="slider-container">
+        <carousel class="challenges-slider">
+            <slide *ngFor="let item of user.activeChallenges" class="animated fadeIn challenge-item">
+                <div class="challenge-card">
+                    <p class="challenge-desc" translate>
+                        <span translate>generalNotification.content_1</span>“{{item.name}}” <span translate>generalNotification.content_2</span>
+                        <a (click)="onChallengeDetails()" translate>generalNotification.content_3</a>generalNotification.content_4
+                    </p>
+                </div>
+            </slide>
+        </carousel>
+        <!--
+        <ion-slides class="challenges-slider" pager={{showPageIndicator}} options="{pagination: showPageIndicator}">
+           -->
+    </div>
+    <p class="hide-notification"><a (click)="onHideNotification()" translate>generalNotification.hide</a></p>
+</div>

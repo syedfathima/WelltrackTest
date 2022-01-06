@@ -1,0 +1,190 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+.appointment-details-container {
+
+    .close{
+        float:right;
+    }
+
+    h3{
+        margin-top:5px;
+        margin-bottom:30px;
+        color:#6F86D6;
+    }
+
+    .appointment-input-group {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    .appointment-input-group input,
+    .appointment-input-group select,
+    .appointment-input-group textarea {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .appointment-label {
+        -ms-flex-preferred-size: 100px;
+        flex-basis: 100px;
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+    .appointment-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: #fff;
+        border-radius: 20px;
+        -webkit-box-flex: 2;
+        -ms-flex-positive: 2;
+        flex-grow: 2;
+        padding: 10px 20px;
+    }
+    .appointment-time-toggle {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-left: 25px;
+    }
+    .select-small {
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        width: 100px;
+    }
+    .select-medium {
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        width: 300px;
+    }
+    .label-am,
+    .label-pm {
+        color: #B8B6AF;
+    }
+    .input-toggle {
+        background-color: #6F86D6;
+        background-image: -o-linear-gradient(top left, #6F86D6, #8FD3F4);
+        background-image: -webkit-gradient(linear, left top, right top, from(#6F86D6), to(#8FD3F4));
+        background-image: -o-linear-gradient(left, #6F86D6, #8FD3F4);
+        background-image: linear-gradient(to right, #6F86D6, #8FD3F4);
+        border-radius: 20px;
+        cursor: pointer;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin: 0 10px;
+        padding: 4px 2px;
+        position: relative;
+        width: 60px;
+        height: 30px;
+    }
+    .input-toggle input[type=checkbox] {
+        display: none;
+    }
+    .input-toggle input[type=checkbox]:checked+.input-toggle-knob {
+        left: 32px;
+    }
+    .input-toggle-knob {
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#E9D9FF));
+        background: -o-linear-gradient(top, #FFFFFF 0%, #E9D9FF 100%);
+        background: linear-gradient(180deg, #FFFFFF 0%, #E9D9FF 100%);
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 2px;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+        width: 26px;
+        height: 26px;
+    }
+    .hour-group{
+        display:flex;
+        flex-wrap: wrap;
+        align-content: center;
+        .inline-time{
+            float:left; 
+            width:60px;
+            text-align:center;
+        }
+    
+        .between{
+            height:40px;
+            padding:10px 0px;
+            margin:0px 10px;
+            font-size:20px;
+        }
+    }
+   
+
+    #calendar-add{
+        display:flex;
+        flex-wrap: wrap;
+        align-content: center;
+        div:first-child{
+            @include breakpoint(xs){
+                flex-basis: 100%;
+                margin-bottom:10px;
+            }
+        }
+     
+        .date-change{
+            border-radius: 25px;
+            width: 25px;
+            text-align: center;
+            height: 25px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight:bold;
+            cursor:pointer; 
+        }
+        .appointment-date{
+            margin:0px 10px;
+        }
+
+       
+    }
+
+    .do-create{
+        max-width:300px;
+        margin:auto;
+    }
+
+    #date-options{
+        div{
+            display:inline-block; 
+        }
+        margin-left:20px;
+        @include breakpoint(xs){
+            margin:auto;
+        }
+        > div:first-child, > div:last-child{
+            width:30px;
+        }
+    }
+
+    #date-time{
+        max-width:300px;
+    }
+
+   
+
+}

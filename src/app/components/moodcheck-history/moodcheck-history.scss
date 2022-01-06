@@ -1,0 +1,141 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+#moodcheck-history {
+    background-color: white;
+    text-align: center;
+    border-radius: 10px;
+    &.welcome {
+        @extend .gradient-tutorial;
+        .swiper-pagination {
+            display: none;
+        }
+    }
+    &.moodcheck {
+        @extend .gradient-dashboard;
+        .swiper-pagination {
+            display: none;
+        }
+    }
+    .img-wrapper {
+        margin-bottom: 10px;
+        height: 75px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background-image: url('/assets/img/cover_dashboard@2x.png');
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        img {
+            height: 65px;
+            width: 65px;
+            margin-left: -1px;
+            margin-top: -5px;
+        }
+        .circle {
+            height: 62px;
+            width: 62px;
+            margin-bottom: 7.5px;
+            border-radius: 50%;
+            background: white;
+            text-align: center;
+            line-height: 63px;
+        }
+    }
+    .tutorial-slide {
+        padding: 0;
+        //max-height: 560px;
+        align-items: flex-end;
+        h2 {
+            font-size: $font-size-title-xl;
+            font-weight: 800;
+            margin: 8px 0;
+        }
+        .content {
+            align-items: flex-end;
+            margin-top: 5px;
+            .info-wrapper {
+                min-width: 125px;
+                margin-left: 10px;
+                margin-right: 10px;
+                word-wrap: break-word;
+                text-align: center;
+                margin-bottom: auto;
+                p {
+                    margin: 6px;
+                    font-size: $font-size-lg;
+                }
+            }
+            .notes {
+                display: block;
+                text-align: center;
+                margin-left: 10px;
+                margin-right: 10px;
+                word-wrap: break-word;
+                p {
+                    margin-bottom: 0px;
+                    font-size: $font-size-lg;
+                }
+                .notes-border {
+                    p {
+                        padding: 5px;
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+        .title-wrapper {
+            .dropdown {
+                height: 35px;
+                max-width: 250px;
+                border: 1px solid #ddd;
+                border-radius: 100px;
+                text-align: center;
+                font-size: 14px;
+                line-height: 35px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                cursor: pointer;
+                i {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+                .subdropdown {
+                    margin-top: -12px;
+                    list-style-type: none;
+                    padding: 0px;
+                    margin-bottom: 0px;
+                    background: white;
+                    border: 1px solid #ddd;
+                    border-top-left-radius: 0px;
+                    border-top-right-radius: 0px;
+                    border-bottom-right-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                    z-index: 9999;
+                    font-weight: 700;
+                    a {
+                        cursor: pointer;
+                        z-index: 9999;
+                    }
+                    li {
+                        height: 30px;
+                    }
+                }
+            }
+            .dropdown:hover {
+                opacity: 1;
+            }
+            margin-top: 32px;
+            display: inline;
+        }
+    }
+    .fixed-footer {
+        position: relative;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

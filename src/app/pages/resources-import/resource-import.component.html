@@ -1,0 +1,103 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<h1>Resources</h1>
+	</div>
+
+	<page-loader *ngIf="!isLoaded"></page-loader>
+	<mat-tab-group *ngIf="isLoaded">
+		<mat-tab>
+			<div class="page-section-content">
+				<ng-template mat-tab-label> Import Resources </ng-template>
+				<div class="form-wrapper">
+					<h3>- Step 1 -</h3>
+					<p>
+						Download the following spreadsheet and have it filled
+						out by the client.
+					</p>
+					<a
+						href="/assets/documents/WellTrack Resources Template 2020.xlsx"
+						>Download Template</a
+					>
+
+					<h3>- Step 2 -</h3>
+					<p>
+						Select the organization that you would like to create
+						resources for and upload the spreadsheet.
+					</p>
+					<form
+						novalidate
+						[formGroup]="importResourceForm"
+						(ngSubmit)="doSave()"
+					>
+						<div class="icon-input">
+							<label for="parentId" translate>Source Org</label>
+							<div>
+								<multiselect-autocomplete placeholder="Select an organization" formControlName="organizationID" [items]="multiSelOrgs" (onSelectItems)="onSelectOrgs($event)"></multiselect-autocomplete>
+								<mat-error *ngIf="orgError !== ''">
+									{{ orgError }}
+								</mat-error>
+								<mat-error
+									*ngIf="
+										orgError === '' &&
+										f.organizationID.touched &&
+										f.organizationID.errors?.required
+									"
+								>
+									Please select an organization
+								</mat-error>
+							</div>
+						</div>
+						<div class="icon-input">
+							<label for="resources" translate
+								>Import Resources</label
+							>
+							<div>
+								<input
+									type="file"
+									style="display: inline-block"
+									(change)="incomingfile($event)"
+									placeholder="Upload file"
+									accept=".xlsx"
+								/>
+							</div>
+							<span
+								class="text-danger"
+								*ngIf="
+									fileError === '' &&
+									f.excelFile.touched &&
+									f.excelFile.errors?.required
+								"
+							>
+								Please upload the file to import
+							</span>
+							<span class="text-danger" *ngIf="fileError !== ''">
+								{{ fileError }}
+							</span>
+						</div>
+						<button
+							tabindex="0"
+							class="btn-primary btn-bold btn"
+							
+						>
+							Import
+						</button>
+					</form>
+				</div>
+			</div>
+		</mat-tab>
+		<mat-tab>
+			<ng-template mat-tab-label> Export Resources </ng-template>
+			<app-resource-export></app-resource-export>
+		</mat-tab>
+		<mat-tab>
+			<div class="page-section-content">
+				<ng-template mat-tab-label> Clone Resources </ng-template>
+				<app-clone-resources></app-clone-resources>
+			</div>
+		</mat-tab>
+		<mat-tab>
+			<ng-template mat-tab-label> Add/Edit Organization Resources </ng-template>
+			<app-resource-view></app-resource-view>
+		</mat-tab>
+	</mat-tab-group>
+</div>

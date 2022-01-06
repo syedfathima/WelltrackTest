@@ -1,0 +1,440 @@
+//colors
+$white_25: rgba(255, 255, 255, 0.25);
+$color_gallery_approx: white;
+$color_tundora_approx: $color-text;
+$color_pink_swan_approx: #bbb;
+$color_tapa_approx: #777;
+$color_bon_jour_approx: #e0e0e0;
+$white: #fff;
+$color_jordy_blue_approx: #8dbdf1;
+$color_curious_blue_approx: #3288e6;
+$black_30: rgba(0, 0, 0, 0.3);
+
+//fonts
+$font_0: $font-normal;
+
+@keyframes vex-flyin {
+	0% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+}
+@-webkit-keyframes vex-flyin {
+	0% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+}
+@-moz-keyframes vex-flyin {
+	0% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+}
+@-ms-keyframes vex-flyin {
+	0% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+}
+@-o-keyframes vex-flyin {
+	0% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+}
+@keyframes vex-flyout {
+	0% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+}
+@-webkit-keyframes vex-flyout {
+	0% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+}
+@-moz-keyframes vex-flyout {
+	0% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+}
+@-ms-keyframes vex-flyout {
+	0% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+}
+@-o-keyframes vex-flyout {
+	0% {
+		opacity: 1;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: translateY(-40px);
+	}
+}
+@keyframes vex-pulse {
+	0% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+	70% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px $white_25;
+	}
+	100% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+}
+@-webkit-keyframes vex-pulse {
+	0% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+	70% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px $white_25;
+	}
+	100% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+}
+@-moz-keyframes vex-pulse {
+	0% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+	70% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px $white_25;
+	}
+	100% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+}
+@-ms-keyframes vex-pulse {
+	0% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+	70% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px $white_25;
+	}
+	100% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+}
+@-o-keyframes vex-pulse {
+	0% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+	70% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px $white_25;
+	}
+	100% {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: inset 0 0 0 300px transparent;
+	}
+}
+@media(max-width: 568px) {
+	.vex.vex-theme-default .vex-dialog-button:focus {
+		animation: none;
+	}
+}
+.vex.vex-theme-default {
+	padding-top: 10%;
+	padding-bottom: 10%;
+
+	@media screen and ( max-height: 800px ) {
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+
+	@include breakpoint(xs) {
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+		
+
+	.vex-content {
+		outline: 0;
+		animation: vex-flyin 0.5s;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		font-family: $font_0;
+		background: $color_gallery_approx;
+		color: $color_tundora_approx;
+		padding: 0;
+		position: relative;
+		margin: 0 auto;
+		max-width: 90%;
+		width: 940px;
+		font-size: 1.1em;
+		line-height: 1.5em;
+		border-radius: 10px;
+		z-index:1;
+
+		h1 {
+			color: inherit;
+		}
+		h2 {
+			color: inherit;
+		}
+		h3 {
+			color: inherit;
+		}
+		h4 {
+			color: inherit;
+		}
+		h5 {
+			color: inherit;
+		}
+		h6 {
+			color: inherit;
+		}
+		p {
+			color: inherit;
+		}
+		ul {
+			color: inherit;
+		}
+		li {
+			color: inherit;
+		}
+	}
+
+	&.moodcheck-history {
+		.vex-content {
+			width: 340px;
+		}
+	}
+
+	.vex-close {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		position: absolute;
+		top: 0;
+		right: 0;
+		cursor: pointer;
+		&:before {
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 3px;
+			position: absolute;
+			content: "\00D7";
+			font-size: 30px;
+			font-weight: normal;
+			line-height: 31px;
+			height: 30px;
+			width: 30px;
+			text-align: center;
+			top: 3px;
+			right: 3px;
+			color: $color_pink_swan_approx;
+			background: transparent;
+		}
+		&:hover:before {
+			color: $color_tapa_approx;
+			background: $color_bon_jour_approx;
+		}
+		&:active:before {
+			color: $color_tapa_approx;
+			background: $color_bon_jour_approx;
+		}
+	}
+	.vex-dialog-form {
+		border-radius: 10px; 
+
+		.vex-dialog-message {
+			margin-bottom: .5em;
+			padding:20px;
+			padding-top:30px;
+			font-size:16px;
+		}
+		.vex-dialog-input {
+			margin-bottom: 1em;
+
+		}
+		.vex-dialog-buttons {
+			*zoom: 1;
+			&:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+		}
+	}
+	.vex-dialog-button {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		@extend .btn;
+		padding: 8px 20px;
+		float: right;
+		margin-bottom: 0;
+		margin-left: 4px;
+		// &.vex-last {
+		// 	margin-left: 0;
+		// }
+		// &:focus {
+		// 	animation: vex-pulse 1.1s infinite;
+		// 	outline: none;
+		// }
+		&.vex-dialog-button-primary {
+			@extend .btn-primary;
+			margin-right:10px;
+			margin-bottom:10px;
+		}
+		&.vex-dialog-button-secondary {
+			@extend .btn-disabled;
+		}
+	}
+	&.vex-closing .vex-content {
+		animation: vex-flyout 0.5s;
+	}
+}
+.vex-loading-spinner.vex-theme-default {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 0 0 0.5em $color_gallery_approx, 0 0 1px 0.5em $black_30;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 100%;
+	background: $color_gallery_approx;
+	border: .2em solid transparent;
+	border-top-color: $color_pink_swan_approx;
+	top: -1.1em;
+	bottom: auto;
+}
+
+
+.cdk-overlay-container {
+	/*
+		overflow: auto;
+		animation: .5s vex-flyin;
+		z-index: 1000;
+		height:100%;
+		display:block;
+	*/
+}
+
+.cdk-global-overlay-wrapper {
+	align-items: flex-start !important;
+	
+	@media screen and ( max-height: 600px ) {
+		padding-top: 5% !important;
+		padding-bottom: 5% !important;
+	}
+
+	@media screen and ( min-height: 600px ) {
+		padding-top: 30px !important;
+		padding-bottom: 5% !important;
+	}
+  }
+
+  .cdk-overlay-backdrop {
+	position: fixed;
+  }
+  
+
+  .mat-dialog-container{
+	padding:0px !important;
+	outline: 0;
+	border-radius:10px !important;
+	position:relative;
+	overflow-x:hidden!important;
+	overflow-y:hidden!important;
+	
+	
+	.mat-dialog-content{
+		overflow-x:hidden !important;
+		overflow-y:scroll !important;
+		font-size:$font-size-xl;
+
+		@media screen and ( max-height: 600px ) {
+			max-height: 60vh;	
+		}
+
+		@media screen and ( min-height: 600px ) {
+			max-height: 80vh;	
+		}
+	}
+
+	@include breakpoint(xs) {
+		// width:90%!important;
+		width:100%!important;
+	}
+
+	@include breakpoint(lg) {
+		min-width:400px!important;	
+		// width:90%!important;
+		width:100%!important;
+	}
+
+  }
+
+  .error-popup, .confirm-popup{
+	  padding:20px;
+  }

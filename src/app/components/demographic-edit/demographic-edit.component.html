@@ -1,0 +1,60 @@
+<div class="page-section">
+    <div class="page-section-header">
+        <div class="page-section-buttons">
+            <a autoFocus tabindex="0" (click)="doSave()" (keypress)="doSave()" class="btn btn-bold" translate>Save</a>
+        </div>
+        <h2 translate>Additional Details</h2>
+    </div>
+    <div class="page-section-content">
+        <div class="row padding">
+            <form novalidate [formGroup]="demographicEditForm" (ngSubmit)="doSave()">
+                <div class="col-sm-6">
+                    <mat-form-field class="wt-mat-form-field">
+                        <div class="form-label" translate>Ethnicity</div>
+                        <mat-select class="wt-mat-input" formControlName="ethnicity" aria-required="true" aria-label="Ethnicity">
+                            <mat-option *ngFor="let ethnicityRow of ethnicityRows" [value]="ethnicityRow">
+                                {{ethnicityRow}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <div class="form-label" translate>Age</div>
+                        <input matInput class="wt-mat-input" formControlName="age" aria-label="Age" tabindex="0" id="age" type="text"
+                            name="age" />
+                    </mat-form-field>
+                    <mat-form-field class="wt-mat-form-field">
+                        <div class="form-label" translate>Gender</div>
+                        <mat-select class="wt-mat-input" formControlName="gender" aria-required="true" aria-label="Gender">
+                            <mat-option *ngFor="let genderRow of genderRows" [value]="genderRow">
+                                {{genderRow}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field class="wt-mat-form-field">
+                        <div class="form-label" translate>Referred</div>
+                        <mat-select class="wt-mat-input" formControlName="referred" aria-required="true"
+                            aria-label="I was referred to WellTrack by a counselor?">
+                            <mat-option [value]="0">No</mat-option>
+                            <mat-option [value]="1">Yes</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="wt-mat-form-field">
+                        <div class="form-label" translate>Year In Program</div>
+                        <mat-select class="wt-mat-input" formControlName="yearInProgram" aria-required="true" aria-label="Year In Program">
+                            <mat-option [value]="-1">
+                                N/A
+                            </mat-option>
+                            <mat-option *ngFor="let yearrow of yearInProgramRows" [value]="yearrow">
+                                {{yearrow}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

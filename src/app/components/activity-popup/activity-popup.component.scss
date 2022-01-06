@@ -1,0 +1,80 @@
+@import "../../../theme/_welltrack.variables.scss";
+#activity-popup {
+    h4 {
+        font-size: $font-size-title-md;
+        font-weight: bold;
+        margin: 16px 0;
+        padding-top: 15px;
+    }
+    .form-wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .middle {
+        margin: 25px 0 20px 0;
+        border-bottom: none;
+    }
+    .icon-input {
+        a {
+            display: block;
+            position: relative;
+            float: right;
+            margin-top: -59px;
+            margin-right: -6px;
+            height: 30px;
+            width: 30px;
+        }
+    }
+    .mcOptions {
+        list-style-type: none;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        width: 90%;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid $color-line;
+        }
+        .custom {
+            color: $color-link;
+        }
+        .disabled {
+            color: $color-line;
+        }
+        .plus {
+            color: $color-positive;
+        }
+        .minus {
+            color: $color-negative;
+        }
+    }
+    .btn {
+        background: transparent;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .btn:hover {
+        background: #f8ac6d;
+        color: white;
+    }
+
+    .grid-buttons .active{
+        &.pleasurable{
+            background-color:#F6DB72; 
+        }
+        &.social{
+            background-color:#B9EB9E;
+        }
+        &.achievement{
+            background-color:#80C7DC;
+        }
+        &.misc{
+            background-color: #F9F8F5;
+        }
+    }
+
+}

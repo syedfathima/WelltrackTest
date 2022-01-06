@@ -1,0 +1,137 @@
+<div class="form-modal">
+    <mat-dialog-content>
+        <div class="form-wrapper-80">
+            <div class="title-wrapper">
+                <h2 translate>Additional information</h2>
+            </div>
+            <p>
+                This information is collected to help better understand the users that are
+                using WellTrack. Your personal information is never shared with anyone without your consent, and your
+                organization will only view this information as an aggregate.
+            </p>
+        </div>
+
+        <div class="form-wrapper">
+            <form [formGroup]="demographicForm" (ngSubmit)="doSave()">
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-branch" [(ngModel)]="branch" aria-required="true"
+                        aria-label="Military branch" placeholder="Military Branch" (ngModelChange)="onBranchChange($event)" formControlName="branch">
+                        <mat-option *ngFor="let branch of branches" [value]="branch">
+                            {{branch}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.branch.errors">
+                    Please select your military branch
+                </div>
+
+                <div *ngIf="branch !== 'Family Member of Veteran' && branch !== 'OptumServe Staff'">
+                    <mat-form-field appearance="fill">
+                        <span matPrefix>From</span>
+                        <mat-select class="wt-auto-demographic-from" [(ngModel)]="from" aria-required="true"
+                            aria-label="From" placeholder="Years Served" formControlName="from">
+                            <mat-option *ngFor="let yearServed of yearsServed" [value]="yearServed">
+                                {{yearServed}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <span matPrefix>To</span>
+                        <mat-select class="wt-auto-demographic-to" [(ngModel)]="to" aria-required="true"
+                            aria-label="To" formControlName="to">
+                            <mat-option *ngFor="let yearServed of yearsServed" [value]="yearServed">
+                                {{yearServed}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div class="red error-message" *ngIf="submitted && ((f.from && f.from.errors) || (f.to && f.to.errors))">
+                        Please select the years served
+                    </div>
+                </div>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-gender" [(ngModel)]="gender" aria-required="true"
+                        aria-label="Gender" placeholder="Gender" formControlName="gender">
+                        <mat-option *ngFor="let genderRow of genderRows" [value]="genderRow">
+                            {{genderRow}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.gender.errors">
+                    Please select a gender
+                </div>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-ethnicity" [(ngModel)]="ethnicity" aria-required="true"
+                        aria-label="Ethnicity" placeholder="Race" formControlName="ethnicity">
+                        <mat-option *ngFor="let ethnicityRow of ethnicityRows" [value]="ethnicityRow">
+                            {{ethnicityRow}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.ethnicity.errors">
+                    Please select a race
+                </div>
+
+                <mat-form-field *ngIf="ethnicity === 'Other Race/Ethnicity'">
+                    <input matInput [ngModelOptions]="{standalone: true}" placeholder="Please share your ethnicity"
+                        value="" [(ngModel)]="otherEthnicity" aria-required="true">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-age" [(ngModel)]="age" aria-required="true" aria-label="Age"
+                        placeholder="Age Range" formControlName="age">
+                        <mat-option *ngFor="let age of ages" [value]="age">
+                            {{age}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.age.errors">
+                    Please select an age
+                </div>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-referred" [(ngModel)]="nativeLanguage" aria-required="true"
+                        aria-label="Is English your native language?" placeholder="Is English your native language?"
+                        formControlName="nativeLanguage">
+                        <mat-option [value]="1">Yes</mat-option>
+                        <mat-option [value]="0">No</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.nativeLanguage.errors">
+                    Please select a native language
+                </div>
+
+                <mat-form-field *ngIf="nativeLanguage === 0">
+                    <input [ngModelOptions]="{standalone: true}" matInput class="wt-auto-demographic-other"
+                        aria-label="Please share your native and/or preferred language"
+                        placeholder="Please share your native and/or preferred language" value=""
+                        [(ngModel)]="otherLanguage" aria-required="true">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select class="wt-auto-demographic-referred" [(ngModel)]="region" aria-required="true"
+                        aria-label="What state do you live in?" placeholder="What state do you live in?"
+                        formControlName="state">
+                        <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="red error-message" *ngIf="submitted && f.state.errors">
+                    Please select your state
+                </div>
+
+                <button tabindex="0" class="btn-primary btn-bold btn wt-auto-demographic-save">Save</button>
+
+            </form>
+        </div>
+    </mat-dialog-content>
+</div>

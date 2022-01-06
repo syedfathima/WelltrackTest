@@ -1,0 +1,48 @@
+<div id="page-as-details">
+    <page-header [cssClass]="'activityscheduler'" [headerText]="title" [backText]="backText" [backLink]='backLink' [headerImage]="'./assets/img/icons/activity_scheduler@2x.png'"></page-header>
+    <div class="center page-section">
+
+        <div class="modal-header">
+            <h3 translate>as.title</h3>
+        </div>
+
+        <div class="type-select" *ngIf="currentStep === 0">
+            <h3 translate>as.selectType</h3>
+            
+            <div tabindex="1" class="btn btn-grey btn-wide btn-inline" [ngClass]="{'active': isType(1)}" (click)="selectType(1);" (keypress)="selectType(1);">
+                <span translate>as.pleasurable</span>
+            </div>
+
+            <div tabindex="2" class="btn btn-grey btn-wide btn-inline" [ngClass]="{'active': isType(2)}" (click)="selectType(2);" (keypress)="selectType(2);">
+                <span translate>as.social</span>
+            </div>
+
+            <div tabindex="3" class="btn btn-grey btn-wide btn-inline" [ngClass]="{'active': isType(3)}" (click)="selectType(3);" (keypress)="selectType(3);">
+                <span translate>as.achievement</span>
+            </div>
+        </div>
+
+        <div id="activity-select" *ngIf="currentStep === 1">
+            <activity-select tabindex="0" [activityType]="activityType" (activity)="activityChange($event)"></activity-select>
+        </div>
+
+        <div class="btn-box" *ngIf="currentStep===2">
+            <h3 translate>as.start</h3>
+            <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" [(ngModel)]="start" (ngModelChange)="onTimeChange()">
+           <owl-date-time [stepMinute]="15" #dt1></owl-date-time>
+        </div>
+        <div class="btn-box" *ngIf="currentStep===3">
+            <h3 translate>as.end</h3>
+            <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="end">
+            <owl-date-time [pickerType]="'timer'" [stepMinute]="15" #dt4></owl-date-time>
+        </div>
+
+        <div class="modal-footer">
+            <div class="buttons">
+                <a *ngIf="currentStep  > 0" tabindex="4" class="btn btn-bold" (click)="back()" (keypress)="back()" translate>as.back</a>
+                <a tabindex="5" class="btn btn-bold" (click)="next()" (keypress)="next()" *ngIf="currentStep !== 3" translate>moodcheck.next</a>
+                <a tabindex="6" class="btn btn-primary" (click)="onSubmit()" (keypress)="onSubmit()" *ngIf="currentStep === 3" translate>moodcheck.save</a>
+            </div>
+        </div>
+    </div>
+</div>

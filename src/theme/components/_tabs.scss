@@ -1,0 +1,81 @@
+.wt-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+	overflow-x: scroll;
+
+    .wt-tab {
+        width: 100%;
+        border-bottom: 1px solid $color-line;
+        text-align: center;
+        padding: 10px 5px;
+		
+
+        a {
+            
+            color: $color-text;
+            font-weight: normal;
+            margin: 2px 0;
+            cursor: pointer;
+        }
+
+        &.active {
+            border-bottom: 3px solid $color-link;
+            
+            a {
+                color: $color-link;
+                font-weight: 700;
+            }
+
+            &.negative {
+                border-bottom-color: $color-negative;
+
+                a {
+                    color: $color-negative;
+                }
+            }
+            
+        }
+    }
+}
+
+.wt-tab-body {
+	padding: 16px;
+}
+
+page-moodcheck {
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button {
+        min-width: 33%;
+        max-width: 100%;
+        width: 33% !important;
+        font-size: $font-size-md;
+        text-transform: none;
+        color: $color-text;
+        border-bottom: 2px solid transparent;
+        // display: inline-table;
+        // overflow: visible;
+        margin: 0;
+        padding: 6px 32px;
+
+        &.selected {
+            border-bottom: 2px solid $color-link;
+            color: $color-link;
+            font-weight: 700;
+        }
+    }
+
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container {
+        background-color: white;
+    }
+
+    super-tabs:not([no-shadow]) > super-tabs-toolbar > ion-toolbar.toolbar::after {
+        height: 2px;
+        background-position: 0 -2px;
+        bottom: -2px;
+        opacity: 0.2;
+    }
+
+    super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .indicator {
+        display: none;
+    }
+}

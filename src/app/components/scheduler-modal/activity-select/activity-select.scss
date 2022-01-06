@@ -1,0 +1,64 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.helpers.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+activity-select {
+    background-color: white;
+    h3 {
+        color: #85847e;
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0 0 12px 0;
+        padding: 10px;
+        text-align: center;
+    }
+    .icon-input {
+        a {
+            display: block;
+            position: relative;
+            float: right;
+            margin-top: -59px;
+            margin-right: -6px;
+            height: 30px;
+            width: 30px;
+        }
+    }
+    .mcOptions {
+   
+        li {
+            color: #85847e;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid $color-line;
+            z-index:99999;
+            &:hover{
+                background: linear-gradient(132.83deg, #F6D365 0%, #FDA085 100%);
+                cursor:pointer;
+                span{
+                    color:white;
+                }
+            }
+            span {
+                margin-left: 5%;
+            }
+            &.active {
+                background: linear-gradient(132.83deg, #F6D365 0%, #FDA085 100%);
+                color: white;
+            }
+           
+        }
+        .custom {
+            color: $color-link;
+        }
+        .disabled {
+            color: $color-line;
+        }
+        .plus {
+            color: $color-positive;
+        }
+        .minus {
+            color: $color-negative;
+        }
+    }
+}

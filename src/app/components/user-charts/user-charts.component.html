@@ -1,0 +1,131 @@
+<div padding (window:resize)="onResize($event)" id="heatmap-section">
+    <div class="chart-header" [ngClass]="{faded: isEmpty}">
+        <h2 tabindex="-1" translate>dashboard.heatmap.title</h2>
+        <div class="date-nav">
+            <a  tabindex="0" (click)="onPreviousMonth(1)" #btnPrevious *ngIf="showPreviousBtn">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <div class="date-text-content" translate>{{dateIndicator}}</div>
+            <a tabindex="0" (click)="onNextMonth(2)" #btnNext *ngIf="showNextBtn">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <mat-tab-group #tabGroup (focusChange)="tabChanged($event)" [selectedIndex]="0">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon><span [class]="chartIcon">bar_chart</span></mat-icon>
+            </ng-template>
+            <div class="moodgraph">
+                <canvas id="heatmap" class="chart" [ngClass]="{faded: isEmpty}" style="max-height:37em;"></canvas>
+                <div class="grid-buttons col3" [ngClass]="{faded: isEmpty}">
+                    <a autoFocus role="tab" tabindex="0" aria-selected="true" (click)="setHeatmapMode('all')"
+                        (keydown.enter)="setHeatmapMode('all')" [ngClass]="{'active': (heatmapMode === 'all')}"
+                        translate>dashboard.heatmap.all</a>
+                    <a role="tab" tabindex="0" aria-selected="true" (click)="setHeatmapMode('good')"
+                        (keydown.enter)="setHeatmapMode('good')" class="positive"
+                        [ngClass]="{'active': (heatmapMode === 'good')}" translate>dashboard.heatmap.good</a>
+                    <a role="tab" tabindex="0" aria-selected="true" (click)="setHeatmapMode('bad')"
+                        (keydown.enter)="setHeatmapMode('bad')" class="negative"
+                        [ngClass]="{'active': (heatmapMode === 'bad')}" translate>dashboard.heatmap.bad</a>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon><span [class]="listIcon">list</span></mat-icon>
+            </ng-template>
+            <div class="moodlist">
+                <div center *ngIf="moodchecks.length == 0" class="strong" translate>
+                    dashboard.emptyMoodcheckList
+                </div>
+                <div class="table-responsive">
+                    <table class="table" role="grid">
+                        <thead role="rowgroup" *ngIf="moodchecks.length > 0">
+                            <tr role="row">
+                                <th role="columnheader" translate>dashboard.tableHeaders.0</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.2</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.3</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.4</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.5</th>
+                                <th role="columnheader" translate>dashboard.tableHeaders.6</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody role="rowgroup">
+                            <tr scope="row" *ngFor="let moods of moodchecks;">
+                                <td scope="col" class="strong"> {{moods.created | date:'dd MMM yyyy'}}</td>
+                                <td scope="col" class="strong">
+                                    <span class="mood-icon"><img alt="{{moods.emotion}}" height="20"
+                                            [src]="'/assets/img/moodcheck/' + (10 - moods.value) + '.png'">
+                                    </span> {{moods.moods}}
+                                </td>
+                                <td scope="col" class="strong"> {{moods.activity}}</td>
+                                <td scope="col" class="strong"> {{moods.people}}</td>
+                                <td scope="col" class="strong"> {{moods.place}}</td>
+                                <td scope="col" class="strong"> {{moods.notes}}</td>
+                                <td align="right">
+                                    <a class="delete" tabindex="0" (click)="onDelete(moods.id)"
+                                        (keypress)="onDelete(moods.id)"><img
+                                            src="./assets/img/icons-svg/x-icon.svg"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+
+    <div class="inset">
+        <div class="inset-tile" [ngClass]="{faded: isEmpty}">
+            <div class="chart-header">
+                <h2 translate>dashboard.number.title</h2>
+            </div>
+            <canvas id="moodcheckCount" class="chart"></canvas>
+            <div class="chart-footer">
+                <span translate>dashboard.number.total<span>{{totalMoodchecks}}</span></span>
+                <span translate>dashboard.number.average<span>{{averageMoodchecks}}</span></span>
+            </div>
+        </div>
+
+        <div class="inset-tile" [ngClass]="{faded: isEmpty}">
+            <div class="chart-header">
+                <h2 translate>dashboard.indicator.title</h2>
+                <div class="date-text-content" translate>dashboard.30days</div>
+            </div>
+            <div class="wt-tabs">
+                <div class="wt-tab" [ngClass]="{'active': moodPercentageMode === 'good'}"><a tabindex="0"
+                        (click)="setMoodPercentageMode('good')" (keypress)="setMoodPercentageMode('good')"
+                        translate>dashboard.indicator.good</a></div>
+                <div class="wt-tab negative" [ngClass]="{'active': moodPercentageMode === 'bad'}"><a tabindex="0"
+                        (click)="setMoodPercentageMode('bad')" (keypress)="setMoodPercentageMode('bad')"
+                        translate>dashboard.indicator.bad</a></div>
+            </div>
+
+            <div class="wt-tab-body">
+                <div class="progress-wrapper" (window:resize)="onResize($event)">
+                    <canvas id="mood-percentage" class="chart"></canvas>
+                    <div class="progress-meta">
+                        <div class="progress-percentage"
+                            [ngClass]="{'positive': moodPercentageMode === 'good', 'negative': moodPercentageMode === 'bad'}">
+                            {{moodPercentage}}<span>%</span></div>
+                        <div class="progress-description" translate>dashboard.indicator.graphText</div>
+                    </div>
+                </div>
+
+                <dl class="mb0">
+                    <dt *ngIf="moodCategories?.activities" style="min-width:55px;" translate>
+                        dashboard.indicator.activity</dt>
+                    <dd *ngIf="moodCategories?.activities">{{moodCategories?.activities}}</dd>
+                    <dt *ngIf="moodCategories?.people" style="min-width:55px;" translate>dashboard.indicator.people</dt>
+                    <dd *ngIf="moodCategories?.people">{{moodCategories?.people}}</dd>
+                    <dt *ngIf="moodCategories?.places" style="min-width:55px;" translate>dashboard.indicator.place</dt>
+                    <dd *ngIf="moodCategories?.places">{{moodCategories?.places}}</dd>
+                </dl>
+            </div>
+
+        </div>
+
+    </div>

@@ -1,0 +1,100 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+#activity-info-page {
+    /* .ng2-smart-sort-link {
+        color: #85847e !important;
+        font-size: 13pt !important;
+        font-weight: bold !important;
+        font-family: "Nunito Sans" !important;
+    }
+    .table-headers {}
+    .header-holder {
+        margin: 8px;
+	} */
+    .table-responsive {
+        width: 90%;
+    }
+}
+
+:host ::ng-deep div {
+    color: #85847e !important;
+    font-size: 13px !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table tbody>tr {
+    border-left: 1px solid #e7e5dc !important;
+    border-right: 1px solid #e7e5dc !important;
+    border-top: 1px solid #e7e5dc !important;
+    border-bottom: 1px solid #e7e5dc !important;
+}
+
+:host ::ng-deep ng2-smart-table tbody>tr>td:first-child {
+    color: #85847e !important;
+    font-size: 13px !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table tbody>tr>td {
+    padding: 14px 12px 14px 12px;
+}
+
+:host ::ng-deep ng2-smart-table a {
+    color: #85847e !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table a:link {
+    color: #85847e !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table a:hover {
+    color: #f8ac6d !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table a:focus {
+    color: #f8ac6d !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table .active>span {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+    background-color: #f8ac6d !important;
+    border-color: #f8ac6d !important;
+}
+
+:host ::ng-deep ng2-smart-table .active>span:link {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+    background-color: #f8ac6d !important;
+    border-color: #f8ac6d !important;
+}
+
+:host ::ng-deep ng2-smart-table .active>span:hover {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}
+
+:host ::ng-deep ng2-smart-table .active>span:focus {
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    font-family: "Nunito Sans" !important;
+}

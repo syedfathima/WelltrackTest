@@ -1,0 +1,334 @@
+.datepicker-container {
+    display: inline-block;
+    position: relative
+}
+
+.datepicker-container .datepicker-input-container {
+    display: inline-block;
+    background: 0 0
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input {
+    display: inline-block;
+    width: 160px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ced4da;
+    font-size: 14px;
+    color: #000;
+    text-align: center
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input::-webkit-input-placeholder {
+    color: #343a40
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input::-moz-placeholder {
+    color: #343a40
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input:-ms-input-placeholder {
+    color: #343a40
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input:-moz-placeholder {
+    color: #343a40
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input-icon {
+    display: inline-block
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i,
+.datepicker-container .datepicker-input-container .datepicker-input-icon i {
+    cursor: pointer
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input-icon i svg {
+    width: 15px;
+    height: 15px
+}
+
+.datepicker-container .datepicker-input-container .datepicker-input-icon i svg g g {
+    fill: #F8AC6D;
+    stroke-width: 2px;
+}
+
+.datepicker-container .datepicker-calendar {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 250px;
+    top: 40px;
+    position: absolute;
+    z-index: 99;
+    background: #F2F2F3;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .5)
+}
+
+
+
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top {
+    width: 100%;
+    height: 80px;
+    display: inline-block;
+    position: relative
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top .year-title {
+    display: block;
+    margin-top: 12px;
+    color: #7E7E7E;
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 18px;
+    text-align: center;
+    text-align: center
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top button {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    margin: 0 auto;
+    margin-top: 8px;
+    text-transform: uppercase;
+    background: 0 0;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
+    position: relative
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top button svg {
+    display: block;
+    float: left;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 12px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top .close svg g path,
+.datepicker-container .datepicker-calendar .datepicker-calendar-top button svg g,
+.datepicker-container .datepicker-calendar .datepicker-calendar-top button svg g path,
+.datepicker-container svg g,
+.datepicker-container svg g g {
+    fill: #7E7E7E;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+    color: #444444;
+    cursor: pointer
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-top .close svg {
+    width: 12px;
+    height: 12px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    background: #F2F2F3;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #85847e;
+    text-transform: uppercase
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i:first-child {
+    margin-left: 12px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-month-section i:last-child {
+    margin-right: 12px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-day-names {
+    width: 230px;
+    margin-top: 10px;
+    display: inline-block;
+    border: 1px solid transparent
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-day-names span {
+    font-size: 12px;
+    display: block;
+    float: left;
+    width: calc(100%/7);
+    text-align: center
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container {
+    width: 230px;
+    margin-top: 5px;
+    display: inline-block;
+    border: 1px solid transparent
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    float: left;
+    font-size: 14px;
+    color: #8e8e8e;
+    width: calc(100%/7);
+    height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.selected,
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day:hover:not(.disabled) {
+    background: #7491DA;
+    color: #FFFFFF;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.disabled {
+    pointer-events: none
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.today {
+    font-weight: bold;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container {
+    width: 100%;
+    height: 240px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container .year {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    float: left;
+    font-size: 14px;
+    color: #8e8e8e;
+    width: calc(100%/4);
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container .year.selected,
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-years-container .year:hover {
+    background: #F8AC6D;
+    color: #FFFFFF;
+    border-radius: 4px
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons {
+    width: 235px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button {
+    width: 100%;
+    outline: none;
+    display: inline-block;
+    background: #FFFFFF;
+    color: #979797;
+    margin-right: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Nunito Sans';
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-width: 0px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
+}
+
+.datepicker-buttons{
+    margin-top:10px;
+}
+
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-primary {
+    background: #FFFFFF;
+    color: #979797;
+    border-width: 0px;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-primary:active, 
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-primary:focus
+{
+    background: #F8AC6D;
+    color: #FFFFFF;
+}
+
+.yearpicker:focus, .yearpicker:active{
+    color: #F8AC6D;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-primary:hover {
+    background: #F8AC6D;
+    color: #FFFFFF;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary {
+    background: #FFFFFF;
+    color: #979797;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary:active ,
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary:focus {
+    background: #F8AC6D;
+    color: #FFFFFF;
+}
+
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-buttons button.u-is-secondary:hover {
+    background: #F8AC6D;
+    color: #FFFFFF;
+}
+
+.datepicker-container svg {
+    display: block;
+    width: 20px;
+    height: 20px
+}

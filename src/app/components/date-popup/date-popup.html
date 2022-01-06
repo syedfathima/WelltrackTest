@@ -1,0 +1,6 @@
+<div class="input" tabindex="-1">
+    <div class="text-wrapper" (click)="onToggle()" (keypress)="onToggle()">
+        <span class="input-text" *ngIf="date">{{date.formatted}}</span>
+    </div>
+    <ng2-datepicker *ngIf="canShow" [hidden]="readOnly" [options]="options" [(ngModel)]="date" (outputEvents)="onPick($event)" [inputEvents]="datepickerEvents"></ng2-datepicker>
+</div>

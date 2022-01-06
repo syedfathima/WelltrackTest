@@ -1,0 +1,97 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+#page-confirm {
+    .verify {
+        margin: auto;
+        margin-top: 20px;
+    }
+    padding: 0 32px;
+    #confirm-header {
+        height: 200px;
+        margin-bottom: 48px;
+        background-size: 100% 155px;
+        background-position: bottom;
+        text-align: center;
+        @include breakpoint(xs) {
+            height: 100px;
+        }
+        img {
+            width: 122px;
+            height: 122px;
+            margin: 0 auto;
+            margin-top: 94px;
+            @include breakpoint(xs) {
+                margin-top: 16px;
+            }
+        }
+    }
+    .or {
+        @include breakpoint(xs) {
+            display: none;
+        }
+    }
+    #text-logo {
+        margin: 16px auto 32px;
+        ;
+        display: block;
+        width: 100%;
+        max-width: 293px;
+        height: auto;
+    }
+    // @media screen and (max-width: 320px) {
+    //     #login-header {
+    //         height: 140px;
+    //     }
+    // }
+}
+
+.mobile-app-ad {
+    bottom: 0;
+    text-align: center;
+    color: white;
+    display: none;
+    margin: 0 -16px;
+    //position: absolute;
+    padding: 16px;
+    //height: 18%;
+    //left: 0;
+    //right: 0;
+    background: -webkit-linear-gradient(2deg, #f6d365 0%, #fda085 100%);
+    background: -moz-linear-gradient(2deg, #f6d365 0%, #fda085 100%);
+    background: -o-linear-gradient(2deg, #f6d365 0%, #fda085 100%);
+    background: linear-gradient(92deg, #f6d365 0%, #fda085 100%);
+    @include breakpoint(xs) {
+        display: block;
+    }
+    @media screen and ( min-height: 660px) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 115px;
+        //width: 100%;
+        padding: 20px;
+    }
+    h4 {
+        font-size: $font-size-title-sm;
+        font-weight: 700;
+        line-height: 18px;
+        margin: 0 0 4px 0;
+        padding: 0;
+    }
+}
+
+.mobile-google img {
+    margin: auto;
+    display: inline-block;
+    width: 141px;
+}
+
+.mobile-apple img {
+    margin: auto;
+    display: inline-block;
+    width: 141px;
+}
+
+.instructions{
+    margin:30px 0px;
+}

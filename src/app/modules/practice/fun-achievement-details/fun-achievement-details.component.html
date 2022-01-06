@@ -1,0 +1,108 @@
+<div id="page-fa-details">
+    <page-header [cssClass]="'achievement'" [headerText]="title" [backText]="back" [backLink]="backLink" [headerImage]="'./assets/img/icons/fun_achievement_icon@2x.png'"></page-header>
+
+    <div class="col-sm-12">
+        <div class="page-section no-margin page-header-body">
+            <p translate>fa.body</p>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div *ngIf="isLoaded" class="page-section">
+            <h3 translate>fa.steps.0.header</h3>
+            <p class="page-section-description" translate>
+                fa.steps.0.body
+            </p>
+
+            <div class="row mt">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.0.title</span>
+                        <input aria-label="Name of activity" tabindex="0" class="input-field-fun" type="text" name="activity" placeholder="{{placeholder}}" [(ngModel)]="fa.primaryAchievement.activity">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.1.title</span>
+                        <date-popup aria-label="Select a date" tabindex="0" (update)="onDate($event)" class="input-field-fun input-date" [readOnly]="viewMode === 'readonly'"></date-popup>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4 fun-box">
+                    <h4 class="fun-box-title" translate>fa.steps.0.columns.0</h4>
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.2.title</span>
+                        <select aria-label="Amount before" tabindex="0" class="fun-scale-select" name="happinessBefore" [(ngModel)]="fa.primaryAchievement.happinessBefore">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.3.title</span>
+                        <select aria-label="Amount after" tabindex="0" class="fun-scale-select" name="happinessAfter" [(ngModel)]="fa.primaryAchievement.happinessAfter">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 fun-box">
+                    <h4 class="fun-box-title" translate>fa.steps.0.columns.1</h4>
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.2.title</span>
+                        <select aria-label="Amount before" tabindex="0" class="fun-scale-select" name="funBefore" [(ngModel)]="fa.primaryAchievement.funBefore">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.3.title</span>
+                        <select aria-label="Amount after" tabindex="0" class="fun-scale-select" name="funAfter" [(ngModel)]="fa.primaryAchievement.funAfter">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 fun-box">
+                    <h4 class="fun-box-title" translate>fa.steps.0.columns.2</h4>
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.2.title</span>
+                        <select aria-label="Amount before" tabindex="0" class="fun-scale-select" name="achievementBefore" [(ngModel)]="fa.primaryAchievement.achievementBefore">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-label" translate>fa.steps.0.inputs.3.title</span>
+                        <select aria-label="Amount after" tabindex="0" class="fun-scale-select" name="achievementAfter" [(ngModel)]="fa.primaryAchievement.achievementAfter">
+                            <option *ngFor="let opt of amounts" value="{{opt.value}}">{{opt.value}} ({{opt.description}})</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="page-section-divider" />
+
+            <div>
+                <h3 translate>fa.steps.1.header</h3>
+                <p class="page-section-description" translate>
+                    fa.steps.1.body
+                </p>
+                <div class="input-group">
+                    <span class="input-label" translate>fa.steps.1.inputs.0.title</span>
+                    <textarea aria-label="Enter observation" tabindex="0" class="fun-textarea" name="observation" [(ngModel)]="fa.primaryAchievement.observation"></textarea>
+                </div>
+            </div>
+
+            <footer class="page-section page-footer" *ngIf="viewMode !== 'readonly'">
+                <div class="page-footer-left"></div>
+                <div class="footer-actions text-right">
+                    <a tabindex="0" class="btn btn-primary btn-inline btn-wide" (click)="onComplete()" (keypress)="onComplete()" translate>fa.save</a>
+                </div>
+            </footer>
+      
+        </div>
+    </div>
+</div>

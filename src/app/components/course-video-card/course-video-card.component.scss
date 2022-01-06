@@ -1,0 +1,75 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+.rate-video {
+	// position: absolute;
+	// bottom: 10px;
+	// right: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: right;
+	display: block;
+}
+.video-caption {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 20px;
+}
+.video-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.video-status {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+.video-still {
+	background-color: #f9f8f5;
+	padding-bottom: 56%;
+	position: relative;
+	height: 0;
+}
+
+.video-title {
+	margin: 0;
+	font-size: $font-size-xxl;
+}
+.video-title {
+	color: $color-text;
+	font-weight: bold;
+}
+.description {
+	padding: 0px 20px;
+	font-size: $font-size-lg;
+	p {
+		font-size: $font-size-lg;
+	}
+}
+.attachments {
+	padding: 0px 20px;
+	a {
+		margin: 20px 0px;
+		display: block;
+	}
+}
+.fav-items{
+	margin-top: -5px;
+}
+.icons-container{
+	display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

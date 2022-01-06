@@ -1,0 +1,20 @@
+<div id="activity-select">
+    <h3 translate>
+        as.select.title
+    </h3>
+
+    <div style="padding: 0 16px;" class="form-wrapper">
+        <div id="custom-option">
+            <input type="text" placeholder="{{placeholder}}" [(ngModel)]="customOption" />
+            <a (click)="onAddCustomOption()">
+                <img src="./assets/img/plus@2x.png">
+            </a>
+        </div>
+    </div>
+
+    <ul class="mcOptions">
+        <li *ngFor="let activity of activities" [ngClass]="{'active': activity.isSelected}" (click)="toggleOption(activity)">
+            <span>{{activity.text}}</span>
+        </li>
+    </ul>
+</div>

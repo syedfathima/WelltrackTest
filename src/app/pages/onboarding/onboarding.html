@@ -1,0 +1,181 @@
+<div id="page-organization-edit">
+
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onUpdateMain()" (keypress)="onUpdateMain()" class="btn btn-bold" translate>organizationInfo.saveOrganizationInformation</a>
+            </div>
+            <h3 translate>organizationInfo.title</h3>
+        </div>
+
+        <div class="page-section-content">
+            <div class="row padding">
+
+                <div class="icon-input">
+                    <label for="organizationName">Name</label>
+                    <img alt="Full name" *ngIf="fullName" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp" item-content>
+                    <input type="text" [(ngModel)]="organization.name" id="organizationName" />
+                </div>
+
+                <div class="icon-input">
+                    <label for="address">Address</label>
+                    <input type="text" [(ngModel)]="organization.address" id="address" />
+                </div>
+
+                <div class="icon-input">
+                    <label for="phone">Phone</label>
+                    <input type="text" [(ngModel)]="organization.phone" id="phone" />
+                </div>
+                <div class="icon-input">
+                    <label for="website">Website</label>
+                    <input type="text" [(ngModel)]="organization.website" id="website" />
+                </div>
+
+
+                <div class="icon-input">
+                    <input type="file" (change)="changeListener($event)" #input>
+                    <label for="logo">Logo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onUpdateContact()" (keypress)="onUpdateContact()" class="btn btn-primary" translate>organizationInfo.saveEmergencyContact</a>
+            </div>
+            <h3 translate>organizationInfo.emergency</h3>
+        </div>
+        <div class="page-section-content">
+            <div class="form-wrapper">
+                <label for="emergencyContact" translate>organizationInfo.default</label>
+                <ckeditor tabindex="0" id="emergencyContact" [(ngModel)]="emergencyContact" [config]="config"></ckeditor>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" (click)="onUpdateContact()" (keypress)="onUpdateContact()" class="btn btn-primary" translate>organizationInfo.saveEmergencyContact</a>
+            </div>
+            <h3 translate>organizationInfo.emergency</h3>
+        </div>
+
+        <div class="page-section-content">
+            <div class="form-wrapper">
+                <h2>Resources</h2>
+                <div class="icon-input">
+                    <input type="checkbox" [(ngModel)]="organization.enableResources" id="enableResources">
+                    <label for="enableResources">Enable resources?</label>
+                </div>
+
+                <div *ngIf="organization.enableResources">
+                    <div class="icon-input">
+                        <label for="resources" translate>General info</label>
+                        <ckeditor [(ngModel)]="organization.resources" [config]="config" id="resources"></ckeditor>
+                    </div>
+
+                    <div id="ressourceSection" *ngIf="organization.resourceSet">
+                        <h2>Resource sets</h2>
+
+                        <div class="groupset" *ngFor="let resourceset of organization.resourceSet; let i = index;">
+                            <a class="removeGroup" tabindex="0" (click)="onRemoveResourceset(i)" (keypress)="onRemoveResourceset(i)">remove</a>
+                            <h3>Resource set {{i + 1}}</h3>
+                            <input placeholder="Resource Title" type="text" [(ngModel)]="resourceset.title" />
+                            <input placeholder="Resource Summary" type="text" [(ngModel)]="resourceset.summary" />
+
+                            <div class="groupset" *ngFor="let resourcesetGroup of resourceset.resourcesetGroup;let r = index;">
+                                <a tabindex="0" class="remove" (click)="removeResourceGroup(i,r)" (keypress)="removeResourceGroup(r)">Remove resource</a>
+                                <h4>Group {{r + 1}}</h4>
+                                <div class="icon-input">
+                                    <input placeholder="Title" tabindex="0" type="text" [(ngModel)]="resourcesetGroup.title" id="resourcesettitle" />
+                                </div>
+
+                                <div class="icon-input">
+                                    <input placeholder="Contact" tabindex="0" type="text" [(ngModel)]="resourcesetGroup.contact" id="resourcesettitle" />
+                                </div>
+
+                                <div class="icon-input">
+                                    <input placeholder="Alternate Contact" tabindex="0" type="text" [(ngModel)]="resourcesetGroup.contactAlternate" id="resourcesettitle"
+                                    />
+                                </div>
+
+                                <div class="icon-input">
+                                    <input placeholder="Address" tabindex="0" type="text" [(ngModel)]="resourcesetGroup.address" id="resourcesettitle" />
+                                </div>
+
+                                <div class="icon-input">
+                                    <input placeholder="Website" tabindex="0" type="text" [(ngModel)]="resourcesetGroup.website" id="resourcesettitle" />
+                                </div>
+                            </div>
+                            <a tabindex="0" class="btn-primary btn-inline btn" (click)="addResourceGroup(i)" (keypress)="addResourceGroup()">Add resource</a>
+                        </div>
+
+                        <a tabindex="0" class="btn-primary btn-inline btn" (click)="addRessourceSet()" (keypress)="addRessourceSet()">Add resource group</a>
+
+                        <div class="questionSet" *ngFor="let questionset of organization.questionSet; let i = index;">
+                            <a class="removeGroup" tabindex="0" (click)="onRemoveQuestionset(i)" (keypress)="onRemoveQuestionset(i)">remove</a>
+                            Question {{i + 1}}
+                            <input type="text" [(ngModel)]="questionset.question">
+                            <input type="text" [(ngModel)]="questionset.instruction">
+                            <select [(ngModel)]="questionset.resourceNumber">
+                                <option *ngFor="let i of numberResourceGroups|times" [value]="i">Resource group {{i}}</option>
+                            </select>
+                        </div>
+                        <a tabindex="0" class="btn-primary btn-inline btn" (click)="addQuestionSet()" (keypress)="addQuestionSet()">Add question group</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons">
+                <a tabindex="0" *ngIf="showInvite" (click)="inviteExecutive()" (keypress)="inviteExecutive()" class="btn btn-primary btn-with-icon"
+                    translate>
+                    <img alt="Invite" src="./assets/img/icons-svg/user-icon.svg">organizationInfo.invite</a>
+            </div>
+            <h3 translate>organizationInfo.professional</h3>
+        </div>
+        <div class="page-section-content">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th translate>organizationInfo.headers.0</th>
+                            <th translate>organizationInfo.headers.1</th>
+                            <th translate>organizationInfo.headers.2</th>
+                            <th translate>organizationInfo.headers.3</th>
+                            <th translate>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let professional of professionals; let i = index">
+                            <td class="strong">
+                                {{professional.fullName ? professional.fullName : 'None'}}
+                            </td>
+                            <td class="subtle" translate>organizationInfo.counselor</td>
+                            <td class="strong">{{professional.email}}</td>
+                            <td class="strong">{{professional.status}}</td>
+                            <td>
+                                <a tabindex="0" *ngIf="professional.status == 'approved'" class="red" (click)="deactivateUser(professional.id, i)" (keypress)="deactivateUser(professional.id, i)"
+                                    translate>organizationInfo.deactivate</a>
+                                <a tabindex="0" *ngIf="professional.status == 'disabled'" class="red" (click)="activateUser(professional.id, i)" (keypress)="activateUser(professional.id, i)"
+                                    translate>organizationInfo.activate</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <nav class="steps-navigation" style="display:flex;">
+                <ul class="steps-nav-list">
+                    <li *ngFor="let num of steps" class="step-nav-item" [ngClass]="{'done': step > num, 'active': step === num}">{{num}}</li>
+                </ul>
+            </nav>
+        </div>
+    </div>

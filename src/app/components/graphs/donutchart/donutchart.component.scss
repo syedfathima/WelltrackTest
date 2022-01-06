@@ -1,0 +1,60 @@
+
+.generalgraph{
+    float:left;
+    width:40%;
+    margin-right:20%;
+    .progress-percentage{
+        font-size:30px;
+        line-height:28px;
+        color: #F6C772;
+        span{
+            font-size:30px;
+        }
+    }
+}
+
+.minigraph{
+    float:left;
+    width:40%;
+    .progress-percentage{
+        font-size:22px;
+        line-height:18px;
+        span {
+            font-size:22px;
+        }
+    }
+}
+
+.progress-wrapper{
+    width:100%; 
+    height:auto;
+    position:relative; 
+    margin:10px auto;
+    .progress-percentage{
+        font-weight:800;
+    }
+}
+
+.sidechart{
+  display:flex; 
+  position:relative; 
+
+    .left{
+        float:left; 
+        width:50%; 
+    }
+
+    .right{
+        float:right; 
+        width:50%;
+        position:relative;
+        >div{
+            position:absolute; 
+            top:50%; 
+            padding-left:20px;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<div id="page-dated-events-listing-admin">
+	<div class="page-section">
+		<div class="page-section-header">
+			<h1>Dated Events Listing</h1>
+		</div>
+		<div class="page-section-content">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Link</th>
+						<th>Image</th>
+						<th>Video</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let event of filteredEvents">
+						<td>{{event.title}}</td>
+						<td>{{event.description}}</td>
+						<td><a href="{{event.link}}">{{event.link}}</a></td>
+						<td><a href="{{event.image}}">{{event.image}}</a></td>
+						<td><a href="{{event.video}}">{{event.video}}</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

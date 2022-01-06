@@ -1,0 +1,15 @@
+<header class="main-content-header {{cssClass}}">
+    <div class="main-content-header-title">
+        <div class="image-wrapper">
+            <img aria-hidden="true" alt="Header icon" *ngIf="headerImage" src="{{headerImage}}" alt="Header Image">
+        </div>
+        <h2 aria-live="polite" tabindex="0"><span *ngIf="midheaderText">{{midheaderText}}  </span> {{headerText}}</h2>
+        <span *ngIf="subheaderText" class="main-content-header-subtitle">{{subheaderText}}</span>
+    </div>
+    
+	<div class="main-content-header-actions" *ngIf="backLink">
+        <a tabindex="0" class="btn btn-white btn-inline" [routerLink]="backLink" aria-label="Go back">
+            <img src="/assets/img/icons/full_arrow_back.png" alt="Back">
+            <span id="back-content">{{backText}}</span></a>
+    </div>
+</header>

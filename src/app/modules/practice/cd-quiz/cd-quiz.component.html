@@ -1,0 +1,98 @@
+<div id="page-quiz">
+    <page-header [headerText]="title" [backLink]="backLink" [cssClass]='cssModule' [backText]='backText' [headerImage]="'./assets/img/icons/fun_achievement_icon@2x.png'"></page-header>
+    <div id="top" class="page-section">
+        <h1 *ngIf="!start" id="counter">{{active + 1}} / {{count}}</h1>
+        <div class="page-section-content">
+            <div class="start-section" *ngIf="start">
+                <p translate>cdQuiz.body</p>
+                <a tabindex="0" class="btn btn-primary btn-inline btn-wide" (click)="begin()" (keypress)="begin()" translate>cdQuiz.begin</a>
+            </div>
+            <div class="question-section" *ngIf="!start">
+
+                <div class="question row" *ngFor="let question of questions; let i = index" [ngClass]="{'active': (active == i )}">
+                    <div class="col-xs-12">
+                        <div class="question-comment" [innerHTML]="question.comment"></div>
+                    </div>
+
+                    <p translate>cdQuiz.showDefinitions <a class="info-icon" (click)="showHelp()">?</a></p>
+                    <div class="help-section" [ngClass]="{'in': displayHelp}">
+                        <p *ngFor="let key of thinkingStylesKeys;">
+                            <strong>{{thinkingStyles[key].info}}</strong>
+                            <span>{{thinkingStyles[key].text}}</span>
+                        </p>
+                    </div>
+                    <div class="question-buttons form-group col-xs-12">
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="0" class="question-option" [checked]="isChecked[0]" (change)="onSelectionChange(i,question.name, 0);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.0</span>
+                            </div>
+                        </label>
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="1" class="question-option" [checked]="isChecked[1]" (change)="onSelectionChange(i,question.name, 1);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.1</span>
+                            </div>
+                        </label>
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="2" class="question-option" [checked]="isChecked[2]" (change)="onSelectionChange(i,question.name, 2);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.2</span>
+                            </div>
+                        </label>
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="3" class="question-option" [checked]="isChecked[3]" (change)="onSelectionChange(i,question.name, 3);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.3</span>
+                            </div>
+                        </label>
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="4" class="question-option" [checked]="isChecked[4]" (change)="onSelectionChange(i,question.name, 4);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.4</span>
+                            </div>
+                        </label>
+                        <label>
+                            <input tabindex="0" [name]="question.name" type="radio" value="5" class="question-option" [checked]="isChecked[5]" (change)="onSelectionChange(i,question.name,5);showAnswer(i)">
+                            <div class="btn btn-grey">
+                                <span translate>cdQuiz.answers.5</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="nav-buttons" *ngIf="!start">
+                <a tabindex="0" *ngIf="active > 0" class="btn btn-inline btn-wide" (click)="setPreviousActive()" (keypress)="setPreviousActive()"
+                    translate>cdQuiz.previous</a>
+                <!--<a *ngIf="(active) < (count - 1)" class="btn btn-inline btn-wide" [ngClass]="{'btn-disabled': responses[active].value === -1, 'btn-primary': responses[active].value !== -1}" (click)="showAnswer(active);setNextActive()">Next</a>-->
+                <a tabindex="0" *ngIf="(active) == (count - 1)" class="btn btn-inline btn-wide" [ngClass]="{'btn-disabled': responses[active].value === -1, 'btn-primary': responses[active].value !== -1}"
+                    (click)="onSubmit()" (keypress)="onSubmit()" translate>cdQuiz.submit</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="start-footer" *ngIf="start && showScore">
+            <div class="col-md-4 col-xs-6">
+                <div class="footer-content">
+                    <h1 id="last">{{avgScore | number:'1.0-0'}}
+                        <span>%</span>
+                    </h1>
+                    <p class="subtle" translate>cdQuiz.last</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-6">
+                <div class="footer-content">
+                    <h1 id="best">{{bestScore | number : '1.0-0'}}
+                        <span>%</span>
+                    </h1>
+                    <p class="subtle" translate>cdQuiz.best</p>
+                </div>
+            </div>
+        </div>
+
+    </div>

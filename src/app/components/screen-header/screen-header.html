@@ -1,0 +1,11 @@
+<div id="{{id}}">
+    <img tabindex="0" src="./assets/img/circle_logo@2x.png" alt="WellTrack" *ngIf="!user.avatarUrl">
+    <img tabindex="0" src="{{ avatarUrl }}" alt="{{user.fullName}}" *ngIf="user.avatarUrl">
+</div>
+
+<div class="screen-header-meta">
+    <div class="name">{{user.fullName}}</div>
+    <div class="organization-name" *ngIf="user.primaryOrganization">{{user.primaryOrganization.name}}</div>
+    <div class="organization-name" *ngIf="!user.primaryOrganization">{{user.email}}</div>
+    <div class="role">{{user.roleName}}</div>
+</div>

@@ -1,0 +1,53 @@
+<div class="appointment-details-container background-grey padding">
+    <h3 id="calendar-add">
+        <div translate>calendar.add</div>
+        <div id="date-options">
+            <div>
+                <div class="date-change" (click)="onPrev()">
+                    &#060;</div>
+            </div>
+            <div class="appointment-date">{{currentDate | date:'dd MMM, yyyy'}}</div>
+            <div>
+                <div class="date-change" (click)="onNext()">&#062;</div>
+            </div>
+        </div>
+    </h3>
+
+    <label class="appointment-input-group">
+        <span class="appointment-label" translate>calendar.title</span>
+        <input type="text" value="" [(ngModel)]="title">
+    </label>
+    <label class="appointment-input-group" *ngIf="users">
+        <span class="appointment-label" translate>calendar.user</span>
+        <select name="" id="" class="appointment-select" [(ngModel)]="participant">
+            <option value="-1" translate>calendar.select</option>
+            <option *ngFor="let user of users" value="{{user.id}}">
+                {{user.fullName}} ({{user.email}})
+            </option>
+        </select>
+    </label>
+    <label class="appointment-input-group">
+        <span class="appointment-label" translate>calendar.time</span>
+        <input id="date-time" class="wt-input" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="datetime"
+            [min]="min" (dateTimeChange)="onTimeChanged()" (dateTimeInput)="onTimeInput()">
+        <owl-date-time [stepMinute]="10" #dt4></owl-date-time>
+    </label>
+    <label class="appointment-input-group">
+        <span class="appointment-label" translate>calendar.duration</span>
+        <select name="" id="" class="appointment-select select-medium" [(ngModel)]="duration">
+            <option value="-1" translate>calendar.selectDuration</option>
+            <option *ngFor="let duration of durations" value="{{duration.value}}">
+                {{duration.label}}
+            </option>
+        </select>
+    </label>
+    <!--
+    <label class="appointment-input-group">
+        <textarea placeholder="{{placeholder}}">{{description}}</textarea>
+    </label>
+    -->
+    <div class="btn btn-secondary do-create" (click)="onCreate()" translate>
+        calendar.send
+    </div>
+
+</div>

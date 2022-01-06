@@ -1,0 +1,32 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<div class="page-section-buttons">
+			<a (click)="doCreate()" (keypress)="doCreate()" class="btn btn-primary btn-with-icon"
+				translate>Create New Assessment</a>
+		</div>
+		<h1>Assessments</h1>
+	</div>
+	<div class="page-section-content">
+		<page-loader *ngIf="!isLoaded"></page-loader>
+		<div class="table-responsive" *ngIf="isLoaded">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width:25%;" translate>Quiz Type</th>
+						<th style="width:50%;">Comment</th>
+						<th style="width:25%;"></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr *ngFor="let assessment of assessments">
+						<td>{{assessment.quizType}}</td>
+						<td>{{assessment.comment}}</td>
+						<td><a tabindex="0" class="pull-right" (click)="onEdit(assessment.id)"
+							(keypress)="onEdit(assessment.id)" translate>Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.helpers.scss";
+
+// for overriding material input padding
+.wt-mat-form-field .mat-form-field-infix {
+	padding-top: 1em;
+	padding-bottom: 0.8em;
+}

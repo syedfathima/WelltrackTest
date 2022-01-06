@@ -1,0 +1,78 @@
+    @import "../../../theme/_welltrack.mixins.scss";
+    @import "../../../theme/_welltrack.variables.scss";
+    #public-portal-wrapper {
+        height: 100%;
+        position: relative;
+
+        .overlay{
+            //border-radius:25px; 
+            background: rgba(0,0,0,.5);
+            padding:5px 20px;
+        }
+        .row {
+            @include breakpoint(md){
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+        }
+        .left-col {
+            //background-image: url('/assets/img/welltrack-bg1-o80.jpg');
+            @include breakpoint(md){
+                align-self: flex-start;
+            }
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            min-height: 100%;
+            position:relative;
+            padding-top:0px;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+            
+           .page-section{
+               background-color:white;
+               position:relative;
+           }
+        }
+ 
+        .bottom{
+            position:absolute;
+            bottom:0px;
+            left:50%;
+            -webkit-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            .download-holder {
+                @extend .gradient-cta;
+                max-width: 500px;
+                //height: 120px;
+                margin: 0 auto;
+                margin-top: 40px;
+                border-radius: 21px;
+                position:relative;
+            }
+        }
+        nav li img{
+            max-width:250px;
+            height:auto;
+        }
+        nav li a{
+            color: #b8b7af !important;
+            font-size:12px;
+        }
+
+        @include breakpoint(xs){
+            nav {
+                ul{
+                    display:block;
+                    li{
+                
+                        width:100%;
+                        display:block;
+                        margin:0px;
+                    }
+                }
+            }
+        }   
+    }
+

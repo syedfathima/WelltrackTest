@@ -1,0 +1,54 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<div class="page-section-buttons">
+			<a
+				(click)="doCreate()"
+				(keypress)="doCreate()"
+				class="btn btn-primary btn-with-icon"
+				translate
+				>Create New Additional Resource</a
+			>
+		</div>
+		<h1>Additional Resources</h1>
+	</div>
+	<div class="page-section-content">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width: 20%" translate>Image</th>
+						<th style="width: 40%">Title</th>
+						<th style="width: 20%"></th>
+						<th style="width: 20%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let adResource of additionalResources">
+						<td><img src="{{ adResource.logo }}" class="logo" /></td>
+						<td>{{ adResource.title }}</td>
+						<td>
+							<a
+								tabindex="0"
+								class="pull-right"
+								(click)="onEdit(adResource)"
+								(keypress)="onEdit(adResource)"
+								translate
+								>Edit</a
+							>
+						</td>
+						<td>
+							<a
+								tabindex="0"
+								class="pull-right"
+								(click)="onDelete(adResource.id)"
+								(keypress)="onDelete(adResource.id)"
+								translate
+								>Delete</a
+							>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

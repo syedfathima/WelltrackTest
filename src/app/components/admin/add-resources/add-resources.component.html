@@ -1,0 +1,79 @@
+<div class="form-modal">
+    <mat-dialog-content>
+      <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+          aria-label="Close organization edit form">
+          <img src="./assets/img/icons-svg/close-icon.svg">
+      </a>
+      <div class="img-wrapper">
+        <div class="clearfix"></div>
+        <div class="title-wrapper">
+          <h1 *ngIf="resources.mode === 'update'">Edit Resource</h1>
+          <h1 *ngIf="resources.mode === 'add'">Add Resource</h1>
+        </div>
+      </div>
+      <page-loader *ngIf="isloaded"></page-loader>
+          <form
+              novalidate
+              [formGroup]="resourceForm"
+              (ngSubmit)="doSave()"
+          >
+          <div id="resource-section"class="form-wrapper-80" >
+          <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Title" tabindex="0"
+                type="text" formControlName="title" id="resourcesettitle" />
+            <mat-error *ngIf="isSubmitted && resourceForm.get('title').hasError('required')">
+                Group needs a title
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Contact" tabindex="0"
+                type="text" formControlName="contact" id="resourcesettitle" />
+        </mat-form-field>
+
+        <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Alternate Contact"
+                tabindex="0" type="text" formControlName="alternateContact"
+                id="resourcesettitle" />
+        </mat-form-field>
+
+        <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Address" tabindex="0"
+                type="text" formControlName="address" id="resourcesettitle" />
+        </mat-form-field>
+
+        <p>Url should be complete (include http://)</p>
+        <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Website" tabindex="0"
+                type="text" formControlName="website" id="resourcesettitle"
+                [pattern]="urlPattern" />
+        </mat-form-field>
+
+        <p>Link to internal resource</p>
+        <mat-form-field class="wt-mat-form-field">
+            <input matInput class="wt-mat-input" placeholder="Website" tabindex="0"
+                type="text" formControlName="internal" id="resourcesettitle" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="description">Description</label>
+            <textarea matInput formControlName="description" id="description"></textarea>
+        </mat-form-field>
+        <p>
+            <mat-checkbox formControlName="active" [value] ="resourceForm.value.active" translate [checked]="resourceForm.value.active">
+            <span translate>Active</span>
+            </mat-checkbox>
+        </p>
+
+        <div class="fixed-footer">
+            <p class="red" *ngIf="isSubmitted && resourceForm.get('title').hasError('required')"> Group needs a title </p>
+           <p class="red">{{errors}}</p>
+				
+            <button type="submit" tabindex="0"class="btn-primary btn-bold btn" (keypress)="doSave()"> Save</button>
+        </div>
+        </div>
+        </form>
+    
+    </mat-dialog-content>
+  </div>
+  

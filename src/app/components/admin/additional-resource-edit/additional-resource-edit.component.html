@@ -1,0 +1,88 @@
+<div class="form-modal">
+	<mat-dialog-content>
+		<a
+			tabindex="0"
+			(click)="onClose()"
+			(keypress)="onClose()"
+			class="close-modal"
+			aria-label="Close additional resource edit form"
+		>
+			<img src="./assets/img/icons-svg/close-icon.svg" />
+		</a>
+		<div class="img-wrapper">
+			<div class="clearfix"></div>
+			<div class="title-wrapper">
+				<h1>{{ title }}</h1>
+			</div>
+		</div>
+		<div>
+			<div class="form-wrapper-80">
+				<form
+					novalidate
+					[formGroup]="additionalResourceForm"
+					(ngSubmit)="doSave()"
+				>
+					<mat-form-field class="wt-mat-form-field">
+						<input
+							matInput
+							class="wt-mat-input"
+							placeholder="Title"
+							type="text"
+							formControlName="title"
+						/>
+						<mat-error
+							*ngIf="f.title.touched && f.title.errors?.required"
+						>
+							The additional resource needs a title
+						</mat-error>
+					</mat-form-field>
+					<mat-form-field class="wt-mat-form-field">
+						<input
+							matInput
+							class="wt-mat-input"
+							placeholder="Description"
+							type="text"
+							formControlName="description"
+						/>
+					</mat-form-field>
+					<div class="icon-input">
+						<label for="logo">Logo</label>
+						<input
+							type="file"
+							(change)="changeListener($event)"
+							formControlName="logo"
+						/>
+					</div>
+					<mat-form-field class="wt-mat-form-field">
+						<input
+							matInput
+							class="wt-mat-input"
+							placeholder="Link"
+							type="text"
+							formControlName="link"
+						/>
+					</mat-form-field>
+					<div class="fixed-footer">
+						<!-- <a
+							tabindex="0"
+							class="btn-primary btn-bold btn"
+							(click)="doSave()"
+							(keypress)="doSave()"
+							>Save</a
+						> -->
+						<button
+							tabindex="0"
+							class="btn-primary btn-bold btn"
+							[ngClass]="{
+								active: additionalResourceForm.invalid
+							}"
+							[disabled]="additionalResourceForm.invalid"
+						>
+							Save
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</mat-dialog-content>
+</div>

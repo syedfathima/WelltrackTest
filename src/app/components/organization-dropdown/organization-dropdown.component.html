@@ -1,0 +1,11 @@
+<div id="organizationdropdown" *ngIf="organizations.length > 0 && isloaded">
+    <div class="dropdown" tabindex="0">
+        <div class="dropdown-content" (click)="display()" (keydown)="display()">
+            <span>{{organizations[selected].name | truncate: 20}}</span>
+            <i class="pull-right glyphicon glyphicon-chevron-down"></i>
+            <ul *ngIf="displayed" class="subdropdown">
+                <li *ngFor="let organization of organizations; let i=index"><span *ngIf="organization.id != organizations[selected].id" (click)="select(i, organization.id)" (keydown)="select(i, organization.id)">{{organization.name}}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>

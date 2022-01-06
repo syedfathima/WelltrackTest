@@ -1,0 +1,48 @@
+<div id="courses-listing-page">
+    <page-header [headerText]="title" [subheaderText]="subtitle" [backLink]="backLink" [cssClass]='cssModule' [backText]='backText'></page-header>
+    <div class="page-section">
+
+
+        <div class="page-section-content">
+
+			<page-loader *ngIf="!isLoaded"></page-loader>
+            <div class="table-responsive" *ngIf="isLoaded">
+                <table class="table">
+                    <thead>
+                        <tr class="column-header">
+                            <th translate>courseListing.chapterTitle</th>
+                            <th translate>courseListing.timeTitle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of courses;let i = index ">
+                            <td class="strong">
+                                <a tabindex="0" class="course-name" [routerLink]="['/app/courses-listing/', path, course.id]">{{course.label}}</a>
+                            </td>
+                            <td class="course-time">{{course.length}}</td>
+                            <!--
+                            <td>
+                                <div class="synced" *ngIf="course.isCurrent">
+                                    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                                    <span>Your Track</span>
+                                </div>
+                            </td>
+                            -->
+                            <td class="completed-column">
+                                <div class="completed" *ngIf="course.isCompleted">
+                                    <div class="img-holder"></div>
+                                    <span translate>courseListing.completed</span>
+                                </div>
+                            </td>
+
+                            <td text-right class="rate">
+                                <a *ngIf="course.isCompleted" class="rate-video" (click)="onRate(course)"><i class="fa fa-star"
+                                    aria-hidden="true"></i> Rate chapter.</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

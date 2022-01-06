@@ -1,0 +1,40 @@
+<div *ngIf="assessments">
+    <div class="table-responsive">
+        <table class="table" role="grid">
+            <thead role="rowgroup">
+                <tr role="row">
+                    <th role="columnheader" translate>das.tableHeaders.0</th>
+                    <th role="columnheader" translate>das.tableHeaders.1</th>
+                    <th role="columnheader" translate>das.tableHeaders.2</th>
+                    <th role="columnheader"><span *ngIf="showPtsd" translate>das.tableHeaders.3</span><span *ngIf="!showPtsd"
+                            translate>das.tableHeaders.6</span></th>
+                    <th role="columnheader" *ngIf="showPtsd" translate>das.tableHeaders.4</th>
+                    <th role="columnheader" class="text-right" translate>das.tableHeaders.5</th>
+                </tr>
+            </thead>
+            <tbody role="rowgroup">
+                <tr scope="row" *ngFor="let assessment of assessments; let i = index">
+                    <td scope="col" class="strong" [ngClass]="{'positive': assessment.depressionlevel === 0, 'negative': assessment.depressionlevel >= 3}">{{assessment.depressionlevellabel}}
+                        ({{assessment.depression}})</td>
+                    <td scope="col" class="strong" [ngClass]="{'positive': assessment.anxietylevel === 0, 'negative': assessment.anxietylevel >= 3}">{{assessment.anxietylevellabel}}
+                        ({{assessment.anxiety}})</td>
+                    <td scope="col" class="strong" [ngClass]="{'positive': assessment.stresslevel === 0, 'negative': assessment.stresslevel >= 3}">{{assessment.stresslevellabel}}
+                        ({{assessment.stress}})</td>
+                    <td scope="col"><img alt="Alert" height="20" *ngIf="assessment.depressionlevel >= 3 || assessment.anxietylevel >= 3 || assessment.stresslevel >= 3"
+                            src="/assets/img/professional/alert.png"></td>
+                    <td scope="col" *ngIf="showPtsd"><img height="20" *ngIf="assessment.intrusive >= 1 && assessment.avoidance >= 3 && assessment.hyperarousal >= 2"
+                            src="/assets/img/professional/alert.png"></td>
+                    <td scope="col" class="strong text-right"> {{assessment.created | date:'dd MMM yyyy'}}</td>
+                    <td scope="col" class="text-right">
+                        <a style="float:right" class="trigger-modal info" tabindex="0" aria-label="Show alerts" (click)="showAlerts(i)"
+                            (keypress)="showAlerts(i)" translate>i</a>
+                    </td>
+                    <td scope="col" class="text-right" *ngIf="loggedInUser.id == user.id">
+                        <a class="trigger-modal delete" tabindex="0" aria-label="Delete assessment" (click)="delete(assessment.userQuizId)"
+                            (keypress)="delete(assessment.userQuizId)"><img src="./assets/img/icons-svg/x-icon.svg"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

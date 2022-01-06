@@ -1,0 +1,219 @@
+<div class="form-modal">
+	<mat-dialog-content>
+		<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+			aria-label="Close organization edit form">
+			<img src="./assets/img/icons-svg/close-icon.svg" />
+		</a>
+		<div class="img-wrapper">
+			<div class="clearfix"></div>
+			<div class="title-wrapper">
+				<h1>{{ title }}</h1>
+			</div>
+		</div>
+
+		<popup-loader *ngIf="!isLoaded"></popup-loader>
+		<form
+			novalidate
+			[formGroup]="courseEditForm"
+			(ngSubmit)="doSave()"
+		>
+			<div id="resource-section" class="form-wrapper-80" *ngIf="isLoaded">
+
+				<mat-form-field class="wt-mat-form-field">
+					<input matInput formControlName="label" class="wt-mat-input" placeholder="Course Label" type="text" />
+					<mat-error
+						*ngIf="f.label.touched && f.label.errors?.required"
+					>
+						The course needs a name.
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="wt-mat-form-field">
+					<input matInput class="wt-mat-input" placeholder="Course Key" type="text" formControlName="key" />
+				</mat-form-field>
+
+				<div class="icon-input">
+					<label for="logo">Description</label>
+					<ckeditor formControlName="description" [config]="config" id="courseDescription">
+					</ckeditor>
+				</div>
+
+				<mat-form-field class="wt-mat-form-field">
+					<input matInput formControlName="length" class="wt-mat-input" placeholder="Course Length" type="text" />
+				</mat-form-field>
+
+				<div class="icon-input">
+					<mat-checkbox matInput formControlName="default">
+						Default
+					</mat-checkbox>
+				</div>
+
+				<mat-accordion cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="chapters">
+					<mat-expansion-panel class="groupset" *ngFor="
+					let chapter of chapters.controls;
+						let i = index
+					" cdkDrag (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroupName]="i">
+						<mat-expansion-panel-header>
+							<mat-panel-title>Chapter {{ i + 1 }}</mat-panel-title>
+							<mat-panel-description>
+								<a class="removeGroup" tabindex="0" (click)="onRemoveCourseItem(i)"
+									(keypress)="onRemoveCourseItem(i)"><img src="./assets/img/icons-svg/x-icon.svg" /></a>
+							</mat-panel-description>
+						</mat-expansion-panel-header>
+
+						<ng-container padding>
+							<mat-form-field class="wt-mat-form-field">
+								<input matInput class="wt-mat-input" placeholder="Chapter Name" type="text"
+									formControlName="name" />
+								<mat-error
+									*ngIf="
+										getChapterFormGroup(i).controls['name'].touched &&
+										getChapterFormGroup(i).controls['name'].errors?.required
+									"
+								>
+									Chapter needs a name
+								</mat-error>
+							</mat-form-field>
+
+							<div class="icon-input">
+								<label for="logo">Description</label>
+								<ckeditor formControlName="description" [config]="config" id="courseItemDescription">
+								</ckeditor>
+							</div>
+
+							<mat-form-field class="wt-mat-form-field">
+								<input matInput class="wt-mat-input" placeholder="Chapter Label" type="text"
+									formControlName="label" />
+							</mat-form-field>
+							<mat-form-field class="wt-mat-form-field">
+								<input matInput class="wt-mat-input" placeholder="Chapter Length" type="text"
+									formControlName="length" />
+							</mat-form-field>
+						</ng-container>
+
+						<ng-container>
+							<h4>Videos</h4>
+							<mat-accordion class="videos-wrapper" formArrayName="videos">
+								<mat-expansion-panel *ngFor="let video of getVideosList(i).controls;
+										let j = index" (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroupName]="j">
+									<mat-expansion-panel-header>
+										<mat-panel-title>Video {{ j + 1 }}</mat-panel-title>
+										<mat-panel-description>{{video.value.label}} <a tabindex="0" class="remove"
+												(click)="removeVideo(i, j)" (keypress)="removeVideo(i, j)"><img
+													src="./assets/img/icons-svg/x-icon.svg" /></a>
+										</mat-panel-description>
+									</mat-expansion-panel-header>
+									<div class="">
+										<mat-form-field class="wt-mat-form-field">
+											<input matInput class="wt-mat-input" placeholder="Video Title" type="text"
+												formControlName="label" />
+											<mat-error
+												*ngIf="
+													getVideoFormGroup(i, j).controls['label'].touched &&
+													getVideoFormGroup(i, j).controls['label'].errors?.required
+												"
+											>
+												Video needs a title
+											</mat-error>
+										</mat-form-field>
+										<mat-form-field class="wt-mat-form-field">
+											<input matInput class="wt-mat-input" placeholder="Video Duration" type="text"
+												formControlName="length" />
+										</mat-form-field>
+
+										<div class="icon-input">
+											<label for="logo">Description</label>
+											<ckeditor formControlName="description" [config]="config"
+												id="videoDescription">
+											</ckeditor>
+										</div>
+
+										<div class="attachments" formArrayName="attachments">
+											<h4>File attachment(s)</h4>
+											<div class="attachment"
+												*ngFor="let attachment of getAttachmentList(i, j).controls; let r = index;" [formGroupName]="r">
+												<div class="icon-input">
+													<label for="logo">File Attachment ({{r + 1}})</label>
+													<input placeholder="File Attachment" type="file"
+														(change)="changeAttachmentUploadListener($event, i, j, r)" #input>
+													<div>Uploaded: <a class="caption-download" [href]="attachment.value.filePath"
+															target="_blank">Download</a></div>
+												</div>
+												<mat-form-field>
+													<input matInput placeholder="Title" type="text"
+														formControlName="title" />
+												</mat-form-field>
+
+											</div>
+
+											<a tabindex="0" class="btn-secondary btn-inline btn"
+												(click)="addVideoAttachment(i, j, {})" (keypress)="addVideoAttachment(i, j, {})">Add file
+												attachment</a>
+										</div>
+
+										<div class="icon-input">
+											<label for="logo">Video File</label>
+											<input placeholder="Video File" type="file"
+												(change)="changeVideoUploadListener($event, i, j)" #input>
+										</div>
+										<div class="preview video-preview" *ngIf="video.value.media">
+											<p>Video preview</p>
+											<wt-video [mediaUrl]="video.value.media" [thumbnailUrl]="video.value.image"
+												[captionUrl]="video.value.captionFile"></wt-video>
+										</div>
+										<div class="icon-input">
+											<label for="logo">Video Image</label>
+											<input placeholder="Video Image" type="file"
+												(change)="changeVideoImageUploadListener($event, i, j)">
+										</div>
+										<div class="preview image-preview" *ngIf="video.image">
+											<p>Image preview</p>
+											<img [src]="video.valueimage" />
+										</div>
+										<div class="icon-input">
+											<label for="logo">Caption File</label>
+											<input placeholder="Caption File" type="file"
+												(change)="changeCaptionUploadListener($event, i, j)">
+										</div>
+										<div class="preview caption-preview" *ngIf="video.value.captionFile">
+											<p>Caption Upload: <a class="caption-download" [href]="video.valuecaptionFile"
+													target="_blank">Download</a></p>
+
+										</div>
+										<div class="icon-input">
+											<label for="logo">Audio File</label>
+											<input placeholder="Audio file" type="file"
+												(change)="changeAudioUploadListener($event, i, j)">
+										</div>
+										<div class="preview audio-preview" *ngIf="video.audioFile">
+											<label for="logo">Audio preview</label>
+											<wt-video [mediaUrl]="video.value.audioFile" [captionUrl]="video.captionFile">
+											</wt-video>
+										</div>
+									</div>
+								</mat-expansion-panel>
+							</mat-accordion>
+							<a tabindex="0" class="btn-primary btn-inline btn" (click)="addVideo(i, {})"
+								(keypress)="addVideo(i, {})">Add
+								Video</a>
+						</ng-container>
+					</mat-expansion-panel>
+				</mat-accordion>
+				<a tabindex="0" class="btn-primary btn-inline btn" (click)="addCourseItem({})"
+					(keypress)="addCourseItem({})">Add
+					Chapter</a>
+				<div class="fixed-footer">
+					<p class="red" *ngIf="submitButtonPressed && !courseEditForm.valid && errors === ''">Please check the errors</p>
+					<p class="red">{{errors}}</p>
+					<!-- <button
+						tabindex="0"
+						class="btn-primary btn"
+					>
+						Save
+					</button> -->
+					<a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+				</div>
+			</div>
+		</form>
+	</mat-dialog-content>
+</div>

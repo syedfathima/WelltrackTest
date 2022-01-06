@@ -1,0 +1,22 @@
+<vg-player class="audio" (onPlayerReady)="onPlayerReady($event)" [ngStyle]="{'background-image': 'url(\'' + thumbnailUrl + '\')'}">
+	<vg-overlay-play class="audioPlayer"></vg-overlay-play>
+
+	 <vg-controls [hidden]="!showControls">
+		<vg-play-pause></vg-play-pause>
+
+		<vg-time-display [vgProperty]="'current'" [vgFormat]="'mm:ss'"></vg-time-display>
+        <vg-scrub-bar>
+            <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+        </vg-scrub-bar>
+        <vg-time-display [vgProperty]="'total'" [vgFormat]="'mm:ss'"></vg-time-display>
+
+		
+		<vg-volume></vg-volume>
+		<vg-mute></vg-mute>
+    </vg-controls>
+
+	<audio [vgMedia]="media" #media class="singleaudio" preload="auto">
+		<source [src]="mediaUrl" [type]="mediaType">
+	</audio>
+
+</vg-player>

@@ -1,0 +1,194 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.helpers.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+#page-addiction {
+	h3 {
+		font-size: $font-size-title-md;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	input[type=text] {
+    	@extend .wt-input-grey;
+    }
+    
+    input.single{
+        width:60px;
+    }
+
+    .page-section {
+        border-bottom: 2px solid #f9f8f5;
+        margin: 0;
+        padding: 20px;
+    }
+
+	.thinking-styles, .thought-summary {
+		.btn-inline {
+			margin-right: 20px;
+		}
+	}
+
+	.page-footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+			justify-content: space-between;
+
+		@include breakpoint(sm) {
+			flex-direction: row;
+			
+		}
+		
+	}
+
+	.steps-navigation {
+		margin-top: 10px;
+	}
+
+    .feeling-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .feeling-row input {
+        width: 100%;
+    }
+    .feeling-input-container {
+        -ms-flex-preferred-size: 200px;
+        flex-basis: 200px;
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+    .feeling-input-container label {
+        font-weight: normal;
+    }
+    .feeling-intensity {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-preferred-size: calc(100% - 260px);
+        flex-basis: calc(100% - 260px);
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+		margin-bottom: 20px;
+
+		@include breakpoint(md) {
+			margin-top: 10px;		
+		}
+    }
+    .feeling-range {
+        -ms-flex-preferred-size: calc(100% - 260px);
+        flex-basis: calc(100% - 260px);
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        flex-grow: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+    .feeling-scale {
+        white-space: nowrap;
+    }
+    .feeling-add-link {
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        padding: 10px 22px;
+    }
+    .feeling-add-link:active {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .thoughts-row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: flex-start;
+        -ms-flex-align: flex-start;
+        align-items: flex-start;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .thoughts-row .feeling-input-container {
+        -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+        padding-left: 20px;
+    }
+    .thoughts-row .feeling-input-container label {
+        width: 100%;
+    }
+    .thoughts-row .feeling-intensity {
+        -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .feeling-name {
+        margin-top: 0;
+		font-weight: bold;
+		color: $color-link;
+    }
+  
+    /* Tooltip container */
+    .popup-wrapper {
+		position: relative;
+
+        .popup-text {
+            visibility: hidden;
+            opacity: 0.9;
+			background-color: #171838;
+			box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
+			color: white;
+			font-family: "Nunito Sans";
+			text-align: center;
+			padding: 29px;
+			width: 250px;
+			position: absolute;
+			z-index: 1;
+			top: 40px;
+			left: 0;
+			border-radius: 5px;
+        }
+    }
+    /* Tooltip text */
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .popup-wrapper:hover .popup-text {
+        visibility: visible;
+    }
+
+	.thought-summary {
+		padding: 20px;
+		border: 1px solid $color-link;
+		display: flex;
+		margin-bottom: 20px;
+
+		@include breakpoint(md) {
+			width: 80%;
+		}
+
+		.input-group {
+			width: 50%;
+		}
+	}
+}

@@ -1,0 +1,72 @@
+<div id="page-manage-resources">
+    <div class="page-section">
+        <div class="page-section-header">
+            <h1 translate>resources.title</h1>
+        </div>
+
+        <div class="page-section-content" *ngIf="isLoaded">
+            <div *ngIf="role == 'admin'">
+                <div class="icon-group select-group">
+                    <label for="organization">Select an organization</label>
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="organizationIds" multiple>
+                            <mat-option value="all">All</mat-option>
+                            <mat-option *ngFor="let organizationrow of organizations" [value]="organizationrow.id">
+                                {{organizationrow.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="pickerfrom" placeholder="From">
+                    <mat-datepicker-toggle matSuffix [for]="pickerfrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerfrom></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="pickerto" placeholder="To">
+                    <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerto></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <mat-card *ngFor="let resourceGroup of resourceGroups;">
+                <mat-card-content>
+                    <h2>{{resourceGroup.resource.title}}</h2>
+
+                    <mat-list>
+                        <mat-list-item *ngIf="resourceGroup.resource.summary">Summary: {{resourceGroup.resource.summary}}</mat-list-item>
+                        <mat-list-item *ngIf="!resourceGroup.resource.summary">Summary: None entered</mat-list-item>
+                        <mat-list-item role="listitem" *ngIf="resourceGroup.questionAnswers.question">
+                            Question: {{resourceGroup.questionAnswers.question}}
+                        </mat-list-item>
+                        <mat-list-item role="listitem" *ngIf="!resourceGroup.questionAnswers.question">
+                            Question: No question entered
+                        </mat-list-item>
+
+                        <mat-list-item role="listitem">
+                            <div class="strong click-title">Resource clicks</div>
+                            <p *ngIf="!resourceGroup.resourceClicks">None</p>
+                            <div class="table-responsive" *ngIf="resourceGroup.resourceClicks">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th translate>Url</th>
+                                            <th translate>Clicks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let resourceClick of resourceGroup.resourceClicks">
+                                            <td>{{resourceClick.url}}</td>
+                                            <td>{{resourceClick.count}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>

@@ -1,0 +1,60 @@
+<div class="page-section">
+	<div class="page-section-header">
+		<h2>Feedback</h2>
+	</div>
+	<div class="page-section-content">
+		<form novalidate [formGroup]="feedbackForm" (ngSubmit)="doSave()">
+			<div class="form-wrapper">
+				<p>I found WellTrack to be useful towards my mental health</p>
+
+				<mat-form-field>
+					<mat-select formControlName="helpful" aria-required="true">
+						<mat-option value="5"> Strongly agree</mat-option>
+						<mat-option value="4"
+							>Neither agree nor disagree</mat-option
+						>
+						<mat-option value="3">Agree</mat-option>
+						<mat-option value="2">Disagree</mat-option>
+						<mat-option value="1">Strongly disagree</mat-option>
+					</mat-select>
+                    <mat-error
+						*ngIf="f.helpful.touched && f.helpful.errors?.required"
+					>
+						Please select a rating
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="wt-mat-form-field">
+					<textarea
+						matInput
+                        formControlName="like"
+						class="wt-mat-input"
+						placeholder="What did you like?"
+						type="text"
+					></textarea>
+				</mat-form-field>
+				<mat-form-field class="wt-mat-form-field">
+					<textarea
+						matInput
+                        formControlName="didntLike"
+						class="wt-mat-input"
+						placeholder="What didn't you like?"
+						type="text"
+					></textarea>
+				</mat-form-field>
+				<mat-form-field class="wt-mat-form-field">
+					<textarea
+						matInput
+                        formControlName="comments"
+						class="wt-mat-input"
+						placeholder="What would you like to have added."
+						type="text"
+					></textarea>
+				</mat-form-field>
+				<div>
+                    <p class="red" *ngIf="submitButtonPressed && !feedbackForm.valid">Please check the errors</p>
+					<button tabindex="0" class="btn-primary btn">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<div class="form-wrapper">
+	<h3>- Clone Resources -</h3>
+	<form novalidate [formGroup]="cloneResourceForm" (ngSubmit)="doSave()">
+		<p>Select source and destination organizations.</p>
+		<div class="icon-input">
+			<label for="parentId" translate>Source Org</label>
+			<div>
+				<mat-select
+					placeholder="Select Organization"
+					id="parentId"
+					formControlName="sourceOrgID"
+					required
+				>
+					<mat-option [value]="null">None</mat-option>
+					<mat-option
+						*ngFor="let org of organizations"
+						[value]="org.id"
+					>
+						{{ org.name }}
+					</mat-option>
+				</mat-select>
+				<mat-error
+					*ngIf="
+						f.sourceOrgID.touched && f.sourceOrgID.errors?.required
+					"
+				>
+					Please select a source organization
+				</mat-error>
+			</div>
+		</div>
+		<div class="icon-input">
+			<label for="parentId" translate>Destination Org</label>
+			<div>
+				<mat-select
+					placeholder="Select Organization"
+					id="parentId"
+					formControlName="destOrgID"
+					required
+				>
+					<mat-option [value]="null">None</mat-option>
+					<mat-option
+						*ngFor="let org of organizations"
+						[value]="org.id"
+					>
+						{{ org.name }}
+					</mat-option>
+				</mat-select>
+				<mat-error
+					*ngIf="f.destOrgID.touched && f.destOrgID.errors?.required"
+				>
+					Please select a destination organization
+				</mat-error>
+			</div>
+		</div>
+		<button
+			tabindex="0"
+			class="btn-primary btn-bold btn"
+			[ngClass]="{ active: cloneResourceForm.invalid }"
+			[disabled]="cloneResourceForm.invalid"
+		>
+			Save
+		</button>
+	</form>
+</div>

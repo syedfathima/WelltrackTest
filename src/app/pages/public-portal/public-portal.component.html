@@ -1,0 +1,50 @@
+<div id="public-portal-wrapper" class="container-fluid portal-adjustment">
+    <div class="top-bar"></div>
+    <header class="header-col" [ngClass]="{navIn: navIn}" role="main" aria-labelledby="welcome">
+        <h1 id="welcome" class="wt-access">Welcome to WellTrack</h1>
+        <nav>
+            <ul>
+                <li class="logo">
+                    <a tabindex="0" routerLink="/" aria-label="App page" alt="App page" title="App page">
+                        <img alt="Welltrack logo" src="/assets/img/logo_white@2x.png" alt="WellTrack"
+                            class="portal-logo">
+                    </a>
+                </li>
+                <li class="skip">
+                    <a tabindex="0" (click)="onSkip()" (keypress)="onSkip()">Skip</a>
+                </li>
+                <li>
+                    <a tabindex="0" aria-label="Visit welltrack.com" title="Visit welltrack.com"
+                        alt="Visit Welltrack.com" href="http://welltrack.com" translate>loginDesktop.full</a>
+                </li>
+                <li>
+                    <a tabindex="0" title="Contact us" alt="Contact us" (click)="onShowSupportPage()" (keypress)="onShowSupportPage()"
+                        translate>loginDesktop.contact</a>
+                </li>
+                <li>
+                    <language-dropdown [color]="'grey'" [page]="'public'"></language-dropdown>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="login-container" [ngClass]="{navIn: navIn}" role="main" aria-labelledby="section-title">
+        <div class="form-container">
+            <router-outlet (click)="onNavClose()" (keypress)="onNavClose()"></router-outlet>
+        </div>
+    </main>
+    <footer class="bottom-container">
+        <div class="download-holder">
+            <img class="screen-cap" alt="Mobile app" src="/assets/img/moodcheck_phone@2x.png">
+            <div class="mobile-download">
+                <h3 translate>loginDesktop.download</h3>
+                <a tabindex="0" *ngIf="playStore" target="_blank" class="google" href="{{playStore}}">
+                    <img alt="Get it on Google Play" src="/assets/img/icons/google-play-badge@2.png" />
+                </a>
+                <a tabindex="0" *ngIf="appStore" target="_blank" class="apple" href="{{appStore}}">
+                    <img alt="Download on the App Store"
+                        src="/assets/img/icons/Download_on_the_App_Store_Badge_US-UK_564x167@2.png">
+                </a>
+            </div>
+        </div>
+    </footer>
+</div>

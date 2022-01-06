@@ -1,0 +1,1913 @@
+{
+    "lang": "en",
+    "languageSwitcher": {
+        "label": "Switch language"
+    },
+    "pagetitles": {
+        "dashboard": "Dashboard",
+        "login": "Login to Welltrack",
+        "create": "Create your account",
+        "resendpassword": "Resend your password",
+        "passwordchange": "Password change",
+        "confirm": "Confirm",
+        "loginassertion": "Login Assertion",
+        "accesscode": "Access code",
+        "emailaccesscode": "Email access code",
+        "noaccesscode": "No access code",
+        "privacypolicy": "Welltrack privacy policy",
+        "termsandconditions": "Welltrack terms and conditions",
+        "corporatepolice": "Corporate policy terms",
+        "medicalresources": "Medical resources",
+        "challengelisting": "Challenges listing",
+        "challengedetails": "Challenges details",
+        "payment": "Payment",
+        "theory": "Theory",
+        "practice": "Practice",
+        "community": "Community",
+        "emergencycontact": "Emergency contact",
+        "resources": "Resources",
+        "counselors": "Counselor synchronization",
+        "assessmentlisting": "Assessment listing",
+        "assessment": "Assessment",
+        "settings": "Settings",
+        "courselisting": "Course listing",
+        "course": "Course",
+        "thoughtdiary": "Thought diary",
+        "thoughtdiarycreate": "Thought diary create",
+        "thoughtdiaryedit": "Thought diary edit",
+        "funachievementlisting": "Fun achievement listing",
+        "funachievementcreate": "Fun achievement create",
+        "funachievementedit": "Fun achievement edit",
+        "activityschedulerlisting": "Activity scheduler listing",
+        "activityschedulercreate": "Activity scheduler create",
+        "activityscheduleredit": "Activity scheduler edit",
+        "zenroom": "Zen room",
+        "cognitivedistortions": "Cognitive distortions quiz",
+        "organizationprofile": "Organization profile",
+        "challenges": "Challenges",
+        "myCalendar": "My Calendar",
+        "videosession": "Video Session",
+        "videosessionopen": "Video Session Open",
+        "videosessionshare": "Video Session Share",
+        "demographicinfo": "demographicinfo",
+        "users": "Users",
+        "userdetails": "User details",
+        "organizationedit": "Organization edit",
+        "organizationsetup": "Organization Setup",
+        "userlisting": "User listing",
+        "userprofiledetails": "User profile details",
+        "organizationview": "Organization view",
+        "organizationlisting": "Organization listing",
+        "activity": "Activity",
+        "managechallenges": "Manage challenges",
+        "manageresources": "Manage resources",
+        "reports": "Reports",
+        "system": "System"
+    },
+    "error": {
+        "ok": "Ok",
+        "title": "Error",
+        "connect": "Could not connect to WellTrack. Please check your internet connection and try again."
+    },
+    "idle": {
+        "yes": "Yes",
+        "message": "This session will expire in 1 minute. Are you still here?"
+    },
+    "blocked": {
+        "title": "Limited access",
+        "line1": "To gain access to these features, you have to associate your account with your university or purchase full access.",
+        "line2": "Click on the button below to associate with your university",
+        "line3": "Associate",
+        "line4": "-OR-",
+        "line5": "Click on the button below to purchase full-access",
+        "line6": "Gain full access",
+        "close": "Close",
+        "trialVersion": "Trial Version",
+        "noticeDescription": "To gain full access to WellTrack, you have to associate your account with your university or purchase full-access.",
+        "noticeline1": "Associate with organization",
+        "noticeline2": "Purchase a subscription"
+    },
+    "loginMobile": {
+        "signInFb": "Sign in with Facebook",
+        "email": "Email",
+        "emailAddress": "Email address",
+        "password": "Password",
+        "name": "Full name",
+        "forgot": "Forgot Password",
+        "signIn": "Sign In",
+        "signUp": {
+            "0": "Don't have an account?",
+            "1": "Sign Up"
+        },
+        "download": "Download the mobile app for a complete experience!",
+        "checkOut": "Check out WellTrack online for a complete experience www.welltrack.com",
+        "popups": {
+            "error": "Error",
+            "blank": "Username and password cannot be left blank",
+            "notFound": "An error occured authenticating with WellTrack. A confirmed account could not be found with those credentials.",
+            "oops": "Oops!",
+            "tos": "You must agree to our terms of service and privacy policy before proceeding.",
+            "authenticate": "An error occured authenticating with WellTrack. ",
+            "authenticateFB": "An error occured authenticating with Facebook.",
+            "errorFB": "Something went wrong logging you in with Facebook. Please try again, or login with an email address.",
+            "errorOrganization": "Please select your organization from the dropdown"
+        },
+        "continue": "Continue",
+        "getStarted": "Enter your email address to login or to create your new account",
+        "clickLink": "Click the link below to login.",
+        "loginSuccessful": "Login Successful",
+        "takeMe": "Take me to WellTrack"
+    },
+    "loginDesktop": {
+        "full": "Website",
+        "contact": "Contact Us",
+        "en": "En",
+        "fr": "Fr",
+        "care": "Get the right care at the time",
+        "person": "Shavneel Nand, Student, University of California Santa Cruz",
+        "person2": "Peter Cornish, Associate Professor and Director, Student Health Wellness and Counselling Centre, Memorial University",
+        "quote": "I found that the services provided by WellTrack can be a positive reinforcement towards mental health challenges. The Wellness assessment is a great tool for those who look to understand their mental well-being.",
+        "quote2": "We have found WellTrack to be a very important part of our Stepped Care 2.0 model. WellTrack is a first option of low intensity, and our counsellors are very happy to have a variety of tools that help them to practice with much greater flexibility.",
+        "download": "Download the WellTrack app!",
+        "marketingHeader": {
+            "0": "Get the ",
+            "1": "right care",
+            "2": "at the ",
+            "3": "right time"
+        }
+    },
+    "forgotPassword": {
+        "title": "Forget Your Password?",
+        "body": "We’ll send an email with instructions on how to reset your password.",
+        "email": "Send me an email",
+        "back": "Go back to ",
+        "sign": "Sign In",
+        "popups": {
+            "error": "Error",
+            "oops": "Oops!",
+            "password": "Password Reset",
+            "email": "Email cannot be left blank",
+            "sent": "An email has been sent to you with instructions on how to reset your password."
+        }
+    },
+    "changePassword": {
+        "title": "Change your password",
+        "description": "Type in your password in both fields. Password will be updated immediately upon clicking on the \"change password\"button:",
+        "popups": {
+            "success": "Success",
+            "error": "Error",
+            "passwordsuccess": "Your password has been changed",
+            "passwordmatch": "The two fields must match."
+        },
+        "placeholders": {
+            "password": "Password",
+            "passwordrepeat": "Repeat password"
+        },
+        "btnSubmit": "Change my password"
+    },
+    "signUp": {
+        "title": "Sign Up",
+        "body": "Getting started with WellTrack is easy, just let us know the following:",
+        "toGainFullAccess": "To gain full access to WellTrack",
+        "enterAccessCode": "Enter an access code",
+        "enterOrgEmail": "Enter your organization email address",
+        "or": "- OR -",
+        "skip": "I don't have an association to an organization and would like to register anyways",
+        "inputs": [
+            "Full Name",
+            "Email Address",
+            "Password"
+        ],
+        "emailPlaceholder": "Email",
+        "emailPrefixPlaceholder": "Prefix",
+        "selectSubdomain": "Select subdomain",
+        "selectOrganization": "Select your campus",
+        "button": "Sign Up",
+        "exists": "Already have an account? ",
+        "sign": "Sign In",
+        "create": "Create my account",
+        "previous": "Previous",
+        "errorPopup": {
+            "title": "Error"
+        },
+        "registrationPopup": {
+            "body": "Please select one of the options",
+            "oneOrOther": "You have both the access code box and the organization email box filled.  Please choose one or the other"
+        },
+        "emailPopup": {
+            "title": "Email error",
+            "body": "Please fill out the email field with a valid email address."
+        },
+        "passwordPopup": {
+            "title": "Password strength error",
+            "body": "Make sure that your password is at least 8 characters long, includes at least one upper case letter, one lower case letter, and one numeric digit."
+        },
+        "passwordMissingPopup": {
+            "title": "Password error",
+            "body": "Please fill in the password field."
+        },
+        "passwordMatch": {
+            "title": "Password match error",
+            "body": "Please fill in both password fields."
+        },
+        "domainPopup": {
+            "title": "Select domain",
+            "body": "Please select your organization email before proceeding."
+        },
+        "organizationPopup": {
+            "title": "Choose your campus",
+            "body": "You must choose your campus before proceding."
+        },
+        "successPopup": {
+            "title": "Success",
+            "body": "Your account has been created. Please check your email for a link to confirm your account."
+        },
+        "emptyPopup": {
+            "title": "Oops!",
+            "body": "All fields must be filled in."
+        },
+        "tosPopup": {
+            "oops": "Oops!",
+            "tos": "You must agree to our terms of service and privacy policy before proceeding."
+        },
+        "chooseOrganization": {
+            "title": "Choose your campus",
+            "body": "Please choose your campus using the campus dropdown."
+        },
+        "tos": {
+            "title": "One more thing...",
+            "copy": "Before creating a new account you must agree to our ",
+            "tos": "Terms of Use",
+            "and": " and ",
+            "privacy": "Privacy Policy",
+            "corporatepolicy": "Corporate Policy",
+            "agree": "I agree"
+        },
+        "ada": "I acknowledge that parts of this site may not meet ADA compliance.",
+        "passwordValidate": "It must be at least 8 characters, have at minimum of 1 uppercase character, 1 lowercase character, and one number.",
+        "passwordRepeatValidate": "It must be identical to the password field.",
+        "healthCanada": "Use your WTC account to login. <br> You can also download the app and use the code <strong>\"canada\"</strong> for free access.",
+        "heatthCanadaAddl": "To signup without a WTC account, please click this <a href=\"https://app.welltrack.com\">link</a>"
+    },
+    "confirm": {
+        "success": "Success",
+        "readylogin": "Your account has been confirmed. You should now be ready to login to Welltrack.",
+        "login": "Login"
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "body": "The page you are looking for doesn't exist.",
+        "back": "Go to ",
+        "sign": "Sign In"
+    },
+    "accessCode": {
+        "title": "Welcome to WellTrack!",
+        "body": "If your school or work is registered with WellTrack, enter your access code and we’ll provide you with full access.",
+        "pair": "Pair with organization",
+        "noCode": "I don’t know my access code",
+        "popups": {
+            "oops": "Oops!",
+            "blank": "You forgot to enter an access code.",
+            "success": "Success",
+            "pair": "Your account has been paired with ",
+            "error": "Error"
+        }
+    },
+    "noCode": {
+        "title": "That's fine!",
+        "body": "If your school or work is registered with WellTrack, enter your own school or work email and we’ll provide you with full access.",
+        "send": "Send me my access",
+        "skip": "Skip for now"
+    },
+    "start": {
+        "title": "No worries",
+        "body": "You will still have access to your dashboard as well as Moodcheck which are the two most important functions of WellTrack!",
+        "start": "Start using WellTrack",
+        "popups": {
+            "oops": "Oops!",
+            "blank": "You forgot to enter an email address.",
+            "success": "Success",
+            "inbox": "Please check your inbox for access.",
+            "error": "Error"
+        }
+    },
+    "menu": {
+        "dashboard": "Dashboard",
+        "moodcheck": "MoodCheck",
+        "theory": "Theory",
+        "practice": "Practice",
+        "courses": "Courses",
+        "tools": "Tools",
+        "podcasts": "Podcasts",
+        "calendar": "Calendar",
+        "assessment": "Assessment",
+        "assessments": "Assessments",
+        "course": "Course",
+        "depression": "Depression",
+        "anxiety": "Anxiety",
+        "emergency": "Emergency Contact",
+        "emergencyResilience": "Talk to a Counselor",
+        "sync": "Sync with a counselor",
+        "dashPro": "Dashboard Pro",
+        "userDetail": "User details",
+        "clientList": "Client list",
+        "orgDetails": "Organization",
+        "myCalendar": "My Calendar",
+        "resources": "Resources",
+        "domains": "Domains",
+        "wellnessDomains": "Wellness Domains",
+        "manageResources": "Resources",
+        "setting": "My settings",
+        "support": "Support",
+        "signout": "Sign out",
+        "download": "Download the mobile app for a complete experience",
+        "challenges": "Challenges",
+        "users": "Users",
+        "orgs": "Organizations",
+        "activity": "Activities",
+        "reports": "Reports",
+        "viewAll": "View All",
+        "assessmentListing": "Assessments",
+        "resourcesAdmin": "Resources",
+        "adminCourseListing": "Courses",
+        "pushNotification": "Push Notification",
+        "datedEvents": "Dated Events",
+        "additionalResources": "Additional Resources",
+        "config":"Config"
+    },
+    "moodcheck": {
+        "title": "MoodCheck",
+        "cancel": "Cancel",
+        "save": "Save",
+        "next": "Next",
+        "more": "+ More",
+        "done": "Done",
+        "enternumber": "Enter number from 1 - 10 in the box below or use the wheel above to rate your mood",
+        "mood": {
+            "tab": "Mood"
+        },
+        "activity": {
+            "tab": "Activity",
+            "title": " What are you doing?"
+        },
+        "people": {
+            "tab": "People",
+            "title": " Who are you with?"
+        },
+        "place": {
+            "tab": "Place",
+            "title": " Where are you?"
+        },
+        "notes": {
+            "tab": "Notes",
+            "title": " What is on your mind?"
+        },
+        "customize": "Customize your options",
+        "popups": {
+            "incomplete": "Incomplete MoodCheck",
+            "dial": "You must dial in a mood and specify an activity before submitting your MoodCheck.",
+            "error": "Error",
+            "deleteBody": "Are you sure you would like to delete this moodcheck?"
+        }
+    },
+    "tutorial": {
+        "welcome": {
+            "title": "Welcome to WellTrack",
+            "body": "On your homepage you will be able to follow the evolution of your mood and better understand what affects your mood.",
+            "ok": "Ok got it!"
+        },
+        "moodcheck": {
+            "title": "MoodCheck",
+            "body": "MoodCheck is the key function of WellTrack, it will allow us to collect the right data to provide you the right care at the right time. That's why it's important to do it on a daily basis.",
+            "ok": "Ok got it!"
+        },
+        "practice": {
+            "title": "Tools",
+            "body": "Once you've explored the theory section, go to tools and keep track of your progress.",
+            "ok": "Go to tools!",
+            "no": "No thanks"
+        },
+        "theory": {
+            "title": "Theory",
+            "body": "Ready to take the next step? Ready to begin some therapy?",
+            "ok": "Ok got it!"
+        },
+        "assessment": {
+            "title": "Assessment",
+            "body": "Doing your assessment regularly is crucial for the proper functioning of Welltrack. It will allow us to guide you towards solutions adapted for you. In fact, doing an assessment check in regularly will help you to get the most out of WellTrack and help us to tailor our recommendations for you based on how you are feeling right now.",
+            "ok": "Start Assessment",
+            "no": "No thanks"
+        },
+        "resilience": {
+            "title": "Resilience",
+            "body": "Resilience has been defined as the ability to bounce back or recover quickly from difficulties. Complete this short Resilience Assessment to determine a baseline for your current resilience level. Regular resilience assessments will help you keep track and help us to tailor our recommendations for you based on how you’re feeling with now.",
+            "ok": "Start Assessment",
+            "no": "No thanks"
+        }
+    },
+    "dashboard": {
+        "last": "Last 30 days",
+        "30days": "30 days",
+        "heatmap": {
+            "title": "Mood Heatmap",
+            "all": "All Moods",
+            "good": "Good Moods",
+            "bad": "Bad moods"
+        },
+        "tableHeaders": {
+            "0": "Date",
+            "1": "Level",
+            "2": "Mood",
+            "3": "Activity",
+            "4": "People",
+            "5": "Place",
+            "6": "Notes"
+        },
+        "emptyMoodcheckList": "There are no MoodChecks to display.",
+        "number": {
+            "title": "Number of MoodChecks",
+            "total": "Total MoodChecks : ",
+            "average": "Average / day : "
+        },
+        "indicator": {
+            "title": "Mood Indicator",
+            "good": "Good Mood",
+            "bad": "Bad Mood",
+            "last": "Last 30 days",
+            "graphText": "of your mood",
+            "activity": "Activity",
+            "people": "People",
+            "place": "Place"
+        },
+        "click": "Click for more info"
+    },
+    "theory": {
+        "title": "Courses",
+        "go": "Go to course",
+        "chapter": "chapters:",
+        "length": "length:",
+        "courses": {
+            "anxiety": {
+                "title": "Anxiety & Stress",
+                "body": "Complete a 5-week program to learn about anxiety and improve your thoughts, behaviors, and mood",
+                "chapter": "chapters: 5",
+                "length": "length: 32 mins"
+            },
+            "depression": {
+                "title": "Depression",
+                "body": "Complete a 6-week program to learn about depression and improve your thoughts, behaviors, and mood",
+                "chapter": "chapters: 6",
+                "length": "length: 30 mins"
+            },
+            "phobia": {
+                "title": "Phobia",
+                "body": "Learn about anxiety, then practice relaxation while viewing 3D simulations of feared objects or situations",
+                "chapter": "chapters: 6",
+                "length": "length: 2 h"
+            },
+            "publicspeaking": {
+                "title": "Public Speaking",
+                "body": "Practice your public speaking while viewing a 3D simulation that will help put you in front of an audience.",
+                "chapter": "chapters: 1",
+                "length": "length: 17 mins"
+            },
+            "addiction": {
+                "title": "Addiction",
+                "body": "Complete a 6-week program that will help you learn about addiction and substance abuse.",
+                "chapter": "chapters: 1",
+                "length": "length: 17 mins"
+            },
+            "disaster": {
+                "title": "Resilience Skills",
+                "body": "Complete a program to learn how to develop resilience during a crisis.",
+                "chapter": "chapters: 2",
+                "length": "length: 23 mins"
+            },
+            "resilience": {
+                "title": "Resilience",
+                "body": "This course focuses on the balance between the physical and psychological impacts of stress. Learn how stress, nutrition, exercise, and your environment all play a role in your resilience.",
+                "chapter": "chapters: 4",
+                "length": "length: 1 h and 6 mins"
+            },
+            "resiliences": {
+                "title": "Resilience",
+                "body": "These courses will focus on the balance between the physical and psychological impacts of stress. Learn how stress, nutrition, exercise, and your environment all play a role in your resilience."
+            },
+            "sleep": {
+                "title": "Your Guide to Healthier Sleep",
+                "body": "Sleep is a fundamental pillar of wellness and resilience, and many of us could benefit from improved consistency and quality in our sleep patterns.",
+                "instructions": "This video series will:<br><ul><li>Put you right to sleep - in the best way possible</li><li>Coach you on how to get restorative sleep at night, in order to experience greater enjoyment and energy in your day</li></ul>",
+                "chapter": "chapters: 1",
+                "length": "length: 38 mins"
+            },
+            "wellbeing": {
+                "title": "Well-being",
+                "body": "The six dimensions of well-being are tied closely to your resilience. Navigate through this course with Dr. Mary Jo Kreitzer to identify where you could grow and develop the tools to do so.",
+                "chapter": "chapters: 4",
+                "length": "length: 1 h and 3 mins"
+            },
+            "mindfulness": {
+                "title": "Find Your Inner Calm Through Mindfulness",
+                "body": "Mindfulness is a powerful tool that can be used in just about any setting to bring you a greater sense of peace and comfort in the present moment.",
+                "chapter": "chapters: 1",
+                "length": "length: 30 mins"
+            },
+            "purpose": {
+                "title": "The Journey to Purpose and Meaning",
+                "body": "Purpose is a journey, not a destination. No matter where you are along this journey, find a deeper sense of peace and meaning by actively exploring your purpose, values, and inspirations.",
+                "chapter": "chapters: 1",
+                "length": "length: 24 mins"
+            },
+            "work": {
+                "title": "Resilience in the Workplace",
+                "body": "Enrich your workdays with energy, enjoyment, and purpose driven motivation as we explore varying techniques to experience greater satisfaction in your career.",
+                "chapter": "chapters: 1",
+                "length": "length: 27 mins"
+            },
+            "beyondnormal": {
+                "title": "Beyond Normal",
+                "body": "Health and wellbeing leaders share self-care ideas for creating a better normal during and after COVID-19.",
+                "chapter": "Currently on season 1",
+                "length": ""
+            },
+            "podcast": {
+                "title": "Podcasts",
+                "body": "",
+                "chapter": "",
+                "length": ""
+            },
+            "additionalCourses": {
+                "title": "Additional Resources",
+                "body": "Additional resources where you will find mental health courses and other information",
+                "go": "Go to resources"
+            }
+        }
+    },
+    "courseListing": {
+        "back": "Back to List",
+        "chapterTitle": "Chapters",
+        "timeTitle": "Time",
+        "completed": "Completed",
+        "title": [
+            "Anxiety and Stress",
+            "Depression",
+            "Phobia",
+            "Resilience Skills",
+            "Resilience",
+            "Your Guide to Healthier Sleep",
+            "Well-being",
+            "Find Your Inner Calm Through Mindfulness",
+            "The Journey to Purpose and Meaning",
+            "Resilience in the Workplace",
+            "Beyond Normal"
+        ]
+    },
+    "practice": {
+        "title": "Practice",
+        "zen": {
+            "title": "The Zen Room",
+            "body": "Environment to help you clear your mind and relax.",
+            "button": "Go to the zen room"
+        },
+        "thoughtDiary": {
+            "title": "Thought Diary",
+            "body": "Use the thought diary to analyze an event that caused you to feel depressed or anxious.",
+            "button": "Go to thought diary"
+        },
+        "cdQuiz": {
+            "title": "Cognitive Distortions Quiz",
+            "body": "The purpose of this quiz is to help you understand different thinking styles.",
+            "button": "Start a Quiz"
+        },
+        "fa": {
+            "title": "Fun Achievement",
+            "body": "Rate your depression, happiness, and sense of achievement before and after an activity.",
+            "button": "Go to fun achievement"
+        },
+        "as": {
+            "title": "Activity Scheduler",
+            "body": "Use the Activity Scheduler to schedule both fun and responsible activities during the week.",
+            "button": "Go to activity scheduler"
+        },
+        "addiction": {
+            "title": "Addiction",
+            "body": "Addiction planner.",
+            "button": "Go to the addiction tool"
+        }
+    },
+    "zenRoom": {
+        "title": "Zen Room",
+        "subtitle": "Close your eyes and relax",
+        "back": "Go Back",
+        "select": "Select your ambiance",
+        "background": "Background Sounds",
+        "sounds": {
+            "0": "Wave",
+            "1": "Organic",
+            "2": "Space"
+        },
+        "type": "Meditation Type",
+        "meditationType": {
+            "gettingStarted": "Getting Started",
+            "0": "Traditional Deep Breathing",
+            "1": "Alternative Deep Breathing",
+            "2": "The Forest",
+            "3": "Beach Relaxation",
+            "4": "Increasing Awareness",
+            "5": "Relaxing phrases",
+            "6": "Sort boxes",
+            "7": "Sending Thoughts Away on Clouds",
+            "8": "Sending Your Thoughts Away on Leaves",
+            "none": "None"
+        },
+        "meditationVoice": "Meditation Voice",
+        "play": "Play",
+        "pause": "Pause"
+    },
+    "thoughtDiary": {
+        "title": "Thought Diary",
+        "body": "Use the thought diary to analyze an event that caused you to feel depressed or anxious.",
+        "disclaimer": " WellTrack is not a communication tool. Information entered in WellTrack is not monitored.",
+        "back": "Go Back",
+        "begin": "Begin a new Thought Diary",
+        "completed": "Completed Thought Diaries",
+        "unfinished": "Unfinished Thought Diaries",
+        "thinkingStyles": [
+            {
+                "key": "catastrophising",
+                "info": "Catastrophising",
+                "text": "Exaggerating a situation, or focusing on an unlikely worst-case scenario."
+            },
+            {
+                "key": "blackandwhite",
+                "info": "Black and White Thinking",
+                "text": "Thinking in terms of false dilemmas, assuming things can only be one of two ways, (e.g. perfect or failure) with no inbetween."
+            },
+            {
+                "key": "overgeneralization",
+                "info": "Overgeneralization",
+                "text": "Making a broad conclusion based on scanty evidence, basing patterns on only one or two events."
+            },
+            {
+                "key": "jumping",
+                "info": "Jumping to Conclusions",
+                "text": "Deciding an outcome with little or no evidence. Assuming you know what someone is thinking, or how a future event will play out."
+            },
+            {
+                "key": "emotional",
+                "info": "Emotional Reasoning",
+                "text": "Thinking that something is true based on how you are feeling. E.g, \"I feel stupid, so I must be stupid.\""
+            },
+            {
+                "key": "personalization",
+                "info": "Personalization",
+                "text": "Assuming that what others do or say is directly in reaction to you, even if there are better explanations for their actions."
+            },
+            {
+                "key": "ignoring",
+                "info": "Ignoring Positives",
+                "text": "Discounting positive events (\"That doesn't count\"), or filtering out many positive experiences while focusing on fewer negative ones."
+            }
+        ],
+        "steps": {
+            "0": {
+                "title": "Step 1: Choose an Activating Event",
+                "body": "Think back in the recent days and identify an event, situation, or thought that caused you to feel anxious or depressed. Enter a description of the event.",
+                "inputText": "Describe the event"
+            },
+            "1": {
+                "title": "Step 2: List your Feelings",
+                "body": "Think of a few words or short phrases that describe how this event made you feel. Enter these words below, and rate the intensity of each feeling.",
+                "inputTag": "Enter a feeling",
+                "lowScale": "Barely at all",
+                "highScale": "Overwhelming",
+                "add": "+ Add Another Feeling",
+                "examples": {
+                    "title": "Examples: ",
+                    "line1": [
+                        "When Monique's friend suddenly cancelled their dinner plans, she felt ",
+                        "rejected",
+                        " and ",
+                        "inadequate"
+                    ],
+                    "line2": [
+                        "Eric's search for a job hasn't been going well. When his parents asked about it, he felt ",
+                        "hopeless ",
+                        "and ",
+                        "like he wanted to run away"
+                    ],
+                    "line3": [
+                        "Paul had to ask for help with a task at work that his coworker said would be easy. He felt ",
+                        "stupid ",
+                        ", and ",
+                        "embarrassed"
+                    ],
+                    "line4": [
+                        "Jennifer entered an elevator. When the doors closed, she suddenly felt ",
+                        "trapped ",
+                        " and ",
+                        "scared"
+                    ]
+                }
+            },
+            "2": {
+                "title": "Step 3: Identify Thoughts Behind your Feelings",
+                "body": "For each of your feelings from the previous step, you will now identify the thought that produced that feeling. Ask yourself, \"What was going through my mind when I was feeling this?\" and enter a thought for each feeling. Rate how much you believe each thought.",
+                "boxInputTag": "What were you thinking?",
+                "scaleInputTag": "How much do you believe this thought?",
+                "lowScale": "Not Likely",
+                "upperScale": "Absolutely True",
+                "aboutFeeling": "What was going through my mind when I was feeling it?",
+                "examples": {
+                    "title": "Examples: ",
+                    "line1": {
+                        "0": "Paul was assigned a new task and was assured it was easy, but he found he needed to ask for help. This made him feel ",
+                        "1": "stupid ",
+                        "2": "and ",
+                        "3": "embarrassed",
+                        "4": ". He was thinking"
+                    },
+                    "line2": {
+                        "0": "If Paula didn't have any trouble with this, but I can't understand it, it must be because I'm so stupid."
+                    },
+                    "line3": {
+                        "0": "When people find out that I needed help with an easy task, I will lose their respect."
+                    },
+                    "line4": {
+                        "0": "When Eric had to tell his parents that he hadn't yet found a job, he felt ",
+                        "1": "hopeless",
+                        "2": " and ",
+                        "3": "like he wanted to run away",
+                        "4": ". He was thinking"
+                    },
+                    "line5": {
+                        "0": "If I haven't found a job yet, I don't think I'll ever find one"
+                    },
+                    "line6": {
+                        "0": "I can't bear to tell them and see how they're disappointed, I'd rather just not talk to them at all!"
+                    }
+                }
+            },
+            "3": {
+                "title": "Step 4: Identify Unhelpful Thinking Styles",
+                "body": "Do you recognize any unhelpful thinking styles you may have been using? Select as many as apply for each thought. Hover a thinking style to see a short description.",
+                "thought": "Your thought:"
+            },
+            "4": {
+                "title": "Step 5:  Challenge your Thoughts",
+                "body": {
+                    "0": "Now that you've decided how your thoughts were produced from unhelpful thinking styles, you will now challenge them.",
+                    "1": "For each thought, ask yourself some or all of the following questions, and then write some facts which show that your thought is not realistic or helpful."
+                },
+                "list": {
+                    "0": "If I wasn't depressed, how might I view the situation differently?",
+                    "1": "What is the likelihood of that happening?",
+                    "2": "Are there other ways I can view the situation?",
+                    "3": "How would someone else view the situation?"
+                },
+                "thought": "Your thought",
+                "said": "Which you said was",
+                "challenge": "Enter a challenge for the above thought"
+            },
+            "6": {
+                "title": "Step 6:  Create Action Plan",
+                "body": "Create a simple action plan for when you are in a similar situation again. Think about what you would do in the situation to prevent your negative thoughts, or to challenge them as they are developing. Be specific, and apply what you've learned from your thought challenges."
+            }
+        },
+        "save": "Save For Later",
+        "next": "Next",
+        "finish": "Finish",
+        "popups": {
+            "ok": "Ok",
+            "error": "Error",
+            "success": {
+                "header": "Success",
+                "body": "Your thought diary has been saved.",
+                "later": "Your thought diary has been saved for later."
+            },
+            "validation": {
+                "header": "Validation Error",
+                "bodys": [
+                    "The activating event cannot be left blank.",
+                    "No feelings can be left blank.",
+                    "The thoughts behind each feeling cannot be left blank.",
+                    "You must identifiy a thinking style for each feeling/thought.",
+                    "You must enter a challenge for each thought.",
+                    "Your action plan cannot be left blank."
+                ]
+            },
+            "deleteBody": "Are you sure you would like to delete this thought diary?"
+        }
+    },
+    "cdQuiz": {
+        "title": "Cognitive Distortions Quiz",
+        "body": "You learned a lot of new terms this week. We recommend taking a quiz to see how well the new terms sunk in.",
+        "back": "Go Back",
+        "begin": "Begin a new Quiz",
+        "last": "Last Score",
+        "best": "Your Personal Best",
+        "showDefinitions": "Show definitions",
+        "answers": {
+            "0": "Black and White Thinking",
+            "1": "Personalization",
+            "2": "Ignoring Positives",
+            "3": "Overgeneralization",
+            "4": "Emotional Reasoning",
+            "5": "Catastrophizing"
+        },
+        "previous": "Previous",
+        "submit": "Submit answers",
+        "popups": {
+            "answer": {
+                "right": "Correct!",
+                "wrong": "Incorrect!",
+                "button": "Continue"
+            },
+            "result": {
+                "header": "Your Quiz Results",
+                "button": "Finish"
+            }
+        },
+        "questions": [
+            "Terry's dog Sparks got into the garbage and ate something that might have made her sick. He acted quickly and brought Sparks to the vet, where she was treated and makes a full recovery. Terry thinks, <i>\"I'm a terrible owner, and I shouldn't be allowed to have a pet.\"</i> What kind of distortion is Terry using?",
+            "Natalie is leaving a store without having purchased anything. As she is about to pass through the anti-theft devices at the door, she thinks, \"<i>What if the alarm sounds, even though I haven't taken anything? What if security comes and they accuse me of stealing? What if I'm treated like I did something wrong?</i>\" What kind of distortion is Natalie using?",
+            "Robert needs to make a phone call, but begins to feel anxious. He thinks, \"<i>Something bad will happen if I make the phone call. I don't know what, but I know it will be bad.\"</i>",
+            "Jan's adult son called to say he wouldn't be making it to the family's Thanksgiving dinner this year. Jan feels miserable and thinks, \"<i>He's never going to visit again.</i>\" What kind of cognitive distortion is Jan using?",
+            "Ben is a popular teacher at a local high school. He finds a website where students share ratings about their teachers. He is surprised to see that numerous students have rated his teaching, and they are all very positive - except for one hateful message. Ben thinks, \"<i>My students don't like me after all.</i>\". What cognitive distortion is Ben using?",
+            "Philip's son Evan failed a math test, and the teacher sent home a note to say that Evan has been talking to his friends a lot in class, so she would be changing the seating plan to be less distracting. Philip thinks, <i>\"It's my fault Evan failed his test, if I were smarter I could have helped him to study.\"</i>",
+            "Marie is hosting a dinner party and doing some last minute preparation. She realizes she has forgotten the cheese for the greek salad, and doesn't have time to go get more. Dejected, she thinks, \"<i>I've ruined the food, I might as well throw it out.</i>"
+        ],
+        "responses": [
+            {
+                "true": "<p>In Terry's mind, his ability as a pet owner depends on nothing ever going wrong. In reality, he reacted to the accident in a responsible manner.</p>",
+                "false": "<p>Terry was <b>thinking in black and white.</b> In Terry's mind, his ability as a pet owner depends on nothing ever going wrong. In reality, he reacted to the accident in a responsible manner.</p><p>Undistorted thought: <i>I'm relieved that Sparks is okay! I made a good choice in bringing her to the vet. I will be more careful about the garbage so it doesn't happen again.</i></p>"
+            },
+            {
+                "true": "<p>Natalie is <b>catastrophizing</b> - she is imagining an unlikely and extreme scenario, which is then causing her to feel anxious</p> <p>Undistorted thought: <i>\"I havent' taken anything from the store, so the alarm won't sound.</i></p>",
+                "false": "<p>Natalie is imagining an unlikely and extreme scenario, which is then causing her to feel anxious.  <p>Undistorted thought: <i>\"I havent' taken anything from the store, so the alarm won't sound.</i></p></p>"
+            },
+            {
+                "true": "<p>Robert feels anxious at the prospect of using the phone, and so reasons that he must be feeling that way for a good reason.</p> <p>Undistorted thought: <i>&quot;I feel anxious, but I know there's no reason for it. I will focus on my breathing for a few moments to relax, and then make my call.&quot;</i></p>",
+                "false": "<p>Robert is using <b>emotional reasoning</b> - he feels anxious at the prospect of using the phone, and so reasons that he must be feeling that way for a good reason.</p> <p>Undistorted thought: <i>&quot;I feel anxious, but I know there's no reason for it. I will focus on my breathing for a few moments to relax, and then make my call.&quot;</i></p>"
+            },
+            {
+                "true": "<p>Cancelling a visit one time does not mean that Jan's son will miss every holiday.</p><p>Undistorted thought: <i>&quot;I am disapointed that he won't be here with us. I look forward to his next visit.&quot;</i></p>",
+                "false": "<p>Jan is <b>overgeneralizing</b> - cancelling a visit one time does not mean that Jan's son will miss every holiday.</p><p>Undistorted thought: <i>&quot;I am disapointed that he won't be here with us. I look forward to his next visit.&quot;</i></p>"
+            },
+            {
+                "true": "<p>Ben is filtering out the many positive reviews that he read, and dwelling on only the one negative message.</p><p>Undistorted thought: <i>&quot;I'm happy that so many students have enjoyed being in my class!&quot;</i></p>",
+                "false": "<p>Ben is <b>ignoring positives</b> - he is filtering out the many positive reviews that he read, and dwelling on only the one negative message.</p><p>Undistorted thought: <i>&quot;I'm happy that so many students have enjoyed being in my class!&quot;</i></p>"
+            },
+            {
+                "true": "<p>Philip's own intelligence is not a factor in Evan's poor performance, and the teacher suggested a more likely cause.</p><p>Undistorted thought: &quot;<i>It's good the teacher noticed that he was being distracted. I'll arrange a math tutor to help Evan catch up.&quot;</i></p>",
+                "false": "<p>Philip is <b>personalizing</b> - his own intelligence is not a factor in Evan's poor performance, and the teacher suggested a more likely cause.</p><p>Undistorted thought: &quot;<i>It's good the teacher noticed that he was being distracted. I'll arrange a math tutor to help Evan catch up.&quot;</i></p>"
+            },
+            {
+                "true": "<p>Marie has decided that every aspect of her dish has to be a perfect in order for it to be a success.</p><p>Undistorted thought: <i>&quot;It's too bad that I forgot the cheese, but I can still serve it without, the other ingredients are all still good.&quot;</i></p>",
+                "false": "<p>Marie is <b>thinking in black and white</b> - she has decided that every aspect of her dish has to be a perfect in order for it to be a success.</p><p>Undistorted thought: <i>&quot;It's too bad that I forgot the cheese, but I can still serve it without, the other ingredients are all still good.&quot;</i></p>"
+            }
+        ]
+    },
+    "fa": {
+        "title": "Fun and Achievement",
+        "body": "Rate your depression, happiness, and sense of achievement before and after an activity",
+        "back": "Go back",
+        "table": {
+            "title": "Completed Fun and Achievements",
+            "headers": {
+                "0": "Activity",
+                "1": "Happiness",
+                "2": "Fun",
+                "3": "Achievement",
+                "4": "Date"
+            }
+        },
+        "levels": [
+            "Absolutely None",
+            "Minimal",
+            "Slight",
+            "Mild",
+            "Moderate",
+            "Much",
+            "High",
+            "Very High",
+            "Extreme"
+        ],
+        "save": "Save",
+        "new": "New Fun & Achievement analysis",
+        "view": "View more",
+        "steps": {
+            "0": {
+                "header": "Step 1: Rate Activities",
+                "body": "Use this rating scale to rate your depression, happiness, and sense of achievement from before and after each activity. You can print a blank sheet to keep with you during the day to record your mood before and after your activities and enter them in later.",
+                "inputs": {
+                    "0": {
+                        "title": "Activity name",
+                        "default": "Name of an activity"
+                    },
+                    "1": {
+                        "title": "Select a date"
+                    },
+                    "2": {
+                        "title": "Amount BEFORE"
+                    },
+                    "3": {
+                        "title": "Amount AFTER"
+                    }
+                },
+                "columns": {
+                    "0": "Happiness",
+                    "1": "Fun",
+                    "2": "Achievement"
+                }
+            },
+            "1": {
+                "header": "Step 2: Add Observations",
+                "body": "Now you can add any observations or additional information for your activity ratings that might be helpful when looking back on your entries. For example, you might note that while an activity wasn't fun, it made you feel good because you felt a sense of achievement, and so you may repeat that activity in the future. Add any thoughts of observations for each activity below:",
+                "inputs": {
+                    "0": {
+                        "title": "Add any thoughts of observations for your activity below"
+                    }
+                }
+            }
+        },
+        "popups": {
+            "success": {
+                "title": "Success",
+                "body": "Your fun & achievement activity has been saved."
+            },
+            "validation": {
+                "title": "Validation Error",
+                "body": [
+                    "The activity cannot be left blank.",
+                    "Please specify your happiness level before and after the activity.",
+                    "Please specify your fun level before and after the activity.",
+                    "Please specify your achievement level before and after the activity.",
+                    "The observation cannot be left blank."
+                ]
+            },
+            "deleteBody": "Are you sure you want to delete this fun and achievement entry?"
+        }
+    },
+    "as": {
+        "title": "Activity Scheduler",
+        "body": "Use the Activity Scheduler to schedule both fun and responsible activities during the week.",
+        "back": "Go back",
+        "new": "New Activity Scheduler",
+        "view": "more",
+        "table": {
+            "completed": "Completed Activity Scheduler",
+            "unfinished": "Unfinished Activity Schedule"
+        },
+        "selectType": "Select an activity type",
+        "pleasurable": "Pleasurable",
+        "social": "Social",
+        "achievement": "Achievement",
+        "steps": {
+            "0": {
+                "header": "Step 1: Choose Activities",
+                "body": {
+                    "0": "Choose some of the listed activities to add to your schedule this week, or add your own.",
+                    "1": "Pleasurable activities are simply activities that are fun. Start slowly and choose activities that you know you enjoy, or used to enjoy.",
+                    "2": "When combating depression, it is important that you spend time with friends and family. Select at least one activity from the Social Activities list. ",
+                    "3": "Lastly, choose at least one action from the Achievement Activities list. Achievement tasks are related to responsibilities that you may have been neglecting recently. Completing these will help give you a sense of accomplishment."
+                },
+                "inputs": {
+                    "0": {
+                        "label": "Pleasurable Activities",
+                        "values": {}
+                    },
+                    "1": {
+                        "label": "Social Activities",
+                        "values": {}
+                    },
+                    "2": {
+                        "label": "Achievement Activities",
+                        "values": {}
+                    }
+                }
+            },
+            "1": {
+                "button": "Add Activity",
+                "header": "Step 2: Schedule Activities",
+                "placeholder": "Type here to add a new activity",
+                "body": "Now that you've chosen some activities, click onto the calendar below to schedule times for each one. Start small by scheduling only a few activities. You can also add additional commitments, such as work or appointments, by entering them in the add more text box."
+            },
+            "2": {
+                "header": "Step 3: Review",
+                "body": "Review that you've correctely entered the activities that you will be doing during the week."
+            }
+        },
+        "save": "Save",
+        "next": "Next",
+        "finish": "Finish",
+        "errorPopups": {
+            "error": "Error",
+            "activityType": "Please choose an activity type",
+            "activity": "Please choose an activity",
+            "dateTime": "Please choose a date and time"
+        },
+        "successPopups": {
+            "success": "Success",
+            "body": "Activity Schedule submitted!"
+        },
+        "popups": {
+            "deleteBody": "Are you sure you want to delete this activity calendar entry?"
+        },
+        "modal": {
+            "title": "Customize your activities",
+            "placeholder": "Your custom activity...",
+            "button": "Done"
+        },
+        "select": {
+            "title": "Pick your activity for...",
+            "placeholder1": "Select your activity",
+            "or": "or",
+            "placeholder2": "Type a new activity here",
+            "button": "Done"
+        },
+        "start": "Click below to select a start time",
+        "end": "Click below to select a end time"
+    },
+    "calendar": {
+        "pagetitle": "Calendar",
+        "header": "Book a video call with your users",
+        "bodyUser": "Scheduled appointments and activity scheduler events will appear in the calendar below. ",
+        "bodyCounselor": "Appointments have never been easier and more accessible. Send an invitation to a user to begin a video consultation.",
+        "add": "Add an appointment for: ",
+        "title": "Title",
+        "user": "User",
+        "select": "Select Participant",
+        "time": "Time",
+        "duration": "Duration",
+        "desc": "Appointment description",
+        "send": "Send appointment invite",
+        "entries": "There are no entries",
+        "selectHour": "Select Hour",
+        "selectDuration": "Select Duration",
+        "delete": " Delete",
+        "edit": " Edit",
+        "popups": {
+            "success": "Success",
+            "error": "Error",
+            "oops": "Oops!",
+            "blank": "Please make sure that you've entered a title, participant and duration for the appointment."
+        },
+        "deleteAppointment": "Do you want to delete this appointment",
+        "participants": "Participants",
+        "scheduledBy": "Scheduled by",
+        "appointment": "Appointment",
+        "activityScheduler": "Activity Scheduler",
+        "legend": {
+            "moodcheck": "Moodcheck",
+            "assessment": "Assessment",
+            "course": "Course",
+            "depression": "Depression course",
+            "anxiety": "Anxiety course",
+            "scheduled": "Scheduled",
+            "thoughtdiary": "Thought Diary",
+            "activityscheduler": "Activity Scheduler",
+            "funachievement": "Fun Achievement",
+            "appointment": "Appointment",
+            "zenroom": "Zen Room"
+        },
+        "createVideoSession": "Create a video session with a shareable link.",
+        "or": "- OR -",
+        "previous": "Previous",
+        "next": "Next",
+        "noEntries": "There are no entries for this date"
+    },
+    "das": {
+        "title": "Wellness Assessment",
+        "dasforcedintro": "Welcome to WellTrack! Lets do a quick wellness assessment so that we can start with a measurement of your current levels of stress, anxiety and depression. It will only take a moment to complete.",
+        "dasintro": "Please read each statement and select a value which indicates how much the statement applied to you over the past week. There are no right or wrong answers. Do not spend too much time on any statement.",
+        "ptsdintro": "Read each of the statements on the following screen. If you have been experiencing these symptoms for more than on month, click on the corresponding button. Select all that apply.",
+        "body": "Complete a quiz that rates your depression, anxiety and stress. Completing the wellness assessment regularly will allow you to see progress in your levels for each category.",
+        "back": "Back",
+        "button": "Take the wellness assessment",
+        "viewResults": "View results",
+        "opinionofprofessional": "This assessment does not replace the opinion of a health professional.",
+        "tableHeaders": {
+            "0": "Depression",
+            "1": "Anxiety",
+            "2": "Stress",
+            "3": "DAS Alert",
+            "4": "PTSD Alert",
+            "5": "Date",
+            "6": "Alert"
+        },
+        "header": "Assessment",
+        "start": "Start",
+        "continue": "Continue",
+        "previous": "Previous",
+        "next": "Next",
+        "finish": "Finish",
+        "result": {
+            "title": "Your Wellness Assessment Results",
+            "depression": {
+                "title": "DEPRESSION",
+                "level": "Your depression level is ",
+                "suggest": "While everyone feels sad or blue on occasion, depression lasts for much longer than a few hours or days and can affect your relationships, hobbies, and work. Depression is highly treatable by applying cognitive behavioural therapy to change your thoughts. You would benefit from the Depression module.",
+                "you": "You have a ",
+                "levelOf": " level of depression."
+            },
+            "stress": {
+                "title": "STRESS",
+                "level": "Your stress level is ",
+                "you": "You have a ",
+                "levelOf": " level of stress.",
+                "effect": "Stress affects nearly everyone to some degree, but too much stress can cause irritability and can affect your health.",
+                "suggest": "Stress can be managed by taking time to relax with effective relaxation techniques. You would benefit from the Anxiety and Stress module, focusing on the Relaxation Techniques."
+            },
+            "anxiety": {
+                "title": "ANXIETY",
+                "level": "Your anxiety level is ",
+                "you": "You have a ",
+                "levelOf": " level of anxiety.",
+                "suggest": "Anxiety often manifests as uncomfortable physical symptoms, such as trembling, a sense of panic, or tightness in your chest. Anxiety can be successfully managed by properly relaxing your body when experiencing symptoms. You would benefit from the Anxiety and Stress module."
+            },
+            "ptsd": {
+                "title": "PTSD",
+                "levels": {
+                    "lowtitle": "You are managing very well",
+                    "hightitle": "You may be experiencing PTSD",
+                    "lowbody": "Click \"Finish\" to view the resources that are available to you.",
+                    "highbody": "You should call a doctor if you have been experiencing the symptoms for more than one month. Click \"Finish\" to view the resources that are available to you."
+                }
+            }
+        },
+        "popups": {
+            "deleteBody": "Are you sure you would like to delete this thought diary?"
+        }
+    },
+    "resilience": {
+        "wellnessDomains":{
+            "title": "Wellness Domains",
+            "description": "There are seven wellness domains that factor into your complete well-being. These seven important areas of your life affect your mental fitness and your ongoing ability to weather ongoing demands and unpredictable pressures."    
+        },
+        "title": "Resilience Assessment",
+        "button": "Take the resilience assessment",
+        "start": "Start",
+        "continue": "Continue",
+        "previous": "Previous",
+        "next": "Next",
+        "finish": "Finish",
+        "back": "Back",
+        "introduction": "These six questions will help you identify the factors affecting your complete well-being. As you review the six questions, reflect on how you have felt through the past 1-2 weeks to help you answer. This assessment will provide insight into how you may be approaching the situations you are currently facing and highlight areas you might want to focus your work on right now!",
+        "explain": "Your resilience, or ability to prepare yourself proactively for ongoing demands and unpredictable pressures, is made up of 7 wellness domains that contribute to your overall wellbeing. Looking back on your life over the past 1-2 weeks, how would you rank the demands on each of these contributors to your total health? Rank each based on where you feel you could use additional resources and support to strengthen that aspect of your health.",
+        "body": {
+            "0": "How are you doing? Fine is never the full story. There are seven wellness domains to your complete well-being. These include habits, physical, purpose/meaning, work, mental, surroundings, and social contributors to your overall health. Check in with yourself and take stock of how these factors are affecting your total health.",
+            "1": "Your answers to these questions will provide you with personalized resources to help you strengthen your resilience over time.",
+            "2": "Keep track of your resilience and monitor changes over time. As you bring your awareness to your proactive work to strengthen your mental and emotional fitness in these areas, your ability to weather ongoing demands and unpredictable pressures will increase, as well."
+        },
+        "lastAssessment": {
+            "0": "In your last assessment, you indicated you could use extra help in the ",
+            "1": "realms. Click on the corresponding wellness domain to find tools and tips for building your resilience in those areas."
+        },
+        "tableHeaders": {
+            "0": "Score",
+            "1": "Alert",
+            "2": "Date",
+            "3": "View",
+            "4": "Delete"
+        },
+        "alert": {
+            "title": "Your result",
+            "titles": {
+                "reactive": "Reactive",
+                "inthemoment": "In The Moment",
+                "proactive": "Proactive"
+            },
+            "preDescription": "This brief questionnaire assesses our resilience, meaning the ability to bounce back or recover from stress. Based on your assessment today, your resilience is ",
+            "descriptions": {
+                "reactive": "Based on your responses today, you are reacting to demands on your mental well-being. You are facing some very real challenges and stressors, and they are finding their way in to affect you. Just like physical immunity, you can take some steps to build your mental fitness routines to strengthen your natural supports. Take a breath, and allow yourself some space. This is manageable. Start with taking a small step forward to focusing on your well-being. Take 5 minutes to review the tools and resources that seem most important to you today, and check back in frequently for new tools and resources chosen specifically for you!<br><br>Navigate to the next screen to learn more about how you can strengthen your resilience in different aspects of your life.",
+                "inthemoment": "You're on the right track! You are on the right track to prioritizing your mental well-being and developing skills to help you navigate challenging and stressful situations and environments. By logging on, tapping in and checking up with yourself, you are making time to acknowledge your needs honestly. The work you are doing today is helping you to strengthen your mental supports to meet ongoing demands and unpredictable pressures. You are on the way to building these skills! Make some time to review our resources and tools to continue adding to your toolbox of well-being and resilience!",
+                "proactive": "You’re doing it! You are taking a proactive approach to develop skills to help you navigate the unexpected. You’re making your mental well-being a priority and setting habits that will help you in the future. Keep going! Based on your responses today, your resilience levels are indicating that you have highly developed skills that are helping you navigate challenging and stressful situations and environments. While you are demonstrating these high levels today, we would like to suggest taking a look at our different resources and tools to learn even more about how you can continue to maintain your resilience!"
+            }
+        },
+        "resilienceResult": {
+            "title":"Your resilience assessment result",
+            "subTitle":  "Your result",
+            "explain": {
+                "0": "This brief questionnaire assesses our resilience, meaning the ability to bounce back or recover from stress. Based on your assessment today, your resilience is",
+                "1": "  Navigate to the next screen to learn more about how you can strengthen your resilience in different aspects of your life."
+            }
+        }
+    },
+    "addiction": {
+        "title": "Addiction & substance abuse",
+        "start": "Start",
+        "continue": "Continue",
+        "previous": "Previous",
+        "next": "Next",
+        "finish": "Finish"
+    },
+    "addictionassessment": {
+        "title": "Addiction assessment"
+    },
+    "contact": {
+        "title": "Emergency Contact",
+        "subtitle": "For Emergencies",
+        "need": "Need Help?",
+        "body": {
+            "0": "In case of emergency, please ",
+            "1": "call 911 immediately"
+        },
+        "profesionals": "24/7, free and confidential support for people in distress, prevention and crisis resources for you and your loved ones, and best practices for professionals.",
+        "call": "Call 911",
+        "popTitle": "Call",
+        "popup911": "Are you sure you want to dial 911?",
+        "popupEmergencyHotline": "Are you sure you want to dial the suicide/emergency hotline?",
+        "popupEmergencyTextVeteran": "Are you sure you want to dial the Veteran and Family Support Line?"
+    },
+    "setting": {
+        "title": "My Settings",
+        "name": "Full Name",
+        "email": "Email",
+        "newPassword": "New Password",
+        "repeatPassword": "New Password (again)",
+        "access": "My access code",
+        "accessText": "Enter the access code for your school or work and get complete access to all of WellTrack's' features.",
+        "pair": "Paired with organization",
+        "paired": "Your account is currently paired with ",
+        "notifications": "My notifications",
+        "disconnect": "Disconnect from organization",
+        "sendNotifications": "Send me MoodCheck reminders",
+        "notificationWellnessTracker": "Wellness Tracker",
+        "notificationWellnessNotifications": "Wellness Notifications",
+        "myNotification": "My notifications",
+        "chooseOrganization": "Choose your campus",
+        "save": "Save",
+        "popups": [
+            {
+                "title": "Oops!",
+                "body": "Names and email cannot be left blank"
+            },
+            {
+                "title": "Oops!",
+                "body": "Passwords must match."
+            },
+            {
+                "title": "Success",
+                "body": "Your profile has been updated."
+            },
+            {
+                "title": "Oops!",
+                "body": "You forgot to enter an access code."
+            },
+            {
+                "title": "Success",
+                "body": "Your account has been paired with "
+            },
+            {
+                "title": "Success",
+                "body": "Your account has been disconnected"
+            },
+            {
+                "title": "Error",
+                "body": "A problem occured disconnecting from organization"
+            },
+            {
+                "title": "Error",
+                "body": "Error updating your preferences. Please try again."
+            },
+            {
+                "title": "Error",
+                "body": "Please enter either an access code or an email address."
+            },
+            {
+                "title": "Error",
+                "body": "Both fields are filled. Remove either the access code or the email."
+            },
+            {
+                "title": "Success",
+                "body": "Your organization has been associated."
+            },
+            {
+                "title": "Success",
+                "body": "Please check your email to confirm your new email address ."
+            }
+        ]
+    },
+    "support": {
+        "title": "Technical Support Request Form",
+        "help": "How can we help?",
+        "section": "Where did you run into the problem?",
+        "hintsection": "Feel free to tell us the section or a link to the page.",
+        "hintdescription": "Please be as specific as possible. Basically, tell us what steps we need to take to reproduce the problem, what you expected to happen and what actually happened.",
+        "name": "Name",
+        "email": "Email",
+        "description": "Please describe in detail what happened.",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "popups": [
+            {
+                "title": "Oops!",
+                "body": "Please fill in the details of the problem."
+            },
+            {
+                "title": "Oops!",
+                "body": "Name cannot be left blank."
+            },
+            {
+                "title": "Oops!",
+                "body": "Email cannot be left blank."
+            },
+            {
+                "title": "Error",
+                "body": "Invalid email address."
+            },
+            {
+                "title": "Success",
+                "body": "We receive your request. Thank you."
+            },
+            {
+                "title": "Error",
+                "body": "Something went wrong sending the request. Please try again later."
+            }
+        ]
+    },
+    "invite": {
+        "share": "Ask for sharing data",
+        "msg": "Write a personalized message for your invite",
+        "send": "Send Invite",
+        "userSubscribe": {
+            "title": "Invite a Counselor",
+            "body": {
+                "0": "Sharing data with your counselor will improve the quality of your follow-up meetings and treatment. If you are currently working with a counselor, tell him or her about WellTrack and then invite your counselor to view your data online.",
+                "1": "By inviting a counselor you understand that that individual will be able to view all of the information you enter into WellTrack and you agree to share your data with your counselor."
+            }
+        },
+        "executive": {
+            "title": "Invite an executive",
+            "body": "Add an executive to your organization"
+        },
+        "professional": {
+            "title": "Invite a user to Welltrack",
+            "titleShare": "Invite an existing user to share",
+            "body": "As a professional, you can invite users to Welltrack and ask them to share their progress with you. Enter their email and they will receive an invitation to join your network.",
+            "bodyShare": "As a professional, you can invite an existing user to share their data with you. Enter their email address and they will receive an invitation to share."
+        },
+        "orgAdmin": {
+            "title": "Grow your team and add a professional",
+            "body": "As an executive, you can invite users to Welltrack and grow your network. Enter their email and they will receive an invitation to join your network."
+        },
+        "admin": {
+            "title": "Invite a",
+            "types": [
+                {
+                    "text": "User",
+                    "type": "userinvite"
+                },
+                {
+                    "text": "Professional",
+                    "type": "proinvite"
+                },
+                {
+                    "text": "Executive",
+                    "type": "executiveinvite"
+                },
+                {
+                    "text": "Admin Professional",
+                    "type": "adminprofessional"
+                },
+                {
+                    "text": "Admin Executive",
+                    "type": "adminexecutive"
+                }
+            ]
+        },
+        "sent": "Email sent!",
+        "receive": "You will receive an email notification when the user accepts or rejects your invitation.",
+        "thanks": "Thank you for helping more people on their track wellness",
+        "popups": {
+            "error": "Error",
+            "blank": "Enter the email of the user that you would like to send an invitation to.",
+            "select": "You must select a user type"
+        }
+    },
+    "moodcheckHistory": {
+        "title": "MoodCheck History",
+        "on": "on",
+        "submitted": "Submitted @ ",
+        "feeling": "You were feeling",
+        "activity": "You were",
+        "people": "You were with",
+        "place": "You were at",
+        "notes": "Notes:",
+        "ok": "Ok!"
+    },
+    "sync": {
+        "title": "Sync with a counselor",
+        "body": "Sharing data with your counselor will improve the quality of your follow-up meetings and treatment. If your counselor has asked you to share your data, the request will appear below and you can accept or decline the request.",
+        "bodySubscribe": "Sharing data with your counselor will improve the quality of your follow-up meetings and treatment. Be sure to discuss this with your counselor before you send them a request to Sync your data.",
+        "subscribe": "Subscribe",
+        "subscribeorAssociate": "Subscribe or associate",
+        "headers": {
+            "0": "Name",
+            "1": "Title",
+            "2": "Email"
+        },
+        "usersSharingHeader": "Users that are sharing",
+        "synchedHeader": "Synched Counselor(s)",
+        "pendingHeader": "Pending invitation(s)",
+        "synced": "Synced",
+        "pending": "Sync Pending",
+        "off": "Off",
+        "on": "On",
+        "noneFound": "No counselors were found.",
+        "noneSynched": "No counselors are currently synched",
+        "popup": {
+            "errortitle": "Error",
+            "successtitle": "Success",
+            "fetch": "Error fetching counselors.",
+            "pair": "Error pairing/unpairing with counselor. Please try again.",
+            "confirmCancel": "Are you sure you want this counselor to stop viewing your shared progress.",
+            "acceptError": "There was an error accepting this invitation. Please try again.",
+            "rejectError": "There was an error declining this invitation. Please try again.",
+            "waiting": "Waiting for the counselor to approve your request."
+        },
+        "syncButton": "Sync with Counselor",
+        "none": "None",
+        "cancelText": "Cancel",
+        "cancel": "Cancel",
+        "accept": "Accept",
+        "reject": "Decline",
+        "syncwCounselor": "Sync with a counselor"
+    },
+    "userListing": {
+        "title": "User Listing",
+        "invitationsTitle": "Invitations Sent",
+        "invite": "Invite a User",
+        "inviteNew": "Invite New User",
+        "inviteShare": "Invite User to Share Progress",
+        "inviteSubscribe": "Invite user to subscribe",
+        "headers": {
+            "0": "Name",
+            "1": "Last logged in",
+            "2": "Email",
+            "3": "Organization",
+            "4": "User Type",
+            "5": "Alerts",
+            "6": "Email",
+            "7": "Reminders",
+            "8": "Status",
+            "9": "Share?",
+            "10": "Resend"
+        },
+        "view": "View details",
+        "noneFound": "No users were found. Invite a user and request to share.",
+        "noneFoundnoShare": "Invite a user to join Welltrack.",
+        "noneFoundSubscribe": "No users were found. Invite a user to subscribe.",
+        "noneInvites": "No invites have been sent",
+        "resendInvitation": "Resend invitation",
+        "reminders": "Reminder(s)",
+        "deleteInvitation": "Delete",
+        "removeInvitation": "Remove invitation",
+        "popup": {
+            "errortitle": "Error",
+            "successtitle": "Success",
+            "success": "The reminder was sent"
+        },
+        "statuses": {
+            "sent": "Sent",
+            "created": "Created",
+            "rejected": "Declined",
+            "accepted": "Accepted"
+        },
+        "delete": "Delete",
+        "disable": "Disable",
+        "approve": "Approve"
+    },
+    "userDetails": {
+        "schedule": "Schedule an appointment",
+        "back": "Return back to list",
+        "last": "last 30 days",
+        "bad": "Bad mood Alerts",
+        "scored": "Scored low on Moodchecks",
+        "more": "View more",
+        "latestAct": "Latest Activity",
+        "latestMood": "Latest Moodchecks",
+        "average": "Average Moodcheck rating",
+        "neverLoggedIn": "Has never logged in",
+        "none": "None",
+        "organization": "Organization",
+        "userType": "User Type",
+        "noneFound": "No user activity found",
+        "cancelSharing": "Cancel Sharing",
+        "popup": {
+            "cancelSharing": "Do you want to stop viewing this user's progress.",
+            "success": "Sharing with this user has been canceled",
+            "successtitle": "Success",
+            "errortitle": "Error",
+            "error": "There was an issue with the request to stop sharing. Please try again."
+        }
+    },
+    "organizationInfo": {
+        "title": "Organization Information",
+        "save": "Save",
+        "saveOrganizationInformation": "Save Organization Information",
+        "saveEmergencyContact": "Save Emergency Contact",
+        "name": "Name",
+        "subdomain": "Subdomain",
+        "allowedDomains": "Allowed Domains",
+        "address": "Address",
+        "email": "Email",
+        "phone": "Phone",
+        "website": "Website",
+        "emergencycontact": "Emergency Contact",
+        "description": "Description",
+        "resources": "Resources",
+        "city": "City",
+        "country": "County",
+        "edit": "Edit Information",
+        "emergency": "Emergency Contact Information",
+        "default": "Default message",
+        "invite": "Invite a professional",
+        "professional": "Organization professionals",
+        "headers": {
+            "0": "Name",
+            "1": "Role",
+            "2": "Email",
+            "3": "Status"
+        },
+        "counselor": "Counselor",
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "noneFound": "No professionals were found.",
+        "placeholders": [
+            "Organization Name",
+            "Main Organization Email",
+            "Your Phone Number",
+            "Your Address",
+            "Your Website Address"
+        ],
+        "popups": [
+            "Error",
+            {
+                "title": "Success",
+                "body": "User has been deactivated."
+            },
+            {
+                "title": "Success",
+                "body": "User has been reactivated."
+            },
+            {
+                "title": "Success",
+                "body": "Your organization has been updated."
+            },
+            {
+                "title": "Oops!",
+                "body": "The emergency contact field must be filled in."
+            },
+            {
+                "title": "Oops!",
+                "body": "All fields must be filled in."
+            }
+        ],
+        "editResources": "Edit Resources",
+        "updateResources": "Update"
+    },
+    "organizationListing": {
+        "title": "Organizations",
+        "headers": {
+            "0": "Name",
+            "1": "Subdomain",
+            "2": "Known Domains",
+            "3": "Active"
+        },
+        "create": "Create Organization",
+        "view": "View",
+        "edit": "Edit",
+        "noneFound": "No organizations were found.",
+        "executive": "Executives",
+        "professional": "Professionals",
+        "jointprofessionals": "Joint Professionals",
+        "executiveprofessional": "Executive Professionals",
+        "user": "Users",
+        "activate": "Activate",
+        "deactivate": "Deactivate",
+        "disabledOrgTitle": "Disabled Organization"
+    },
+    "organizationView": {
+        "back": "Return to organization list",
+        "headers": {
+            "0": "Stats",
+            "1": "Activity",
+            "2": "Members",
+            "3": "Access Codes",
+            "4": "Challenges"
+        },
+        "code": {
+            "button": "Create Access Code",
+            "headers": {
+                "0": "Code",
+                "1": "Delete"
+            },
+            "delete": "Delete"
+        },
+        "noUsersfound": "No users found",
+        "noAccessCodesFound": "No access codes found"
+    },
+    "dashboardExecutive": {
+        "title": "General User Data",
+        "all": "All users together",
+        "total": "Total users",
+        "active": "Active users",
+        "moodcheckUsers": "MoodCheck Users",
+        "returningUsers": "Returning Users",
+        "invitesSent": "Invites Sent",
+        "invitesAccepted": "Invites Accepted",
+        "men": "Men",
+        "women": "Women",
+        "unconfirmed": "Unconfirmed",
+        "average": "Average User Mood",
+        "bad": "Bad mood Alerts",
+        "low": "Scored low on moodchecks",
+        "sync": "User synced with a counselor",
+        "submissions": "Submissions",
+        "signupsandlogins": "Signups and Logins",
+        "signups": "Signups",
+        "logins": "Logins",
+        "last": "Last",
+        "days": "days",
+        "thereare": "There are",
+        "completedassessments": "completed Wellness Assessments.",
+        "submissionshigh": "submissions that are classified as high to very high.",
+        "scoredhigh": "Scored High+",
+        "users": "Users",
+        "usersGotBetter": "of all users got better",
+        "depression": "Depression",
+        "anxiety": "Anxiety",
+        "stress": "Stress",
+        "first": "First",
+        "filters": {
+            "last30days": "Last 30 days",
+            "last60days": "Last 60 days",
+            "last90days": "Last 90 days",
+            "alltime": "All time",
+            "custom": "Custom"
+        },
+        "graphs": {
+            "general": {
+                "title": "General Mood Graph",
+                "last": "Last 30 days",
+                "good": "Good Mood",
+                "normal": "Normal Mood",
+                "bad": "Bad Mood"
+            },
+            "dasavg": {
+                "extremelysevere": "Very High",
+                "severe": "High",
+                "moderate": "Moderate",
+                "mild": "Mild",
+                "normal": "Normal"
+            },
+            "das": {
+                "title": "Average Wellness changes"
+            },
+            "better": {
+                "title": "People that got better",
+                "improved": "Improved on ",
+                "depression": "depression",
+                "anxiety": "anxiety",
+                "stress": "stress"
+            },
+            "assessmentresults": {
+                "title": "Wellness Assessment results",
+                "depression": "Depression",
+                "anxiety": "Anxiety",
+                "stress": "Stress"
+            }
+        }
+    },
+    "datePicker": {
+        "clear": "Clear",
+        "today": "Today",
+        "select": "Select Year"
+    },
+    "results": {
+        "title": "Your Quiz Results",
+        "well": "Well done! You really know your stuff. This will be helpful once you begin using the Thought Diary and will help you to make sense of the actvating events you experience.",
+        "ok": "Not bad, but you may want to revisit some of the content just to review it a second time. You'll need to use these terms once you begin working with the Thought Diary.",
+        "bad": "Oops, looks like it's a good idea to go back and review chapter 5 of the depression module. It's helpful to have a good handle on distinguishing these thought patterns when you begin using the Thought Diary.",
+        "review": "We recommend that you review chapter 5 of the depression module before moving on. ",
+        "finish": "Finish"
+    },
+    "challenges": {
+        "title": "Challenges",
+        "back": "Back",
+        "active": "Active Challenges",
+        "noActive": "There are currently no active challenges",
+        "upcoming": "Upcoming Challenges",
+        "noUpcoming": "There are no upcoming challenges at this time.",
+        "noFinished": "There are no past challenges.",
+        "noChallenges": "There are no challenges to display. As soon as there's a challenge available, it will appear here.",
+        "past": {
+            "title": "Past Challenges",
+            "teams": "Teams: ",
+            "number": "Number of Moodchecks",
+            "total": "Total: ",
+            "totalScore": "Total MoodChecks per day ",
+            "headers": {
+                "team": "Participating Teams",
+                "avg": "Particpation Avg",
+                "total": "Total Score"
+            },
+            "days": [
+                "Mon",
+                "Tue",
+                "Wed",
+                "Thu",
+                "Fri"
+            ],
+            "how": "How it works?"
+        },
+        "description": "Description",
+        "moodcheckChallenge": "Moodcheck Challenge",
+        "noScoring": "No MoodChecks to show",
+        "totalScoreperDay": "Total MoodChecks per day",
+        "teams": "Teams",
+        "emailCopy": {
+            "upcomingEmailUserGeneral": "<p>The [challenge_name] is only 7 days away! [org_name] invites you to take part in the challenge from [challenge_start] to [challenge_end]!</p><p>You’ve already created a WellTrack account. Joining the challenge will give you a fun way to track your mood and activity and will give you an easy way to begin the conversation around mental wellness to help reduce the stigma associated with mental health.</p>",
+            "startEmailUserGeneral": "<p>The [challenge_name] has started.</p><p>Be sure to check your mood up to 2 times each day using MoodCheck. The goal of the contest is to increase awareness around mental health issues and to help you become mindful of how your moods are related to activities. Discussing the [challenge_name] with friends or family is a great way to start the conversation.</p>",
+            "midEmailUserGeneral": "<p>We're halfway through the [challenge_name], keep up the momentum! You can still sign up for the [challenge_name] if you haven't already by going to your mobile app or web app and clicking on the challenges link.</p>",
+            "endEmailUserGeneral": "<p>Thank you for participating in the [challenge_name]! The momentum created around student mental wellness on campus is encouraging.</p><p>We hope that you continue using the tools in WellTrack which include MoodCheck, Thought Diary, Activity Scheduler, etc., post-Challenge.</p> ",
+            "upcomingEmailCounselorGeneral": "Beginning [startdate], we will be launching the [name]. Enclosed you will find various promotional items for you to use to spread the word about the upcoming challenge. The goal is to engage as many students on your campus as possible. The aggregate data will be provided on the site along with regular updates. The more participation you can generate, the better chance you will have of winning the challenge and taking home the [challenge_name] title on [enddate]</p>",
+            "startEmailCounselorGeneral": "<p>The [challenge_name] has started. Monitor how your school is doing by going to the challenges section in Welltrack.</p>",
+            "midEmailCounselorGeneral": "<p>We're entering mid-way point of the [challenge_name], keep up the momentum! Have you been submitting 2 MoodChecks every day? Make sure you do this to tap into the Streak Bonus, every point counts! Check out the challenges section of the app to view how your university is doing.</p>",
+            "endEmailCounselorGeneral": "<p>Thank you for supporting the [challenge_name]! Today marks the last day of the event but we hope to keep the momentum going. Check back on Monday to see if your campus won!</p>"
+        }
+    },
+    "select": {
+        "place": "Select from the list, or type to add your own",
+        "pleasure": [
+            "Soak in the bathtub",
+            "Go for a walk",
+            "Write in a journal or blog",
+            "Playing an instrument",
+            "Eat a special treat",
+            "Watch a funny movie or TV show",
+            "Play with a pet",
+            "Create some art",
+            "Practice an instrument",
+            "Go for a leisurely drive",
+            "Have a massage",
+            "Do a puzzle",
+            "Dress up nicely",
+            "Take photos",
+            "Buy flowers",
+            "Visit a park or garden",
+            "Go to the Library",
+            "Plan a vacation",
+            "Try a new recipe",
+            "Learn a new dance",
+            "Go for a bike ride",
+            "Enjoying the outdoors"
+        ],
+        "social": [
+            "Call a friend",
+            "Do volunteer work",
+            "Drinking (coffee/tea/etc)",
+            "See a movie with family or a friend",
+            "Go out to dinner",
+            "Give a gift",
+            "Reminisce with friends or family",
+            "Play cards or a board game",
+            "Host a dinner or barbecue",
+            "Attend a community class",
+            "Play a team sport",
+            "See live music with family or a friend",
+            "Visit an art cafe with family or a friend",
+            "Attend a festival with family or a friend",
+            "Go dancing with a friend",
+            "Play a video game with family or a friend",
+            "Visit a farmer's market with family or a friend"
+        ],
+        "achievement": [
+            "Tend plants",
+            "Exercise",
+            "Pay debts",
+            "Household repairs",
+            "Cook or bake",
+            "Clean or tidy the kitchen",
+            "Clean or tidy a bathroom",
+            "Clean or tidy a living area",
+            "Clean or tidy a bedroom",
+            "Do a load of laundry",
+            "Groom or clean a pet",
+            "Declutter a small area",
+            "Return library books",
+            "Organize photos",
+            "Yard work",
+            "Drop off recycling",
+            "Write a thank-you note"
+        ],
+        "add": "Add a new activity",
+        "hit": "Type your new activity in below, then hit enter",
+        "hide": "Click to remove popup"
+    },
+    "resources": {
+        "title": "Resources",
+        "gotosection": "Go to section",
+        "go": "Go",
+        "learnmore": "Learn More",
+        "recommendedResources": "Recommended Resources",
+        "editResourse": "Edit Resource"
+    },
+    "activity": {
+        "headers": {
+            "0": "Message",
+            "1": "User",
+            "2": "Organization",
+            "3": "Date"
+        }
+    },
+    "userProfile": {
+        "back": "Return to user list"
+    },
+    "payment": {
+        "interactive": "Interactive Self-Help Therapy",
+        "takeCharge": "Take charge of your mental health using WellTrack. Our therapeutic tools will help you stay on the path to improved mental health.",
+        "tryWelltrack": "Try WellTrack Today",
+        "WelltrackIs": "WellTrack is for Everyone",
+        "courses": "Courses",
+        "welltrackProvides": "WellTrack provides self-help therapy for stress, anxiety and depression",
+        "tools": "Tools",
+        "weProvide": "We provide therapeutic tools that you can use to change your thoughts and behaviour",
+        "sharing": "Sharing",
+        "welltrackisGreat": " WellTrack is a great addition to in-person therapy, allowing you to share your data with your therapist",
+        "pricing": "Pricing",
+        "subscription": "A subscription to WellTrack includes:",
+        "featuresTitle": "WellTrack Features",
+        "features": {
+            "moodcheck_title": "MoodCheck",
+            "moodcheck_description": "Your daily mood tracker",
+            "courses_title": "Mental Health Courses",
+            "courses_description": "Learn to tackle stress, anxiety and depression",
+            "zenroom_title": "The Zen Room",
+            "zenroom_description": " Practice guided relaxation",
+            "thoughtDiary_title": "Thought Diary",
+            "thoughtDiary_description": "Monitor unhelpful thinking styles",
+            "activityScheduler_title": "Activity Scheduler",
+            "activityScheduler_description": "Plan events that help increase your mood",
+            "funAchievement_title": "Fun and Achievement",
+            "funAchievement_description": "Evaluate your activities",
+            "wellness_title": "Wellness Assessments",
+            "wellness_description": "Measure your levels of stress, anxiety and depression",
+            "dataSharing_title": "Data Sharing",
+            "dataSharing_description": "Share your data with your therapist if you are receiving traditional therapy"
+        },
+        "numberPeople": "Over One Million People Have Access",
+        "psychologists": "Psychologists in university counselling centres are using WellTrack to provide self-help therapy to students on campus.",
+        "copyright": "Copyright WellTrack"
+    },
+    "paymentform": {
+        "choosePayment": "Choose a payment option",
+        "monthly": "Monthly recurring subscription",
+        "yearly": "Yearly recurring subscription",
+        "perMonth": " Per month billed annually or $5 dollars billed month-to-month",
+        "promoCode": "Promo code",
+        "apply": "Apply",
+        "lumino": "Lumino Health Offer",
+        "lumino50": "50% off for a limited time",
+        "50": "Get 50% the normal subscription rate for a limited time only",
+        "loginInformation": "Login Information",
+        "paymentInformation": "Payment Information",
+        "cardholder": "Cardholder Name",
+        "billingInfo": {
+            "title": "Billing Information",
+            "address": "Address",
+            "city": "City",
+            "province": "Province/State",
+            "country": "Country",
+            "postalCode": "Postal Code/Zip Code",
+            "phone": "Phone"
+        }
+    },
+    "videoSharing": {
+        "endSession": "End session"
+    },
+    "unsubscribe": {
+        "title": "YOU WILL BE MISSED",
+        "message": "You have been unsubscribed from Welltrack email list."
+    },
+    "favourite": {
+        "popups": {
+            "success": "Success",
+            "error": "Error"
+        },
+        "title":"Title",
+        "type":"Type",
+        "name":"Name"
+    },
+    "config":{
+        "section" : "Section",
+        "setting":"Setting",
+        "key":"Key",
+        "value":"Value",
+        "delete":"Delete",
+        "edit":" Edit",
+        "createConfig":"Create Config"
+    }
+}

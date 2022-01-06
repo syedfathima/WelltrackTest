@@ -1,0 +1,11 @@
+#page-organization-edit {
+    h3{
+        font-weight:800;
+    }
+}
+
+// for overriding material input padding
+.wt-mat-form-field .mat-form-field-infix {
+	padding-top: 1em;
+	padding-bottom: 0.8em;
+}

@@ -1,0 +1,133 @@
+@import "../../../../theme/_welltrack.variables.scss";
+
+$slider-padding: 24px;
+
+@keyframes throbbing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#moodcheck-wrapper {
+  position: relative;
+  margin: 10px auto 20px auto;
+  height: 180px;
+  width: 180px;
+  #arrow-left {
+    position: absolute;
+    top: 6px;
+    left: 40px;
+    z-index: 9999;
+    animation-name: throbbing;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+  #arrow-right {
+    position: absolute;
+    top: 6px;
+    right: 40px;
+    z-index: 9999;
+    animation-name: throbbing;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+}
+
+#mood-slider {
+  &.rs-animation .rs-transition {
+    -webkit-transition-duration: 0.1s;
+    /* Safari */
+    transition-duration: 0.1s;
+  }
+}
+
+#mood-icon {
+  width: 81px;
+  height: 81px;
+  margin: 0 auto;
+  margin-top: -132px - $slider-padding;
+  margin-bottom: 68px + $slider-padding;
+  position: relative;
+  z-index: 9000;
+
+  img {
+    width: 81px;
+    height: 81px;
+  }
+}
+p {
+  font-size: $font-size-md;
+  input {
+    display: inline-block;
+    margin-left: 20px;
+  }
+}
+
+#moodcheck-instructions {
+  margin-top: -30px;
+}
+
+input.single {
+  background-color: white !important;
+  margin: auto !important;
+  border-radius: 10px !important;
+  padding: 2px !important;
+  height: 30px !important;
+}
+
+#selected-mood {
+  margin: auto !important;
+  width: 300px !important;
+  i {
+    color: #cc4100;
+  }
+  input,
+  div {
+    display: inline-block;
+  }
+  input {
+    margin-right: 10px;
+  }
+  div {
+    margin-left: 10px;
+  }
+  .informational {
+    span {
+      margin-left: 10px;
+    }
+  }
+}
+
+@keyframes fivePhasesFadeIn {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+.fivePhasesFadeIn {
+  border: 2px solid #b2450c;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  animation-name: fivePhasesFadeIn;
+  animation-duration: 4s;
+}

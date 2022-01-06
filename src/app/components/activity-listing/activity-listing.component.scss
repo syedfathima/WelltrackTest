@@ -1,0 +1,8 @@
+@import "../../../theme/_welltrack.mixins.scss";
+
+.mat-spinner {
+   margin:auto;
+   -webkit-transform: translate(-50%, -50%);
+   -ms-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+}

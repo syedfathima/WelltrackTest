@@ -1,0 +1,197 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+.header-holder {
+    padding: 24px;
+}
+
+.card-container {
+    @include breakpoint(sm) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+}
+
+
+
+.video-card {
+    z-index: 0;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -ms-flex-preferred-size: calc(50% - 15px);
+    flex-basis: calc(50% - 15px);
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-top: 30px;
+    padding-bottom:20px;
+    position:relative;
+    .rate-video{
+        position:absolute;
+        bottom:10px;
+        right:10px;
+    }
+    .video-caption {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 20px;
+    }
+    .video-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    
+    .video-status {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .video-still {
+        background-color: #f9f8f5;
+        padding-bottom: 56%;
+        position: relative;
+        height: 0;
+    }
+    
+    .video-title {
+        margin: 0;
+        font-size:$font-size-xxl;
+    }
+    .video-title{
+        color: $color-text;
+        font-weight:bold;
+    }
+    .description{
+        padding:0px 20px; 
+        font-size:$font-size-lg;
+        p{
+            font-size:$font-size-lg;
+        }
+    }
+    .attachments{
+        padding:0px 20px; 
+        a{
+            margin:20px 0px;
+            display:block;
+        }
+    }
+}
+
+#courses-listing-page {
+    .anxiety {
+        @extend .courseanxiety; 
+    }
+    .depression {
+        @extend .coursedepression; 
+    }
+    .phobia {
+        @extend .coursephobia; 
+    }
+    .disaster {
+        @extend .coursedisaster; 
+    }
+    .course-section {
+        margin-top: 40px;
+    }
+    .page-header-body {
+        padding: 0;
+    }
+    .page-section-header {
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        p {
+            max-width: 80%;
+        }
+    }
+    @include breakpoint(xs) {
+        .page-section-buttons {
+            float: none;
+        }
+        .onoffswitch-wrapper {
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+    }
+    .page-section-content {
+        .panel {
+            background-color: white;
+            .panel-heading {
+                height: 176px;
+                color: white;
+            }
+            .panel-body {
+                padding: 0px 20px;
+                .byline {
+                    padding: 10px 0px;
+                    .chapter {
+                        display: inline-block;
+                        margin-right: 20px;
+                        width: 120px;
+                    }
+                    .duration {
+                        display: inline-block;
+                        width: 120px;
+                    }
+                }
+            }
+            .panel-footer {
+                background-color: white;
+                border-top: 1px solid #ccc;
+                padding: 0px 20px;
+            }
+   
+        }
+        .column-header {
+            opacity: 0.5;
+            color: #444444;
+            font-family: ".SF NS Text";
+        }
+        padding: 24px;
+        padding-top: 18px;
+    }
+}
+
+.completed {
+    img {
+        display: inline-block;
+        height: 16px;
+        width: 16px;
+    }
+    .img-holder {
+        height: 27px;
+        width: 27px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        margin-right: 4px;
+        background-image: url(../../../assets/img/icons/check.png);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+}
+
+.page-section {
+    padding: 0px;
+}

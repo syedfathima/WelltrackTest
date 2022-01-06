@@ -1,0 +1,24 @@
+<h1 id="section-title" class="wt-access">Choose your WellTrack activity</h1>
+<a
+	class="hidden-xs"
+	tabindex="0"
+	id="skip-nav"
+	alt="Skip navigation"
+	(click)="menuService.onSkipNav()"
+	(keypress)="menuService.onSkipNav()"
+	>Skip nav</a
+>
+<a
+	tabindex="0"
+	class="close-nav visible-xs"
+	(click)="menuService.onNavClose()"
+	(keypress)="menuService.onNavClose()"
+	>Close</a
+>
+<screen-header id="menu-header"></screen-header>
+<language-dropdown
+	[color]="'white'"
+	[page]="'inside'"
+	*ngIf="!menuService.disableLanguage"
+></language-dropdown>
+<organization-dropdown></organization-dropdown>

@@ -1,0 +1,51 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+
+#page-assessment {
+    label {
+        width:auto; 
+    }
+   
+}
+.row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.column {
+    display: table-cell;
+}
+.preview{
+    &.video-preview{
+        max-width:400px;
+        height:auto;
+    }
+    &.image-preview{
+        img{
+            max-width:400px;
+            height:auto;
+        }
+    }
+}
+.assesment-video{
+    &.--d-flex{
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+}
+.resource-desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 100%;
+    flex-direction: column;
+    padding-top: 10px;
+    order: 2;
+    p{
+        margin:0;
+    }
+}
+
+ 

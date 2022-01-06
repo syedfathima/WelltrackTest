@@ -1,0 +1,108 @@
+<div class="form-modal">
+  <mat-dialog-content>
+	<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+		aria-label="Close organization edit form">
+		<img src="./assets/img/icons-svg/close-icon.svg">
+	</a>
+    <div class="img-wrapper">
+      <div class="clearfix"></div>
+      <div class="title-wrapper">
+        <h1>Edit user</h1>
+      </div>
+    </div>
+	<popup-loader *ngIf="!isloaded"></popup-loader>
+    <div class="form-wrapper" *ngIf="isloaded">
+		<form
+			novalidate
+			[formGroup]="userEditForm"
+			(ngSubmit)="doSave()"
+		>
+			<mat-form-field>
+				<label for="fullName">Full Name</label>
+				<input type="text" matInput class="wt-mat-input" formControlName="fullName" id="fullName" />
+				<mat-error
+					*ngIf="
+						f.fullName.touched &&
+						f.fullName.errors?.required
+					"
+				>
+					Fullname is required
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<label for="fullName">Email</label>
+				<input matInput class="wt-mat-input" type="text" formControlName="email" id="email" />
+				<mat-error
+					*ngIf="
+						f.email.touched &&
+						!f.email.valid
+					"
+				>
+					Invalid email
+				</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<label for="orgId" translate>Status</label>
+				<mat-select formControlName="status">
+					<mat-option value="approved">Approved</mat-option>
+					<mat-option value="disabled">Disabled</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+		<!--
+		<div class="icon-input">
+			<img alt="Password" *ngIf="password && password.length >= 6" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp" item-content>
+			<input type="password" placeholder="{{inputs[2]}}" [(ngModel)]="password" name="password" />
+		</div>
+		-->
+
+		<div class="icon-input" style="margin:10px 0px;">
+			<label>Receive Notifications?</label>
+			<mat-checkbox value="" formControlName="notificationOn"></mat-checkbox>
+		</div>
+
+		<mat-form-field>
+			<label for="orgId" translate>Organization</label>
+			<mat-select formControlName="orgId" id="orgId">
+				<mat-option [value]="null">None</mat-option>
+				<mat-option *ngFor="let org of organizations" [value]="org.id">{{org.name}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<label for="timezone">Timezone</label>
+			<mat-select name="timezone" formControlName="timezone">
+				<mat-option value="" selected="selected">Select this user's timezone.</mat-option>
+				<mat-option *ngFor="let timezone of timezones" [value]="timezone.key">{{timezone.text}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<label for="orgId" translate>Role</label>
+			<mat-select formControlName="roleId">
+				<mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<p>
+			<mat-checkbox formControlName="lockedRole" translate>
+			<span translate>Lock role (useful in the case of sso)</span>
+			</mat-checkbox>
+		</p>
+
+		<div class="fixed-footer">
+			<button
+				tabindex="0"
+				class="btn-primary btn"
+				[ngClass]="{ active: userEditForm.invalid }"
+				[disabled]="userEditForm.invalid"
+			>
+				Save
+			</button>
+		</div>
+	  </form>
+    </div>
+  </mat-dialog-content>
+</div>

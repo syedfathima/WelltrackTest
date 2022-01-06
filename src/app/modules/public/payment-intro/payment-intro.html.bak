@@ -1,0 +1,119 @@
+<div id="payment-intro">
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-1 col-xs-12">
+          
+            <h1 class="text30 margintop40 text16 text-center" id="introline"> Start feeling better
+                <br> today</h1>
+            <p class="text-center margintop30">
+                Take charge of your mental health, decrease stress, anxiety or depression and track your moods with online evidence based
+                computerized therapy. </p>
+
+            <div class="watchvideo triggervideo">
+                Watch video </div>
+            <div class="text-center margintop40">
+                <a class="btn btn-green" routerLink="/register-payment">
+                    Start your journey </a>
+            </div>
+        </div>
+        <div class="col-md-5 hidden-xs">
+            <div class="text-center">
+                <img src="./assets/img/payments/hand_moodcheck.png">
+            </div>
+        </div>
+    </div>
+
+    <div id="facestrip">
+        <div class="container-fluid">
+        </div>
+    </div>
+
+    <div id="howitworks">
+        <div class="container-fluid">
+            <div class="col-md-4 col-md-offset-7 col-xs-12">
+                <img id="howitworks-header-bg" src="./assets/img/payments/howitworks.png">
+                <h1 id="howitworksbyline">How it works</h1>
+                <p class="purple">
+                    Welltrack delivers interactive therapy to students, faculty and staff through a computer, tablet or even a smartphone. It's
+                    easy to access, and easy to use - that's key to ensuring people aren't afraid to get the help they need.
+                </p>
+                <div style="clear:both;">&nbsp;</div>
+                <a class="btnlink margintop20" href="http://www.mywelltrack.com" target="_blank">Learn more</a>
+            </div>
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+
+
+    <div id="testimonial">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 nopadding" id="video">
+
+                </div>
+                <div class="col-md-4 col-xs-12 text-center" id="description">
+                    <img src="./assets/img/payments/memorialuniversity-logo.png">
+                    <h2>Shaveneel Nand, Graduated student</h2>
+                    <p>
+                        "I support and thank CAPS along with UCSC on pushing resources towards improving campus climate and student mental health.
+                        Welltrack is a great resource and may this be in the hands of more students and indivdiuals! Welltrack
+                        an be a positive reinforcement towards mental health challenges."" </p>
+                    <div class="watchvideo triggervideo">
+                        Watch video </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="onestepaway">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <a name="startjourney"></a>
+                <h1 class="text-center white">Just one step away from your journey </h1>
+                <div class="text-center margintop30 text14">
+                </div>
+
+                <form id="paymentStart" class="margintop65" novalidate="novalidate">
+                    <div class="form-group">
+                        <label for="fullname">Your name</label>
+                        <input name="Name" type="text" class="form-control" id="fullname" aria-describedby="fullname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your email</label>
+                        <input name="Email" type="text" class="form-control" id="email" aria-describedby="email">
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-green" routerLink="register-payment">
+                            Start your journey </a>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="videomodal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+
+                    </div>
+                    <div class="modal-body">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ucYk33nF588" frameborder="0" allowfullscreen=""></iframe>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+    </div>
+
+</div>

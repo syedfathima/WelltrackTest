@@ -1,0 +1,71 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+#page-theory {
+    .theorypanel {
+        border:none;
+        margin-bottom: 20px;
+        a{
+            margin:0px;
+        }
+        .panel-heading {
+            min-height: 248px;
+            color: white;
+            h3 {
+                padding-top: 0;
+                font-size: $font-size-title-xl;
+                font-weight:800;
+            }
+            p {
+                font-size: $font-size-xl;
+            }
+        }
+        .panel-body {
+            padding: 0px 20px;
+            background-color:white;
+            .byline {
+                height:40px;
+                line-height:40px;
+                .chapter {
+                    display: block;
+                    float:left; 
+                    margin-right: 20px;
+                    width: 120px;
+                }
+                .duration {
+                    display: block;
+                    float:right;
+                    width: 160px;
+                    text-align:right;
+                }
+                clear:both;
+            }
+        }
+        .panel-footer {
+            background-color: white;
+            border-top: 1px solid #ccc;
+            padding: 10px 10px;
+            .arrow {
+                position:absolute; 
+                right:15px;
+                top:9px;
+                width:34px;
+            }
+        }
+        
+        h1 {
+            @include breakpoint(xs) {
+                font-size: $font-size-title-slg;
+            }
+        }
+
+        .btn-grey{
+            border: 1px solid #B8B6AF;
+            position:relative;
+            padding:13px 18px;
+        }
+        .btn-grey:hover{
+            background-color: $color-text-light;
+        }
+  
+    }
+}

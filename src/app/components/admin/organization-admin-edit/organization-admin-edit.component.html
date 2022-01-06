@@ -1,0 +1,333 @@
+<div class="form-modal">
+
+	<mat-dialog-content>
+
+		<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+			aria-label="Close organization edit form">
+			<img src="./assets/img/icons-svg/close-icon.svg">
+		</a>
+		<div class="img-wrapper">
+			<div class="clearfix"></div>
+			<div class="title-wrapper">
+				<h1>{{title}}</h1>
+			</div>
+		</div>
+		<popup-loader *ngIf="!isLoaded"></popup-loader>
+		<div *ngIf="isLoaded">
+			<form novalidate [formGroup]="orgEditForm" (ngSubmit)="doSave()">
+				<my-tabs>
+					<my-tab [tabTitle]="'Basic Details'" *ngIf="userType==='admin'">
+						<div class="form-wrapper-80">
+							<mat-form-field class="wt-mat-form-field">
+								<mat-label for="organizationName">Name</mat-label>
+								<img alt="Full name" *ngIf="fullName" src="./assets/img/icons/check@2x.png"
+									class="check animated fadeInUp" item-content>
+								<input matInput class="wt-mat-input" type="text" formControlName="name"
+									id="organizationName" />
+								<mat-error *ngIf="f.name.touched && f.name.errors?.required">
+									The organization needs a name.
+								</mat-error>
+							</mat-form-field>
+
+							<mat-form-field>
+								<mat-label for="parentId" translate>Parent Org</mat-label>
+								<mat-select formControlName="parentOrgId" id="parentId">
+									<mat-option [value]="null">None</mat-option>
+									<mat-option *ngFor="let org of organizations" [value]="org.id">{{org.name}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+
+							<div class="icon-input">
+								<mat-checkbox formControlName="demoStatus" id="demoStatus"></mat-checkbox>
+								<label for="demoStatus" translate>Demo/Trial</label>
+							</div>
+
+							<div class="icon-input">
+								<mat-checkbox formControlName="active" id="active"></mat-checkbox>
+								<label for="active">Active</label>
+							</div>
+
+							<div>
+								<img [alt]="organization.name" *ngIf="organization.logoPath"
+									[src]="organization.logoPath"
+									style="max-width:300px; max-height:200px;height:auto;">
+							</div>
+							<div class="icon-input">
+								<label for="logo">Logo</label>
+								<input type="file" (change)="changeListener($event)" #input>
+							</div>
+
+
+							<mat-form-field class="wt-mat-form-field">
+								<mat-label>Address</mat-label>
+								<input matInput class="wt-mat-input" type="text" formControlName="address"
+									id="address" />
+							</mat-form-field>
+
+							<mat-form-field class="wt-mat-form-field">
+								<mat-label>Phone</mat-label>
+								<input matInput class="wt-mat-input" type="text" formControlName="phone" id="phone"
+									placeholder="(xxx) xxx-xxxx / xxx-xxxx,,x,,x,x" />
+								<mat-error *ngIf="f.phone.touched && !f.phone.valid">
+									Invalid phone number.
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field class="wt-mat-form-field">
+								<mat-label>Website</mat-label>
+								<input matInput class="wt-mat-input" type="text" formControlName="website"
+									id="website" />
+
+								<mat-error *ngIf="f.website.touched && !f.website.valid">
+									Invalid url
+								</mat-error>
+							</mat-form-field>
+							<mat-form-field>
+								<mat-label for="parentId" translate>Authentication Type</mat-label>
+								<mat-select #autheType formControlName="authenticationType" id="parentId">
+									<mat-option [value]="null">None</mat-option>
+									<mat-option *ngFor="let authType of authTypes" [value]="authType">{{authType}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<div *ngIf="autheType.value === 'oauth2-pkce'">
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label>Client Id</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="clientID" />
+								</mat-form-field>
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label>Redirect Url</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="redirectUrl" />
+								</mat-form-field>
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label>Authorize End Point Url</mat-label>
+									<input matInput class="wt-mat-input" type="text"
+										formControlName="authorizeEndPointUrl" />
+								</mat-form-field>
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label>Oauth End Point Url</mat-label>
+									<input matInput class="wt-mat-input" type="text"
+										formControlName="oauthEndPointUrl" />
+								</mat-form-field>
+							</div>
+							<mat-form-field class="wt-mat-form-field">
+								<mat-label for="organizationName">Protocall account reference ID</mat-label>
+								<input matInput class="wt-mat-input" type="text" formControlName="protocallRefId"
+									id="protocallRefId" />
+							</mat-form-field>
+							<div class="icon-input">
+								<label for="emergencyContact" translate>Emergency Contact</label>
+								<ckeditor formControlName="emergencyContact" [config]="config" id="emergencyContact">
+								</ckeditor>
+							</div>
+
+							<div class="icon-input">
+								<label for="description" translate>Description</label>
+								<ckeditor formControlName="description" [config]="config" id="description"></ckeditor>
+							</div>
+						</div>
+					</my-tab>
+
+					<my-tab [tabTitle]="'Protocall Helpline'" *ngIf="userType==='admin'">
+						<div class="form-wrapper-80">
+							<div id="protocall-helpline" formGroupName="contactGroup">
+								<h2>Protocall emergency contact information</h2>
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label for="protocallTelephone">Phone number</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="telephone"
+										id="protocallTelephone" placeholder="(xxx) xxx-xxxx / xxx-xxxx,,x,,x,x" />
+									<mat-error
+										*ngIf="contactGroup.controls['telephone'].touched && !contactGroup.controls['telephone'].valid">
+										Invalid emergency contact phone number.
+									</mat-error>
+								</mat-form-field>
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label for="protocallTitle">Title</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="title"
+										id="protocallTitle" />
+								</mat-form-field>
+
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label for="protocallDescription">Description</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="description"
+										id="protocallDescription" />
+								</mat-form-field>
+							</div>
+						</div>
+					</my-tab>
+
+					<my-tab [tabTitle]="'Enabled Courses'" *ngIf="userType==='admin'">
+						<div class="form-wrapper-80" formGroupName="courses">
+							<div id="coursesSection">
+								<h2>Enabled courses</h2>
+								<div *ngFor="let course of courseList.controls; let i = index;" [formGroupName]="i">
+									<mat-checkbox id="course-{{i}}" formControlName="enabled" class="course">
+									</mat-checkbox>
+									<label for="course-{{i}}">{{course.value.name}}</label>
+								</div>
+							</div>
+						</div>
+					</my-tab>
+
+					<my-tab [tabTitle]="'Settings'" *ngIf="userType==='admin'">
+						<div class="form-wrapper-80">
+							<div id="settingsSection" formGroupName="settings">
+								<h2>Settings</h2>
+
+								<mat-form-field>
+									<mat-label for="assessment">Type of assessment</mat-label>
+									<mat-select name="assessment" formControlName="assessment" id="assessment">
+										<mat-option [value]="'das'">DAS</mat-option>
+										<mat-option [value]="'resilience'">Resilience</mat-option>
+										<mat-option [value]="'ptsd'">PTSD</mat-option>
+									</mat-select>
+								</mat-form-field>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="enableBuddyScheduling" id="enableBuddyScheduling">
+									</mat-checkbox>
+									<label for="enableBuddyScheduling">Enable buddy routine/counselor event scheduling
+										(push notifications)</label>
+								</div>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="hasCounselors" id="hasCounselors">
+									</mat-checkbox>
+									<label for="hasCounselors">Enable counselor access?</label>
+								</div>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="enableVideo" id="enableVideo"></mat-checkbox>
+									<label for="enableVideo">Enable video appointments?</label>
+								</div>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="enableAlerts" id="enableAlerts"></mat-checkbox>
+									<label for="enableAlerts">Enable alerts</label>
+								</div>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="hideNotes" id="hideNotes"></mat-checkbox>
+									<label for="hideNotes">Hide notes (disable text fields)</label>
+								</div>
+
+								<div class="icon-input">
+									<label for="website">Custom validation checkbox (Enter text or leave blank to
+										disable)</label>
+									<ckeditor formControlName="customConfirm" id="customConfirm" [config]="config">
+									</ckeditor>
+								</div>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="showOldDashboard" id="showOldDashboard">
+									</mat-checkbox>
+									<label for="showOldDashboard">Show old dashboard</label>
+								</div>
+								<div class="icon-input">
+									<mat-checkbox formControlName="hasScheduledPushNotification"
+										id="hasScheduledPushNotification">
+									</mat-checkbox>
+									<label for="hasScheduledPushNotification">Enable Scheduled Push
+										Notifications</label>
+								</div>
+							</div>
+						</div>
+					</my-tab>
+
+					<my-tab [tabTitle]="'Signin Details'" *ngIf="userType==='admin'">
+						<div class="form-wrapper-80">
+							<div id="sso">
+								<h2>Signin Details</h2>
+
+								<p>The subdomain provides a link in the form of https://subdomain.welltrack.com. This is
+									used for
+									displaying the
+									org logo.</p>
+
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label translate>Subdomain</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="subdomain"
+										id="subdomain" />
+									<mat-error *ngIf="f.subdomain.touched && f.subdomain.errors?.required">
+										The organization needs a subdomain.
+									</mat-error>
+									<mat-error
+										*ngIf="f.subdomain.touched && !f.subdomain.errors?.required && !f.subdomain.valid">
+										Invalid url
+									</mat-error>
+								</mat-form-field>
+
+								<p>Users will be automatically associated to the organization using one of the listed
+									domains below. If
+									there are
+									multiple domains, provide them in a comma delimited list (domain1.org, domain2.org).
+								</p>
+
+								<mat-form-field class="wt-mat-form-field">
+									<mat-label for="allowedDomains" translate>Known Domains</mat-label>
+									<input matInput class="wt-mat-input" type="text" formControlName="allowedDomains"
+										id="allowedDomains" />
+								</mat-form-field>
+
+								<p>The enforce domain setting will force users to use their organization email for
+									association. </p>
+
+								<div class="icon-input">
+									<mat-checkbox formControlName="enforceDomains" id="enforceDomains"></mat-checkbox>
+									<label for="enforceDomains" translate>Enforce Domain(s)</label>
+								</div>
+
+								<p>If SSO is setup, provide the details below. </p>
+
+								<div class="icon-input">
+									<mat-checkbox #enableSso formControlName="enableSso" id="enableSaml2">
+									</mat-checkbox>
+									<label for="enableSaml2">Enable SSO</label>
+								</div>
+
+								<div *ngIf="enableSso.checked">
+									<div formGroupName="auth">
+										<p>The Idp URL will be used to fetch the Metadata. You can also save the
+											response below.</p>
+										<mat-form-field>
+											<label for="idp-url">Idp MetaData URL</label>
+											<input #urlField matInput type="text" formControlName="url" id="idp-url" />
+										</mat-form-field>
+
+										<p>- OR -</p>
+
+										<mat-form-field>
+											<label for="idp-metadata">Idp MetaData</label>
+											<textarea #xml matInput formControlName="xml" id="idp-metadata"></textarea>
+										</mat-form-field>
+									</div>
+									<p class="red" *ngIf="
+										(auth.controls['url'].touched )
+										&& (urlField.value === '' && xml.value === '')
+									">The organization has sso but no configuration is specified. Disable sso until a configuration url or xml can
+										be saved.</p>
+								</div>
+							</div>
+						</div>
+					</my-tab>
+
+					<my-tab [tabTitle]="'Resources'" *ngIf="userType==='admin' || userType==='orgadmin'">
+						<resources-edit [resources]="organization" (onResourceSetChange)="resourceSetChanged($event)">
+						</resources-edit>
+					</my-tab>
+				</my-tabs>
+
+				<div class="fixed-footer">
+					<!-- <p class="red" *ngIf="submitButtonPressed && !orgEditForm.valid && errors === ''">Please check the
+						errors</p> -->
+					<p class="red">{{errors}}</p>
+					<!-- <a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a> -->
+					<button tabindex="0" class="btn-primary btn">
+						Save
+					</button>
+				</div>
+			</form>
+
+		</div>
+	</mat-dialog-content>
+</div>

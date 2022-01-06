@@ -1,0 +1,57 @@
+<div class="col-md-6 col-xs-12">
+    <div class="icon-group select-group">
+        <label for="organization">Select an organization</label>
+        <mat-form-field>
+            <mat-select [(ngModel)]="organizationIds" multiple>
+                <mat-option [value]="-1"></mat-option>
+                <mat-option *ngFor="let organization of organizations" [value]="organization.id">
+                    {{organization.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="wt-mat-form-field">
+        <!-- <label for="fullName">User email/name</label> -->
+        <input matInput class="wt-mat-input" type="text" [(ngModel)]="userEmail" name="userEmail" id="userEmail" placeholder="User email/name" />
+	</mat-form-field>
+
+    <mat-form-field class="wt-mat-form-field">
+        <!-- <label for="fullName">Counselor email/name</label> -->
+        <input matInput class="wt-mat-input" type="text" [(ngModel)]="counselorEmail" name="counselorEmail" id="counselorEmail" placeholder="Counselor email/name" />
+	</mat-form-field>
+
+    <div class="form-field">
+        <label>Confirmed?</label>
+        <mat-checkbox type="checkbox" value="" [(ngModel)]="confirmed"></mat-checkbox>
+    </div>
+
+    <div class="footer">
+        <a tabindex="0" class="btn btn-inline" translate (click)="loadListing()">Filter</a>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div id="counselor-user-associations" text-center no-bounce>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let association of associations">
+                    <td>
+                        <a tabindex="0" [routerLink]="['/admin/user', association.userId]"
+                            translate>{{association.userEmail}}</a>
+                        ->
+                        {{association.counselorEmail}}
+                        <a tabindex="0" [routerLink]="['/admin/user', association.counselorId]"
+                            translate>{{association.counselorEmail}}</a>
+                    </td>
+                    <td>
+                        <a tabindex="0" translate (click)="onApprove(association.id)">approve</a>
+                    </td>
+                    <td>
+                        <a tabindex="0" translate (click)="onRemove(association.id)">remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

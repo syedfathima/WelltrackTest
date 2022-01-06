@@ -1,0 +1,99 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.helpers.scss";
+#invite {
+    border-radius: 10px;
+    padding: 0;
+    display: block !important;
+    .grid-buttons {
+        justify-content: space-evenly;
+        a:hover {
+            color: #85847e;
+        }
+    }
+    .img-wrapper {
+        img {
+            margin-top: 40px;
+            max-height: 60px;
+        }
+    }
+    h2 {
+        font-size: $font-size-title-xl;
+        font-weight: 800;
+        margin: 12px 0;
+    }
+    p {
+        margin-bottom: 16px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .form-wrapper {
+        max-width: 600px;
+        margin: auto;
+        padding: 0px 20px;
+        margin-top: 30px;
+        label {
+            font-weight: normal;
+        }
+        div.label {
+            text-align: left;
+        }
+        .sharing {
+            margin: 10px 0px;
+            img {
+                margin: 0px 8px 0px 5px;
+            }
+            label {
+                line-height: 20px;
+            }
+        }
+    }
+    .img-wrapper {
+        text-align: center;
+        color: white;
+        height: 286px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+    &.orgadmin .img-wrapper {
+        background-image: url("/assets/img/bleu_bg@2x.png");
+    }
+    &.professional .img-wrapper,
+    &.user .img-wrapper {
+        background-image: url("/assets/img/cover_dashboard@2x.png");
+    }
+    .title-wrapper {
+        height: 128px;
+        margin-top: 32px;
+        padding: 0 20px;
+        p {
+            font-size: $font-size-title-sm;
+        }
+    }
+    .invitemessage {
+        margin-bottom: 5px;
+    }
+    .fixed-footer {
+        position: relative;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .float-right {
+        float: right;
+    }
+}
+
+.success {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    .receive {
+        margin-top: 10px;
+    }
+    h2 {
+        font-weight: 700;
+    }
+}

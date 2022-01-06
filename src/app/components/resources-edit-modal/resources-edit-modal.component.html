@@ -1,0 +1,26 @@
+<div class="form-modal">
+    <mat-dialog-content>
+        <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+            aria-label="Close organization edit form">
+            <img src="./assets/img/icons-svg/close-icon.svg">
+        </a>
+        <div class="img-wrapper">
+            <div class="clearfix"></div>
+            <div class="title-wrapper">
+                <h1>{{title}}</h1>
+            </div>
+        </div>
+        <popup-loader *ngIf="isLoading" ></popup-loader>
+        <div *ngIf="!isLoading">
+            <resources-edit [resources]="organization" (onResourceSetChange)="resourceSetChanged($event)"></resources-edit>
+            <div class="fixed-footer">
+                <p class="red" *ngIf="submitButtonPressed && errors === ''">{{errors}}</p>
+                <p class="red">{{errors}}</p>
+                <!-- <a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a> -->
+                <button tabindex="0" class="btn-primary btn" (click)="doSave()">
+                    Save
+                </button>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

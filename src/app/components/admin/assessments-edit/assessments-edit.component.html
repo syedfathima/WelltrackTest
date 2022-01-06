@@ -1,0 +1,164 @@
+<div class="form-modal">
+	<mat-dialog-content>
+		<a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal"
+			aria-label="Close organization edit form">
+			<img src="./assets/img/icons-svg/close-icon.svg" />
+		</a>
+		<div class="img-wrapper">
+			<div class="clearfix"></div>
+			<div class="title-wrapper">
+				<h1>{{ title }}</h1>
+			</div>
+		</div>
+		<popup-loader *ngIf="!isLoaded"></popup-loader>
+		<div *ngIf="isLoaded">
+			<form
+				novalidate
+				[formGroup]="assessmentEditForm"
+				(ngSubmit)="doSave()"
+			>
+				<div class="form-wrapper-80">
+					<mat-form-field class="wt-mat-form-field">
+						<input matInput class="wt-mat-input" placeholder="Quiz Type" type="text" formControlName="quizType"
+							id="quizType" />
+						<mat-error
+							*ngIf="f.quizType.touched && f.quizType.errors?.required"
+						>
+							The assessment needs a quiz type.
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="wt-mat-form-field">
+						<input matInput class="wt-mat-input" placeholder="Quiz Name" type="text" formControlName="comment" id="comment" />
+						<mat-error
+							*ngIf="f.comment.touched && f.comment.errors?.required"
+						>
+							The assessment needs a comment.
+						</mat-error>
+					</mat-form-field>
+					<div id="ressourceSection">
+						<h2>Questions</h2>
+
+						<div *ngIf="assessment && assessment.questions">
+							<mat-accordion cdkDropList (cdkDropListDropped)="drop($event)" formArrayName="questions">
+								<mat-expansion-panel class="groupset" *ngFor="
+									let question of questions.controls;
+									let i = index
+								" cdkDrag (opened)="panelOpenState = true" (closed)="panelOpenState = false" [formGroupName]="i">
+									<mat-expansion-panel-header>
+										<mat-panel-title>Question {{ i + 1 }}</mat-panel-title>
+										<mat-panel-description>
+											{{question.value.comment}}
+											<a class="removeGroup" tabindex="0" (click)="onRemoveQuestion(i)"
+												(keypress)="onRemoveQuestion(i)"><img
+													src="./assets/img/icons-svg/x-icon.svg" /></a>
+										</mat-panel-description>
+									</mat-expansion-panel-header>
+									<ng-container padding>
+										<mat-form-field class="wt-mat-form-field">
+											<input matInput class="wt-mat-input" placeholder="Comment" type="text"
+												formControlName="comment" />
+
+												<mat-error
+													*ngIf="
+															getQuestion(i).controls['comment'].touched &&
+															getQuestion(i).controls['comment'].errors?.required
+														"
+													>
+													The question needs a comment
+												</mat-error>
+										</mat-form-field>
+
+										<mat-form-field class="wt-mat-form-field">
+											<input matInput class="wt-mat-input" placeholder="Group" type="text"
+												formControlName="group" />
+										</mat-form-field>
+
+										<mat-form-field class="wt-mat-form-field">
+											<input matInput class="wt-mat-input" placeholder="Sort Order" type="number"
+												formControlName="sortOrder" pattern="^[0-9]*$" />
+										</mat-form-field>
+										<mat-form-field>
+											<mat-select formControlName="type" placeholder="question type">
+												<mat-option *ngFor="let questionType of questionTypes"
+													[value]="questionType.value">
+													{{questionType.label}}
+												</mat-option>
+											</mat-select>
+										</mat-form-field>
+
+										<mat-checkbox formControlName="tabulate">
+											Tabulate score?
+										</mat-checkbox>
+										<mat-checkbox formControlName="active">
+											Active?
+										</mat-checkbox>
+									</ng-container>
+
+									<ng-container formArrayName="options">
+										<mat-accordion (cdkDropListDropped)="dropItem($event)" cdkDropList [cdkDropListData]="question.options">
+											<mat-expansion-panel cdkDrag class="groupset" *ngFor="
+											let option of getOptions(i).controls;
+												let r = index
+											" [formGroupName]="r">
+												<mat-expansion-panel-header>
+													<mat-panel-title>Option {{ r + 1 }}</mat-panel-title>
+													<mat-panel-description>{{option.value.comment}} <a tabindex="0" class="remove"
+															(click)="removeOption(i, r)"
+															(keypress)="removeOption(i, r)"><img
+																src="./assets/img/icons-svg/x-icon.svg" /></a>
+													</mat-panel-description>
+
+												</mat-expansion-panel-header>
+												<ng-container padding>
+													<div class="form-section-flex">
+														<div class="form-column">
+															<mat-form-field class="wt-mat-form-field">
+																<input matInput class="wt-mat-input" placeholder="Option Value" type="number"
+																	formControlName="optionValue" pattern="^[0-9]*$" />
+															</mat-form-field>
+														</div>
+														<div class="form-column">
+															<mat-form-field class="wt-mat-form-field">
+																<input matInput class="wt-mat-input" placeholder="Sort Order" type="number"
+																	formControlName="sortOrder" pattern="^[0-9]*$" />
+															</mat-form-field>
+														</div>
+													</div>
+
+													<mat-form-field class="wt-mat-form-field">
+														<input matInput class="wt-mat-input" placeholder="Comment" type="text"
+															formControlName="comment" />
+
+															<mat-error
+																*ngIf="
+																		getOption(i, r).controls['comment'].touched &&
+																		getOption(i, r).controls['comment'].errors?.required
+																	"
+																>
+																The option needs a comment
+															</mat-error>
+													</mat-form-field>
+												</ng-container>
+											</mat-expansion-panel>
+										</mat-accordion>
+										<a tabindex="0" class="btn-primary btn-inline btn" (click)="addOption(i, {})"
+											(keypress)="addOption(i, {})">Add Option</a>
+									</ng-container>
+								</mat-expansion-panel>
+							</mat-accordion>
+							<a tabindex="0" class="btn-primary btn-inline btn" (click)="addQuestion({})"
+								(keypress)="addQuestion({})">Add
+								Question</a>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="fixed-footer">
+				<p class="red" *ngIf="submitButtonPressed && !assessmentEditForm.valid && errors === ''">Please check the errors</p>
+				<p class="red">{{errors}}</p>
+				<a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+			</div>
+		</div>
+	</mat-dialog-content>
+</div>

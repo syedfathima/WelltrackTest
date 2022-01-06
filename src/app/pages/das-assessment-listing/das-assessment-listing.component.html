@@ -1,0 +1,17 @@
+<div id="page-assessment-listing">
+    <page-header [headerText]="title" [cssClass]="'assessment'" [backLink]="backLink" [backText]="back" [headerImage]="'./assets/img/assessment_icon@2x.png'"></page-header>
+    <div class="page-section">
+        <p translate>das.body</p>
+        <a autoFocus tabindex="0" routerLink="/app/assessments/das/new" class="btn btn-primary btn-inline btn-wide" translate>das.button</a>
+    </div>
+    <div class="page-section">
+        <!--
+            <div *ngIf="rendered">
+                <graphcharts [graphType]="'Line'" [graphConfig]="stressConfig" [graphId]="stress_container"></graphcharts>
+            </div>
+        -->
+		<page-loader *ngIf="!isLoaded"></page-loader>
+        <das-assessment-listing [assessments]="assessments" [user]="user"></das-assessment-listing>
+
+    </div>
+</div>

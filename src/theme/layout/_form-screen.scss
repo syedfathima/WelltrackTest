@@ -1,0 +1,51 @@
+.form-screen {
+    padding: 10px 32px 0;
+	@include breakpoint(xs) {
+		padding: 16px 16px 0;
+	}
+
+    h2 {
+        font-size: $font-size-title-lg;
+        font-weight: 800;
+        margin: 12px 0;
+    }
+
+    p {
+        margin-bottom: 16px;
+    }
+
+    .img-wrapper {
+        min-height: 100px;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+		@include breakpoint(xs) {
+			min-height: 80px;
+			margin-bottom: 16px;
+		}
+    }
+
+    .title-wrapper {
+        min-height: 100px;
+		
+		@include breakpoint(xs) {
+			min-height: 80px;
+		}
+    }
+
+    .form-wrapper {
+        // min-height: 148px;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 32px;
+        padding-bottom: 30px;
+
+		@include breakpoint(xs) {
+			margin-top: 0;
+		}
+    }
+}

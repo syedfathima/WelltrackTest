@@ -1,0 +1,188 @@
+<page-loader *ngIf="!isLoaded"></page-loader>
+<div id="page-user-listing" class="page-section" *ngIf="isLoaded">
+    <div class="page-section">
+        <div class="page-section-header">
+            <div class="page-section-buttons" *ngIf="user.permissions.userListing">
+                <a autoFocus tabindex="0" (click)="invite()" (keydown.enter)="invite()"
+                    class="trigger-modal invite btn btn-primary btn-with-icon pull-right" translate>
+                    <img alt="Invite new user" src="./assets/img/icons-svg/user-icon.svg">userListing.inviteNew</a>
+                <a tabindex="0" (click)="inviteShare()" (keydown.enter)="inviteShare()"
+                    class="trigger-modal inviteshare btn btn-primary btn-with-icon pull-right" translate>
+                    <img alt="Invite to share" src="./assets/img/icons-svg/user-icon.svg">userListing.inviteShare</a>
+            </div>
+            <div class="page-section-buttons" *ngIf="user.permissions.inviteSubscribe">
+                <a tabindex="0" (click)="inviteSubscribeUser()" (keydown.enter)="inviteSubscribeUser()"
+                    class="trigger-modal inviteshare btn btn-primary btn-with-icon pull-right" translate>
+                    <img alt="Invite to Welltrack"
+                        src="./assets/img/icons-svg/user-icon.svg">userListing.inviteSubscribe</a>
+            </div>
+            <h1 translate>userListing.title</h1>
+        </div>
+        <div class="page-section-content">
+            <h2 translate>sync.usersSharingHeader</h2>
+            <div class="table-responsive">
+                <table class="table" *ngIf="user.userType == 'admin'">
+                    <thead>
+                        <tr>
+                            <th translate style="width:10%">userListing.headers.0</th>
+                            <th translate style="width:12%">userListing.headers.1</th>
+                            <th translate>userListing.headers.2</th>
+                            <th translate>userListing.headers.3</th>
+                            <th translate>userListing.headers.4</th>
+                            <th style="width:15%"></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="text" [(ngModel)]="cols[0]" (input)="valueChange(0)">
+                            </th>
+                            <th></th>
+                            <th>
+                                <input type="text" [(ngModel)]="cols[1]" (input)="valueChange(1)">
+                            </th>
+                            <th>
+                                <input type="text" [(ngModel)]="cols[2]" (input)="valueChange(2)">
+                            </th>
+                            <th>
+                                <input type="text" [(ngModel)]="cols[3]" (input)="valueChange(3)">
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of activeusers" [ngClass]="{'highlighted': user.isPaired}">
+                            <td class="strong">
+                                <img alt="User avatar" class="rounded" height="20"
+                                    src="./assets/img/circle_logo@2x.png"> {{user.fullName}}</td>
+                            <td class="subtle">{{user.loginOn | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                            <td class="strong">{{user.email}}</td>
+                            <td class="strong">
+                                {{user.organizationStr}}
+                            </td>
+                            <td class="strong">{{user.userType}}</td>
+                            <td>
+                                <a tabindex="0" class="pull-right" [routerLink]="['/admin/user', user.id]"
+                                    translate>userListing.view</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div *ngIf="(pendingUsers | filter: 'isPaired': true | filter: 'confirmed': false)?.length > 0">
+                    <h2 translate>sync.pendingHeader</h2>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th translate>sync.headers.0</th>
+                                    <th translate>sync.headers.2</th>
+                                    <th style="width:10%;">&nbsp;</th>
+                                    <th style="width:10%;">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let pendingUser of pendingUsers | filter: 'isPaired': true | filter: 'confirmed': false"
+                                    [ngClass]="{'highlighted': pendingUser.isPaired}">
+                                    <td class="strong">
+                                        {{pendingUser.name}}
+                                    </td>
+                                    <td>{{pendingUser.email}}</td>
+                                    <td>
+                                        <a tabindex="0" (click)="onAccept(pendingUser.id)"
+                                            (keypress)="onAccept(pendingUser.id)"
+                                            class="btn btn-primary btn-short">Accept</a>
+                                    </td>
+                                    <td>
+                                        <a tabindex="0" (click)="onReject(pendingUser.id)"
+                                            (keypress)="onReject(pendingUser.id)"
+                                            class="btn btn-primary btn-short">Decline</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!--<a (click)="loadMore()" *ngIf="user.userType == 'admin'">Load more</a>-->
+                <table class="table" *ngIf="userListing || inviteSubscribe">
+                    <thead>
+                        <tr>
+                            <th translate>userListing.headers.0</th>
+                            <th translate>userListing.headers.1</th>
+                            <th translate>userListing.headers.2</th>
+                            <th translate>userListing.headers.5</th>
+                            <th *ngIf="userShare"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users" [ngClass]="{'highlighted': user.isPaired}">
+                            <td class="strong">
+                                <img alt="User avatar" class="rounded" height="20"
+                                    src="./assets/img/circle_logo@2x.png"> {{user.fullName}}</td>
+                            <td class="subtle">{{user.loginOn | amUtc | amDateFormat: 'DD MMM YYYY' }}</td>
+                            <td class="strong">{{user.email}}</td>
+                            <td>
+                                <img alt="Alert" height="15" *ngIf="user.alerts"
+                                    src="./assets/img/professional/alert.png">
+                            </td>
+                            <td *ngIf="userShare">
+                                <a tabindex="0" class="pull-right"
+                                    [routerLink]="['/professional/user-details', user.id]"
+                                    translate>userListing.view</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <p *ngIf="!users || users.length < 1 && userListing" class="center">
+                <span *ngIf="userShare" translate>userListing.noneFound</span>
+                <span *ngIf="!userShare" translate>userListing.noneFoundnoShare</span>
+            </p>
+
+            <p *ngIf="!users || users.length < 1 && inviteSubscribe" class="center" translate>
+                userListing.noneFoundSubscribe
+            </p>
+
+            <div class="table-responsive" *ngIf="userListing || inviteSubscribe">
+                <h1 translate>userListing.invitationsTitle</h1>
+                <table class="table" *ngIf="invites && invites.length > 0 ">
+                    <thead>
+                        <tr>
+                            <th translate>userListing.headers.6</th>
+                            <th translate>userListing.headers.7</th>
+                            <th translate>userListing.headers.8</th>
+                            <th translate>userListing.headers.9</th>
+                            <th translate>userListing.headers.10</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invite of invites">
+                            <td class="strong">{{invite.RecipientEmail}}</td>
+                            <td>{{invite.ReminderCount}}
+                                <span translate>userListing.reminders</span>
+                            </td>
+                            <td>
+                                {{this.statuses[invite.Status]}}
+                            </td>
+                            <td>{{invite.Share ? 'Yes' : 'No'}}</td>
+                            <td>
+                                <a tabindex="0" *ngIf="invite.Status == 'sent'" (click)="resendInvitation(invite.ID)"
+                                    (keypress)="resendInvitation(invite.ID)" translate>userListing.resendInvitation</a>
+                            </td>
+                            <td>
+                                <a tabindex="0" *ngIf="invite.Status == 'sent'" (click)="deleteInvitation(invite.ID)"
+                                    (keypress)="deleteInvitation(invite.ID)" translate>userListing.removeInvitation</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p *ngIf="!invites || invites.length === 0 && userListing" class="center">
+                <span translate>userListing.noneInvites</span>
+            </p>
+        </div>
+    </div>
+</div>

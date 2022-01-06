@@ -1,0 +1,8 @@
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day.selected,
+.datepicker-container .datepicker-calendar .datepicker-calendar-container .datepicker-calendar-days-container .day:hover:not(.disabled) {
+    background-color: $color-link !important;
+}
+
+.datepicker-container .datepicker-calendar {
+	right: 0;
+}

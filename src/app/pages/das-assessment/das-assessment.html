@@ -1,0 +1,156 @@
+<div id="page-assessment">
+    <page-header [headerText]="title" [cssClass]="cssClass" [backLink]="backLink" [backText]="back"
+        [headerImage]="headerImage"></page-header>
+
+    <div class="page-vertical-header" *ngIf="isLoaded">
+        <div>
+
+        </div>
+        <div id="counter" *ngIf="!showExplain && !showExplain && !showIntro && !showScore">{{active + 1 }} / {{count}}
+        </div>
+        <!-- <a *ngIf="active >= 0" (click)="setFavourite()"><img  class="icon" src="/assets/img/icons/heart.png"  style="margin-left: 100px;"/></a> -->
+        <div style="text-align: right;">
+            <a tabindex="0" *ngIf="active === (count - 1)"
+                class="btn btn-bold btn-inline btn-wide wt-auto-assessment-submit"
+                (click)="!this.submitting ? onSubmit(): false" (keypress)="!this.submitting ? onSubmit(): false"
+                [ngClass]="{'btn-disabled': submitting || (answers[active].value === -1 && questions[active].Type === 1), 'btn-primary': answers[active].value !== -1 || questions[active].Type === 2}"
+                translate>das.finish</a>
+        </div>
+    </div>
+
+    <div class="page-section" *ngIf="isLoaded && !showExplain && !showIntro && !showScore">
+        <div class="page-section-content">
+            <div class="question-section">
+                <div class="question row" *ngFor="let question of questions; let i = index"
+                    [ngClass]="{'active': (active === i )}">
+                    <div aria-live="polite" tabindex="0" class="question-comment">{{question.Comment}}</div>
+                    <div class="question-buttons form-group col-xs-12">
+                        <p *ngIf="question.Type == 2">Select all that apply</p>
+                        <span *ngFor="let option of question.options; let j = index;">
+                            <input *ngIf="question.Type == 1 || question.Type == 3" type="radio" value="0"
+                                [name]="question.ID" class="question-option"
+                                [checked]="answers[i].value === option.OptionValue">
+                            <input *ngIf="question.Type == 2" type="checkbox" value="0" [name]="question.ID"
+                                class="question-option" [checked]="answers[i].values[option.ID] === option.OptionValue">
+                            <div aria-live="assertive" tabindex="0"
+                                class="btn btn-grey btn-wide btn-inline question-button"
+                                [ngClass]="'wt-auto-assessment-question-' + option.ID" role="button"
+                                (click)="onSelectionChange(i, option.OptionValue, question.Type, option.ID)"
+                                (keypress)="onSelectionChange(i, option.OptionValue, question.Type, option.ID)">
+                                <span>{{option.Comment}}</span>
+                            </div>
+                        </span>
+                        
+                        <div *ngIf="question.Type == 3 && answers[active].value === 1 && question.resource">
+                            <div class="resource-info">
+                                <p>{{question.instruction}}</p>
+                                <p>{{question.resource.summary}}</p>
+                                <div *ngIf="question.videos.length > 0" class="assesment-video --d-flex">
+                                    <div class="resource-desc">
+                                        <div *ngIf="question.videos[0].label" class="title">{{question.videos[0].label}}</div>
+                                        <div *ngIf="question.videos[0].length" class="title">{{question.videos[0].length}}</div>
+                                        <p *ngIf="question.videos[0].description" [innerHTML]="question.videos[0].description" class="title"></p>    
+                                    </div>
+                                <div class="preview video-preview column" *ngIf="question.videos[0].media">
+                                        <wt-video [mediaUrl]="question.videos[0].media"  [thumbnailUrl]="question.videos[0].image"
+                                        [captionUrl]="question.videos[0].captionFile"></wt-video>
+                                    </div>
+                                </div>
+                                <div class="contact" *ngFor="let contact of question.resource.resourcesetGroup;">
+                                    <div *ngIf="!contact.website">{{contact.title}}</div>
+                                    <div *ngIf="contact.website">
+                                        <a target="_blank" (click)="onResourceClick(contact)">{{contact.title}}</a>
+                                    </div>
+                                    <p [innerHTML]="contact.description"></p>
+                                    <div *ngIf="contact.contact"> {{contact.contact}}</div>
+                                    <div *ngIf="contact.alternateContact">{{contact.alternateContact}}</div>
+                                    <div>{{contact.address}}</div>
+                                    <div *ngIf="contact.website"><a
+                                            (click)="onResourceClick(contact)">{{contact.website}}</a></div>
+                                    <a *ngIf="contact.internal" tabindex="0" (click)="onResourceInternalClick(contact)"
+                                        (click)="onResourceInternalClick(contact)" class="btn btn-primary btn-inline"
+                                        translate>Go to resource</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <a tabindex="0" class="btn btn-bold btn-inline btn-wide wt-auto-assessment-previous"
+                    (click)="setPreviousActive()" (keypress)="setPreviousActive()"
+                    [ngClass]="{'btn-disabled': active === 0}" translate>das.previous</a>
+                <a tabindex="0" *ngIf="questions[active].Type == 2 && active < (count - 1)"
+                    class="btn btn-bold btn-inline btn-wide wt-auto-assessment-next" (click)="setNextActive()"
+                    (keypress)="setNextActive()" translate>das.next</a>
+                <a tabindex="0"
+                    *ngIf="questions[active].Type == 3 && answers[active].value === 1 &&  active < (count - 1)"
+                    class="btn btn-bold btn-inline btn-wide wt-auto-assessment-next" (click)="setNextActive()"
+                    (keypress)="setNextActive()" translate>das.next</a>
+                <a tabindex="0" *ngIf="active === (count - 1)"
+                    class="btn btn-bold btn-inline btn-wide wt-auto-assessment-finish"
+                    (click)="!this.submitting ? onSubmit(): false" (keypress)="!this.submitting ? onSubmit(): false"
+                    [ngClass]="{'btn-disabled': submitting || (answers[active].value === -1 && questions[active].Type === 1), 'btn-primary': answers[active].value !== -1 || questions[active].Type === 2}"
+                    translate>das.finish</a>
+            </div>
+        </div>
+        <p *ngIf="quizType == 'ptsd'" class="text-center" translate>das.opinionofprofessional</p>
+    </div>
+
+    <div class="page-section" *ngIf="showIntro && quizType === 'das'">
+        <p translate *ngIf="forced" aria-live="assertive" tabindex="0">das.dasforcedintro</p>
+        <p translate aria-live="polite" tabindex="0">das.dasintro</p>
+        <div>
+            <a autoFocus aria-live="polite" tabindex="0"
+                class="btn btn-bold btn-inline btn-wide wt-auto-assessment-intro-next" (click)="setIntro(false)"
+                (keypress)="setIntro(false)" translate>das.start</a>
+        </div>
+    </div>
+
+    <div class="page-section" *ngIf="showIntro && quizType === 'resilience'">
+        <p translate>resilience.introduction</p>
+        <div>
+            <a autoFocus tabindex="0" class="btn btn-bold btn-inline btn-wide wt-auto-assessment-intro-next"
+                (click)="setIntro(false)" (keypress)="setIntro(false)" translate>das.start</a>
+        </div>
+    </div>
+
+    <div class="page-section" *ngIf="showScore">
+        <div class="assessment-alert">
+            <div class="col-xs-12 assessmentsection">
+                <div class="alertwrapper" [ngClass]="{'low': !alert, 'high': alert}">
+                    <div class="header">
+                        <h3 class="uppercase" translate>resilience.alert.title</h3>
+                        <div class="alerttitle">{{resiliencyLevel}}</div>
+                    </div>
+                    <div class="content">
+                        <p>
+                            <span translate>
+                                resilience.alert.preDescription
+                            </span>
+                            <strong>{{resiliencyLevel}}</strong>.
+                        </p>
+                        <p [innerHtml]="resiliencyDescription"></p>
+
+                        <emergency-contact *ngIf="alert" [user]="user"></emergency-contact>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions" translate></div>
+        <a autoFocus tabindex="0" class="btn btn-bold btn-inline btn-wide" (click)="setExplain(true)"
+            (keypress)="setExplain(true)" translate>das.continue</a>
+    </div>
+
+
+    <div class="page-section" *ngIf="showExplain">
+        <p translate>
+            resilience.explain
+        </p>
+        <a autoFocus tabindex="0" class="btn btn-bold btn-inline btn-wide" (click)="setExplain(false)"
+            (keypress)="setExplain(false)" translate>das.continue</a>
+    </div>
+</div>

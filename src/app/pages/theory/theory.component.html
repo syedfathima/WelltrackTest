@@ -1,0 +1,274 @@
+<div id="page-theory" *ngIf="loaded">
+    <div class="col-md-12">
+        <h2 id="section-title" translate>theory.title</h2>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.additionalInformation">
+        <div class="theorypanel courseadditionalresources">
+            <div class="panel-heading">
+                <div class="check"></div>
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.additionalCourses.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.additionalCourses.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/additional-resources" translate>
+                    theory.courses.additionalCourses.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.anxiety">
+        <div class="theorypanel courseanxiety">
+            <div class="panel-heading">
+                <div class="check"></div>
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.anxiety.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.anxiety.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div aria-live="polite" tabindex="0" class="chapter" translate>theory.courses.anxiety.chapter</div>
+                    <div aria-live="polite" tabindex="0" class="duration" translate>theory.courses.anxiety.length</div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/anxiety" translate>
+                    theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.depression">
+        <div class="theorypanel coursedepression clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.depression.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.depression.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div aria-live="polite" tabindex="0" class="chapter" translate>theory.courses.depression.chapter
+                    </div>
+                    <div aria-live="polite" tabindex="0" class="duration" translate>theory.courses.depression.length
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/depression" translate>
+                    theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.publicspeaking">
+        <div class="theorypanel coursephobia clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.publicspeaking.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.publicspeaking.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div aria-live="polite" tabindex="0" class="chapter" translate>theory.courses.publicspeaking.chapter
+                    </div>
+                    <div aria-live="polite" tabindex="0" class="duration" translate>theory.courses.publicspeaking.length
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/phobia/1" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!--
+    <div class="col-xs-12 col-sm-4">
+        <div class="panel ptsd">
+            <div class="panel-heading">
+                <h1>PTSD</h1>
+                <p>Complete a 5-week program to learn about anxiety and improve your thoughts, behaviors, and mood</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter">#10 chapters</div>
+                    <div class="duration">length 4:55</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-grey" routerLink="/app/courses-listing/ptsd">Go to module</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    -->
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.disaster && !access.resilience">
+        <div class="theorypanel coursedisaster clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.disaster.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.disaster.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div aria-live="polite" tabindex="0" class="chapter" translate>theory.courses.disaster.chapter</div>
+                    <div aria-live="polite" tabindex="0" class="duration" translate>theory.courses.disaster.length</div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/disaster" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="!access.disaster && access.resilience">
+        <div class="theorypanel courseresilience clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.resilience.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.resilience.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" aria-live="polite" tabindex="0" translate>theory.courses.resilience.chapter
+                    </div>
+                    <div class="duration" aria-live="polite" tabindex="0" translate>theory.courses.resilience.length
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/resilience" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.disaster && access.resilience">
+        <div class="theorypanel courseresilience clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.resiliences.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.resiliences.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline"></div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/theory/resiliences" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.sleep">
+        <div class="theorypanel coursesleep clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.sleep.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.sleep.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" aria-live="polite" tabindex="0" translate>theory.courses.sleep.chapter</div>
+                    <div class="duration" aria-live="polite" tabindex="0" translate>theory.courses.sleep.length</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/sleep/127" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.mindfulness">
+        <div class="theorypanel coursemindfulness clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.mindfulness.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.mindfulness.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" aria-live="polite" tabindex="0" translate>theory.courses.mindfulness.chapter
+                    </div>
+                    <div class="duration" aria-live="polite" tabindex="0" translate>theory.courses.mindfulness.length
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/mindfulness/128"
+                    translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.work">
+        <div class="theorypanel coursework clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.work.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.work.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" aria-live="polite" tabindex="0" translate>theory.courses.work.chapter</div>
+                    <div class="duration" aria-live="polite" tabindex="0" translate>theory.courses.work.length</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/work/131" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-lg-4" *ngIf="access.purpose">
+        <div class="theorypanel coursepurpose clearfix">
+            <div class="panel-heading">
+                <h3 aria-live="polite" tabindex="0" translate>theory.courses.purpose.title</h3>
+                <p aria-live="polite" tabindex="0" translate>theory.courses.purpose.body</p>
+            </div>
+            <div class="panel-body">
+                <div class="byline">
+                    <div class="chapter" aria-live="polite" tabindex="0" translate>theory.courses.purpose.chapter</div>
+                    <div class="duration" aria-live="polite" tabindex="0" translate>theory.courses.purpose.length</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <a tabindex="0" class="btn btn-grey" routerLink="/app/courses-listing/purpose/130" translate>theory.go
+                    <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png" alt="Go">
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,128 @@
+@import "../../../theme/_welltrack.variables.scss";
+@import "../../../theme/_welltrack.mixins.scss";
+.chapters {
+    height: 1.76%;
+    width: 8.61%;
+    opacity: 0.8;
+    color: $color-subtle;
+    font-family: "Nunito Sans";
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.time {
+    height: 19px;
+    width: 109.5px;
+    color: #B8B6AF;
+    font-family: "Nunito Sans";
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.header-holder {
+    padding: 24px;
+}
+
+#courses-listing-page {
+ 
+    table{
+        @include breakpoint(md) {
+            td:first-child{
+                width:65%;
+            }
+        }
+    }
+
+    .page-section-header {
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        p {
+            max-width: 80%;
+        }
+    }
+    @include breakpoint(xs) {
+        .page-section-buttons {
+            float: none;
+        }
+        .onoffswitch-wrapper {
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+    }
+    .page-section-content {
+        .column-header {
+            color: #444444;
+        }
+        padding: 24px;
+        padding-top: 18px;
+        .course-name {
+            padding-left: 24px;
+            font-size: $font-size-xl;
+        }
+        .course-time {
+            padding-left: 6px;
+        }
+        tbody {
+            padding: 5% 0;
+        }
+        tr {
+            line-height: 55px;
+            height: 55px;
+            padding: 10% 0;
+            td {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.completed-column {
+    width: 150px;
+    .completed {
+        display: flex;
+        float: right;
+        align-content: center;
+        justify-content: center;
+        color: #255850;
+        line-height: 27px;
+        img {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+        }
+        .img-holder {
+            height: 27px;
+            width: 27px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            margin-right: 4px;
+            background-image: url(../../../assets/img/icons/check.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+        span {
+            padding-left: 5px;
+        }
+    }
+}
+
+.page-section {
+    padding: 0px;
+}
+
+.synced {
+    float: right;
+    color: #cc4100;;
+    .glyphicon {
+        color: #cc4100;;
+        color: -webkit-linear-gradient(2deg, #f6d365 0%, #cc4100 100%);
+        color: -moz-linear-gradient(2deg, #f6d365 0%, #cc4100 100%);
+        color: -o-linear-gradient(2deg, #f6d365 0%, #cc4100 100%);
+        color: linear-gradient(92deg, #f6d365 0%, #cc4100 100%);
+    }
+}

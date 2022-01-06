@@ -1,0 +1,219 @@
+<div class="form-modal">
+    <mat-dialog-content>
+        <a tabindex="0" (click)="onClose()" (keypress)="onClose()" class="close-modal" aria-label="Close challenge edit form">
+            <img alt="Close" src="./assets/img/icons-svg/close-icon.svg">
+        </a>
+        <div class="img-wrapper">
+            <div class="clearfix"></div>
+            <div class="title-wrapper">
+                <h1>{{title}}</h1>
+            </div>
+        </div>
+		<popup-loader *ngIf="!isLoaded"></popup-loader>
+        <div class="form-wrapper-80" *ngIf="isLoaded">
+			<form
+				novalidate
+				[formGroup]="challengesEditForm"
+				(ngSubmit)="doSave()"
+			>
+				<mat-form-field class="wt-mat-form-field">
+					<label for="name">Name</label>
+					<img alt="Full name" *ngIf="fullName" src="./assets/img/icons/check@2x.png" class="check animated fadeInUp"
+						item-content>
+					<input matInput class="wt-mat-input" tabindex="0" type="text" formControlName="name" id="name" />
+					<mat-error
+						*ngIf="f.name.touched && f.name.errors?.required"
+					>
+						The challenge needs a name.
+					</mat-error>
+				</mat-form-field>
+
+				<div class="icon-input">
+					<label for="description" translate>Description</label>
+					<ckeditor tabindex="0" formControlName="description" [config]="config" id="description"></ckeditor>
+					<mat-error
+						*ngIf="(f.description.touched || submitButtonPressed) && f.description.errors?.required"
+					>
+						The challenge needs a description.
+					</mat-error>
+				</div>
+
+				<hr class="page-section-divider" />
+
+				<div class="icon-input">
+					<label for="start">Start</label>
+					<date-popup tabindex="0" [initial]="challengesEditForm.value.start" (update)="onDateStart($event)" class="input-date"></date-popup>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="icon-input">
+					<label for="end">End</label>
+					<date-popup tabindex="0" [initial]="challengesEditForm.value.end" (update)="onDateEnd($event)" class="input-date"></date-popup>
+					<div class="clearfix"></div>
+				</div>
+				<mat-form-field>
+					<label for="timezone">Timezone</label>
+					<mat-select class="wt-mat-input" name="timezone" formControlName="timezone">
+						<mat-option value="" selected="selected">Select this challenge's timezone.</mat-option>
+						<mat-option *ngFor="let timezone of timezones" [value]="timezone.key">{{timezone.text}}</mat-option>
+					</mat-select>
+					<mat-error
+						*ngIf="f.timezone.touched && f.timezone.errors?.required"
+					>
+						Please select a timezone for this challenge.
+					</mat-error>
+				</mat-form-field>
+
+				<hr class="page-section-divider" />
+
+				<div class="icon-input">
+					<mat-checkbox tabindex="0" formControlName="displayActive" id="active"></mat-checkbox>
+					<label for="active" translate>Display Active</label>
+				</div>
+
+				<hr class="page-section-divider" />
+
+				<div class="icon-input">
+					<mat-checkbox tabindex="0" formControlName="notifyUsers" id="notifyUsers"></mat-checkbox>
+					<label for="notifyUsers" translate>Send emails to users</label>
+				</div>
+
+				<div [ngClass]="{faded: !challenge.notifyUsers}" *ngIf="challenge.notifyUsers">
+					<h2>User emails</h2>
+					<div class="icon-input">
+						<label for="userstartEmail">Upcoming email</label>
+						<ckeditor tabindex="0" formControlName="upcomingEmailUser" [config]="config" id="userstartEmail"></ckeditor>
+					</div>
+					<div class="icon-input">
+						<label for="userstartEmail">Start email</label>
+						<ckeditor tabindex="0" formControlName="startEmailUser" [config]="config" id="userstartEmail"></ckeditor>
+
+					</div>
+
+					<div class="icon-input">
+						<label for="usermidEmail">Mid email</label>
+						<ckeditor tabindex="0" formControlName="midEmailUser" [config]="config" id="usermidEmail"></ckeditor>
+
+					</div>
+
+					<div class="icon-input">
+						<label for="userendEmail">End email</label>
+						<ckeditor tabindex="0" formControlName="endEmailUser" [config]="config" id="userendEmail"></ckeditor>
+
+					</div>
+					<a class="btn btn-secondary" (click)="onTestEmails()">Send test emails</a>
+				</div>
+				<!--
+			<hr class="page-section-divider" />
+
+			<div class="icon-input">
+				<input tabindex="0" type="checkbox" [(ngModel)]="challenge.notifyCounselors" id="notifyCounselors">
+				<label for="notifyCounselors" translate>Send emails to counselors</label>
+			</div>
+
+				<div [ngClass]="{faded: !challenge.notifyCounselors}" *ngIf="challenge.notifyCounselors">
+					<h2>Counselor emails</h2>
+
+					<div class="icon-input">
+						<label for="upcomingEmailUser">Upcoming email</label>
+						<ckeditor tabindex="0" [(ngModel)]="challenge.upcomingEmailCounselor" [config]="config" id="upcomingEmailUser"></ckeditor>
+
+					</div>
+
+					<div class="icon-input">
+						<label for="counselorstartEmail">Start email</label>
+						<ckeditor tabindex="0" [(ngModel)]="challenge.startEmailCounselor" [config]="config" id="counselorstartEmail"></ckeditor>
+
+					</div>
+
+					<div class="icon-input">
+						<label for="counselormidEmail">Mid email</label>
+						<ckeditor tabindex="0" [(ngModel)]="challenge.midEmailCounselor" [config]="config" id="counselormidEmail"></ckeditor>
+
+					</div>
+
+					<div class="icon-input">
+						<label for="counselorendEmail">End email</label>
+						<ckeditor tabindex="0" [(ngModel)]="challenge.endEmailCounselor" [config]="config" id="counselorendEmail"></ckeditor>
+
+					</div>
+				</div>
+			-->
+
+				<hr class="page-section-divider" />
+
+				<mat-form-field>
+					<label for="type" translate>Type</label>
+					<div>
+						<mat-select #challengeType tabindex="0" formControlName="type" (change)="onChange()" id="type">
+							<mat-option *ngFor="let type of types" [value]="type.id">{{type.name}}</mat-option>
+						</mat-select>
+					</div>
+				</mat-form-field>
+
+				<div *ngIf="challengeType.value === 3">
+					<div class="icon-input">
+						<input tabindex="0" type="checkbox" formControlName="randomlyAssigned" id="randomlyAssigned">
+						<label for="randomlyAssigned" translate>Randomly assigned to team</label>
+					</div>
+
+					<mat-form-field>
+						<label>Choose organization</label>
+						<mat-select tabindex="0" formControlName="orgId" id="orgId" (onModelChange)="changeType($event)">
+							<mat-option [value]="'-1'" selected="selected">Select</mat-option>
+							<mat-option *ngFor="let organization of organizations" [value]="organization.id">{{organization.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<h3>Add teams</h3>
+					<div formArrayName="teams">
+						<div class="team icon-input" *ngFor="let team of teams.controls; let i = index;" [formGroupName]="i">
+							<label>Team {{i + 1}}</label>
+							<input tabindex="0" type="text" formControlName="name" />
+							<a tabindex="0" (click)="onRemove(i)" (keypress)="onRemove(i)">Remove</a>
+						</div>
+					</div>
+
+					<a tabindex="0" class="btn-primary btn-inline btn" (click)="addTeam()" (keypress)="addTeam()">Add team</a>
+				</div>
+
+				<div *ngIf="challengeType.value === 2">
+					<h3>Choose which organizations are participating </h3>
+					<div formArrayName="teams">
+						<div class="team icon-input" *ngFor="let team of teams.controls; let i = index;" [formGroupName]="i">
+							<label>Team {{i + 1}}</label>
+							<input tabindex="0" type="text" formControlName="name" />
+							<a tabindex="0" (click)="onRemove(i)" (keypress)="onRemove(i)">Remove</a>
+						</div>
+					</div>
+
+					<mat-form-field>
+						<label>Choose organization</label>
+						<mat-select tabindex="0" formControlName="orgId" id="orgId" (onModelChange)="changeType($event)">
+							<mat-option [value]="'-1'" selected="selected">Select</mat-option>
+							<mat-option *ngFor="let organization of organizations" [value]="organization.id">{{organization.name}}</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<a tabindex="0" class="btn-primary btn-inline btn" (click)="addMultiTeam()" (keypress)="addMultiTeam()">Add
+						team</a>
+				</div>
+
+				<div *ngIf="challengeType.value == 1">
+					<mat-form-field>
+						<label>Choose organization</label>
+						<div>
+							<mat-select tabindex="0" formControlName="orgId" id="orgId">
+								<mat-option [value]="'-1'">Select</mat-option>
+								<mat-option *ngFor="let organization of organizations" [value]="organization.id">{{organization.name}}</mat-option>
+							</mat-select>
+						</div>
+					</mat-form-field>
+				</div>
+				<div class="fixed-footer">
+					<p class="red" *ngIf="submitButtonPressed && !challengesEditForm.valid && errors === ''">Please check the errors</p>
+					<a tabindex="0" class="btn-primary btn-bold btn" (click)="doSave()" (keypress)="doSave()">Save</a>
+				</div>
+			</form>
+        </div>
+    </mat-dialog-content>
+</div>

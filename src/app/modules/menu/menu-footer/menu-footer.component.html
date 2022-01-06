@@ -1,0 +1,18 @@
+<div class="sign-out">
+	<a tabindex="0" alt="Logout" (click)="menuService.onLogout()" (keypress)="menuService.onLogout()" class="btn btn-white"
+		translate>menu.signout</a>
+</div>
+
+<div class="center">
+	<span class='download' translate>menu.download</span>
+	<a tabindex="0" *ngIf="menuService.playStore" target="_blank" class='google' href='{{menuService.playStore}}'>
+		<img *ngIf="menuService.english" alt='Get it on Google Play' src='/assets/img/icons/google-play-badge@2.png' />
+		<img *ngIf="!menuService.english" alt='Get it on Google Play' src='/assets/img/icons/google-play-badge-fr@2.png' />
+	</a>
+	<a tabindex="0" *ngIf="menuService.appStore" target="_blank" class='apple' href='{{menuService.appStore}}'>
+		<img *ngIf="menuService.english" alt='Download on the App Store'
+			src='/assets/img/icons/Download_on_the_App_Store_Badge_US-UK_564x167@2.png'>
+		<img *ngIf="!menuService.english" alt='Download on the App Store'
+			src='/assets/img/icons/Download_on_the_App_Store_Badge_FR_564x167@2.png'>
+	</a>
+</div>

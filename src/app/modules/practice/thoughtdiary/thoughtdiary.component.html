@@ -1,0 +1,14 @@
+<div id="page-thought-diary">
+    <page-header [cssClass]="'thoughtdiary'" [headerText]="title" [backText]="back" [backLink]="backLink" [headerImage]="'./assets/img/icons/thought_diary_icon@2x.png'"></page-header>
+    <div class="col-sm-12">
+        <div class="page-section no-margin page-header-body">
+            <p translate>
+                thoughtDiary.body
+            </p>
+            <a autoFocus tabindex="0" routerLink="new" class="btn btn-primary btn-inline btn-wide" translate>thoughtDiary.begin</a>
+        </div>
+    </div>
+    
+    <thought-diary-listing [user]="user"></thought-diary-listing>
+
+</div>

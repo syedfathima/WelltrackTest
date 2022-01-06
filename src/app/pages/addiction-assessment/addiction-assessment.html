@@ -1,0 +1,283 @@
+<div id="page-addiction-assessment">
+    <div class="page-vertical-header">
+        <div>
+            <h1 translate>addiction.title</h1>
+        </div>
+        <div id="counter">{{active + 1 }} / {{count}}</div>
+        <div class="text-right">
+            <a tabindex="0" *ngIf="active === (count - 1)"
+                class="btn btn-bold btn-inline btn-wide wt-auto-assessment-finish"
+                (click)="!this.submitting ? onSubmit(): false" (keypress)="!this.submitting ? onSubmit(): false"
+                [ngClass]="{'btn-disabled': submitting}" translate>das.finish</a>
+        </div>
+
+    </div>
+
+    <div class="page-section">
+        <div class="page-section-content">
+            <div class="question-section">
+                <div *ngIf="!submitted">
+                    <div class="question row" [ngClass]="{'active': (active === 0 )}">
+                        <div class="question-comment">The research evidence demonstrates different physical impacts of
+                            alcohol related to male and female body types. These relate to biological not gender
+                            differences. Please identify which body type is most appropriate for you.</div>
+                        <div class="question-buttons form-group col-xs-12">
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>Male body type</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>Female body type</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="question row-1" [ngClass]="{'active': (active === 1 )}">
+                        <div class="question-comment">The research evidence distinguishes risk thresholds for different
+                            age
+                            brackets. Please select the appropriate age bracket.</div>
+                        <div class="question-buttons form-group col-xs-12">
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>13-15</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>16-18</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>16-18</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>19-24</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>25-64</span>
+                                </div>
+                            </span>
+                            <span>
+                                <input type="radio" value="0" class="question-option">
+                                <div tabindex="0" class="btn btn-grey btn-wide btn-inline question-button" role="button"
+                                    (click)="onSelectionChange()" (keypress)="onSelectionChange()">
+                                    <span>65+</span>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="question row-2" [ngClass]="{'active': (active === 2 )}">
+                        <div class="question-comment">How many standard drinks (units of alcohol), including hard
+                            liquor,
+                            beer and wine, did you have each day in the past week? If you can't remember exactly, please
+                            estimate.</div>
+
+                        <div id="days-of-week-schedule">
+                            <div class="day">
+                                <label>Monday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Tuesday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Wednesday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Thursday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Friday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Saturday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+                            <div class="day">
+                                <label>Sunday</label>
+                                <input tabindex="0" type="text">
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="question row-3" [ngClass]="{'active': (active === 3 )}">
+                        <div class="question-comment">
+                            During the last week, how many times did you combine drinking with one of the following:
+                            <ul>
+                                <li>driving a vehicle or using potentially dangerous equipment</li>
+                                <li>situations where being alert is important (e.g., work, school, sports)</li>
+                                <li>using medications like anti-depressants, pain killers or sleeping pills</li>
+                                <li>using other drugs including energy drinks, marijuana or cocaine</li>
+                                <li>pregnancy or breastfeeding</li>
+                            </ul>
+
+                            <input tabindex="0" id="feeling" type="text">
+                        </div>
+                    </div>
+
+                    <div class="question row-4" [ngClass]="{'active': (active === 4 )}">
+                        <div class="question-comment">
+                            How many times in the past week did you find it difficult to stop drinking once you started?
+
+                            <input tabindex="0" id="feeling" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question row-5" [ngClass]="{'active': submitted}">
+                    <div class="row banner">
+                        <h1><span class="highlight">Alcohol</span><br>Reality Check</h1>
+                    </div>
+
+                    <div class="row intro">
+                        <div class="col-xs-12">
+                            <h2>INTERPRETING YOUR RESPONSES</h2>
+
+                            <p>
+                                If this was a typical week, your drinking pattern as an older teen of female body type
+                                indicates the following levels of risks…
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-2 text-right">
+                            <span class="result-marker result-marker-INT"></span>
+                        </div>
+                        <div class="col-xs-10">
+                            <h2>Long-term health</h2>
+
+                            <p>
+                                You had 7 units of alcohol (or standard drinks) in the last week.
+                            </p>
+                            <p>Your pattern is: <strong>Increased Risk</strong></p>
+                            <p>It's good that you're honest with yourself about how much you're drinking. Keep in mind
+                                that limiting your drinking now may help you avoid problems with alcohol later on. In
+                                other words, 'less is more' at this stage in your life.</p>
+                            <h3>By comparison</h3>
+
+                            <p>Those who are 16 to 18 and typically drink 4 or fewer standard drinks a week are at lower
+                                risk of developing problems with alcohol later on in life.</p>
+
+                            <p>Those 16 to 18 of female body type who typically have more than 10 standard drinks a week
+                                are at high risk of developing problems with alcohol later on in life. </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text-right">
+                            <span class="result-marker result-marker-INT"></span>
+                        </div>
+                        <div class="col-xs-10">
+                            <h2>Immediate harms</h2>
+                            <p>In the last week you never had more than 2 standard drinks on any day. However, you did
+                                drink while driving a car or using potentially dangerous equipment, in situations where
+                                being alert is important (e.g., work, school, sports, child-sitting), when alone or in
+                                order to fit in, against parental guidance, or while using medications or other drugs
+                                including energy drinks, marijuana, or ecstasy, or while pregnatn or breastfeeding.</p>
+                            <p>Your pattern is: <strong>Increased Risk</strong></p>
+                            <p>Truth is, taking extra risks while drinking puts yourself or others in jeopardy of
+                                injuries or other problems, and driving after drinking at all is dangerous. So, think
+                                before you drink.</p>
+                            <h3>By comparison</h3>
+
+                            <p>Those who never have more than 2 drinks at a time, and don't take additional risks while
+                                drinking, are at low risk of accidents or other problems linked to alcohol.</p>
+
+                            <p>Those at the highest risk of accidents and other problems are those who have more than 2
+                                drinks at a time more than twice a week, or go beyond the high-risk threshold of 3
+                                drinks on any day, or repeatedly take additional risks while drinking.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text-right">
+                            <span class="result-marker result-marker-INT"></span>
+                        </div>
+                        <div class="col-xs-10">
+                            <h2>Habit or dependence</h2>
+                            <p>You drank on 7 days in the last week and 1 time you found it difficult to stop drinking
+                                once you started.</p>
+                            <p>Your pattern is: <strong>Increased Risk</strong></p>
+                            <p>Either inability to keep at least 5 days alcohol-free or any struggle in stopping on days
+                                you drink, or more so both difficulties, leave youth such as yourself at increased risk
+                                of developing an unhealthy pattern of habitual use.</p>
+
+                            <h3>By comparison</h3>
+
+                            <p>Older teens who on a typical week keep at least 5 days as non-drinking days, and do not
+                                experience anxiety at the thought of stopping on the days they do drink, are at low risk
+                                of developing an unhealthy pattern of habitual use.</p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 text-right">
+                            <span class="result-marker result-marker-HIGH"></span>
+                        </div>
+                        <div class="col-xs-10">
+                            <h2>Overall risk pattern</h2>
+
+                            <p>In short … <strong>High Risk</strong></p>
+                            <p>You're showing a pattern of hazardous drinking, meaning you're likely to cause harm to
+                                yourself or others. You can change your relationship with alcohol to reduce the risks.
+                                You could start by checking out the self-help resources here at alcoholreality.ca, or
+                                you could seek support from someone you trust--a family member, a friend, your doctor, a
+                                health professional, or a substance use counsellor.</p>
+                            <p>For more information see <a
+                                    href="http://www.heretohelp.bc.ca/factsheet/safer-drinking-beer-wine-and-spirits">Safer
+                                    Drinking</a> or <a
+                                    href="http://www.ccsa.ca/Eng/topics/alcohol/drinking-guidelines/Pages/default.aspx">Canada's
+                                    Low Risk Alcohol Drinking Guidelines</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="nav-buttons">
+                <a tabindex="0" class="btn btn-bold btn-inline btn-wide wt-auto-assessment-previous"
+                    (click)="setPreviousActive()" (keypress)="setPreviousActive()"
+                    [ngClass]="{'btn-disabled': active === 0}" translate>das.previous</a>
+                <a tabindex="0" *ngIf="active < (count - 1)"
+                    class="btn btn-bold btn-inline btn-wide wt-auto-assessment-next" (click)="setNextActive()"
+                    (keypress)="setNextActive()" translate>das.next</a>
+                <a tabindex="0" *ngIf="active === (count - 1)"
+                    class="btn btn-bold btn-inline btn-wide wt-auto-assessment-finish"
+                    (click)="!this.submitting ? onSubmit(): false" (keypress)="!this.submitting ? onSubmit(): false"
+                    [ngClass]="{'btn-disabled': submitting}" translate>das.finish</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>

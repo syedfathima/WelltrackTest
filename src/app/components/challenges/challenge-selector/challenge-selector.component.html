@@ -1,0 +1,16 @@
+<div class="selector-wrapper">
+    <div class="selector">
+        <div><h4>Would you like to participate in this challenge?</h4></div>
+        <div *ngIf="challengeType == 3" class="type-2">
+            <select [(ngModel)]="teamId">
+                <option value="-1">Select team</option>
+                <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+            </select>
+            <a class="btn btn-white btn-inline join" (click)="onSubmit()">Join</a>
+        </div>
+        <div *ngIf="challengeType == 2 ||  challengeType == 1" class="type-3">
+            <a class="btn btn-white btn-inline" (click)="onSubmit()">Participate</a>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>

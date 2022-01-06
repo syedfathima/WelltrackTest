@@ -1,0 +1,42 @@
+<div id="page-resources">
+
+    <div *ngIf="loadedCount >= 2">
+        <div class="page-section">
+            <h2 translate>resilience.wellnessDomains.title</h2>
+            <p translate>resilience.wellnessDomains.description</p>
+            <div *ngIf="organization.resourceSet && organization.resourceSet.length > 0">
+                <!--
+                    <div class="col-md-12">
+                        <div class="recommendedInstructions clearfix">
+                            <img alt="Recommended" height="40" width="40" src="./assets/img/icons-svg/recommended-star.svg">
+                            <h1 translate>resources.recommendedResources</h1>
+                        </div>
+                    </div>
+                -->
+
+                <p><span translate>resilience.lastAssessment.0</span> <strong>{{titleStr}}</strong> <span translate>resilience.lastAssessment.1</span></p>
+           
+                <div *ngFor="let resourceset of organization.resourceSet; let i = index; " 
+                class="col-md-12 col-lg-6">
+                    <div class="domainpanel clearfix step{{resourceset.number}}"  [ngClass]="{active: enabledRanks.includes(i + 1) === true}">
+                        <div class="panel-heading">
+                            <h3>{{resourceset.title}}</h3>
+                            <p [innerHtml]="resourceset.summary"></p>
+                        </div>
+                        <div class="panel-body">
+
+                        </div>
+                        <div class="panel-footer">
+                            <a (click)="onGoTo(i)" (keypress)="onGoTo(i)" tabindex="0" class="btn btn-grey"
+                                aria-label="Learn more" title="Learn more">View Wellness Domain
+                                <img alt="Start" class="arrow" src="./assets/img/icons/full_arrow_forward@2x.png"
+                                    alt="Go">
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>

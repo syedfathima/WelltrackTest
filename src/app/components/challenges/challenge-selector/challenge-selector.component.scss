@@ -1,0 +1,59 @@
+@import "../../../../theme/_welltrack.variables.scss";
+@import "../../../../theme/_welltrack.mixins.scss";
+
+.selector-wrapper{
+    @extend .activityscheduler-gradient-horizontal;
+    width:100%;
+    .selector{
+        display:flex; 
+        flex-flow: column;
+        @include breakpoint(sm){
+            flex-flow: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        padding:0px 20px;
+        .type-2{
+            @include breakpoint(sm){
+                display:flex; 
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        h4{
+            color:white;
+        }
+        @include breakpoint(sm){
+            select{
+                float:left;
+                margin-right:20px;
+            }
+            .join{
+                float:left;
+            }
+        }
+        :after{
+            clear:both;
+        }
+        
+    }
+
+    select{
+        background-color:transparent;
+        min-width:200px;
+        border:1px solid white !important; 
+        border-radius:25px  !important; 
+        height:32px;
+        line-height:20px;
+        padding:5px 10px;
+        color:white !important;
+        font-size: $font-size-lg;
+        option{
+            color:white !important;
+        }
+    }
+    
+}
+
+
+ 

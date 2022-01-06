@@ -1,0 +1,164 @@
+.cal-day-badge{
+    display:none!important;
+}
+
+#page-calendar, #activity-scheduling, #event-listing{   
+    padding:0px 20px;
+
+     #create-video-session{
+        max-width:280px;
+    }
+
+    #appointment-invite{
+        max-width:330px;
+    }
+
+    .legend{
+        text-align:left; 
+        width:100%;
+    }
+    
+    #nav-buttons{
+        #previous{
+            float:left;
+            @include breakpoint(xs){
+                float:none;
+            }
+        }
+        #next{
+            float:right;
+            @include breakpoint(xs){
+                float:none;
+            }
+        }
+        div{
+            @include breakpoint(xs){
+                text-align:center;
+            }
+        }
+    }
+
+    #counselor-buttons{
+        margin-bottom:40px;
+    }
+
+    #calendar{
+        ::after{
+            clear:both;
+        }
+    }
+
+    #event-listing{
+        clear:both;
+        padding-top:30px;
+        h3{
+            
+        }
+
+    }
+    #events, #events-listing{
+        .event{
+            position:relative;
+            margin:10px 0px;
+            padding:10px 0px; 
+            border-bottom:1px solid #ccc; 
+            .title{
+                font-size:$font-size-xl;
+                margin-bottom:10px;
+                font-weight:800;
+            }  
+            .btn{
+                padding:4px 10px;
+            }
+            .btn{
+                margin-right:10px;
+            }
+            .scheduled-for{
+                font-size:$font-size-md;
+            }
+            
+        }
+        .event:last-child{
+            border-bottom:none;
+        }
+      
+    }
+
+    .date-dots {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .date-dot {
+        background-color: #5DBFE2;
+        border-radius: 50%;
+        display: inline-block;
+        width: 2px;
+        height: 2px;
+    }
+    @media (min-width: 1200px) {
+        .date-dot {
+            width: 4px;
+            height: 4px;
+        }
+    }
+    .active .date-dot {
+        background-color: #fff;
+    }
+    .appointment-circle {
+        background-color: #4A90E2;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+        width: 12px;
+        height: 12px;
+    }
+    .appointment-circle.blue {
+        background-color: #4A90E2;
+    }
+
+    .row-action-content {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-item: center;
+    }
+    .row-action-content:hover {
+        cursor: pointer;
+    }
+    
+    .row-action-content{
+        .delete{
+            color: #D0021B;
+            border-color:#D0021B; 
+            &:hover{
+                color:white;
+                background-color: #D0021B;
+            }
+        }
+        .edit{
+            color: #F8AC6D;
+            border-color:#F8AC6D; 
+            &:hover{
+                color:white;
+                background-color: #F8AC6D;
+            }
+        }
+    }
+
+    .remove{
+        position:absolute;
+        right:5px;
+        top:20px;
+    }
+
+    .participant{
+        .status{
+            font-style:italic;
+        }
+    }
+}
+

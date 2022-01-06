@@ -1,0 +1,32 @@
+<figure>
+	<div class="video-still">
+		<wt-video aria-hidden="true" [callbackArgs]="{'id': video.id}" [callbackUrl]="callbackUrl"
+			(onCompleted)="videoCompleted()" (onEnded)="videoEnded()"
+			[mediaUrl]="video.videoFile" [thumbnailUrl]="video.videoImage"
+			[captionUrl]="video.captionFile"></wt-video>
+		<div aria-hidden="true" *ngIf="video.isCompleted" class="video-status"><img alt="OK"
+				src="./assets/img/icons-svg/OK.svg"></div>
+		<div class="video-play"></div>
+	</div>
+	<figcaption class="video-caption">
+		<div aria-live="polite" tabindex="0" class="video-title"> {{video.videoTitle}}</div>
+		<div aria-live="polite" tabindex="0" class="video-duration">{{video.videoDuration}}</div>
+	</figcaption>
+	<!-- <a class="rate-video" (click)="onRateItem()"><i class="fa fa-star" aria-hidden="true"></i> Rate
+		video.</a> -->
+
+	<div class="bottom-info">
+		<div class="description" aria-live="polite" tabindex="0" *ngIf="video.description" [innerHtml]="video.description"></div>
+		<div class="attachments" *ngIf="video.attachments">
+			<div class="attachment" *ngFor="let attachment of video.attachments">
+				<a class="caption-download" (click)="attachmentClicked(attachment)"
+					target="_blank"><i class="fa fa-download" aria-hidden="true"></i> {{attachment.Title ? attachment.Title : 'Download'}}</a>
+			</div>
+		</div>
+	</div>
+	<div class="icons-container" >
+	<a class="fav-items" (click)="setFavourite(video)"><img  class="icon" [src]="video.isFavorite ? '/assets/img/icons/icon_fav_filled.svg' : '/assets/img/icons/icon_fav_outline.svg'"  /></a>
+	<a class="rate-video text-md-right d-md-block" (click)="onRateItem()"><i class="fa fa-star" aria-hidden="true"></i>
+		Rate video.</a>
+	</div>
+</figure>

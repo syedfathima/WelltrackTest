@@ -1,0 +1,96 @@
+<div id="tutorial" [ngClass]="tutorial">
+    <mat-dialog-content>
+        <div class="tutorial-slide" *ngIf="tutorial === 'welcome'">
+
+            <div class="img-wrapper">
+                <img alt="Dashboard tutorial icon" src="./assets/img/dashboard_tuto@2x.png"
+                    style="width: 170px; height: auto;" alt="">
+            </div>
+
+            <div class="title-wrapper">
+                <h2 translate aria-live="polite" tabindex="0">tutorial.welcome.title</h2>
+                <p translate aria-live="polite" tabindex="0">tutorial.welcome.body</p>
+            </div>
+
+            <div class="fixed-footer">
+                <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-white btn-bold"
+                    translate>tutorial.welcome.ok</a>
+            </div>
+        </div>
+
+        <div class="tutorial-slide" *ngIf="tutorial === 'moodcheck'">
+
+            <div class="img-wrapper">
+                <img alt="Moodcheck tutorial icon" src="./assets/img/moodcheck_tuto@2x.png"
+                    style="width: 160px; height: auto;" alt="">
+            </div>
+
+            <div class="title-wrapper">
+                <h2 translate aria-live="polite" tabindex="0">tutorial.moodcheck.title</h2>
+                <p translate aria-live="polite" tabindex="0">tutorial.moodcheck.body</p>
+            </div>
+
+            <div class="fixed-footer">
+                <a tabindex="0" (click)="onFinish()" (keypress)="onFinish()" class="btn btn-white btn-bold"
+                    translate>tutorial.moodcheck.ok</a>
+            </div>
+        </div>
+        <div class="tutorial-slide" *ngIf="tutorial === 'assessment' || tutorial === 'assessmentforce' ">
+
+            <div class="img-wrapper">
+                <img alt="Assessment icon" src="./assets/img/assessment_icon@2x.png"
+                    style="width: 160px; height: auto;">
+            </div>
+
+            <div class="title-wrapper">
+                <h2 translate aria-live="polite" tabindex="0">tutorial.assessment.title</h2>
+                <p translate aria-live="polite" tabindex="0">tutorial.assessment.body</p>
+            </div>
+
+            <div class="fixed-footer" *ngIf="showClose">
+                <a tabindex="0" (click)="onStartAssessment()" (keypress)="onStartAssessment()"
+                    class="btn btn-white btn-bold" translate>tutorial.assessment.ok</a>
+                <p *ngIf="tutorial !== 'assessmentforce'">
+                    <a (click)="onFinish()" (keypress)="onFinish()" class="white" translate>tutorial.assessment.no</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="tutorial-slide" *ngIf="tutorial === 'resilienceforce'">
+            <div class="img-wrapper">
+                <img alt="Assessment icon" src="./assets/img/assessment_icon@2x.png"
+                    style="width: 160px; height: auto;">
+            </div>
+
+            <div class="title-wrapper">
+                <h2 translate aria-live="polite" tabindex="0">tutorial.resilience.title</h2>
+                <p translate aria-live="polite" tabindex="0">tutorial.resilience.body</p>
+            </div>
+
+            <div class="fixed-footer" *ngIf="showClose">
+                <a tabindex="0" (click)="onStartResilienceAssessment()" (keypress)="onStartResilienceAssessment()"
+                    class="btn btn-white btn-bold" translate>tutorial.assessment.ok</a>
+            </div>
+        </div>
+        
+        <div class="tutorial-slide" *ngIf="tutorial === 'practice'">
+            <div class="img-wrapper">
+                <img alt="Moodcheck tutorial icon" src="./assets/img/moodcheck_tuto@2x.png"
+                    style="width: 160px; height: auto;" alt="">
+            </div>
+
+            <div class="title-wrapper">
+                <h2 translate aria-live="polite" tabindex="0">tutorial.practice.title</h2>
+                <p translate aria-live="polite" tabindex="0">tutorial.practice.body</p>
+            </div>
+
+            <div class="fixed-footer" *ngIf="showClose">
+                <a tabindex="0" (click)="onPractice()" (keypress)="onPractice()" class="btn btn-white btn-bold"
+                    translate>tutorial.practice.ok</a>
+                <p>
+                    <a (click)="onFinish()" (keypress)="onFinish()" class="white" translate>tutorial.assessment.no</a>
+                </p>
+            </div>
+        </div>
+    </mat-dialog-content>
+</div>

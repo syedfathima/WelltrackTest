@@ -1,0 +1,150 @@
+<menu-header></menu-header>
+<nav id="nav" role="navigation">
+	<a tabindex="0" [ngClass]="{
+			active:
+				'/app' == menuService.pathActive || '' == menuService.pathActive
+		}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="menuService.nav('/app')"
+		(keypress)="menuService.nav('/app')">
+		<img alt="Dashboard" class="icon" src="/assets/img/icons/dashboard@2x.png" style="height: 20px" />
+		<span translate>menu.dashboard</span>
+	</a>
+
+	<menu-item
+		[isActive]="'/professional/users' == menuService.pathActive"
+		redirectTo="/professional/users"
+		*ngIf="menuService.userDetailsShow"
+		alt="Client list"
+		imgSrc="./assets/img/icons/user-icon@2x.png"
+		title="menu.clientList"
+	></menu-item>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/professional/users' == menuService.pathActive
+		}" routerLinkActive="active" *ngIf="menuService.userDetailsShow" (click)="menuService.nav('/professional/users')"
+		(keypress)="menuService.nav('/professional/users')">
+		<img alt="Client list" class="icon" src="./assets/img/icons/user-icon@2x.png" style="height: 20px" />
+		<span translate>menu.clientList</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/admin/user-listing' == menuService.pathActive,
+			disabled: menuService.locked
+		}" routerLinkActive="active" (click)="menuService.nav('/admin/user-listing')"
+		(keypress)="menuService.nav('/admin/user-listing')">
+		<i class="fa fa-users" aria-hidden="true"></i>
+		<span translate>menu.users</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/admin/organization-listing' == menuService.pathActive,
+			disabled: menuService.locked
+		}" routerLinkActive="active" (click)="menuService.nav('/admin/organization-listing')"
+		(keypress)="menuService.nav('/admin/organization-listing')">
+		<i class="fa fa-sitemap" aria-hidden="true"></i>
+		<span translate>menu.orgs</span>
+	</a>
+
+	<a tabindex="0"
+		[ngClass]="{'active': '/admin/resources-import' == menuService.pathActive, 'disabled': menuService.locked}"
+		routerLinkActive="active" (click)="menuService.nav('/admin/resources-import')"
+		(keypress)="menuService.nav('/admin/resources-import')">
+		<i class="fa fa-sitemap" aria-hidden="true"></i>
+		<span translate>menu.resourcesAdmin</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/admin/activity' == menuService.pathActive,
+			disabled: menuService.locked
+		}" routerLinkActive="active" (click)="menuService.nav('/admin/activity')"
+		(keypress)="menuService.nav('/admin/activity')">
+		<img alt="Activity" class="icon" src="/assets/img/icons/dashboard@2x.png" style="height: 20px" />
+		<span translate>menu.activity</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/admin/challenges' == menuService.pathActive,
+			disabled: menuService.locked
+		}" routerLinkActive="active" (click)="menuService.nav('/admin/challenges')"
+		(keypress)="menuService.nav('/admin/challenges')">
+		<i class="fa fa-flag" aria-hidden="true"></i>
+		<span translate>menu.challenges</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/admin/reports' == menuService.pathActive,
+			disabled: menuService.locked
+		}" routerLinkActive="active" (click)="menuService.nav('/admin/reports')"
+		(keypress)="menuService.nav('/admin/reports')">
+		<i class="fa fa-table" aria-hidden="true"></i>
+		<span translate>menu.reports</span>
+	</a>
+
+
+	<a tabindex="0" [ngClass]="{
+			active: '/app/emergency-contact' == menuService.pathActive,
+			disabled: menuService.locked
+		}" class="secondary" routerLinkActive="active" (click)="menuService.nav('/app/emergency-contact')"
+		(keypress)="menuService.nav('/app/emergency-contact')" *ngIf="menuService.user.primaryOrganization">
+		<img alt="Emergency contact" class="icon" src="/assets/img/icons/hand@2x.png" style="height: 22px" />
+		<span translate>menu.emergency</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/app/resources' == menuService.pathActive,
+			disabled: menuService.locked
+		}" class="secondary" routerLinkActive="active" *ngIf="menuService.enableResources"
+		(click)="menuService.nav('/app/resources')" (keypress)="menuService.nav('/app/resources')">
+		<img alt="Resources" class="icon" src="/assets/img/icons/resources@2x.png" style="height: 22px" />
+		<span translate>menu.resources</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/app/counselor-sync' == menuService.pathActive,
+			disabled: menuService.locked
+		}" class="secondary" routerLinkActive="active" *ngIf="
+			menuService.userType == 'user' &&
+			menuService.user.primaryOrganization &&
+			menuService.user.primaryOrganization.settings &&
+			menuService.user.primaryOrganization.settings.hasCounselors
+		" (click)="menuService.nav('/app/counselor-sync')" (keypress)="menuService.nav('/app/counselor-sync')">
+		<img alt="Sync with counselor" class="icon" src="./assets/img/icons/cloud@2x.png" style="height: 18px" />
+		<span translate>menu.sync</span>
+	</a>
+
+	<a tabindex="0" [ngClass]="{
+			active: '/app/settings' == menuService.pathActive,
+			disabled: menuService.locked
+		}" class="secondary" routerLinkActive="active" (click)="menuService.nav('/app/settings')"
+		(keypress)="menuService.nav('/app/settings')">
+		<img alt="Settings" class="icon" src="./assets/img/icons/settings@2x.png" style="height: 15px" />
+		<span translate>menu.setting</span>
+	</a>
+	<a tabindex="0" [ngClass]="{
+			active: '/app/support' == menuService.pathActive,
+			disabled: menuService.locked
+		}" class="secondary" routerLinkActive="active" (click)="menuService.onSupportClick()"
+		(keypress)="menuService.onSupportClick()">
+		<i class="fa fa-envelope" aria-hidden="true"></i>
+		<span translate>menu.support</span>
+	</a>
+</nav>
+<menu-footer></menu-footer>
+
+<!-- <a
+	tabindex="0"
+	[ngClass]="{
+		active: '/app' == menuService.pathActive || '' == menuService.pathActive
+	}"
+	routerLinkActive="active"
+	[routerLinkActiveOptions]="{ exact: true }"
+	(click)="menuService.nav('/app')"
+	(keypress)="menuService.nav('/app')"
+>
+	<img
+		alt="Dashboard"
+		class="icon"
+		src="/assets/img/icons/dashboard@2x.png"
+		style="height: 20px"
+	/>
+	<span translate>menu.dashboard</span>
+</a> -->
