@@ -121,6 +121,14 @@
 		/>
 		<span translate>menu.wellnessDomains</span>
 	</a>
+	<a tabindex="0" [ngClass]="{
+		active: '/app/relational-manager-user-listing' == menuService.pathActive,
+		disabled: menuService.locked
+	}" routerLinkActive="active" (click)="menuService.nav('/app/relational-manager-user-listing')"
+	(keypress)="menuService.nav('/app/relational-manager-user-listing')">
+	<i class="fa fa-users" aria-hidden="true"></i>
+	<span translate>menu.internalUsers</span>
+	</a> 
 
 	<a
 		tabindex="0"

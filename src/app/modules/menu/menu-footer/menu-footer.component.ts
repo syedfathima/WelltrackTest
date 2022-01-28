@@ -9,7 +9,9 @@ import {
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import { MenuService } from "../../../lib/menu.service";
-
+import { MessagingService } from "app/lib/message-service";
+import { AngularFireMessaging } from "@angular/fire/messaging";
+import { mergeMap } from 'rxjs/operators';
 @Component({
 	selector: "menu-footer",
 	templateUrl: "./menu-footer.component.html",
@@ -21,7 +23,8 @@ export class MenuFooterComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private menuservice: MenuService,
-		private translate: TranslateService
+		private translate: TranslateService,
+		private messagingService: MessagingService,private afMessaging: AngularFireMessaging
 	) {
 	}
 
@@ -47,5 +50,14 @@ export class MenuFooterComponent implements OnInit {
 
 	get menuService(): MenuService {
 		return this.menuservice;
+	}
+
+	onLogout(){
+		alert(1)
+		this.afMessaging.getToken
+    .pipe(mergeMap(token => this.afMessaging.deleteToken('fuzdiYMlj1iSSCliCoqf6f:APA91bGMdfUB0Nj6WpnI_QU-nLV08ff3MEkMzHU5zs9gml1Z5U_tbDndv0RM_e0WaqUVVHyQ_OPJNLs-czAzvkVSTzvUP96TCc7ZCT7nH0vWvVulDVNMZR0f39fHEvNGa1bVl3nkhXd1')))
+    .subscribe(
+      (token) => { console.log('Token deleted!'); },
+    );
 	}
 }

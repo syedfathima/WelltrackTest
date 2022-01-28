@@ -20,8 +20,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 	constructor(
 	  public dialogRef: MatDialogRef<ConfirmPopup>,
 	  @Inject(MAT_DIALOG_DATA) public data: any) {
-		  this.title = data.title;
-		  this.message = data.message;
+		  this.title = data.data.title;
+		  this.message = data.data.message;
 	  }
 
 	onNoClick(): void {

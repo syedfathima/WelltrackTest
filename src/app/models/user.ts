@@ -50,6 +50,8 @@ export class User {
 	selected: boolean = false;
 	zoomPersonalMeetingUrl: string;
 	hasContent: boolean = false;
+	isFirstTimeLogin:any;
+	isWebSubscriptionEnabled:any;
 
 	//subscriptionExists: User has a paid subscription
 	//isFullAccess: User is associated or has a paid subscription or is in trial
@@ -91,7 +93,8 @@ export class User {
 			this.androidSubscriptionExists = data.androidSubscriptionExists || false;
 			this.subscriptionExists = (this.webSubscriptionExists || this.iosSubscriptionExists || this.androidSubscriptionExists);
 			this.hasContent = data.HasContent || data.hasContent;
-
+            this.isFirstTimeLogin = data.firsttimelogin || 0;
+			this.isWebSubscriptionEnabled = data.webnotificationSubscribed || 0;
 			if (this.fullName && !this.firstName) {
 				//parse first and last names
 				this.parseFullName();

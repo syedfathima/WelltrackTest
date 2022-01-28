@@ -4,7 +4,7 @@ import { StorageService } from './storage.service';
 import 'rxjs/Rx';
 import { Subject } from 'rxjs';
 //import { DeviceService } from './device.service';
-
+import { MessagingService} from './message-service'
 
 @Injectable()
 export class AuthService {
@@ -13,7 +13,8 @@ export class AuthService {
 	redirectUrl: string;
 
 	constructor(
-		private storage: StorageService
+		private storage: StorageService,
+		private messageService: MessagingService
 	) {
 
 	}
@@ -31,6 +32,7 @@ export class AuthService {
 
 	logout() {
 		//this.deviceService.deregister();
+		this.messageService.deleteFcmToken();
 		this.storage.clearLogin();
 		this.Authenticator.next(false);
 	}

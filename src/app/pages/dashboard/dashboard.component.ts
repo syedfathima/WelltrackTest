@@ -14,6 +14,8 @@ import { Invite } from '../../components/invite/invite';
 import { MoodcheckModalComponent } from '../../components/moodcheck-modal/moodcheck-modal.component';
 import { DemographicComponent } from '../../components/demographic/demographic.component';
 import { DemographicResilienceComponent } from '../../components/demographic-resilience/demographic-resilience';
+import { ConfirmPopup } from 'app/components/alerts/confirm-popup/confirm-popup';
+import { MessagingService } from 'app/lib/message-service';
 
 @Component({
 	selector: 'app-dashboard',
@@ -41,7 +43,7 @@ export class DashboardPage implements OnInit, AfterViewInit {
 	showProfessionalDashboard: boolean = false;
 	showEndUserDashboard: boolean = false;
 	locked: boolean = false;
-
+	message: any;
 	constructor(
 		private api: ApiService,
 		private userService: UserService,
@@ -50,10 +52,10 @@ export class DashboardPage implements OnInit, AfterViewInit {
 		private modalService: ModalService,
 		private log: LogService,
 		private storage: StorageService,
-		private calendarService: CalendarService
+		private calendarService: CalendarService,
+		private messagingService: MessagingService
 	) {
 		this.user = this.userService.getUser();
-
 		this.log.screen('Dashboard');
 
 		//listen for data changes
@@ -91,7 +93,7 @@ export class DashboardPage implements OnInit, AfterViewInit {
 					}
 				);
 				this.enableScheduler = true;
-				if(this.permissionService.isExecutive() && this.permissionService.canViewOldExecutiveDashboard){
+				if (this.permissionService.isExecutive() && this.permissionService.canViewOldExecutiveDashboard) {
 					this.showExecDashboard = true;
 				}
 
@@ -104,12 +106,40 @@ export class DashboardPage implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.checkPopUps();
+		this.user = this.userService.getUser();
+		if (this.user.isFirstTimeLogin && this.user.userType === 'user') {
+			const modal = this.modalService.showComponent(ConfirmPopup, { title: 'Subscribe', message: 'Do you want to subscribe for receiving notification?' });
+			/*
+			modal.beforeClosed().subscribe((responseData: any) => {	
+				if (responseData){					
+					this.messagingService.requestPermission()
+					this.messagingService.receiveMessage();
+					this.messagingService.fcmToken.subscribe(response =>{
+						// Call API
+					  this.api.post(`websubscription`,{Token: response}).subscribe(
+						 (results: any) => {
+							 this.userService.reloadUser();
+						 },
+						  (error: any) => {
+		
+						 }
+					  );
+					});
+					
+				}
+			  this.checkPopUps();
+			});
+			*/
+			this.checkPopUps();
+		} else {
+			this.checkPopUps();
+		}
+
 	}
 
 	checkPopUps() {
 		if ((this.user.userType === 'user') && !this.locked) {
-		
+
 			let assessmentCount = this.user.assessmentCount;
 			let resilienceCount = this.user.resilienceCount;
 			/*
@@ -119,7 +149,7 @@ export class DashboardPage implements OnInit, AfterViewInit {
 			let showResilienceOrg = resilienceCount == 0 && this.user.primaryOrganization && this.user.primaryOrganization.settings['showAssessment'] === true;
 			if (this.user.userType === 'user' && this.user.showDemographic) {
 				setTimeout(() => {
-					if (this.user.primaryOrganization && this.user.primaryOrganization.settings.assessment === 'resilience' ) {
+					if (this.user.primaryOrganization && this.user.primaryOrganization.settings.assessment === 'resilience') {
 						this.modalService.showComponent(DemographicResilienceComponent, null, '', true).afterClosed().subscribe(result => {
 							if (result) {
 								this.user.showDemographic = false;
@@ -138,13 +168,13 @@ export class DashboardPage implements OnInit, AfterViewInit {
 					}
 
 				}, 500);
-			} else if (this.user.userType === 'user' &&  this.user.forceAssessment) {
-				if (this.user.primaryOrganization && this.user.primaryOrganization.settings.assessment === 'resilience' ) {
+			} else if (this.user.userType === 'user' && this.user.forceAssessment) {
+				if (this.user.primaryOrganization && this.user.primaryOrganization.settings.assessment === 'resilience') {
 					setTimeout(() => {
 						this.modalService.showComponent(TutorialPage, 'resilienceforce', '', true);
 					}, 500);
-				} else{
-				
+				} else {
+
 					setTimeout(() => {
 						this.modalService.showComponent(TutorialPage, 'assessmentforce', '', true);
 					}, 500);
@@ -167,7 +197,7 @@ export class DashboardPage implements OnInit, AfterViewInit {
 				}, 500);
 				this.storage.setReminder('reminder-practice');
 			} else {
-				
+
 				//do nothing
 			}
 			/*

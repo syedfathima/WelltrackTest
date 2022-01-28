@@ -166,8 +166,7 @@ export class Organization {
   }
 
   public initializeResourcesets(resourceSets?: any) {
-    console.log(resourceSets);
-    if (resourceSets ) {
+     if (resourceSets ) {
       resourceSets.forEach(row => {
         this.resourceSet.push(new resourceSet(row));
       });
@@ -262,8 +261,7 @@ export class Organization {
       ClientID: organization.clientID,
       RedirectUrl: organization.redirectUrl,
       AuthorizeEndPointUrl: organization.authorizeEndPointUrl,
-      OauthEndPointUrl: organization.oauthEndPointUrl,
-      language: organization.language,
+      OauthEndPointUrl: organization.oauthEndPointUrl
     }
   }
 
@@ -366,6 +364,7 @@ export class resourceSet {
   number: number;
   resourcesetGroup: ResourceSetGroup[] = [];
   videos: Video[] = [];
+  language:string;
   constructor(data?: any) {
     if (data) {
        this.id = data.ID || data.id;
@@ -373,6 +372,7 @@ export class resourceSet {
       this.categories = data.Categories || data.categories;
       this.summary = data.Summary || data.summary;
       this.number = data.Number || data.number;
+      this.language = data.Language || data.language;
       this.initializeGroups(data.resourcesetGroup);
       this.initializeVideos(data.videos);
     }
@@ -426,7 +426,7 @@ export class Video {
 	forceVideo: number;
 	isCompleted: boolean;
 	description:string;
-
+  language:string;
 	constructor(data?: any) {
 		if (data) {
       this.id = data.ID || data.id;
@@ -440,6 +440,7 @@ export class Video {
 			this.imageUpload = new fileUpload({fileUpload: data.Image,fileFileName:''});
 			this.mediaUpload = new fileUpload({fileUpload: data.Media,fileFileName:''});
 			this.captionFileUpload = new fileUpload({fileUpload: data.CaptionFile,fileFileName:''});
+      this.language = data.language;
 		}
 		else {
       this.imageUpload = new fileUpload({});
@@ -463,6 +464,7 @@ export class ResourceSetGroup {
   description: string = '';
   internal: string = '';
   active: number;
+  language:string
   constructor(data?: any) {
 
     if (data) {
@@ -476,6 +478,7 @@ export class ResourceSetGroup {
       this.description = data.Description || data.description;
       this.internal = data.Internal || data.internal;
       this.active = data.Active !== '' ? data.Active :  data.active;
+      this.language = data.Language || data.language
     }
   }
 }

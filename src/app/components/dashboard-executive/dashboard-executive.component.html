@@ -1,5 +1,5 @@
-<page-loader *ngIf="loadedCallCount < 3"></page-loader>
-<div text-center no-bounce [hidden]="loadedCallCount < 3">
+<page-loader *ngIf="loadedCallCount < 1"></page-loader>
+<div text-center no-bounce>
     <div class="page-section">
         <h1 *ngIf="organization && showTitle">{{organization.name}}</h1>
         <div class="chart-header">
@@ -25,20 +25,20 @@
               -->
             <div class="filters">
                 <div class="filter" [ngClass]="{'active': isFilterActive('30days')}">
-                    <a tabindex="0" (click)="onChangeFilter('30days')" (keypress)="onChangeFilter('30days')" translate>dashboardExecutive.filters.last30days</a>
+                    <a tabindex="0"  (click)="onChangeFilter('30days')" (keypress)="onChangeFilter('30days')" translate>dashboardExecutive.filters.last30days</a>
                 </div>
                 <div class="filter" [ngClass]="{'active': isFilterActive('60days')}">
-                    <a tabindex="0" (click)="onChangeFilter('60days')" (keypress)="onChangeFilter('60days')" translate>dashboardExecutive.filters.last60days</a>
+                    <a tabindex="0"  (click)="onChangeFilter('60days')" (keypress)="onChangeFilter('60days')" translate>dashboardExecutive.filters.last60days</a>
                 </div>
                 <div class="filter" [ngClass]="{'active': isFilterActive('90days')}">
-                    <a tabindex="0" (click)="onChangeFilter('90days')" (keypress)="onChangeFilter('90days')" translate>dashboardExecutive.filters.last90days</a>
+                    <a tabindex="0"  (click)="onChangeFilter('90days')" (keypress)="onChangeFilter('90days')" translate>dashboardExecutive.filters.last90days</a>
                 </div>
                 <div class="filter" [ngClass]="{'active': isFilterActive('alltime')}">
-                    <a tabindex="0" (click)="onChangeFilter('alltime')" (keypress)="onChangeFilter('alltime')"
+                    <a tabindex="0"  (click)="onChangeFilter('alltime')" (keypress)="onChangeFilter('alltime')"
                         translate>dashboardExecutive.filters.alltime</a>
                 </div>
                 <div class="filter" [ngClass]="{'active': isFilterActive('custom')}">
-                    <a tabindex="0" (click)="onChangeFilter('custom')" (keypress)="onChangeFilter('custom')" translate>dashboardExecutive.filters.custom</a>
+                    <a tabindex="0"  (click)="onChangeFilter('custom')" (keypress)="onChangeFilter('custom')" translate>dashboardExecutive.filters.custom</a>
                 </div>
             </div>
         </div>

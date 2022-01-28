@@ -13,7 +13,7 @@ import { Organization } from '../../../models/organization';
 import { AuthModuleService } from "../lib/auth-module.service";
 import { LoginAPIService } from "../lib/login-api.services";
 import { AlertDialog } from "../../../components/alert-dialog/alert-dialog.component";
-
+import { MessagingService } from 'app/lib/message-service';
 //import * as flat from 'flat';
 
 @Component({
@@ -62,6 +62,7 @@ export class LoginPage implements OnInit {
 	validAssertion: boolean = false;
 	activateCorporatePolicy: boolean = false;
 	healthCanadaEnable: boolean;
+	message: any;
 
 	constructor(
 		private api: ApiService,
@@ -73,7 +74,8 @@ export class LoginPage implements OnInit {
 		public auth: AuthService,
 		private translate: TranslateService,
 		private authModuleCommon: AuthModuleService,
-		private loginApi: LoginAPIService) {
+		private loginApi: LoginAPIService,
+		private messagingService: MessagingService) {
 		this.appStore = config.appStore;
 		this.playStore = config.playStore;
 		this.loginApiService.agree = false;
@@ -315,6 +317,7 @@ export class LoginPage implements OnInit {
 		let email = this.formatEmail();
 		this.loginApiService.submitting = true;
 		this.loginApi.login(email, this.password);
+		
 	}
 
 	onContinue() {

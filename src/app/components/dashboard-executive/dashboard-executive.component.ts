@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges } from '@angular/core';
 
 //import { AboutPage } from '../about/about';
 
@@ -100,7 +100,8 @@ export class DashboardExecutiveComponent implements OnInit {
 	from: Date;
 	to: Date;
 
-	@Input() organization: Organization;
+	@Input() organization?: Organization;
+	@Input() orgId?: Organization;
 	@Input() showTitle: boolean = true;
 
 	constructor(
@@ -137,8 +138,9 @@ export class DashboardExecutiveComponent implements OnInit {
 			this.dashboardExecutiveStrings = res;
 		});
 		this.onChangeFilter('30days');
-		this.initData();
 	}
+
+
 
 	initData() {
 		let orgID;

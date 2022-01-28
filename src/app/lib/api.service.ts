@@ -8,15 +8,13 @@ import * as _ from 'lodash';
 
 // Import RxJs required methods
 
-
-
+import { ConfigService } from './config.service';
 import { UtilityService } from './utility.service';
 import { StorageService } from './storage.service';
 //import { Env } from '../env/env.token';
 import { LogService } from './log.service';
 import { ModalService } from './modal.service';
 
-import { environment } from '../../environments/environment';
 import { ApiError } from './api-error';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,11 +22,17 @@ import { TranslateService } from '@ngx-translate/core';
 export class ApiService {
 
 	demoMode: boolean;
+	apiEndpoint: string;
+	apiClientSecret: string; 
+	apiClientId: string; 
+	demoActive: boolean; 
+
 
 	private defaultHeaders: any;
 
 	constructor(
 		private http: HttpClient,
+		private configService: ConfigService,
 		private util: UtilityService,
 		private storage: StorageService,
 		private log: LogService,
@@ -36,8 +40,10 @@ export class ApiService {
 		private utilityService: UtilityService,
 		private modalService: ModalService) {
 		this.log.trace('Api Loaded');
-		this.demoMode = this.utilityService.isDemoMode();
-
+		this.apiEndpoint = this.configService.apiBaseUrl();
+		this.apiClientSecret =  this.configService.apiClientSecret();
+		this.apiClientId =   this.configService.apiClientId();
+		this.demoMode = this.configService.demoActive(); 
 	}
 
 	private getHeaders(authenticate = true, upload = false) {
@@ -117,13 +123,13 @@ export class ApiService {
 
 	authenticate(username: string, password: string): Observable<{}> {
 		return this.http.post(
-			`${environment.api.endpoint}/oauth/token`,
+			`${this.apiEndpoint}/oauth/token`,
 			JSON.stringify({
 				username: username,
 				password: password,
 				grant_type: 'password',
-				client_id: environment.api.clientId,
-				client_secret: environment.api.clientSecret,
+				client_id: this.apiClientId,
+				client_secret: this.apiClientSecret,
 				scope: '*'
 			}),
 			{
@@ -136,13 +142,13 @@ export class ApiService {
 
 	authenticateSso(type: string, assertion: string, orgId?: number): Observable<{}> {
 		return this.http.post(
-			`${environment.api.endpoint}/oauth/token`,
+			`${this.apiEndpoint}/oauth/token`,
 			JSON.stringify({
 				org_id: orgId ? orgId : null,
 				grant_type: type,
 				assertion: assertion,
-				client_id: environment.api.clientId,
-				client_secret: environment.api.clientSecret,
+				client_id: this.apiClientId,
+				client_secret: this.apiClientSecret,
 				scope: '*'
 			}),
 			{
@@ -155,7 +161,7 @@ export class ApiService {
 
 	authenticateOauth2AuthFlow(endpointUrl: string, clientId: string, code: string, redirect_uri: string, code_verifier: string): Observable<{}> {
 		return this.http.post(
-			`${environment.api.endpoint}/oauth/token`,
+			`${this.apiEndpoint}/oauth/token`,
 			JSON.stringify({
 				grant_type: 'ssoAuthorization',
 				payload: {
@@ -165,8 +171,8 @@ export class ApiService {
 					code_verifier: code_verifier,
 					redirect_uri: redirect_uri
 				},
-				client_id: environment.api.clientId,
-				client_secret: environment.api.clientSecret,
+				client_id: this.apiClientId,
+				client_secret: this.apiClientSecret,
 				scope: '*'
 			}),
 			{
@@ -180,12 +186,12 @@ export class ApiService {
 	fbAuthenticate(accessToken: string): Observable<{}> {
 
 		return this.http.post(
-			`${environment.api.endpoint}/oauth/token`,
+			`${this.apiEndpoint}/oauth/token`,
 			JSON.stringify({
 				Token: accessToken,
 				grant_type: 'social',
-				client_id: environment.api.clientId,
-				client_secret: environment.api.clientSecret,
+				client_id: this.apiClientId,
+				client_secret: this.apiClientSecret,
 				scope: 'basic'
 			}),
 			{
@@ -203,7 +209,7 @@ export class ApiService {
 			return;
 		}
 		return this.http.post(
-			`${environment.api.endpoint}/${endpoint}`,
+			`${this.apiEndpoint}/${endpoint}`,
 			JSON.stringify(params),
 			{
 				headers: this.getHeaders(authenticate, upload)
@@ -223,7 +229,7 @@ export class ApiService {
 
 
 		return this.http.post(
-			`${environment.api.endpoint}/${endpoint}`,
+			`${this.apiEndpoint}/${endpoint}`,
 			params,
 			{
 				headers: this.getHeaders(authenticate, true)
@@ -240,7 +246,7 @@ export class ApiService {
 		}
 
 		return this.http.put(
-			`${environment.api.endpoint}/${endpoint}`,
+			`${this.apiEndpoint}/${endpoint}`,
 			JSON.stringify(params),
 			{
 				headers: this.getHeaders(authenticate, upload)
@@ -258,7 +264,7 @@ export class ApiService {
 		}
 
 		return this.http.get(
-			`${environment.api.endpoint}/${endpoint}${qs}`,
+			`${this.apiEndpoint}/${endpoint}${qs}`,
 			{
 				headers: this.getHeaders(authenticate)
 			}
@@ -276,7 +282,7 @@ export class ApiService {
 		}
 
 		return this.http.delete(
-			`${environment.api.endpoint}/${endpoint}${qs}`,
+			`${this.apiEndpoint}/${endpoint}${qs}`,
 			{
 				headers: this.getHeaders()
 			}

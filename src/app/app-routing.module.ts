@@ -55,29 +55,30 @@ import { AdditionalResourceListingPage } from './pages/additional-resource-listi
 import { ResourceView } from './pages/resource-view/resource-view.component';
 import { FavouriteListingComponent } from './components/favourite-listing/favourite-listing.component';
 import { ConfigListingComponent } from './components/config-listing/config-listing.component';
+import { InternalUserListingComponent } from './pages/internal-user-listing/internal-user-listing.component';
 
 const appRoutes: Routes = [
 	{
 		path: '',
 		component: PublicPortalTemplate,
-		loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+		loadChildren: './modules/auth/auth.module#AuthModule'
 	},
 	{
 		path: '',
 		component: PublicPortalFullTemplate,
-		loadChildren: () => import('./modules/public/public.module').then(m => m.PublicModule)
+		loadChildren: './modules/public/public.module#PublicModule'
 	},
 	{
 		path: 'app/practice',
 		component: AuthSideMenuTemplate,
 		canActivate: [AuthGuard, OrgConfigGuard],
-		loadChildren: () => import('./modules/practice/practice.module').then(m => m.PracticeModule)
+		loadChildren: './modules/practice/practice.module#PracticeModule'
 	},
 	{
 		path: 'professional',
 		component: AuthSideMenuTemplate,
 		canActivate: [AuthGuard, AclGuard],
-		loadChildren: () => import('./modules/professional/professional.module').then(m => m.ProfessionalModule)
+		loadChildren: './modules/professional/professional.module#ProfessionalModule'
 	},
 	{
 		path: '',
@@ -261,7 +262,12 @@ const appRoutes: Routes = [
 				path: 'configListing',
 				component: ConfigListingComponent,
 				data: { title: 'configListing' }
-			}
+			},
+			{
+				path: 'relational-manager-user-listing',
+				component: InternalUserListingComponent,
+				data: { title: 'relationalManagerUserlisting' }
+			},
 		]
 	},
 	{
@@ -377,6 +383,11 @@ const appRoutes: Routes = [
 				path: 'course-listing',
 				component: AdminCourseListingPage,
 				data: { title: 'adminResourceImport'}
+			},
+			{
+				path: 'internal-user-listing',
+				component: InternalUserListingComponent,
+				data: { title: 'internalUserlisting' }
 			}
 		]
 	},

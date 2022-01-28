@@ -17,7 +17,7 @@
 
         <ul class="mcOptions">
             <li *ngFor="let option of moreOptions">
-                <span [ngClass]="{'custom': option.custom, 'disabled': !option.enabled}">{{option.Key}}</span>
+                <span [ngClass]="{'custom': option.custom, 'disabled': !option.enabled}">{{option.Value}}</span>
                 <span>
                     <a class="wt-auto-moodcheck-options-toggle" tabindex="0" (click)="toggleOption(option)"
                         (keypress)="toggleOption(option)">

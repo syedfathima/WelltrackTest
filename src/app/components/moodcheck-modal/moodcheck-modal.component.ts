@@ -43,14 +43,14 @@ export class MoodcheckModalComponent implements OnInit {
 	submitting: boolean;
 	moodLabels: any;
 	hideNotes: boolean;
-    moodOptions ={
-		feelings :'',
-		emotions:'',
-		activities:'',
-		place:'',
-		people:''
+	moodOptions = {
+		feelings: '',
+		emotions: '',
+		activities: '',
+		place: '',
+		people: ''
 	}
-	lang:any;
+	lang: any;
 	moreOptions: any;
 	constructor(public storage: StorageService,
 		public api: ApiService,
@@ -70,7 +70,7 @@ export class MoodcheckModalComponent implements OnInit {
 		this.saveEnabled = false;
 		this.showOptions = false;
 		this.lang = this.storage.get('lang');
-		
+
 		// events.subscribe('mood-tab-slide:next', (tabId) => {
 		//     this.superTabs.onToolbarTabSelect(tabId);
 		// });
@@ -223,20 +223,22 @@ export class MoodcheckModalComponent implements OnInit {
 	/**
 	 * Get all Mood Options
 	 */
-	 getAllMoodOptions(){
+	getAllMoodOptions() {
 		this.api.get(`config/options/${this.lang}/moodcheck`).subscribe(
 			(data: any) => {
 				const moodOptions = data;
-				this.moodOptions.emotions = moodOptions.emotions.filter(emotions =>emotions.Language = this.lang);
-				this.moodOptions.feelings = moodOptions.feelings.filter(feelings =>feelings.Language = this.lang)
-				this.moodOptions.people = moodOptions.people.filter(people =>people.Language = this.lang)
-				this.moodOptions.place = moodOptions.places.filter(place =>place.Language = this.lang)
-				this.moodOptions.activities = moodOptions.activities.filter(activities =>activities.Language = this.lang)
+				console.log(moodOptions);
+				this.moodOptions.emotions = moodOptions.emotions.filter(emotions => emotions.Language = this.lang);
+				this.moodOptions.feelings = moodOptions.feelings.filter(feelings => feelings.Language = this.lang)
+				this.moodOptions.people = moodOptions.people.filter(people => people.Language = this.lang)
+				this.moodOptions.place = moodOptions.place.filter(place => place.Language = this.lang)
+				this.moodOptions.activities = moodOptions.activities.filter(activities => activities.Language = this.lang)
+
 			},
 			(error: any) => {
 				this.log.error('moodcheck_error');
 			}
 		);
-	 }
+	}
 
 }

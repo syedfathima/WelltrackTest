@@ -1,1 +1,8 @@
 <router-outlet></router-outlet>
+<div class="push-notification" *ngIf="pushShown">
+  <div class="pn-right">
+    <h3>{{message.data.title}}</h3>
+    <p>{{message.data.body}}</p>
+    <div class="close" (click)="closePush()">X</div>
+  </div>
+</div>

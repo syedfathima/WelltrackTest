@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { ConfigService } from './config.service';
 import { UtilityService } from './utility.service';
 import { LogService } from './log.service';
 import { environment } from '../../environments/environment';
@@ -16,6 +17,10 @@ import { ApiError } from './api-error';
 @Injectable()
 export class ApiRestService {
 
+	apiEndpoint: string;
+	apiClientSecret: string; 
+	apiClientId: string; 
+
 	private defaultHeaders = {
 		'X-Requested-With': 'XMLHttpRequest',
 		'Content-Type': 'application/json; charset=UTF-8',
@@ -23,9 +28,13 @@ export class ApiRestService {
 
 	constructor(
 		private http: Http,
+		private configService: ConfigService,
 		private util: UtilityService,
 		private log: LogService
 	) {
+		this.apiEndpoint = this.configService.apiBaseUrl();
+		this.apiClientSecret =  this.configService.apiClientId();
+		this.apiClientId =   this.configService.apiClientSecret();
 		this.log.trace('Api Loaded');
 	}
 
@@ -95,8 +104,8 @@ export class ApiRestService {
 				org_id: orgId ? orgId : null,
 				grant_type: type,
 				assertion: assertion,
-				client_id: environment.api.clientId,
-				client_secret: environment.api.clientSecret,
+				client_id: this.apiClientId,
+				client_secret: this.apiClientSecret,
 				scope: '*'
 			}),
 			{

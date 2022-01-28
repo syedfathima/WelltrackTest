@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../lib/api.service';
 import { StorageService } from '../../lib/storage.service';
@@ -19,7 +19,7 @@ import * as moment from 'moment';
 	templateUrl: 'activity-listing.component.html'
 })
 
-export class ActivityListingComponent implements OnInit {
+export class ActivityListingComponent implements OnInit,OnChanges {
 	isLoaded = false;
 	activity: Activity[];
 	activeactivity: Activity[];
@@ -35,12 +35,12 @@ export class ActivityListingComponent implements OnInit {
 	organizations: Organization[];
 	loading: boolean = false;
 	loadMoreLoading: boolean = false;
-
+	args = {};
 	@Input() userId: number = null;
 	@Input() orgId: number = null;
 	@Input() orgListingEnable: boolean = true;
 	@Input() userListingEnable: boolean = true;
-
+    @Input() isActivityTabEnabled: boolean = false;
 	constructor(
 		private api: ApiService,
 		private storage: StorageService,
@@ -57,63 +57,67 @@ export class ActivityListingComponent implements OnInit {
 
 	ngOnInit() {
 		this.loading = true;
-		let args = {};
+
 		if (this.userId) {
-			args['UserID'] = this.userId;
+			this.args['UserID'] = this.userId;
 		}
 
 		if (this.orgId) {
-			args['OrgID'] = this.orgId;
+			this.args['OrgID'] = this.orgId;
 		}
 
 		if (this.cols[0]) {
-			args['Message'] = this.cols[0];
+			this.args['Message'] = this.cols[0];
 		}
 
 		if (this.cols[1]) {
-			args['Name'] = this.cols[1];
+			this.args['Name'] = this.cols[1];
 		}
 
 		if (this.cols[2]) {
-			args['OrganizationName'] = this.cols[2];
-		}
+			this.args['OrganizationName'] = this.cols[2];
+		}		
+	}
 
-		this.api.get('admin/organizations', { Active: true }).subscribe(
-			(results: any) => {
-				this.organizations = Organization.initializeArray(results.data);
-				this.isLoaded = true;
-			},
-			(error: any) => {
-
-				this.log.error('Error loading. ' + error.message);
-			}
-		);
-
-
-		this.api.get('admin/activityTypes').subscribe(
-			(results: any) => {
-				this.activity = this.activityTypes = results.data;
-				this.isLoaded = true;
-			},
-			(error: any) => {
-				this.log.error('Error loading. ' + error.message);
-				this.isLoaded = false;
-			}
-		);
-
-
-		this.api.get('admin/activity', args).subscribe(
-			(results: any) => {
-				this.activity = this.activeactivity = Activity.initializeArray(results.data);
-				this.isLoaded = true;
-				this.loading = false; 
-			},
-			(error: any) => {
-				this.log.error('Error loading. ' + error.message);
-				this.isLoaded = false;
-				this.loading = false; 
-			}
-		);
+	ngOnChanges(changes){
+		if(changes.isActivityTabEnabled.currentValue){
+			this.api.get('admin/organizations', { Active: true }).subscribe(
+				(results: any) => {
+					this.organizations = Organization.initializeArray(results.data);
+					this.isLoaded = true;
+				},
+				(error: any) => {
+	
+					this.log.error('Error loading. ' + error.message);
+				}
+			);
+	
+	
+			this.api.get('admin/activityTypes').subscribe(
+				(results: any) => {
+					this.activity = this.activityTypes = results.data;
+					this.isLoaded = true;
+				},
+				(error: any) => {
+					this.log.error('Error loading. ' + error.message);
+					this.isLoaded = false;
+				}
+			);
+	
+	
+			this.api.get('admin/activity', this.args).subscribe(
+				(results: any) => {
+					this.activity = this.activeactivity = Activity.initializeArray(results.data);
+					this.isLoaded = true;
+					this.loading = false; 
+				},
+				(error: any) => {
+					this.log.error('Error loading. ' + error.message);
+					this.isLoaded = false;
+					this.loading = false; 
+				}
+			);
+		 }
 	}
 
 	valueChange(i) {

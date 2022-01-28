@@ -1,0 +1,7 @@
+{
+    "apiBaseUrl": "http://127.0.0.1:8000",
+    "apiClientId": 2,
+    "apiClientSecret": "tHNTir1jxDTG8o03K0dvaRMm1ljPiO9f1ip4xm0g",
+    "prod": false,
+    "demo": false
+}

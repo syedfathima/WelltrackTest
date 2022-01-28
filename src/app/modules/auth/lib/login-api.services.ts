@@ -6,6 +6,7 @@ import { AuthService } from "../../../lib/auth.service";
 import { LogService } from "../../../lib/log.service";
 import { ModalService } from "../../../lib/modal.service";
 import { AlertDialog } from "../../../components/alert-dialog/alert-dialog.component";
+import { MessagingService } from "app/lib/message-service";
 
 @Injectable()
 export class LoginAPIService {
@@ -47,6 +48,7 @@ export class LoginAPIService {
 		private log: LogService,
 		private modalService: ModalService,
 		public auth: AuthService,
+		public messagingService:MessagingService
 	) {}
 
 	loginDetect(email: string) {
@@ -119,6 +121,8 @@ export class LoginAPIService {
 	login(email: string, password: string) {
 		this.api.authenticate(email, password).subscribe(
 			(data: any) => {
+				//const fcmData = this.messagingService.requestPermission()
+				//this.messagingService.receiveMessage();
 				if (data.access_token) {
 					this.storage.set("modalOpen", false);
 					if (this.redirect) {

@@ -9,7 +9,7 @@
             <h2 aria-live="polite" role="alert" tabindex="0">{{organization.contactGroup.title}}</h2>
             <p aria-live="polite" role="alert" tabindex="0">{{organization.contactGroup.description}}</p>
             <p aria-live="polite" role="alert" tabindex="0"><a [href]="'tel:' + contactGroupTelephone" class="btn btn-primary btn-inline"
-                    (click)="onCallContact($event)"><i class="fa fa-phone icon-margin"></i>Get help now</a></p>
+                    (click)="onCallContact($event, organization.contactGroup)"><i class="fa fa-phone icon-margin"></i>Get help now</a></p>
         </div>
 
         <div *ngIf="emergencyContact">

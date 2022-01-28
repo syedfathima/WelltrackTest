@@ -14,6 +14,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { config } from '../../../../environments/all';
 
 import * as _ from 'lodash';
+import { UserService } from 'app/lib/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-edit',
@@ -43,6 +45,7 @@ export class UserCreateComponent implements OnInit {
   status: string;
   lockRole: boolean;
   timezones:any;
+  loggedUserDetails: User;
 
 
   constructor(
@@ -52,13 +55,16 @@ export class UserCreateComponent implements OnInit {
     private log: LogService,
     private modalService: ModalService,
     private translate: TranslateService,
+    private userService: UserService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.roles = [
       { 'id': 1, 'name': 'User' },
       { 'id': 2, 'name': 'Professional' },
       { 'id': 3, 'name': 'Executive' },
       { 'id': 4, 'name': 'Executive Professional' },
-      { 'id': 5, 'name': 'Joint Professional' }
+      { 'id': 5, 'name': 'Joint Professional' },
+      { 'id': 6, 'name': 'RelationShip Manager' }
     ];
 
 	this.userCreateForm = this.formBuilder.group({
@@ -74,6 +80,14 @@ export class UserCreateComponent implements OnInit {
 	});
 
     this.user = new User;
+    this.loggedUserDetails =  this.userService.getUser();
+    if(this.router.url === '/admin/internal-user-listing'){
+      this.roles = [
+        { 'id': 2, 'name': 'Admin' },
+        { 'id': 6, 'name': 'RelationShip Manager' }
+      ];
+    }
+
     this.user.roleId = 1;
 
     this.timezones = config.timezones;

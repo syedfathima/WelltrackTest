@@ -35,8 +35,7 @@ const envParams = {
 		client_id: 'AYdN2kwF5SaA1QOj1hlPvigRlIGmgl71u10dXPRU',
 		code_challenge_method: 'S256',
 		response_type: 'code',
-		redirect_uri: 'https://app.welltrack.com/sso/canada',
-		//redirect_uri: 'https://staging.welltrack.com/sso/canada',
+		redirect_uri: 'https://canada.welltrack.com/sso/canada',
 		scope: 'openid email',
 		response_mode: 'query'
 	}

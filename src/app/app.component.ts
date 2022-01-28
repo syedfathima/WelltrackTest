@@ -17,9 +17,10 @@ import { ApiError } from './lib/api-error';
 import { TranslateService } from '@ngx-translate/core';
 import { AutoLogoutService } from './lib/auto-logout';
 import {AutoLogoutIdle} from './lib/auto-logout-idle'
-import { Subscription } from 'rxjs';
-declare var FCMPlugin;
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import * as jQuery from 'jquery';
+import { MessagingService } from './lib/message-service';
 
 @Component({
 	templateUrl: 'app.component.html',
@@ -32,6 +33,8 @@ export class WellTrackApp implements OnInit, OnDestroy {
 	popup: any;
 	queryLang: any;
 	onLangChange: Subscription = undefined;
+	message:any;
+	pushShown:boolean=false;
 	constructor(
 		private storage: StorageService,
 		private auth: AuthService,
@@ -45,7 +48,9 @@ export class WellTrackApp implements OnInit, OnDestroy {
 		private autologout: AutoLogoutService,
 		private autologoutIdle: AutoLogoutIdle,
 		public el: ElementRef,
-		titleService: Title
+		titleService: Title,
+		private http: HttpClient,
+		private messagingService: MessagingService
 	) {
 		this.autologoutIdle.initialize();
 		// this language will be used as a fallback when a translation isn't found in the current language
@@ -86,9 +91,40 @@ export class WellTrackApp implements OnInit, OnDestroy {
 
 			}
 		});
+
+
+		navigator.serviceWorker.addEventListener('message', (message) => {
+			this.pushShown= false;
+			this.message = message.data;
+			this.pushShown= true;
+		});
+		  if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+			  navigator.serviceWorker.register('../firebase-messaging-sw.js').then(function(registration) {
+				// Registration was successful
+				console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			  }, function(err) {
+				// registration failed :
+				console.log('ServiceWorker registration failed: ', err);
+			  });
+			});
+		  }
+		  
+		// Push notigication subscribe
+		this.messagingService.currentMessage.subscribe(message=>{
+			this.pushShown= false;
+			this.message = message;
+			this.pushShown= true;
+		})
+
+	
 	}
 
+	closePush(){
+		this.pushShown = false;
+	}
 
+	
 	ngOnInit() {
 		this.updateLanguage();
 		this.onLangChange = this.translateService.onLangChange.subscribe(() => {

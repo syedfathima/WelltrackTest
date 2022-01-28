@@ -3,7 +3,7 @@ import { StorageService } from './storage.service';
 import { ModalService } from './modal.service';
 import { ErrorPopup } from '../components/alerts/error-popup/error-popup';
 import { TranslateService } from '@ngx-translate/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Injectable()
 export class ErrorService implements OnInit {

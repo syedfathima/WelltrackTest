@@ -115,3 +115,20 @@
   .add-resource-btn{
     margin-top: 10px;
   }
+
+  .mat-expansion-panel-header{
+    padding: 0 !important;
+  }
+  .mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+    padding: 0 24px 0px 20px;
+  }
+  .mat-expansion-indicator{
+    position: absolute;
+    right: 26px;
+  }
+  
+  #ressourceSection .removeGroup {
+    position: absolute;
+    top: 14px;
+    right: 5px;
+}

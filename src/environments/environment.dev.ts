@@ -1,7 +1,7 @@
 export const environment = {
-	production: true,
-	demo: true,
-	domain: 'welltrack.com',
+	production: false,
+	demo: false,
+	domain: 'staging.welltrack.com',
 	video: {
 		api_key: '45811332',
 		secret: '580065157cbf46031441eac753a7d968baa00ec3'

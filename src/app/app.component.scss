@@ -1,0 +1,56 @@
+.push-notification {
+    width: 350px;
+    height: 100px;
+    position: fixed;
+    background:#25295f;
+    border: 1px solid;
+    box-shadow: 2px 5px 10px #bec8da;
+    right: 10px;
+    top: 10px;
+    z-index: 99999;
+    border-radius: 15px;
+    .pn-left  {
+        width: 100px;
+        height: 100px;
+        border-right: 1px solid gray;
+        float: left;
+        display: table;
+        img {
+            display: table-cell;
+            vertical-align: middle;
+            max-width: 100px;
+        }
+    }
+    .pn-right {
+        width: 240px;
+        height: 100px;
+        float: left;
+        padding: 10px;
+        h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+        }
+        p {
+            font-size: 13px;
+            color:white;
+            ;
+            margin: 0;
+        }
+        .close {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            right: 0px;
+            top: 9px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 200;
+            cursor: pointer;
+            &:hover {
+                color:black;
+                font-weight: 400;
+            }
+        }
+    }
+}

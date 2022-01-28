@@ -10,6 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+- task: DownloadSecureFile@1
+  name: config
+  displayName: 'Download runtime config'
+  inputs:
+    secureFile: 'config.json'
+
+- script: |
+    sudo cp $(config.secureFilePath) /home/vsts/work/1/s/src/assets
+
 - task: NodeTool@0
   inputs:
     versionSpec: '12.x'

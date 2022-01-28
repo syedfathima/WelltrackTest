@@ -17,7 +17,7 @@
                     <h2>Resource sets</h2>
                     <div class="pull-right" style="margin-top: -30px;"> 
                         <mat-form-field class="wt-mat-form-field"> 
-                            <mat-select name="language" formControlName="language" (selectionChange)="valueChange()" >
+                            <mat-select  [ngModelOptions]="{standalone: true}" name="language" [(ngModel)]="Language" (selectionChange)="onSelectOrganization()" >
                                 <mat-option *ngFor="let lang of this.allLang" [value]="lang">{{lang}}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -28,15 +28,13 @@
                 <mat-accordion [id]="'resourceId'" cdkDropList (cdkDropListDropped)="drop($event)"
                     formArrayName="resourceSet">
                     <mat-expansion-panel class="groupset" id="resourceSet_{{i}}" *ngFor="let resource of resourceSet.controls; let i = index;"
-                        [formGroupName]="i" cdkDrag (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        [formGroupName]="i" cdkDrag (opened)="panelOpenState = true" (closed)="panelOpenState = false" cdkDragLockAxis="y" >
                         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                         <mat-expansion-panel-header id="resource_{{i}}">
                             <mat-panel-title>Resource set {{i + 1}}</mat-panel-title>
-                            <mat-panel-description>
-                                <a class="removeGroup" tabindex="0" (click)="onRemoveResourceset(i)"
+                            <a class="removeGroup" tabindex="0"   (click)="onRemoveResourceset(i)"
                                     (keypress)="onRemoveResourceset(i)"><img
                                         src="./assets/img/icons-svg/x-icon.svg"></a>
-                            </mat-panel-description>
                         </mat-expansion-panel-header>
                         <ng-container padding>
                             <mat-form-field class="wt-mat-form-field">
@@ -125,7 +123,7 @@
                         </ng-container>
                         <mat-accordion [id]="i" cdkDropList (cdkDropListDropped)="dropGroup($event, i)"
                             formArrayName="resourcesetGroup">
-                            <mat-expansion-panel class="groupset" cdkDrag>
+                            <mat-expansion-panel class="groupset" cdkDrag cdkDragLockAxis="y" >
                                 <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                                 <mat-expansion-panel-header >
                                     <mat-panel-title>Resources</mat-panel-title>

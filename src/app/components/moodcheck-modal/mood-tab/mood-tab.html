@@ -24,7 +24,7 @@
     <div class="grid-buttons col6">
         <a class="single wt-auto-moodcheck-mood-option" tabindex="0" *ngFor="let option of options"
             [ngClass]="{'active': option.isSelected}" (click)="toggleOption(option)"
-            (keypress)="toggleOption(option)"><span>{{option.Key  | truncate: 30}}</span></a>
+            (keypress)="toggleOption(option)"><span>{{option.Value  | truncate: 30}}</span></a>
         <!--<a href="" class="active">Happy</a>-->
         <a tabindex="0" (click)="onMore()" (keypress)="onMore()"
             class="single wt-auto-moodcheck-mood-more more featured"><span translate>moodcheck.more</span></a>

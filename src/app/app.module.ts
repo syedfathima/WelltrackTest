@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { WellTrackApp } from "./app.component";
@@ -19,6 +19,8 @@ import { FileService } from "./lib/file.service";
 import { OrganizationService } from "./lib/organization.service";
 import { VideoService } from './lib/video.service';
 import { SsoService } from './lib/sso.service';
+import { ConfigService } from './lib/config.service';
+
 import { PublicPortalTemplate } from "./pages/public-portal/public-portal.component";
 import { PublicPortalFullTemplate } from "./pages/public-portal-full/public-portal-full";
 import { RegisterPaymentPage } from "./pages/register-payment/register-payment";
@@ -62,7 +64,7 @@ import { DndModule } from "ng2-dnd";
 import { MoodcheckModule } from "./components/moodcheck-modal/moodcheck.module";
 import { CKEditorModule } from "ng2-ckeditor";
 import { MenuService } from "./lib/menu.service"
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 import { EventManagerService } from "./lib/event-manager.service";
 import { MiniCalendarComponent } from "./components/calendar/mini.calendar.component";
@@ -120,6 +122,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 	);
 }
 
+
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
@@ -156,10 +159,10 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 declare module "@angular/core" {
 	interface ModuleWithProviders<T = any> {
-	  ngModule: Type<T>;
-	  providers?: Provider[];
+		ngModule: Type<T>;
+		providers?: Provider[];
 	}
-  }
+}
 
 import { AutofocusDirective } from "./directives/auto-focus.directive";
 import { PhoneNumberValidatorDirective } from "./directives/phone-number.directive";
@@ -167,6 +170,15 @@ import { AdditionalResourcesPage } from './pages/additional-resources/additional
 import { AdditionalResourceListingPage } from './pages/additional-resource-listing/additional-resource-listing.component';
 import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 
+export const configFactory = (configService: ConfigService) => {
+	return () => configService.load();
+};
+
+//import { MessagingService } from "./lib/message-service";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { MessagingService } from "./lib/message-service";
+import { InternalUserListingComponent } from './pages/internal-user-listing/internal-user-listing.component';
 @NgModule({
 	declarations: [
 		WellTrackApp,
@@ -221,7 +233,8 @@ import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 		NotFoundPage,
 		AdditionalResourcesPage,
 		AdditionalResourceListingPage,
-		ResourceView
+		ResourceView,
+		InternalUserListingComponent
 	],
 	imports: [
 		BrowserModule,
@@ -256,7 +269,7 @@ import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 		CalendarModule.forRoot({
 			provide: DateAdapter,
 			useFactory: adapterFactory,
-		  }),
+		}),
 		TooltipModule,
 		OpentokModule.forRoot({ apiKey: "46249612" }),
 		OwlDateTimeModule,
@@ -292,8 +305,17 @@ import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 		PracticeModule,
 		ProfessionalModule,
 		NgIdleKeepaliveModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+		AngularFireMessagingModule,
+        
 	],
 	providers: [
+		{
+			provide: APP_INITIALIZER,
+			useFactory: configFactory,
+			deps: [ConfigService],
+			multi: true
+		},
 		ApiService,
 		ApiRestService,
 		AuthService,
@@ -322,7 +344,8 @@ import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 		OrganizationService,
 		VideoService,
 		SsoService,
-		MenuService
+		MenuService,
+		MessagingService
 	],
 	entryComponents: [
 		ErrorPopup,
@@ -334,4 +357,4 @@ import { AutoLogoutIdle } from "./lib/auto-logout-idle";
 	schemas: [NO_ERRORS_SCHEMA],
 	bootstrap: [WellTrackApp],
 })
-export class AppModule {}
+export class AppModule { }

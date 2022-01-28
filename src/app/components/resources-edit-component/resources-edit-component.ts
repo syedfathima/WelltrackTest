@@ -7,6 +7,7 @@ import { ModalService } from 'app/lib/modal.service';
 import { ApiService } from 'app/lib/api.service';
 import { isNumber } from 'lodash';
 import { StorageService } from 'app/lib/storage.service';
+import { LogService } from 'app/lib/log.service';
 @Component({
     selector: 'resources-edit',
     templateUrl: './resources-edit-component.html',
@@ -27,12 +28,16 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
         'en',
         'fr'
     ]
+    Language:any;
+    resourseSet: any;
+    isLoaded :boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private modalService: ModalService,
         private api: ApiService,
         private ref: ChangeDetectorRef,
-        public storage: StorageService
+        public storage: StorageService,
+        private log: LogService,
     ) {
         this.config = {
             toolbar: [
@@ -42,14 +47,17 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
               { name: 'paragraph', items: ['NumberedList', 'BulletedList'] }
             ]
           };
+          this.Language = 'en';
     }
 
     ngOnInit() {
-         this.organization = this.resources;
+        this.organization = {...this.resources};
+        this.organization.resourceSet = this.organization.resourceSet.filter(resource=>resource['language'] === this.Language);
+        this.organization['extraResourceSet'] = this.resources.resourceSet.filter(resource=>resource['language'] !== this.Language);
         this.createresourcesEditForm(this.organization);
         this.resourcesEditForm.valueChanges.subscribe(val => {
 
-            this.onResourceSetChange.emit({ resourceSet: this.resourcesEditForm.value, valid: this.resourcesEditForm.valid });
+            this.onResourceSetChange.emit({ resourceSet: this.resourcesEditForm.value, valid: this.resourcesEditForm.valid, extraResourcesSet : this.organization['extraResourceSet'] });
         });
         this.refreshnumberResourceGroups();
     }
@@ -69,15 +77,13 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
 
 
     createresourcesEditForm(data: any) {
-        this.resourcesEditForm = this.formBuilder.group({
+       this.resourcesEditForm = this.formBuilder.group({
             enableResources: [data.enableResources || false],
             resources: [data.resources || ""],
-            language:[this.storage.get('lang') || 'en'],
             resourceSet: this.formBuilder.array([]),
             questionSet: this.formBuilder.array([]),
         });
 
-        console.log('FORM**********************',this.resourcesEditForm.value)
         data.resourceSet?.forEach((resource: any,index) => {
             this.addRessourceSet(resource,index);
         });
@@ -94,7 +100,7 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
     addRessourceSet(data: any,index) {
         const resourceList = this.resourcesEditForm.get('resourceSet') as FormArray;
         resourceList.push(this.createResourceList(data));
-        if (data.videos.length > 0){
+        if (data.videos?.length > 0){
             this.selectedResourceSetIndex = index;
             this.addResourceVideo(index,data.videos);
         }
@@ -136,12 +142,13 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
     }
 
     createResourceList(data: any): FormGroup {
-        return this.formBuilder.group({
+       return this.formBuilder.group({
             id: [data.id || null],
             title: [data.title || "", [Validators.required]],
             categories: [data.categories || []],
             summary: [data.summary || ""],
             number: [data.number || 0],
+            language:[data.language || this.Language],
             videos:this.formBuilder.array([]),
             resourcesetGroup: this.formBuilder.array([]),
         });
@@ -158,7 +165,8 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
             address: [data.address || ""],
             internal: [data.internal || ""],
             description: [data.description  || ""],
-            active: [data.active]
+            active: [data.active],
+            language:[data.language || this.Language],
             
         });
     }
@@ -375,7 +383,7 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
    * Initalize client cost
    */
   initializeVideo(data?) {
-    return this.formBuilder.group({
+   return this.formBuilder.group({
         id: [data.id || ''],
 		label: [data.label || "", [Validators.required]],
 		length: [data.length || ""],
@@ -386,6 +394,7 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
 		imageUpload: this.createFileUpload({}),
 		mediaUpload: this.createFileUpload({}),
 		captionFileUpload: this.createFileUpload({}),
+        language:[this.Language],
     });
   }
 
@@ -436,7 +445,8 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
                 captionFileUpload :{
                     fileUpload: "",
                     fileFilename: "",
-                }
+                },
+                language:videoData[0].language,
             });
             setTimeout(() => {
             ctrl['controls'][0].patchValue({
@@ -451,7 +461,28 @@ export class ResourcesEditComponent implements OnInit, OnChanges {
      /**
       * Language switch change
       */
-     valueChange() {
-
-     }
+      onSelectOrganization() {
+        this.isLoaded = true;
+        this.api.get('organizations/' + this.organization.id).subscribe(
+            (result: any) => {
+                this.resources = new Organization(result.data, 'full');
+                this.resourseSet = {
+                    enableResources: this.organization.enableResources,
+                    language:this.organization.language,
+                    resources: this.organization.resourceSet,
+                    resourceSet: this.organization.resourceSet,
+                    questionSet: this.organization.questionSet
+                };
+                
+                this.ngOnInit();
+                this.isLoaded = false;
+            },
+            (error: any) => {
+                this.log.error('Error getting organizations. ' + error.message);
+                this.isLoaded = false;
+            },
+            () => {
+                this.isLoaded = false;
+            });
+    }
 }

@@ -109,11 +109,20 @@ export class EmergencyContactComponent implements OnInit {
 			this.dialing = false;
 		} else {
 			event.preventDefault();
-			console.log( this.popupText.popupEmergencyTextVeteran);
-			const hotLineText = (this.user.primaryOrganization && this.user.primaryOrganization.settings['assessment'] === 'resilience') ? this.popupText.popupEmergencyTextVeteran : this.popupText.popupEmergencyHotline; 
+			const hotLineText = (this.user.primaryOrganization && this.user.primaryOrganization.settings['assessment'] === 'resilience') ? this.popupText.popupEmergencyTextVeteran : this.popupText.popupEmergencyHotline;
 			this.modalService.showConfirmation(this.popupText.popTitle, hotLineText).afterClosed().subscribe(result => {
 				if (result) {
 					this.log.event('protocall_number_called');
+
+					this.api.post('analytics/supportlineclick', { phoneNumber: this.contactGroupTelephone }).subscribe(
+						(result: any) => {
+							this.log.debug('Activity logged');
+						},
+						(error: any) => {
+							this.log.debug('Something went wrong with the activity logger.');
+						}
+					);
+
 					this.dialing = true;
 					event.target.dispatchEvent(new MouseEvent('click'));
 				}

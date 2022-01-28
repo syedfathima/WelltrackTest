@@ -1,7 +1,7 @@
 <div>
     <h1 class="mt0" translate><img alt="Map icon" src="./assets/img/icons/map@2x.png" style="height: 16px; width: auto;">moodcheck.place.title</h1>
     <div class="grid-buttons col3">
-        <a class="wt-auto-moodcheck-place-option" tabindex="0"  *ngFor="let option of options" [ngClass]="{'active': option.isSelected}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.Key | truncate: 30}}</span></a>
+        <a class="wt-auto-moodcheck-place-option" tabindex="0"  *ngFor="let option of options" [ngClass]="{'active': option.isSelected}" (click)="toggleOption(option)" (keypress)="toggleOption(option)"><span>{{option.Value | truncate: 30}}</span></a>
         <!--<a href="" class="active">Happy</a>-->
         <a class="wt-auto-moodcheck-place-more more featured" tabindex="0"  (click)="onMore()" (keypress)="onMore()"><span translate>moodcheck.more</span></a>
     </div>

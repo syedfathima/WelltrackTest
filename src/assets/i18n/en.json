@@ -246,8 +246,8 @@
         "ada": "I acknowledge that parts of this site may not meet ADA compliance.",
         "passwordValidate": "It must be at least 8 characters, have at minimum of 1 uppercase character, 1 lowercase character, and one number.",
         "passwordRepeatValidate": "It must be identical to the password field.",
-        "healthCanada": "Use your WTC account to login. <br> You can also download the app and use the code <strong>\"canada\"</strong> for free access.",
-        "heatthCanadaAddl": "To signup without a WTC account, please click this <a href=\"https://app.welltrack.com\">link</a>"
+        "healthCanada": "Use your WTC account to login.",
+        "heatthCanadaAddl": "To signup without a WTC account, please click this <a href=\"https://canada.welltrack.com\">link</a>"
     },
     "confirm": {
         "success": "Success",
@@ -333,7 +333,8 @@
         "pushNotification": "Push Notification",
         "datedEvents": "Dated Events",
         "additionalResources": "Additional Resources",
-        "config":"Config"
+        "config":"Config",
+        "internalUsers":"Internal Users"
     },
     "moodcheck": {
         "title": "MoodCheck",

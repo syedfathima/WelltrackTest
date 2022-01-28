@@ -1,10 +1,10 @@
-<page-loader *ngIf="isloadedCount < callCount"></page-loader>
-<div class="page-section" *ngIf="isloadedCount >= callCount">
+<page-loader *ngIf="isLoading"></page-loader>
+<div class="page-section" >
     <div class="marginbottom20 clearfix">
         <a tabindex="0" class="pull-right" routerLink="/admin/organization-listing" translate>organizationView.back</a>
     </div>
 
-    <div class="page-section-header">
+    <div class="page-section-header" *ngIf="(organization | json) !== ''">
         <div class="page-section-buttons">
             <a tabindex="0" (click)="editOrganization()" (keypress)="editOrganization()"
                 class="btn btn-primary btn-inline">Edit Organization</a>
@@ -47,13 +47,13 @@
             </div>
         </div>
 
-        <div class="wt-tab-body">
+        <div class="wt-tab-body" >
             <div [hidden]="!isTabActive('stats')">
-                <dashboard-executive [organization]="organization" [showTitle]="false"></dashboard-executive>
+                <dashboard-executive  [showTitle]="false" [orgId] ="id"></dashboard-executive>
             </div>
 
             <div [hidden]="!isTabActive('activity')">
-                <activity-listing [orgId]="id"></activity-listing>
+                <activity-listing [orgId]="id" [isActivityTabEnabled]="isActivityTabEnabled"></activity-listing>
             </div>
 
             <div [hidden]="!isTabActive('members')">

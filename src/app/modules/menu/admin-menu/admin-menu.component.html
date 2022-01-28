@@ -36,6 +36,15 @@
 	</a>
 
 	<a tabindex="0" [ngClass]="{
+		active: '/admin/internal-user-listing' == menuService.pathActive,
+		disabled: menuService.locked
+	}" routerLinkActive="active" (click)="menuService.nav('/admin/internal-user-listing')"
+	(keypress)="menuService.nav('/admin/internal-user-listing')">
+	<i class="fa fa-users" aria-hidden="true"></i>
+	<span translate>menu.internalUsers</span>
+	</a>   
+
+	<a tabindex="0" [ngClass]="{
 			active: '/admin/organization-listing' == menuService.pathActive,
 			disabled: menuService.locked
 		}" routerLinkActive="active" (click)="menuService.nav('/admin/organization-listing')"

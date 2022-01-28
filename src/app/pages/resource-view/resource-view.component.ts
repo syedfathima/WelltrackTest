@@ -5,7 +5,6 @@ import { LogService } from "../../lib/log.service";
 import { ModalService } from '../../lib/modal.service';
 import { UserService } from '../../lib/user.service';
 import { User } from '../../models/user';
-
 @Component({
     selector: "app-resource-view",
     templateUrl: "./resource-view.component.html",
@@ -25,6 +24,7 @@ export class ResourceView implements OnInit {
     user: User;
     isUpdated: boolean = false;
     updatedData:any;
+    extraResource:any;
     constructor(
         private userService: UserService,
         private modalService: ModalService,
@@ -34,7 +34,6 @@ export class ResourceView implements OnInit {
     }
 
     ngOnInit() {
-        console.log("ngOnInit");
         if (this.user.userType === "admin" || this.user.userType === "superadmin") {
             this.api.get("admin/organizations", { Active: true }).subscribe(
                 (results: any) => {
@@ -74,7 +73,6 @@ export class ResourceView implements OnInit {
         this.api.get('organizations/' + orgId.value).subscribe(
             (result: any) => {
                 this.organization = new Organization(result.data, 'full');
-                console.log('From View Page-------------------',this.organization)
                 this.resourseSet = {
                     enableResources: this.organization.enableResources,
                     language:this.organization.language,
@@ -95,11 +93,13 @@ export class ResourceView implements OnInit {
     resourceSetChanged(data: any) {
         this.formValid = data.valid;
         this.resourseSet = data.resourceSet;
+        this.extraResource = data.extraResourcesSet;
     }
 
     doSave() {
         this.submitButtonPressed = true;
         this.errors = "";
+        this.resourseSet.resourceSet =  this.resourseSet.resourceSet.concat(this.extraResource);
         if (this.resourseSet?.enableResources && this.resourseSet?.resourceSet) {
             this.resourseSet.resourceSet.every((resource: any, index: number) => {
                 if (resource.title === "") {
@@ -128,8 +128,8 @@ export class ResourceView implements OnInit {
             // this.resourseSet.resourceSet = JSON.stringify(this.resourseSet.resourceSet);
             // this.resourseSet.questionSet = JSON.stringify(this.resourseSet.questionSet);
             const resourceSet = { ...this.resourseSet, resourceSet: JSON.stringify(this.resourseSet.resourceSet), questionSet: JSON.stringify(this.resourseSet.questionSet) };
-
-            this.api.put('resources/update/' + this.organization.id, resourceSet, true, false).subscribe(
+           //console.log(JSON.stringify(resourceSet));
+           this.api.put('resources/update/' + this.organization.id, resourceSet, true, false).subscribe(
                 (data: any) => {
                    this.updatedData = new Organization(data.data, 'full');
                     this.modalService.showAlert('Success', 'Organization has been updated');

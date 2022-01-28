@@ -29,9 +29,10 @@ export class MoodTab implements OnInit, OnDestroy {
 	moodClassName = '';
 	moodLabels: any;
 	init: boolean;
-	lang:any;
+	lang: any;
+	moodLabel: string;
 	@Output() onMoreClicked: EventEmitter<any> = new EventEmitter();
-    @Input() options;
+	@Input() options;
 	@Input() feelings;
 	constructor(
 		private mcOptions: MoodcheckOptionsService,
@@ -43,9 +44,7 @@ export class MoodTab implements OnInit, OnDestroy {
 		public api: ApiService) {
 
 		this.currentMood = 0;
-
-		
-		this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+		this.getIcon();
 
 		this.mcOptions.watcher.subscribe((updatedData: any) => {
 			if (updatedData.category && updatedData.category === this.category) {
@@ -57,7 +56,7 @@ export class MoodTab implements OnInit, OnDestroy {
 			this.animateMoodSlider();
 		});
 
-		
+
 		this.init = true;
 
 	}
@@ -70,11 +69,11 @@ export class MoodTab implements OnInit, OnDestroy {
 		}
 		this.actualMood = value;
 		this.setWithinRange();
-		if (value >=0) {
+		if (value >= 0) {
 			this.slider.roundSlider('setValue', (10 - this.actualMood) * 10);
 			this.currentMood = (10 - this.actualMood) + 1;
-			this.moodLabels= this.feelings.find(feelings => feelings.Value === this.actualMood.toString())['Key'];
-			this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+			this.getLabel();
+			this.getIcon();
 			this.mcService.setMoodValue(this.actualMood);
 		}
 	}
@@ -83,8 +82,8 @@ export class MoodTab implements OnInit, OnDestroy {
 		this.init = false;
 		this.currentMood = Math.floor(value / 10) + 1;
 		this.actualMood = 10 - Math.floor(value / 10);
-		this.moodLabels= this.feelings.find(feelings => feelings.Value === this.actualMood.toString())['Key'];	
-		this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+		this.getLabel();
+		this.getIcon();
 		this.mcService.setMoodValue(this.actualMood);
 	}
 
@@ -175,8 +174,8 @@ export class MoodTab implements OnInit, OnDestroy {
 		this.setWithinRange();
 		this.currentMood = (10 - this.actualMood) + 1;
 		this.slider.roundSlider('setValue', (10 - this.actualMood) * 10);
-		this.moodLabels= this.feelings.find(feelings => feelings.Value === this.actualMood.toString())['Key'];
-		this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+		this.getLabel();
+		this.getIcon();
 		this.mcService.setMoodValue(this.actualMood);
 	}
 
@@ -186,8 +185,8 @@ export class MoodTab implements OnInit, OnDestroy {
 		this.setWithinRange();
 		this.currentMood = (10 - this.actualMood) + 1;
 		this.slider.roundSlider('setValue', (10 - this.actualMood) * 10);
-		this.moodLabels= this.feelings.find(feelings => feelings.Value === this.actualMood.toString())['Key'];
-		this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+		this.getLabel();
+		this.getIcon();
 		this.mcService.setMoodValue(this.actualMood);
 	}
 
@@ -207,5 +206,13 @@ export class MoodTab implements OnInit, OnDestroy {
 		}
 	}
 
-	
+	getLabel() {
+		this.moodLabels = this.feelings.find(feelings => feelings.Key === (this.actualMood - 1).toString())['Value'];
+	}
+
+	getIcon() {
+		this.moodIconUrl = `/assets/img/moodcheck/${this.currentMood}@2x.png`;
+	}
+
+
 }

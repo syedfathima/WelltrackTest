@@ -69,7 +69,7 @@ export class AutoLogoutIdle {
 				const dialogConfig = new MatDialogConfig();
 				dialogConfig.disableClose = true;
 				//translate this 
-				const message = `You will be logged out in  ${CHECK_INTERVAL}  seconds!`;
+				const message = `You will be logged out soon unless you resume activity!`;
 				const title = 'You have been inactive for a while'
 				dialogConfig.data = { title,message};
 				const dialogRef = this.dialog.open(ErrorPopup, dialogConfig);
@@ -89,7 +89,7 @@ export class AutoLogoutIdle {
 		this.idle.onTimeoutWarning.subscribe(
 		  (countdown) =>{  
 			if(this.auth.isAuthenticated()) {
-				this.dialogRef.componentInstance.message ='You will be logged out in '+(countdown) +' seconds!';
+				this.dialogRef.componentInstance.message ='You will be logged out soon unless you resume activity!';
 			}
 			});
 	   

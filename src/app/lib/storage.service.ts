@@ -105,6 +105,7 @@ export class StorageService {
 		this.cookie.remove('isAuthenticated');
 		this.cookie.remove('accessToken');
 		this.cookie.remove('user');
+		this.cookie.remove('fcmToken');
 	}
 
 	resetFlags() {
